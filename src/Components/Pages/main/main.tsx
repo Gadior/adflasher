@@ -189,11 +189,7 @@ export default function Main() {
                 <Text style={{ fontSize: 16 }}></Text>
               </Flex>
               <Flex style={{ width: "100%" }} justify={"flex-end"}>
-                <Button
-                  type="default"
-                  onClick={closeModal}
-                  style={{ width: 200 }}
-                >
+                <Button type="default" onClick={closeModal}>
                   Выйти
                 </Button>
               </Flex>
