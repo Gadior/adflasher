@@ -6,7 +6,7 @@
 }
 .test1_containerWrapper-container {
   box-sizing: border-box;
-  width: 1550px;
+  width: 1000px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -15,7 +15,7 @@
   padding: 0;
 }
 .test1_wrapper {
-  width: 1550px;
+  width: 1000px;
   margin-top: 10px;
   display: flex;
   flex-direction: row;
@@ -25,8 +25,8 @@
 
 /* Header Block */
 .test1_header {
-  width: 1550px;
-  height: 200px;
+  width: 1000px;
+  height: 100px;
   display: flex;
   position: absolute;
   justify-content: center;
@@ -35,7 +35,7 @@
 }
 
 .test1_logo {
-  height: 100px;
+  height: 50px;
   width: auto;
 }
 
@@ -45,37 +45,33 @@
   flex-direction: column;
   justify-content: flex-start;
   position: fixed;
-  margin-top: 200px;
-  width: 440px;
+  margin-top: 100px;
+  width: 200px;
   height: 550px;
   background: #ffffff;
   box-shadow: 0px 0px 5px rgba(6, 28, 45, 0.2);
-  padding: 30px;
-  border-radius: 15px;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 h3 {
-  font-size: 28px;
+  font-size: 22px;
   color: #626262;
-  margin-bottom: 20px;
-}
-
-.test1_menu-item {
   margin-bottom: 20px;
 }
 
 .test1_buttons-row {
   display: flex;
   margin: 0;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .test1_buttons-row button {
   box-sizing: border-box;
-  padding: 20px 25px;
-  padding-top: 25px;
-  font-size: 25px;
-  line-height: 25px;
+  padding: 10px 15px;
+  padding-top: 12px;
+  font-size: 16px;
+  line-height: 16px;
   cursor: pointer;
   color: #2196f3;
   background: #ffffff;
@@ -119,16 +115,16 @@ h3 {
   align-items: center;
 }
 .test1_checkboxes label {
-  font-size: 20px;
+  font-size: 12px;
   color: #626262;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .test1_checkboxes label input[type="checkbox"] {
-  width: 30px;
-  height: 30px;
-  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
@@ -138,9 +134,9 @@ h3 {
 }
 /* 2. У выбранного чекбокса сделать белый фон и синюю галочку */
 .test1_checkboxes label input[type="checkbox"]:checked {
-  width: 30px;
-  height: 30px;
-  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
@@ -157,7 +153,7 @@ h3 {
   right: 0;
   bottom: 0;
   color: #2196f3;
-  font-size: 20px;
+  font-size: 12px;
   display: flex;
   border-radius: 5px;
   justify-content: center;
@@ -169,16 +165,16 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top: 200px;
-  margin-left: 550px;
-  width: 900px;
+  margin-top: 100px;
+  margin-left: 260px;
+  width: 740px;
 }
 
 .test1_card {
   display: flex;
   align-items: center;
-  width: 900px;
-  height: 300px;
+  width: 740px;
+  height: 200px;
   margin-bottom: 20px;
   background-color: #fff;
   box-shadow: 0px 0px 5px rgba(6, 28, 45, 0.2);
@@ -198,21 +194,20 @@ h3 {
 }
 
 .test1_card-logo {
-  width: 230px;
+  width: 120px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .test1_buy-button {
-  width: 290px;
-  height: 90px;
-  padding: 10px 20px;
+  width: 150px;
+  padding: 10px 10px;
   background-color: #ff8124;
   color: #fff;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 18px;
 }
 
 .test1_buy-button:hover {
@@ -246,16 +241,17 @@ h3 {
 }
 
 .test1_card-info-time {
-  font-size: 55px;
+  font-size: 45px;
 }
 .test1_card-info-way {
-  font-size: 18px;
+  font-size: 14px;
   text-align: center;
   font-weight: 600;
 }
 .test1_card-info-date {
+  font-size: 12px;
   text-transform: capitalize;
-  margin-top: 10px;
+  margin-top: 5px;
   text-align: center;
 }
 
