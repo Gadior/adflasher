@@ -1,0 +1,91 @@
+*,
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+/* Кнопка вернуться наза */
+.backBtn {
+  display: block;
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  animation: pulse-right 1s infinite ease-in-out;
+}
+@keyframes pulse-right {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px); /* Смещение вправо */
+  }
+}
+
+/* Основной контейнер */
+
+.container {
+  padding: 20px;
+}
+
+.container > * {
+  margin-bottom: 7px;
+}
+
+.container-tags {
+  display: block;
+  float: right;
+  height: 54px;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+  background: #e2e2e2;
+  border: 1px dashed green;
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+.container-tags > * {
+  display: block;
+  float: left;
+}
+.container-tags > *:not(:last-child) {
+  margin-right: 10px;
+}
+.container-tags__red {
+  display: block;
+  float: right;
+  height: 54px;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+  background: #ffffff;
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px dashed red;
+}
+
+/*  */
+.container-card {
+  padding: 20px;
+  background: #e2e2e2;
+  border-radius: 10px;
+  border: 1px dashed green;
+}
+.container-card > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+.container-card__name {
+  background-color: #ececec;
+  padding: 10px;
+  padding-left: 20px;
+  border-radius: 10px;
+}
+.container-card__description {
+  background-color: #ececec;
+  padding: 10px;
+  padding-left: 20px;
+  border-radius: 10px;
+}

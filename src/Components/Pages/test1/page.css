@@ -1,0 +1,278 @@
+.nonstyle * {
+  all: "unset";
+}
+/* Общий контейнер */
+.containerWrapper {
+  width: 100%;
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+}
+.container {
+  box-sizing: border-box;
+  width: 1550px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0;
+}
+.wrapper {
+  width: 1550px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Header Block */
+.header {
+  width: 1550px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f7fa;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+}
+
+/* Sidebar Menu */
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: fixed;
+  margin-top: 200px;
+  width: 440px;
+  height: 550px;
+  background: #ffffff;
+  box-shadow: 0px 0px 5px rgba(6, 28, 45, 0.2);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+h3 {
+  font-size: 28px;
+  color: #626262;
+  margin-bottom: 20px;
+}
+
+.menu-item {
+  margin-bottom: 20px;
+}
+
+.buttons-row {
+  display: flex;
+  margin: 0;
+  margin-bottom: 40px;
+}
+
+.buttons-row button {
+  box-sizing: border-box;
+  padding: 20px 25px;
+  padding-top: 25px;
+  font-size: 25px;
+  line-height: 25px;
+  cursor: pointer;
+  color: #2196f3;
+  background: #ffffff;
+  border: 1px solid #d2d5d6;
+}
+.buttons-row button:first-child {
+  border-radius: 10px 0 0 10px;
+  border-right: none;
+}
+.buttons-row button:last-child {
+  border-radius: 0 10px 10px 0;
+  border-left: none;
+}
+.buttons-row button:hover {
+  cursor: pointer;
+  background: #f2fcff;
+  border: 1px solid #2196f3;
+}
+.buttons-row button:hover:first-child {
+  border-right: none;
+}
+.buttons-row button:hover:last-child {
+  border-left: none;
+}
+.buttons-row button:focus:first-child {
+  border-right: none;
+}
+.buttons-row button:focus:last-child {
+  border-left: none;
+}
+
+.buttons-row button:focus {
+  cursor: pointer;
+  background: #2196f3;
+  border: 1px solid #2196f3;
+  color: #ffffff;
+}
+
+.checkboxes label {
+  display: flex;
+  align-items: center;
+}
+.checkboxes label {
+  font-size: 20px;
+  color: #626262;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.checkboxes label input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+/* 2. У выбранного чекбокса сделать белый фон и синюю галочку */
+.checkboxes label input[type="checkbox"]:checked {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid #2196f3;
+  border-radius: 5px;
+  background-color: #fff;
+  position: relative;
+}
+.checkboxes label input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #2196f3;
+  font-size: 20px;
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cards Section */
+.cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 200px;
+  margin-left: 550px;
+  width: 900px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  width: 900px;
+  height: 300px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px rgba(6, 28, 45, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  color: #4a4a4a;
+}
+
+.card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.card-logo {
+  width: 230px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.buy-button {
+  width: 290px;
+  height: 90px;
+  padding: 10px 20px;
+  background-color: #ff8124;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.buy-button:hover {
+  background-color: #ff9c53;
+}
+
+.divider {
+  width: 1px;
+  height: 100%;
+  background-color: #ededed;
+}
+.card-rightSide {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card-info p {
+  color: #4a4a4a;
+}
+
+.card-info-time {
+  font-size: 55px;
+}
+.card-info-way {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 600;
+}
+.card-info-date {
+  text-transform: capitalize;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.card-transfer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+/* 959ea0 */
+.card-transfer-count {
+  color: #959ea0;
+}
