@@ -18,6 +18,7 @@ export default function CardFeat(props: any) {
       <Space className="container-card-title">
         <Flex className="container-card-title__block">
           <FieldTimeOutlined
+            title="Время на задачу"
             style={{
               background: "#ffffff",
               padding: "10px",
@@ -29,13 +30,10 @@ export default function CardFeat(props: any) {
           />
           <Space
             style={{
-              // padding: "0px",
-              // margin: "0px",
-              // marginRight: "25px",
               minWidth: "70px",
             }}
           >
-            <div>{props.time} часа</div>
+            <div>{props.time}</div>
           </Space>
         </Flex>
         <CardTitle title={props.title} />

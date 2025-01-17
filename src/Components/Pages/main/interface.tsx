@@ -3,6 +3,6 @@ export interface int_mainData {
   description: string;
   href: string;
   cardName: string;
-  time: number;
+  time: string;
   tags: string[];
 }
