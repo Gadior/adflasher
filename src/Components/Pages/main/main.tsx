@@ -13,7 +13,7 @@ import SearchTag from "../../Shared/searchTag.tsx";
 // ___ import
 // #region
 import React, { useState, useEffect } from "react";
-import { Button, Space, Tag, Divider, Typography } from "antd";
+import { Button, Space, Tag, Divider, Typography, Flex } from "antd";
 const { Title, Text } = Typography;
 
 // #endregion
@@ -66,7 +66,12 @@ export default function Main() {
       style={{ width: "1000px", border: border }}
       className="container"
     >
-      <Title level={2}>Тестовые задания</Title>
+      <Flex style={{ width: "100%" }} justify={"space-between"} align="center">
+        <Title level={2}>Тестовые задания</Title>
+        <Space style={{ paddingBottom: "10px", cursor: "pointer" }}>
+          <u>info</u>
+        </Space>
+      </Flex>
 
       <Space direction={"vertical"}>
         <Text>
