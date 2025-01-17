@@ -1,6 +1,7 @@
 // #region ~ hlop
 // ~style
 import "./main.css";
+import "./modal.css";
 // ~ __data
 import json from "../../Data/jsonData.json";
 // ~ interfasce
@@ -58,6 +59,12 @@ export default function Main() {
   };
   // #endregion ~ Сортировка списка по названию тага
 
+  // ___ Управление модальным окном
+  // #region
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  // #endregion
   // ___ return
   // #region ~ return if "main"
   return (
@@ -67,9 +74,17 @@ export default function Main() {
       className="container"
     >
       <Flex style={{ width: "100%" }} justify={"space-between"} align="center">
-        <Title level={2}>Тестовые задания</Title>
+        <Title level={2}>Примеры</Title>
         <Space style={{ paddingBottom: "10px", cursor: "pointer" }}>
-          <u>info</u>
+          <Button
+            className="container-info"
+            type="link"
+            onClick={() => {
+              openModal();
+            }}
+          >
+            <u>info</u>
+          </Button>
         </Space>
       </Flex>
 
@@ -126,6 +141,76 @@ export default function Main() {
             openExample={item.cardName}
           />
         ))}
+
+      {/* Модальное окно */}
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-window">
+            <Flex
+              className="modal-window-container"
+              vertical={true}
+              justify="space-between"
+              align="flex-start"
+            >
+              <Title level={2}>info: [</Title>
+              <Flex
+                vertical={true}
+                className="modal-window-container-body"
+                align="flex-start"
+              >
+                <Text style={{ fontSize: 16 }}>
+                  <b>status</b>: "в поиске",
+                </Text>
+                <Text style={{ fontSize: 16 }}>
+                  <b>salaryPrice</b>: "от 150 000 ₽",
+                </Text>
+                <Text style={{ fontSize: 16 }}>
+                  <b>workFromHome</b>: true,
+                </Text>
+                <Text style={{ fontSize: 16 }}>
+                  <b>skills</b>:
+                </Text>
+                <Space
+                  className="modal-window-container-body-skills"
+                  direction={"vertical"}
+                  align={"start"}
+                >
+                  <Text style={{ fontSize: 16 }}></Text>
+                  <Text style={{ fontSize: 16 }}>[{"{"}</Text>
+                  <Text style={{ fontSize: 16 }}>
+                    <b>frontEnd</b>: "React + TypeScript + css + atnd +
+                    map/filter/functions/useState/UseEffect/components",
+                  </Text>
+                  <Text style={{ fontSize: 16 }}>
+                    <b>backEnd</b>: "python (example - https://bannersbox.ru/)",
+                  </Text>
+                  <Text style={{ fontSize: 16 }}>
+                    <b>design</b>: "figma, photoshop, aftereffect, animateCC",
+                  </Text>
+                  <Text style={{ fontSize: 16 }}>
+                    <b>soft</b>: "коммуникация, позитив",
+                  </Text>
+                  <Text style={{ fontSize: 16 }}>{"}"}],</Text>
+                </Space>
+                <Text style={{ fontSize: 16 }}>
+                  <b>contact</b>: https://career.habr.com/tartos | ТГ
+                  @viktor_molokhov,
+                </Text>
+                <Text style={{ fontSize: 16 }}>]</Text>
+              </Flex>
+              <Flex style={{ width: "100%" }} justify={"flex-end"}>
+                <Button
+                  type="default"
+                  onClick={closeModal}
+                  style={{ width: 200 }}
+                >
+                  Выйти
+                </Button>
+              </Flex>
+            </Flex>
+          </div>
+        </div>
+      )}
     </Space>
   );
   // #endregion ~ return

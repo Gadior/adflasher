@@ -19,7 +19,21 @@ html {
     transform: translateX(0);
   }
   50% {
-    transform: translateX(20px); /* Смещение вправо */
+    transform: translateX(20px);
+  }
+}
+
+.container-info {
+  animation: pulse-scale 1s infinite ease-in-out;
+}
+
+@keyframes pulse-scale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
   }
 }
 
