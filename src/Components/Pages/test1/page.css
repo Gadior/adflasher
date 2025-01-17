@@ -72,9 +72,8 @@ h3 {
   padding-top: 12px;
   font-size: 16px;
   line-height: 16px;
+  margin-right: 0px;
   cursor: pointer;
-  color: #2196f3;
-  background: #ffffff;
   border: 1px solid #d2d5d6;
 }
 .test1_buttons-row button:first-child {
@@ -87,8 +86,9 @@ h3 {
 }
 .test1_buttons-row button:hover {
   cursor: pointer;
-  background: #f2fcff;
-  border: 1px solid #2196f3;
+  background: #2196f3;
+  /* border: 1px solid #2196f3; */
+  color: #ffffff;
 }
 .test1_buttons-row button:hover:first-child {
   border-right: none;
@@ -105,9 +105,26 @@ h3 {
 
 .test1_buttons-row button:focus {
   cursor: pointer;
+  outline: none;
+}
+
+.button__focus {
+  all: none;
+  font-size: 45px;
+  cursor: pointer;
   background: #2196f3;
   border: 1px solid #2196f3;
   color: #ffffff;
+  outline: none;
+}
+.button__unfocus {
+  all: none;
+  font-size: 45px;
+  cursor: pointer;
+  color: #2196f3;
+  background: #ffffff;
+  border: 1px solid #2196f3;
+  outline: none;
 }
 
 .test1_checkboxes label {

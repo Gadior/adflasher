@@ -3,7 +3,8 @@
 // ___ import
 // #region ~ import
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { message } from "antd";
 
 // ~ days
 import dayjs from "dayjs";
@@ -30,6 +31,10 @@ export default function MainPage() {
 
   // ___ states/data
   // #region ~ states/data
+  // ~ ссылки для установления состояния фокуса
+  const buttonRef__rubble = useRef<HTMLButtonElement>(null);
+  const buttonRef__usd = useRef<HTMLButtonElement>(null);
+  const buttonRef__euro = useRef<HTMLButtonElement>(null);
   // ~ ticketsData
   const [ticketsData, setTicketsData] = useState<int_tickets[]>();
   // ~ backup
@@ -56,6 +61,7 @@ export default function MainPage() {
   });
   // ~ управление чекбоксами
   const handleCheckboxChange = (name: string) => {
+    checkFocus();
     let __check = checkboxes;
     if (name === "all") {
       const newState = !checkboxes.all;
@@ -97,7 +103,7 @@ export default function MainPage() {
   };
   // #endregion ~ checkBoxes
 
-  // ~ форматер даты
+  // #region ~ форматер даты
   const formattedDate = (date: string) => {
     const formattedDate = dayjs(date, "DD.MM.YY").format("DD MMMM YYYY, ddd");
     // const uper = day.replace(/(\b\w)/g, (match) => match.toUpperCase());
@@ -107,7 +113,32 @@ export default function MainPage() {
     );
     return capitalizedFormattedDate;
   };
+  // #endregion ~ форматер даты
 
+  // #region ~ управление currency
+  const [currencyName, setCurrencyName] = useState<string>("rubble");
+  const [currencySymbol, setCurrencySymbol] = useState<string>("₽");
+  const [currencyPrice, setCurrencyPrice] = useState<number>(1);
+
+  useEffect(() => {
+    currencyName === "rubble" && setCurrencySymbol("₽");
+    currencyName === "rubble" && setCurrencyPrice(1);
+
+    currencyName === "usd" && setCurrencySymbol("$");
+    currencyName === "usd" && setCurrencyPrice(50);
+
+    currencyName === "euro" && setCurrencySymbol("€");
+    currencyName === "euro" && setCurrencyPrice(55);
+
+    checkFocus();
+  }, [currencyName]);
+
+  const checkFocus = () => {
+    currencyName === "rubble" && buttonRef__rubble.current.focus();
+    currencyName === "usd" && buttonRef__usd.current.focus();
+    currencyName === "euro" && buttonRef__euro.current.focus();
+  };
+  // #endregion ~ управление currency
   // #endregion ~ states/data
 
   // ___ return
@@ -128,9 +159,45 @@ export default function MainPage() {
               <div className="test1_menu-item">
                 <h3>ВАЛЮТА</h3>
                 <div className="test1_buttons-row">
-                  <button>RUB</button>
-                  <button>USD</button>
-                  <button>EUR</button>
+                  <button
+                    className={
+                      currencyName === "rubble"
+                        ? "button__focus"
+                        : "button__unfocus"
+                    }
+                    ref={buttonRef__rubble}
+                    onClick={() => {
+                      setCurrencyName("rubble");
+                    }}
+                  >
+                    RUB
+                  </button>
+                  <button
+                    className={
+                      currencyName === "usd"
+                        ? "button__focus"
+                        : "button__unfocus"
+                    }
+                    ref={buttonRef__usd}
+                    onClick={() => {
+                      setCurrencyName("usd");
+                    }}
+                  >
+                    USD
+                  </button>
+                  <button
+                    className={
+                      currencyName === "euro"
+                        ? "button__focus"
+                        : "button__unfocus"
+                    }
+                    ref={buttonRef__euro}
+                    onClick={() => {
+                      setCurrencyName("euro");
+                    }}
+                  >
+                    EUR
+                  </button>
                 </div>
               </div>
 
@@ -192,11 +259,12 @@ export default function MainPage() {
                         alt="Logo"
                         className="test1_card-logo"
                       />
-                      <button className="test1_buy-button">
+                      <button className="test1_buy-button" onClick={() => {}}>
                         <p>Купить</p>
                         <p>
                           за{" "}
-                          {parseInt(ticketsData[item].price).toLocaleString()} ₽
+                          {(ticketsData[item].price / currencyPrice).toFixed(0)}{" "}
+                          {currencySymbol}
                         </p>
                       </button>
                     </div>
