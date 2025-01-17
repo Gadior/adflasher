@@ -2,7 +2,7 @@
 
 // ___ import
 // #region ~ import
-// import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
+import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 import React, { useState, useEffect } from "react";
 
 // ~ days
@@ -113,29 +113,30 @@ export default function MainPage() {
   // ___ return
   // #region ~ return
   return (
-    <div className="nonstyle">
-      <div className="containerWrapper">
-        <div className="container">
+    <div className="test1_nonstyle">
+      <TasksBackBtn />
+      <div className="test1_containerWrapper">
+        <div className="test1_containerWrapper-container">
           {/* Header Block */}
-          <header className="header">
-            <img src={__plane} alt="Logo" className="logo" />
+          <header className="test1_header">
+            <img src={__plane} alt="Logo" className="test1_logo" />
           </header>
 
-          <div className="wrapper">
+          <div className="test1_wrapper">
             {/* Sidebar Menu */}
-            <aside className="menu">
-              <div className="menu-item">
+            <aside className="test1_menu">
+              <div className="test1_menu-item">
                 <h3>ВАЛЮТА</h3>
-                <div className="buttons-row">
+                <div className="test1_buttons-row">
                   <button>RUB</button>
                   <button>USD</button>
                   <button>EUR</button>
                 </div>
               </div>
 
-              <div className="menu-item">
+              <div className="test1_menu-item">
                 <h3>КОЛИЧЕСТВО ПЕРЕСАДОК</h3>
-                <div className="checkboxes">
+                <div className="test1_checkboxes">
                   <label>
                     <input
                       type="checkbox"
@@ -182,12 +183,16 @@ export default function MainPage() {
 
             {/* Cards Section */}
             {ticketsData !== undefined && (
-              <main className="cards">
+              <main className="test1_cards">
                 {Object.keys(ticketsData).map((index, item: number) => (
-                  <div className="card" key={index}>
-                    <div className="card-left">
-                      <img src={__logo} alt="Logo" className="card-logo" />
-                      <button className="buy-button">
+                  <div className="test1_card" key={index}>
+                    <div className="test1_card-left">
+                      <img
+                        src={__logo}
+                        alt="Logo"
+                        className="test1_card-logo"
+                      />
+                      <button className="test1_buy-button">
                         <p>Купить</p>
                         <p>
                           за{" "}
@@ -195,37 +200,37 @@ export default function MainPage() {
                         </p>
                       </button>
                     </div>
-                    <div className="divider" />
-                    <div className="card-rightSide">
-                      <div className="card-info">
-                        <p className="card-info-time">
+                    <div className="test1_divider" />
+                    <div className="test1_card-rightSide">
+                      <div className="test1_card-info">
+                        <p className="test1_card-info-time">
                           {ticketsData[item].departure_time}
                         </p>
-                        <p className="card-info-way">
+                        <p className="test1_card-info-way">
                           {ticketsData[item].origin},{" "}
                           {ticketsData[item].origin_name}
                         </p>
-                        <p className="card-info-date">
+                        <p className="test1_card-info-date">
                           {formattedDate(ticketsData[item].departure_date)}
                         </p>
                       </div>
-                      <div className="card-transfer">
-                        <p className="card-transfer-count">
+                      <div className="test1_card-transfer">
+                        <p className="test1_card-transfer-count">
                           {ticketsData[item].stops} пересадка
                         </p>
                         <div>
                           <img src={__arrow} alt="arrow" />
                         </div>
                       </div>
-                      <div className="card-info">
-                        <p className="card-info-time">
+                      <div className="test1_card-info">
+                        <p className="test1_card-info-time">
                           {ticketsData[item].arrival_time}
                         </p>
-                        <p className="card-info-way">
+                        <p className="test1_card-info-way">
                           {ticketsData[item].destination},{" "}
                           {ticketsData[item].destination_name}
                         </p>
-                        <p className="card-info-date">
+                        <p className="test1_card-info-date">
                           {formattedDate(ticketsData[item].arrival_date)}
                         </p>
                       </div>

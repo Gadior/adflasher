@@ -1,13 +1,10 @@
-.nonstyle * {
-  all: "unset";
-}
 /* Общий контейнер */
-.containerWrapper {
+.test1_containerWrapper {
   width: 100%;
   /* border: 1px solid red; */
   box-sizing: border-box;
 }
-.container {
+.test1_containerWrapper-container {
   box-sizing: border-box;
   width: 1550px;
   display: flex;
@@ -17,7 +14,7 @@
   margin: 0 auto;
   padding: 0;
 }
-.wrapper {
+.test1_wrapper {
   width: 1550px;
   margin-top: 10px;
   display: flex;
@@ -27,7 +24,7 @@
 }
 
 /* Header Block */
-.header {
+.test1_header {
   width: 1550px;
   height: 200px;
   display: flex;
@@ -37,13 +34,13 @@
   background-color: #f3f7fa;
 }
 
-.logo {
+.test1_logo {
   height: 100px;
   width: auto;
 }
 
 /* Sidebar Menu */
-.menu {
+.test1_menu {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -63,17 +60,17 @@ h3 {
   margin-bottom: 20px;
 }
 
-.menu-item {
+.test1_menu-item {
   margin-bottom: 20px;
 }
 
-.buttons-row {
+.test1_buttons-row {
   display: flex;
   margin: 0;
   margin-bottom: 40px;
 }
 
-.buttons-row button {
+.test1_buttons-row button {
   box-sizing: border-box;
   padding: 20px 25px;
   padding-top: 25px;
@@ -84,51 +81,51 @@ h3 {
   background: #ffffff;
   border: 1px solid #d2d5d6;
 }
-.buttons-row button:first-child {
+.test1_buttons-row button:first-child {
   border-radius: 10px 0 0 10px;
   border-right: none;
 }
-.buttons-row button:last-child {
+.test1_buttons-row button:last-child {
   border-radius: 0 10px 10px 0;
   border-left: none;
 }
-.buttons-row button:hover {
+.test1_buttons-row button:hover {
   cursor: pointer;
   background: #f2fcff;
   border: 1px solid #2196f3;
 }
-.buttons-row button:hover:first-child {
+.test1_buttons-row button:hover:first-child {
   border-right: none;
 }
-.buttons-row button:hover:last-child {
+.test1_buttons-row button:hover:last-child {
   border-left: none;
 }
-.buttons-row button:focus:first-child {
+.test1_buttons-row button:focus:first-child {
   border-right: none;
 }
-.buttons-row button:focus:last-child {
+.test1_buttons-row button:focus:last-child {
   border-left: none;
 }
 
-.buttons-row button:focus {
+.test1_buttons-row button:focus {
   cursor: pointer;
   background: #2196f3;
   border: 1px solid #2196f3;
   color: #ffffff;
 }
 
-.checkboxes label {
+.test1_checkboxes label {
   display: flex;
   align-items: center;
 }
-.checkboxes label {
+.test1_checkboxes label {
   font-size: 20px;
   color: #626262;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
-.checkboxes label input[type="checkbox"] {
+.test1_checkboxes label input[type="checkbox"] {
   width: 30px;
   height: 30px;
   margin-right: 20px;
@@ -140,7 +137,7 @@ h3 {
   background-color: #fff;
 }
 /* 2. У выбранного чекбокса сделать белый фон и синюю галочку */
-.checkboxes label input[type="checkbox"]:checked {
+.test1_checkboxes label input[type="checkbox"]:checked {
   width: 30px;
   height: 30px;
   margin-right: 20px;
@@ -152,7 +149,7 @@ h3 {
   background-color: #fff;
   position: relative;
 }
-.checkboxes label input[type="checkbox"]:checked::after {
+.test1_checkboxes label input[type="checkbox"]:checked::after {
   content: "✔";
   position: absolute;
   top: 0;
@@ -168,7 +165,7 @@ h3 {
 }
 
 /* Cards Section */
-.cards {
+.test1_cards {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -177,7 +174,7 @@ h3 {
   width: 900px;
 }
 
-.card {
+.test1_card {
   display: flex;
   align-items: center;
   width: 900px;
@@ -190,7 +187,7 @@ h3 {
   color: #4a4a4a;
 }
 
-.card-left {
+.test1_card-left {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -200,13 +197,13 @@ h3 {
   box-sizing: border-box;
 }
 
-.card-logo {
+.test1_card-logo {
   width: 230px;
   height: auto;
   margin-bottom: 20px;
 }
 
-.buy-button {
+.test1_buy-button {
   width: 290px;
   height: 90px;
   padding: 10px 20px;
@@ -218,23 +215,23 @@ h3 {
   font-size: 30px;
 }
 
-.buy-button:hover {
+.test1_buy-button:hover {
   background-color: #ff9c53;
 }
 
-.divider {
+.test1_divider {
   width: 1px;
   height: 100%;
   background-color: #ededed;
 }
-.card-rightSide {
+.test1_card-rightSide {
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: flex-start;
 }
 
-.card-info {
+.test1_card-info {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -244,25 +241,25 @@ h3 {
   box-sizing: border-box;
 }
 
-.card-info p {
+.test1_card-info p {
   color: #4a4a4a;
 }
 
-.card-info-time {
+.test1_card-info-time {
   font-size: 55px;
 }
-.card-info-way {
+.test1_card-info-way {
   font-size: 18px;
   text-align: center;
   font-weight: 600;
 }
-.card-info-date {
+.test1_card-info-date {
   text-transform: capitalize;
   margin-top: 10px;
   text-align: center;
 }
 
-.card-transfer {
+.test1_card-transfer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -273,6 +270,6 @@ h3 {
   box-sizing: border-box;
 }
 /* 959ea0 */
-.card-transfer-count {
+.test1_card-transfer-count {
   color: #959ea0;
 }
