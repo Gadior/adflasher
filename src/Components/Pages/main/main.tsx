@@ -116,6 +116,7 @@ export default function Main() {
             href={item.href}
             cardName={item.cardName}
             tags={item.tags}
+            time={item.time}
             // update
             openExample={item.cardName}
           />
