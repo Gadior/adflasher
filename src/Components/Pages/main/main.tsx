@@ -156,12 +156,8 @@ export default function Main() {
                 className="modal-window-container-body"
                 align="flex-start"
               >
-                <Text style={{ fontSize: 16 }}></Text>
-                <Text style={{ fontSize: 16 }}></Text>
-                <Text style={{ fontSize: 16 }}></Text>
-                <Text style={{ fontSize: 16 }}></Text>
                 <div className="modal-window-container-body-skills">
-                  <Text style={{ fontSize: 16 }}>
+                  <Text className="modal-window-container-body-skills__font">
                     <b>status</b>: "в поиске" | "фриланс",
                     <br />
                     <b>salaryPrice</b>: "от 150 000 ₽",

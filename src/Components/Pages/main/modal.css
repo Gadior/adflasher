@@ -35,3 +35,7 @@
   word-wrap: break-word;
   text-align: left;
 }
+
+.modal-window-container-body-skills__font {
+  font-size: 16px;
+}
