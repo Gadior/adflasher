@@ -2,6 +2,7 @@
 // ~style
 import "./main.css";
 import "./modal.css";
+import "./media.css";
 // ~ __data
 import json from "../../Data/jsonData.json";
 // ~ interfasce
@@ -22,17 +23,6 @@ const { Title, Text } = Typography;
 // ___ component
 // #region ~ component
 export default function Main() {
-  // ___ pageStyleRules
-  // #region
-  const showBoarder = false;
-  let border: string = "";
-  if (showBoarder) {
-    border = "1px solid red";
-  } else {
-    border = "none";
-  }
-  // #endregion
-
   // ___ управление главной страницей
   // #region
   // ~ хранение списка всех тагов из всех карточек
@@ -68,11 +58,7 @@ export default function Main() {
   // ___ return
   // #region ~ return if "main"
   return (
-    <Space
-      direction={"vertical"}
-      style={{ width: "1000px", border: border }}
-      className="container"
-    >
+    <Space direction={"vertical"} className="container">
       <Flex style={{ width: "100%" }} justify={"space-between"} align="center">
         <Title level={2}>Примеры</Title>
         <Space style={{ paddingBottom: "10px", cursor: "pointer" }}>
@@ -88,10 +74,25 @@ export default function Main() {
         </Space>
       </Flex>
 
-      <Space direction={"vertical"}>
-        <Text>
+      <Space
+        direction={"vertical"}
+        style={{
+          width: "100%",
+          whiteSpace: "wrap",
+          wordWrap: "break-word",
+          overflowWrap: "break-word",
+        }}
+      >
+        <p
+          wrap={true}
+          style={{
+            whiteSpace: "wrap",
+            wordWrap: "break-word",
+            overflowWrap: "break-word",
+          }}
+        >
           <u>Нажми</u> на tag и включиться сортировка:
-        </Text>
+        </p>
       </Space>
 
       <Divider style={{ margin: 0 }}></Divider>
@@ -103,14 +104,11 @@ export default function Main() {
           <Space className="container-tags__red">
             <Button
               type="link"
-              style={{ margin: 0, padding: 0 }}
               onClick={() => {
                 cleanTagList();
               }}
             >
-              <Tag color={"default"} style={{ margin: 0 }}>
-                Очистить
-              </Tag>
+              <Tag color={"default"}>Очистить</Tag>
             </Button>
           </Space>
         )}
@@ -125,7 +123,7 @@ export default function Main() {
       <Divider style={{ margin: 0 }}></Divider>
 
       {/* Тело  */}
-      <Text>Примеры:</Text>
+      <p>Примеры:</p>
 
       {mainData !== undefined &&
         mainData.map((item: int_mainData) => (
@@ -158,45 +156,41 @@ export default function Main() {
                 className="modal-window-container-body"
                 align="flex-start"
               >
-                <Text style={{ fontSize: 16 }}>
-                  <b>status</b>: "в поиске",
-                </Text>
-                <Text style={{ fontSize: 16 }}>
-                  <b>salaryPrice</b>: "от 150 000 ₽",
-                </Text>
-                <Text style={{ fontSize: 16 }}>
-                  <b>workFromHome</b>: true,
-                </Text>
-                <Text style={{ fontSize: 16 }}>
-                  <b>skills</b>:
-                </Text>
-                <Space
-                  className="modal-window-container-body-skills"
-                  direction={"vertical"}
-                  align={"start"}
-                >
-                  <Text style={{ fontSize: 16 }}></Text>
-                  <Text style={{ fontSize: 16 }}>[{"{"}</Text>
+                <Text style={{ fontSize: 16 }}></Text>
+                <Text style={{ fontSize: 16 }}></Text>
+                <Text style={{ fontSize: 16 }}></Text>
+                <Text style={{ fontSize: 16 }}></Text>
+                <div className="modal-window-container-body-skills">
                   <Text style={{ fontSize: 16 }}>
-                    <b>frontEnd</b>: "React + TypeScript + css + atnd +
-                    map/filter/functions/useState/UseEffect/components",
+                    <b>status</b>: "в поиске" | "фриланс",
+                    <br />
+                    <b>salaryPrice</b>: "от 150 000 ₽",
+                    <br />
+                    <b>workFromHome</b>: true | null,
+                    <br />
+                    <b>skills</b>:
+                    <br />[{"{"}
+                    <br />
+                    <div className="modal-window-container-body-skills">
+                      <b>frontEnd</b>: "React + TypeScript + css + atnd +
+                      map/filter/functions/useState/UseEffect/components",
+                      <br />
+                      <b>backEnd</b>: "python (example -
+                      https://bannersbox.ru/)",
+                      <br />
+                      <b>design</b>: "figma, photoshop, aftereffect, animateCC",
+                      <br />
+                      <b>soft</b>: "коммуникация, позитив",
+                      <br />
+                      <b>contact</b>: https://career.habr.com/tartos | ТГ
+                      @viktor_molokhov,
+                      <br />
+                      {"}"}],
+                    </div>
+                    <b>]</b>
                   </Text>
-                  <Text style={{ fontSize: 16 }}>
-                    <b>backEnd</b>: "python (example - https://bannersbox.ru/)",
-                  </Text>
-                  <Text style={{ fontSize: 16 }}>
-                    <b>design</b>: "figma, photoshop, aftereffect, animateCC",
-                  </Text>
-                  <Text style={{ fontSize: 16 }}>
-                    <b>soft</b>: "коммуникация, позитив",
-                  </Text>
-                  <Text style={{ fontSize: 16 }}>{"}"}],</Text>
-                </Space>
-                <Text style={{ fontSize: 16 }}>
-                  <b>contact</b>: https://career.habr.com/tartos | ТГ
-                  @viktor_molokhov,
-                </Text>
-                <Text style={{ fontSize: 16 }}>]</Text>
+                </div>
+                <Text style={{ fontSize: 16 }}></Text>
               </Flex>
               <Flex style={{ width: "100%" }} justify={"flex-end"}>
                 <Button

@@ -1,0 +1,11 @@
+@media (max-width: 1000px) {
+  .container {
+    padding: 15px;
+    min-width: 250px;
+  }
+  .modal-window {
+    width: calc(100% - 130px);
+    margin: 20px;
+    padding: 30px;
+  }
+}

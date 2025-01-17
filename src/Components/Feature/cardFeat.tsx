@@ -15,8 +15,8 @@ export default function CardFeat(props: any) {
   props.cardName === "main" ? (blockBtn = true) : (blockBtn = false);
   return (
     <Flex vertical={true} className="container-card">
-      <Space>
-        <Flex>
+      <Space className="container-card-title">
+        <Flex className="container-card-title__block">
           <FieldTimeOutlined
             style={{
               background: "#ffffff",
@@ -27,8 +27,15 @@ export default function CardFeat(props: any) {
               marginRight: "12px",
             }}
           />
-          <Space style={{ padding: "0px", margin: "0px", marginRight: "25px" }}>
-            {props.time} часа
+          <Space
+            style={{
+              // padding: "0px",
+              // margin: "0px",
+              // marginRight: "25px",
+              minWidth: "70px",
+            }}
+          >
+            <div>{props.time} часа</div>
           </Space>
         </Flex>
         <CardTitle title={props.title} />
@@ -41,15 +48,12 @@ export default function CardFeat(props: any) {
             type="primary"
             href={props.href}
             disabled={blockBtn ? true : false}
-            // onClick={() => {
-            //   props.openExample(props.cardName);
-            // }}
           >
             Смотреть пример
           </Button>
         </Link>
       </Flex>
-      <Space>
+      <Space className="container-card-tags">
         {tagsData &&
           tagsData.map((tag: any) => <Tag color={"gold"}>{tag}</Tag>)}
       </Space>

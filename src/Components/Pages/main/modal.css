@@ -13,14 +13,14 @@
 
 .modal-window {
   position: absolute;
-  left: 10%;
-  top: 10%;
+  left: 20px;
+  top: 20px;
   background-color: white;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   width: 750px;
-  height: 400px;
+  height: auto;
   background: #e2e2e2;
   text-align: center;
 }
@@ -30,14 +30,8 @@
   width: 100%;
 }
 
-.modal-window-container-body > * {
-  margin-bottom: 0px;
-}
-
 .modal-window-container-body-skills {
   padding: 0 10px;
-}
-
-.modal-window-container-body-skills > *:not(:last-child) {
-  margin-bottom: -8px;
+  word-wrap: break-word;
+  text-align: left;
 }
