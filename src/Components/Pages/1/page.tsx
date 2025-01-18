@@ -19,6 +19,7 @@ import __logo from "./src/images/__logo.png";
 import __plane from "./src/images/__plane.png";
 import __arrow from "./src/images/__arrow.jpg";
 // ~ styles
+import "./reset.css";
 import "./page.css";
 // #endregion ~ import
 
@@ -155,7 +156,7 @@ export default function MainPage() {
             {/* Sidebar Menu */}
             <aside className="test1_menu">
               <div className="test1_menu-item">
-                <h3>ВАЛЮТА</h3>
+                <h3 className="test1_h3">ВАЛЮТА</h3>
                 <div className="test1_buttons-row">
                   <button
                     className={
@@ -200,7 +201,7 @@ export default function MainPage() {
               </div>
 
               <div className="test1_menu-item">
-                <h3>КОЛИЧЕСТВО ПЕРЕСАДОК</h3>
+                <h3 className="test1_h3">КОЛИЧЕСТВО ПЕРЕСАДОК</h3>
                 <div className="test1_checkboxes">
                   <label>
                     <input

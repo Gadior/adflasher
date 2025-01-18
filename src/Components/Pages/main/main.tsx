@@ -56,7 +56,6 @@ export default function Main() {
   const closeModal = () => setIsModalOpen(false);
   // #endregion
 
-  console.log(mainData);
   // ___ return
   // #region ~ return if "main"
   return (
