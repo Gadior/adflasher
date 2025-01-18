@@ -1,19 +1,19 @@
 // #region ~ hlop
+// ___ import
+// #region
 // ~style
 import "./main.css";
 import "./modal.css";
 import "./media.css";
 // ~ __data
 import json from "../../Data/jsonData.json";
-// ~ interfasce
+// ~ interface
 import { int_mainData } from "./interface";
 
 // ~ components
 import CardFeat from "../../Feature/cardFeat.tsx";
 import SearchTag from "../../Shared/searchTag.tsx";
 
-// ___ import
-// #region
 import React, { useState, useEffect } from "react";
 import { Button, Space, Tag, Divider, Typography, Flex } from "antd";
 const { Title, Text } = Typography;
@@ -55,6 +55,8 @@ export default function Main() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   // #endregion
+
+  console.log(mainData);
   // ___ return
   // #region ~ return if "main"
   return (
@@ -125,20 +127,23 @@ export default function Main() {
       {/* Тело  */}
       <p>Примеры:</p>
 
-      {mainData !== undefined &&
-        mainData.map((item: int_mainData) => (
-          <CardFeat
-            key={item}
-            title={item.title}
-            description={item.description}
-            href={item.href}
-            cardName={item.cardName}
-            tags={item.tags}
-            time={item.time}
-            // update
-            openExample={item.cardName}
-          />
-        ))}
+      {mainData !== undefined && (
+        <div className="container-cards">
+          {mainData.map((item: int_mainData) => (
+            <CardFeat
+              key={item}
+              title={item.title}
+              description={item.description}
+              href={item.href}
+              cardName={item.cardName}
+              tags={item.tags}
+              time={item.time}
+              // update
+              openExample={item.cardName}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Модальное окно */}
       {isModalOpen && (

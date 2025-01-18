@@ -23,6 +23,10 @@ html {
   }
 }
 
+.container-cards > *:not(:last-child) {
+  margin-bottom: 15px;
+}
+
 .container-info {
   animation: pulse-scale 1s infinite ease-in-out;
 }
