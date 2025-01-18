@@ -4,6 +4,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Main from "./Components/Pages/main/main.tsx";
 import Page1 from "./Components/Pages/1/page.tsx";
 import Page2 from "./Components/Pages/2/page.tsx";
+import Page3 from "./Components/Pages/3/page.tsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="1" element={<Page1 />} />
         <Route path="2" element={<Page2 />} />
+        <Route path="3" element={<Page3 />} />
       </Routes>
     </HashRouter>
   );
