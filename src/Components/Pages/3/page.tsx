@@ -1,4 +1,6 @@
 // #region ~ hlop
+// TODO: произвести чистку
+
 // ___ import
 // #region ~ import
 // ~ comps
@@ -7,20 +9,23 @@ import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 import "./reset.css";
 import "./page.css";
 // ~ interface
-import { int__mainData } from "./interface.tsx";
-// ~ settings
-import {
-  nameLength,
-  nameReg,
-  fioLength,
-  fioReg,
-  descriptionLength,
-} from "./settings.tsx";
+import Cookies from "universal-cookie";
+// import Cookies from "js-cookie";
 
 import React, { useState, useEffect } from "react";
-import { Input, Button, Typography, Flex, Divider, message } from "antd";
-const { TextArea } = Input;
+import {
+  Input,
+  Button,
+  Typography,
+  Flex,
+  Tabs,
+  Space,
+  Checkbox,
+  Divider,
+} from "antd";
+const { TabPane } = Tabs;
 const { Title, Text } = Typography;
+const cookies = new Cookies(null, { path: "/" });
 // #endregion ~ import
 
 // ___ component
@@ -28,161 +33,138 @@ const { Title, Text } = Typography;
 export default function Page() {
   // ___ state
   // #region ~ state
-  // ~ объект формы
-  const [mainData, setMainData] = useState<int__mainData>({
-    name: "",
-    lastName: "",
-    middleName: "",
-    firstName: "",
-    description: "",
+  // ~ кнопка подтверждения работы с cookies
+  const [isCookieAccept, setIsCookieAccept] = useState<boolean>(false);
+  // ~ состояние для табов
+  const [activeTab, setActiveTab] = useState<string>("1");
+  // ~ для групп boolean состояний
+  const [filters, setFilters] = useState<boolean[]>({
+    filter1: false,
+    filter2: false,
   });
-  // ~ состояние ошибок
-  const [errors, setErrors] = useState<Record<string, boolean>>({});
-  const [errorMsg, setErrorMsg] = useState<boolean>(false);
-  const [successMsg, setSuccessMsg] = useState<boolean>(false);
-  // ~ валидация
-  const validate = (): boolean => {
-    // ~ Валидация на обязательные (не пустые) поля
-    let newErrors: Record<string, boolean> = {
-      name: !mainData.name.trim(),
-      lastName: !mainData.lastName.trim(),
-      middleName: !mainData.middleName.trim(),
-      firstName: !mainData.firstName.trim(),
-    };
-    // ~ передать ошибку в объект
-    setErrors(newErrors);
-    // ~ отключить красную рамку через 0,5 секунд
-    setTimeout(() => setErrors({}), 500);
-    return !Object.values(newErrors).includes(true);
+
+  // ___ cookies load and save
+  // #region
+  useEffect(() => {
+    // ~ получить cookies
+    const __tabs = cookies.get("activeTab");
+    const __filters: object = cookies.get("filters");
+    // ~ если они есть - сохранить в переменные
+    if (__tabs) setActiveTab(__tabs.toString());
+    if (__filters) setFilters(__filters);
+  }, []);
+
+  // ~ Сохраняем cookie тип... name/key
+  const toCookies = (hookName: string, key: string) => {
+    cookies.set(hookName, key);
+    return key;
   };
-  // ~ кнопка "валидирова"
-  const acceptForm = () => {
-    if (!validate()) {
-      setErrorMsg(true);
-      setTimeout(() => setErrorMsg(false), 2000);
-    } else {
-      cleanMainData();
-      setSuccessMsg(true);
-      setTimeout(() => setSuccessMsg(false), 2000);
-    }
+  // ~ Сохраняем cookie тип... name/object
+  const toCookies_obj = (
+    filterData: object,
+    hookName: string,
+    filterName: string,
+    value: boolean
+  ) => {
+    let newFilters = { ...filterData, [filterName]: value };
+    cookies.set(hookName, newFilters);
+    return newFilters;
   };
-  // Чистка формы
-  const cleanMainData = () => {
-    setMainData({
-      name: "",
-      lastName: "",
-      middleName: "",
-      firstName: "",
-      description: "",
-    });
-  };
+  // #endregion
 
   // #endregion ~ state
 
   // ___ return
   // #region ~ return
   return (
-    <Flex className="test2-container" vertical={true}>
-      <Text>
-        Данная форма не сохраняет и не обрабатывает данные. Поле "о себе" не
-        является обязательным
-      </Text>
+    <>
+      <Flex className="test3-container" vertical={true}>
+        <Text>
+          Данная форма обрабатывает файлы Cookies. Если вы согласны на обработку
+          Cookies файлов, то нажмите кнопку "Продолжить"
+        </Text>
 
-      <Divider style={{ margin: "0px 0 15px 0" }} />
+        {!isCookieAccept && (
+          <Button
+            type="primary"
+            onClick={() => {
+              setIsCookieAccept(true);
+            }}
+          >
+            Продолжить
+          </Button>
+        )}
 
-      <Title level={2}>Создайте объект сохранения</Title>
-      <Input
-        placeholder={"Введите название группы"}
-        showCount={true}
-        maxLength={nameLength}
-        value={mainData.name}
-        className={errors.name ? "test2-content-basic--red" : ""}
-        onChange={(e) => {
-          const regex = nameReg;
-          const { value } = e.target;
-          if (regex.test(value) || value === "") {
-            setMainData({ ...mainData, name: value });
-          }
-        }}
-      ></Input>
-      <Text>Укажите персональные данные</Text>
-      <Input
-        placeholder={"Введите фамилию"}
-        showCount={true}
-        maxLength={fioLength}
-        value={mainData.lastName}
-        className={errors.lastName ? "test2-content-basic--red" : ""}
-        onChange={(e) => {
-          const regex = fioReg;
-          const { value } = e.target;
-          if (regex.test(value) || value === "") {
-            setMainData({ ...mainData, lastName: value });
-          }
-        }}
-      ></Input>
-      <Input
-        placeholder={"Введите Отчество"}
-        showCount={true}
-        maxLength={fioLength}
-        value={mainData.middleName}
-        className={errors.middleName ? "test2-content-basic--red" : ""}
-        onChange={(e) => {
-          const regex = fioReg;
-          const { value } = e.target;
-          if (regex.test(value) || value === "") {
-            setMainData({ ...mainData, middleName: value });
-          }
-        }}
-      ></Input>
-      <Input
-        placeholder={"Введите имя"}
-        showCount={true}
-        maxLength={fioLength}
-        value={mainData.firstName}
-        className={errors.firstName ? "test2-content-basic--red" : ""}
-        onChange={(e) => {
-          const regex = fioReg;
-          const { value } = e.target;
-          if (regex.test(value) || value === "") {
-            setMainData({ ...mainData, firstName: value });
-          }
-        }}
-      ></Input>
-      <Text>Расскажите о себе</Text>
-      <TextArea
-        maxLength={descriptionLength}
-        showCount={true}
-        autoSize={{ minRows: 2, maxRows: 4 }}
-        value={mainData.description}
-        onChange={(e) => {
-          const regex = fioReg;
-          const { value } = e.target;
-          if (regex.test(value) || value === "") {
-            setMainData({ ...mainData, description: value });
-          }
-        }}
-      ></TextArea>
-      <Button
-        type="primary"
-        style={{ marginTop: "15px", marginBottom: "10px" }}
-        onClick={() => {
-          acceptForm();
-        }}
-      >
-        Валидировать
-      </Button>
-      {errorMsg && (
-        <Flex justify={"center"} style={{ width: "100%" }}>
-          <Text style={{ color: "red" }}>Заполните поля формы</Text>
-        </Flex>
-      )}
-      {successMsg && (
-        <Flex justify={"center"} style={{ width: "100%" }}>
-          <Text style={{ color: "green" }}>Данные сохранены</Text>
-        </Flex>
-      )}
+        {/* Cookies block */}
+        {isCookieAccept && (
+          <>
+            <Divider style={{ marginTop: 0 }} />
+            <Title level={2}>Настрой интерфейс и обновите страницу</Title>
+            <Tabs
+              activeKey={activeTab}
+              onChange={(value) => {
+                setActiveTab(toCookies("activeTab", value));
+              }}
+            >
+              <TabPane tab="Анализ" key="1">
+                <Text>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Dolores laborum repudiandae beatae assumenda tenetur fuga
+                  libero explicabo atque recusandae, sint facilis quos, dolore
+                  voluptatum quod, nobis commodi at quia a?
+                </Text>
+              </TabPane>
+              <TabPane tab="Результат" key="2">
+                <Text>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Dolores laborum repudiandae beatae assumenda tenetur fuga
+                  libero!
+                </Text>
+              </TabPane>
+              <TabPane tab="Тест" key="3">
+                <Text>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                </Text>
+              </TabPane>
+            </Tabs>
+
+            <Space direction="vertical" style={{ marginTop: 16 }}>
+              <Checkbox
+                checked={filters.filter1}
+                onChange={(e) => {
+                  setFilters(
+                    toCookies_obj(
+                      filters,
+                      "filters",
+                      "filter1",
+                      e.target.checked
+                    )
+                  );
+                }}
+              >
+                Фильтр 1
+              </Checkbox>
+              <Checkbox
+                checked={filters.filter2}
+                onChange={(e) => {
+                  setFilters(
+                    toCookies_obj(
+                      filters,
+                      "filters",
+                      "filter2",
+                      e.target.checked
+                    )
+                  );
+                }}
+              >
+                Фильтр 2
+              </Checkbox>
+            </Space>
+          </>
+        )}
+      </Flex>
       <TasksBackBtn />
-    </Flex>
+    </>
   );
   // #endregion ~ return
 
