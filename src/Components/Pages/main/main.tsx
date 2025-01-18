@@ -59,7 +59,7 @@ export default function Main() {
   // ___ return
   // #region ~ return if "main"
   return (
-    <Space direction={"vertical"} className="container">
+    <Flex vertical={true} className="container">
       <Flex style={{ width: "100%" }} justify={"space-between"} align="center">
         <Title level={2}>Примеры</Title>
         <Space style={{ paddingBottom: "10px", cursor: "pointer" }}>
@@ -96,8 +96,6 @@ export default function Main() {
         </p>
       </Space>
 
-      <Divider style={{ margin: 0 }}></Divider>
-
       {/*Таги*/}
       <Space>
         {/* Очистка */}
@@ -121,7 +119,6 @@ export default function Main() {
             ))}
         </Space>
       </Space>
-      <Divider style={{ margin: 0 }}></Divider>
 
       {/* Тело  */}
       <p>Примеры:</p>
@@ -201,7 +198,7 @@ export default function Main() {
           </div>
         </div>
       )}
-    </Space>
+    </Flex>
   );
   // #endregion ~ return
 
