@@ -61,7 +61,7 @@ export default function Main() {
   return (
     <Flex vertical={true} className="container">
       <Flex style={{ width: "100%" }} justify={"space-between"} align="center">
-        <Title level={2}>Примеры</Title>
+        <Title level={2}>Примеры!</Title>
         <Space style={{ paddingBottom: "10px", cursor: "pointer" }}>
           <Button
             className="container-info"
