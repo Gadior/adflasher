@@ -21,6 +21,6 @@ steps:
     #   BRANCH: master
     commands:
       # - curl -s http://whatismijnip.nl |cut -d " " -f 5
-      - cd /root/bb_validator_m
+      - cd /root/tuts
       - git pull
       - docker-compose up -d --build
