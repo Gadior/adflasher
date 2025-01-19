@@ -4,7 +4,7 @@ name: connect-master
 
 trigger:
   branch:
-    - master
+    - task3
 
 server:
   host:
