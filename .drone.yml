@@ -21,6 +21,7 @@ steps:
     #   BRANCH: master
     commands:
       # - curl -s http://whatismijnip.nl |cut -d " " -f 5
+      # - curl -s http://whatismijnip.nl |cut -d " " -f 5
       - cd /root/tuts
       - git pull
       - docker-compose up -d --build
