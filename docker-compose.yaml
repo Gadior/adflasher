@@ -1,0 +1,11 @@
+version: "3"
+services:
+  react:
+    container_name: test-container
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 3030:3000
+    environment:
+      - NODE_ENV=production

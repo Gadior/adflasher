@@ -1,0 +1,26 @@
+kind: pipeline
+type: ssh
+name: connect-master
+
+trigger:
+  branch:
+    - master
+
+server:
+  host:
+    from_secret: host-bb
+  user:
+    from_secret: user-bb
+  password:
+    from_secret: password-bb
+
+steps:
+  - name: deploy-master
+    # environment:
+    #   PORTS: 5001:5000
+    #   BRANCH: master
+    commands:
+      # - curl -s http://whatismijnip.nl |cut -d " " -f 5
+      - cd /root/bb_validator_m
+      - git pull
+      - docker-compose up -d --build

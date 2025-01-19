@@ -8,6 +8,7 @@ import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 // ~ styles
 import "./reset.css";
 import "./page.css";
+import { toCookies, toCookies_obj } from "../../Feature/cookiesController.tsx";
 // ~ interface
 import Cookies from "universal-cookie";
 // import Cookies from "js-cookie";
@@ -43,7 +44,7 @@ export default function Page() {
     filter2: false,
   });
 
-  // ___ cookies load and save
+  // ___ cookies load
   // #region
   useEffect(() => {
     // ~ получить cookies
@@ -53,23 +54,6 @@ export default function Page() {
     if (__tabs) setActiveTab(__tabs.toString());
     if (__filters) setFilters(__filters);
   }, []);
-
-  // ~ Сохраняем cookie тип... name/key
-  const toCookies = (hookName: string, key: string) => {
-    cookies.set(hookName, key);
-    return key;
-  };
-  // ~ Сохраняем cookie тип... name/object
-  const toCookies_obj = (
-    filterData: object,
-    hookName: string,
-    filterName: string,
-    value: boolean
-  ) => {
-    let newFilters = { ...filterData, [filterName]: value };
-    cookies.set(hookName, newFilters);
-    return newFilters;
-  };
   // #endregion
 
   // #endregion ~ state
