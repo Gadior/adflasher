@@ -15,7 +15,7 @@ import CardFeat from "../../Feature/cardFeat.tsx";
 import SearchTag from "../../Shared/searchTag.tsx";
 
 import React, { useState, useEffect } from "react";
-import { Button, Space, Tag, Divider, Typography, Flex } from "antd";
+import { Button, Space, Tag, Typography, Flex } from "antd";
 const { Title, Text } = Typography;
 
 // #endregion
@@ -180,8 +180,8 @@ export default function Main() {
                       <br />
                       <b>soft</b>: "коммуникация, позитив",
                       <br />
-                      <b>contact</b>: https://career.habr.com/tartos | ТГ
-                      @viktor_molokhov,
+                      <b>contact</b>: https://career.habr.com/tartos |
+                      adflasher@mail.ru,
                       <br />
                       {"}"}],
                     </div>
