@@ -22,5 +22,6 @@ steps:
     commands:
       # - curl -s http://whatismijnip.nl |cut -d " " -f 5
       - cd /root/adflasher.ru
+      - git checkout master
       - git pull
       - docker-compose up -d --build
