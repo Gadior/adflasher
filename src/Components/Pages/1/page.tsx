@@ -79,12 +79,15 @@ export default function MainPage() {
       setCheckboxes(__check);
     }
     if (ticketsData !== undefined) {
-      const filteredData = filterByFlags(ticketsData__backUp, __check);
+      const filteredData: int_tickets[] = filterByFlags(
+        ticketsData__backUp,
+        __check
+      );
       setTicketsData(filteredData);
     }
   };
   // ~ фильтрация
-  const filterByFlags = (arr: Item[], flags: Flags): Item[] => {
+  const filterByFlags = (arr: any, flags: Flags) => {
     if (flags.all && flags.none && flags.one && flags.two && flags.three) {
       // Если флаг all true, возвращаем весь массив
       return arr;
@@ -134,9 +137,15 @@ export default function MainPage() {
   }, [currencyName]);
 
   const checkFocus = () => {
-    currencyName === "rubble" && buttonRef__rubble.current.focus();
-    currencyName === "usd" && buttonRef__usd.current.focus();
-    currencyName === "euro" && buttonRef__euro.current.focus();
+    buttonRef__rubble.current != null &&
+      currencyName === "rubble" &&
+      buttonRef__rubble.current.focus();
+    buttonRef__usd.current != null &&
+      currencyName === "usd" &&
+      buttonRef__usd.current.focus();
+    buttonRef__euro.current != null &&
+      currencyName === "euro" &&
+      buttonRef__euro.current.focus();
   };
   // #endregion ~ управление currency
   // #endregion ~ states/data
