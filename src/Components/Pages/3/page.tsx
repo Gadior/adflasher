@@ -39,7 +39,7 @@ export default function Page() {
   // ~ состояние для табов
   const [activeTab, setActiveTab] = useState<string>("1");
   // ~ для групп boolean состояний
-  const [filters, setFilters] = useState<boolean[]>({
+  const [filters, setFilters] = useState<any>({
     filter1: false,
     filter2: false,
   });
