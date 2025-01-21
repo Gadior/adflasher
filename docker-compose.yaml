@@ -1,11 +1,11 @@
 version: "3"
 services:
   react:
-    container_name: adflasher__master
+    container_name: adflasher__task4
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 3030:3000
+      - 3031:3000
     environment:
       - NODE_ENV=production
