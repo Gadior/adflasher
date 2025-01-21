@@ -86,7 +86,6 @@ export default function Main() {
         }}
       >
         <p
-          wrap={true}
           style={{
             whiteSpace: "wrap",
             wordWrap: "break-word",
