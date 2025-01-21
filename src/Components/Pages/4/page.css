@@ -16,3 +16,10 @@ html {
 .test4-container > *:not(:last-child) {
   margin-bottom: 20px;
 }
+
+.widjet-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 5px;
+}

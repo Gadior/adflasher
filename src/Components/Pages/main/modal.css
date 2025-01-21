@@ -9,6 +9,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  z-index: 100;
 }
 
 .modal-window {

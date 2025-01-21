@@ -4,46 +4,37 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import ClickLike from "../../Widjet/clickLike.tsx";
+import ClickLike__wjt from "../../Widjet/clickLike__wjt.tsx";
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
-
-// redux
-import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks.tsx";
-import {
-  increment,
-  decrement,
-  incrementByAmount,
-} from "../../Feature/redux/slices/counterSlice.tsx";
+import AddPartners__wjt from "../../Widjet/addPartners__wjt.tsx";
 
 // ~ styles
 import "./reset.css";
 import "./page.css";
 
-import React, { useState, useEffect } from "react";
-import { Flex } from "antd";
+import React from "react";
+import { Flex, Typography } from "antd";
+const { Text } = Typography;
 // #endregion ~ import
 
 // ___ component
 // #region ~ component
 export default function Page() {
-  // ___ state
-  // #region ~ state
-  const count = useAppSelector((state) => state.counter.value);
-  const dispatch = useAppDispatch();
-  // ___ cookies load
-  // #region
-  useEffect(() => {}, []);
-  // #endregion
-
-  // #endregion ~ state
-
   // ___ return
   // #region ~ return
   return (
-    <Flex>
-      <ClickLike />
+    <>
+      <Flex vertical={true} className="test4-container" justify="flex-start">
+        <Text>
+          Ниже представлены два компонента - виджета, которые обрабатывают
+          данные своих состояний через контекст. Контекст реализован через 
+          библиотеку Redux. Подробности в репозитории
+        </Text>
+        <AddPartners__wjt />
+        <ClickLike__wjt />
+      </Flex>
       <TasksBackBtn />
-    </Flex>
+    </>
   );
   // #endregion ~ return
 

@@ -1,0 +1,7 @@
+.partners-container {
+  display: flex;
+  flex-direction: column;
+}
+.partners-container > *:not(:last-child) {
+  margin-bottom: 10px;
+}
