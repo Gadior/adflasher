@@ -6,6 +6,6 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 3031:3000
+      - 3030:3000
     environment:
       - NODE_ENV=production
