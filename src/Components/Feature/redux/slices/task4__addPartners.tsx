@@ -1,6 +1,8 @@
+// #region ~ hlop
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // ~ fake data
+// #region ~ fake data
 const dataSource = [
   {
     key: "1",
@@ -23,8 +25,10 @@ const dataSource = [
     componyName: "Атлас",
   },
 ];
+// #endregion ~ fake data
 
-// ~ interface
+// ~ обработчики для таблиц партнеров
+// #region ~ обработчики для таблиц партнеров
 interface partnersList {
   key: string;
   name: string;
@@ -32,30 +36,19 @@ interface partnersList {
   isAdded?: boolean;
 }
 // ~ возвращает начальный список с дополнительным полем "isAdded"
-const newList = () => {
-  return dataSource.map((item: partnersList) => {
-    return { ...item, isAdded: false };
-  });
-};
+const newList = (): partnersList[] =>
+  dataSource.map((item) => ({ ...item, isAdded: false }));
+
 // ~ возвращаем данные для окна с кандидатами (isAdde = true)
-const addedList = (__data: partnersList[]) => {
-  return __data
-    .filter((item) => {
-      return item.isAdded === true;
-    })
-    .map((it) => {
-      return it;
-    });
+const addedList = (__data: partnersList[]): partnersList[] => {
+  return __data.filter((item: partnersList) => item.isAdded === true);
 };
-const changeDataRow = (id: string, data: any) => {
-  return data.map((item: any) => {
-    let __row = item;
-    if (item.key === id) {
-      return { ...__row, isAdded: !item.isAdded };
-    } else {
-      return item;
-    }
-  });
+
+// ~ находим ряд по вошедшему KEY и меняем в нем isAdded на противоположное
+const changeDataRow = (id: string, data: any): partnersList[] => {
+  return data.map((item: partnersList) =>
+    item.key === id ? { ...item, isAdded: !item.isAdded } : item
+  );
 };
 
 const initialState = {
@@ -63,7 +56,10 @@ const initialState = {
   addedList: addedList(newList()),
 };
 
+// #endregion ~ обработчики для таблиц партнеров
+
 // ~ функции
+// #region ~ функции
 const listCont = createSlice({
   name: "partnersList",
   initialState,
@@ -71,12 +67,13 @@ const listCont = createSlice({
     changeStatus: (state, action: PayloadAction<string>) => {
       state.newList = changeDataRow(action.payload, state.newList);
       state.addedList = addedList(state.newList);
-      console.log(state.newList);
     },
   },
 });
+// #endregion ~ функции
 
 // ~ экспортируем функции состояний
 export const { changeStatus } = listCont.actions;
-
+// ~ Экспорт редуьюсера для проводника store
 export default listCont.reducer;
+// #endregion ~ hlop
