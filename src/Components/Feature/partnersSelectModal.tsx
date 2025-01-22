@@ -2,6 +2,7 @@ import React from "react";
 import { Flex, Typography, Table, Button } from "antd";
 import { useAppDispatch } from "../Feature/redux/hooks.tsx";
 import { changeStatus } from "../Feature/redux/slices/task4__addPartners.tsx";
+import ClickLikeWJT from "../Widjet/clickLikeWJT.tsx";
 const { Text, Title } = Typography;
 
 export default function PartnersSelectModal(props: any) {
@@ -77,6 +78,7 @@ export default function PartnersSelectModal(props: any) {
               Выйти
             </Button>
           </Flex>
+          <ClickLikeWJT />
         </Flex>
       </div>
     </div>
