@@ -58,7 +58,7 @@ export default function PartnersSelectModal(props: any) {
           justify="space-between"
           align="flex-start"
         >
-          <Title level={2}>info: [</Title>
+          <Title level={2}>Включить в список:</Title>
           <Flex
             style={{ width: "100%", marginBottom: 20 }}
             vertical={true}

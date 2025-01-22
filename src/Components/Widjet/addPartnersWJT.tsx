@@ -3,10 +3,11 @@
 // ___ import
 // #region
 import React, { useState } from "react";
-import { Flex, Table, Button } from "antd";
+import { Flex, Table, Button, Typography } from "antd";
 import { useAppSelector } from "../Feature/redux/hooks.tsx";
 import PartnersSelectModal from "../Feature/partnersSelectModal.tsx";
 import "./addPartners__wjt.css";
+const { Text } = Typography;
 // #endregion
 
 // ___ component
@@ -34,7 +35,7 @@ export default function AddPartnersWJT() {
       key: "name",
     },
     {
-      title: "Название",
+      title: "Название фирмы",
       dataIndex: "componyName",
       key: "componyName",
     },
@@ -54,12 +55,15 @@ export default function AddPartnersWJT() {
         Добавить партнера
       </Button>
       {addList.length > 0 && (
-        <Table
-          size="small"
-          dataSource={addList}
-          columns={columns__addedPartns}
-          style={{ width: "100%" }}
-        />
+        <>
+          <Text>Списк подключенных парнтеров:</Text>
+          <Table
+            size="small"
+            dataSource={addList}
+            columns={columns__addedPartns}
+            style={{ width: "100%" }}
+          />
+        </>
       )}
       {/* Модальное окно */}
       {isModalOpen && (
