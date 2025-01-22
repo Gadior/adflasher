@@ -14,16 +14,7 @@ import Cookies from "universal-cookie";
 // import Cookies from "js-cookie";
 
 import React, { useState, useEffect } from "react";
-import {
-  Input,
-  Button,
-  Typography,
-  Flex,
-  Tabs,
-  Space,
-  Checkbox,
-  Divider,
-} from "antd";
+import { Button, Typography, Flex, Tabs, Space, Checkbox, Divider } from "antd";
 const { TabPane } = Tabs;
 const { Title, Text } = Typography;
 const cookies = new Cookies(null, { path: "/" });

@@ -4,16 +4,13 @@
 import React from "react";
 import { Flex } from "antd";
 // redux
-import { useAppSelector } from "../Feature/redux/hooks.tsx";
-
 import ClickHeart from "../Shared/clickHeart.tsx";
 import HeartsCounter from "../Shared/heartsCounter.tsx";
 // #endregion ~ import
 
 // ___ component
 // #region ~ component
-export default function ClickLike__wjt() {
-  const count = useAppSelector((state) => state.counter.value);
+export default function ClickLikeWJT() {
   // ___ return
   // #region ~ return
   return (

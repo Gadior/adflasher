@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/ru"; // Подключаем русскую локализацию для вывода месяца и дня недели
 
 // ~ interface
-import { int_tickets, Item, Flags } from "./interface.tsx";
+import { int_tickets, Flags } from "./interface.tsx";
 // ~ jsonData
 import json from "./src/tickets.json";
 // ~ assets
@@ -94,7 +94,7 @@ export default function MainPage() {
     }
 
     // Применяем фильтрацию по флагам none, one, two и three
-    const filteredArray = arr.filter((item) => {
+    const filteredArray = arr.filter((item: any) => {
       if (flags.none && item.stops === 0) return true;
       if (flags.one && item.stops === 1) return true;
       if (flags.two && item.stops === 2) return true;

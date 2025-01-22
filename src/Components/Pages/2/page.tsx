@@ -17,8 +17,8 @@ import {
   descriptionLength,
 } from "./settings.tsx";
 
-import React, { useState, useEffect } from "react";
-import { Input, Button, Typography, Flex, Divider, message } from "antd";
+import React, { useState } from "react";
+import { Input, Button, Typography, Flex, Divider } from "antd";
 const { TextArea } = Input;
 const { Title, Text } = Typography;
 // #endregion ~ import

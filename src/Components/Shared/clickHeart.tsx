@@ -2,13 +2,12 @@
 // ___ import
 // #region ~ import
 import React from "react";
-import { Button, Flex, Typography } from "antd";
+import { Button, Flex } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
 // ~ redux
 import { useAppDispatch } from "../Feature/redux/hooks.tsx";
 import { addHeart } from "../Feature/redux/slices/task4__hearts.tsx";
 // ~ style
-const { Text } = Typography;
 // #endregion ~ import
 
 // ___ component

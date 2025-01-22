@@ -4,9 +4,9 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import ClickLike__wjt from "../../Widjet/clickLike__wjt.tsx";
+import ClickLikeWJT from "../../Widjet/clickLikeWJT.tsx";
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
-import AddPartners__wjt from "../../Widjet/addPartners__wjt.tsx";
+import AddPartnersWJT from "../../Widjet/addPartnersWJT.tsx";
 
 // ~ styles
 import "./reset.css";
@@ -30,8 +30,8 @@ export default function Page() {
           данные своих состояний через контекст. Контекст реализован через 
           библиотеку Redux. Подробности в репозитории
         </Text>
-        <AddPartners__wjt />
-        <ClickLike__wjt />
+        <AddPartnersWJT />
+        <ClickLikeWJT />
       </Flex>
       <TasksBackBtn />
     </>
