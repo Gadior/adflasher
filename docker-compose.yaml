@@ -1,7 +1,7 @@
 version: "3"
 services:
   react:
-    container_name: adflasher__task4
+    container_name: adflasher
     build:
       context: .
       dockerfile: ./Dockerfile
