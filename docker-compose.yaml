@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+      # dockerfile: ./Dockerfile
     ports:
       - 3030:3000
     environment:
