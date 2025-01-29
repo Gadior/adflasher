@@ -1,0 +1,30 @@
+*,
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+.test5-container {
+  margin: 75px 20px 20px 20px;
+  padding: 20px;
+  background: #e2e2e2;
+  max-width: 1000px;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+}
+.test5-container > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+.test5-container-btn {
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* медиа */
+@media (min-width: 746px) {
+  .test5-container-btn {
+    display: flex;
+    width: 200px;
+  }
+}

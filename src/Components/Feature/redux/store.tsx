@@ -1,10 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./slices/task4__hearts.tsx";
 import listCont from "./slices/task4__addPartners.tsx";
+import page5_dataCntl from "./slices/page5/dataCntl.tsx";
 
 // ~ Store
 const store = configureStore({
-  reducer: { counter: counterReducer, newList: listCont },
+  reducer: {
+    counter: counterReducer,
+    newList: listCont,
+    page5_dataCntl: page5_dataCntl,
+  },
 });
 
 // ~ типы для Store

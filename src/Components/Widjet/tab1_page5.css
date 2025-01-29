@@ -1,0 +1,19 @@
+.tab1-page5-collapse {
+  background: #ffffff;
+}
+
+.tab1_page5_collapse-table {
+  white-space: nowrap;
+  display: grid;
+  grid-template-columns:
+    minmax(100px, 1fr) minmax(200px, 2fr) minmax(150px, 1fr)
+    minmax(150px, 1fr);
+}
+
+/* медиа */
+@media (max-width: 745px) {
+  .tab1_page5_collapse-table {
+    display: flex;
+    flex-direction: column;
+  }
+}
