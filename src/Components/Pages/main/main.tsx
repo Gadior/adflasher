@@ -38,7 +38,7 @@ export default function Main() {
     // ~ Уникальный лист тагов
     setTagsList(uniqueTags(__data));
     // ~ сохранение данных
-    setMainData(__data);
+    setMainData(reverseArray(__data));
   }, []);
 
   // #endregion
@@ -214,7 +214,7 @@ export default function Main() {
   function cleanTagList() {
     let __data: any = json;
     setTagsList(uniqueTags(json));
-    setMainData(__data);
+    setMainData(reverseArray(__data));
     setCleanTags(false);
   }
 
@@ -226,6 +226,12 @@ export default function Main() {
     );
   }
   // #endregion ~ Уникальный список
+
+  // #region ~ перемешиваем списко объектов
+  function reverseArray<T>(array: T[]): T[] {
+    return [...array].reverse(); // Создаём копию массива и переворачиваем её
+  }
+  // #endregion ~ перемешиваем списко объектов
   // #endregion ~ function
 }
 // #endregion ~ component
