@@ -46,5 +46,13 @@
     "cardName": "5",
     "tags": ["Компонента", "Redux", "DRY"],
     "time": "7 часов"
+  },
+  {
+    "title": "Websocket",
+    "description": "--",
+    "href": "#",
+    "cardName": "6",
+    "tags": ["Websocket"],
+    "time": "--"
   }
 ]
