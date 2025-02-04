@@ -49,10 +49,10 @@
   },
   {
     "title": "Websocket",
-    "description": "--",
+    "description": "В качестве тестов необходимо посмотреть как работают WebSocet.",
     "href": "#",
     "cardName": "6",
     "tags": ["Websocket"],
-    "time": "--"
+    "time": "3 часа"
   }
 ]
