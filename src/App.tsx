@@ -11,6 +11,7 @@ import Page2 from "./Components/Pages/2/page.tsx";
 import Page3 from "./Components/Pages/3/page.tsx";
 import Page4 from "./Components/Pages/4/page.tsx";
 import Page5 from "./Components/Pages/5/page.tsx";
+import Page6 from "./Components/Pages/6/page.tsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="3" element={<Page3 />} />
           <Route path="4" element={<Page4 />} />
           <Route path="5" element={<Page5 />} />
+          <Route path="6" element={<Page6 />} />
         </Routes>
       </Provider>
     </HashRouter>
