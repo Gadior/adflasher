@@ -2,7 +2,7 @@
 
 // ___ import
 // #region
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Flex } from "antd";
 // ~ style
 import "./tab2_page5.css";
@@ -19,7 +19,10 @@ export default function Tab2Page5() {
   // ___ state
   // #region
   // ~ Получить количество группу
-  const [getGroupLength] = useState(allmainData.length);
+  const [getGroupLength, setGetGroupLength] = useState(allmainData.length);
+  useEffect(() => {
+    setGetGroupLength(allmainData.length);
+  }, [allmainData]);
   // ~ Получить количество записей в списке группы
   const getRecodsLength = (data: any): number => {
     return data.reduce((sum, row: any) => sum + row.sallary, 0);
