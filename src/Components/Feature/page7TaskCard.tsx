@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { type_Id, type_Tasks } from "../Pages/7/interface";
 import { Flex, Typography, Button, Input } from "antd";
 // const { TextArea } = Input;
-import Icon, { DeleteOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import Icon, { DeleteOutlined, DragOutlined } from "@ant-design/icons";
 
 // ~ dnd
 import { useSortable } from "@dnd-kit/sortable";
@@ -106,8 +106,6 @@ export default function Page7TaskCard(props: Props) {
     <Flex
       ref={setNodeRef}
       style={style}
-      {...attributes}
-      {...listeners}
       justify="space-between"
       align="center"
       className="test7-container-wrapper-addChaterContainer-task"
@@ -123,7 +121,10 @@ export default function Page7TaskCard(props: Props) {
         toggleEditMode();
       }}
     >
-      {task.content}
+      <Flex gap={20} {...attributes} {...listeners}>
+        <DragOutlined />
+        {task.content}
+      </Flex>
 
       {mouseOverFiled && (
         <button

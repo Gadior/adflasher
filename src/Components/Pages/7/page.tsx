@@ -71,7 +71,7 @@ function Page() {
     // ~ создаем колонку
     const columnToAdd: type_Column = {
       id: generateID(),
-      title: `Column ${columns.length + 1}`,
+      title: `chapter ${columns.length + 1}`,
     };
     // ~ сохраняем колонку в state
     setColumns([...columns, columnToAdd]);

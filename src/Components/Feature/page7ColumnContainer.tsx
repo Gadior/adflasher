@@ -1,6 +1,10 @@
 import React, { useMemo, useState } from "react";
 import { Flex, Typography, Button, Input } from "antd";
-import Icon, { DeleteOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import Icon, {
+  DeleteOutlined,
+  PlusCircleOutlined,
+  DragOutlined,
+} from "@ant-design/icons";
 import Page7TaskCard from "./page7TaskCard.tsx";
 
 // ~ dnd
@@ -91,13 +95,6 @@ export default function Page7ColumnContainer(props: Props) {
     >
       {/* ~ title */}
       <Flex
-        // маркер dragged
-        {...attributes}
-        {...listeners}
-        // обработчик
-        // onClick={() => {
-        //   setEditMode(true);
-        // }}
         // иные настройки
         className="test7-container-wrapper-addChaterContainer-title"
         justify="space-between"
@@ -113,8 +110,14 @@ export default function Page7ColumnContainer(props: Props) {
             setEditMode(true);
           }}
         >
-          <div className="test7-container-wrapper-addChaterContainer-title-count">
-            0
+          {/* Иконка для перетаскивания */}
+          <div
+            // маркер dragged
+            {...attributes}
+            {...listeners}
+            className="test7-container-wrapper-addChaterContainer-title-count"
+          >
+            <DragOutlined />
           </div>
 
           {/* Здесь функционал редактирования имени раздела */}
