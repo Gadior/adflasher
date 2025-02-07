@@ -71,7 +71,7 @@ function Page() {
     // ~ создаем колонку
     const columnToAdd: type_Column = {
       id: generateID(),
-      title: `chapter ${columns.length + 1}`,
+      title: `include 1_ ${columns.length + 1}`,
     };
     // ~ сохраняем колонку в state
     setColumns([...columns, columnToAdd]);
@@ -109,7 +109,7 @@ function Page() {
     const newTask: type_Tasks = {
       id: generateID(),
       columnId,
-      content: `Task ${tasks.length + 1}`,
+      content: `include 11_ ${tasks.length + 1}`,
     };
 
     setTasks([...tasks, newTask]);
@@ -291,7 +291,7 @@ function Page() {
             onClick={() => createNewColumn()}
           >
             <PlusCircleOutlined />
-            ADD_CHAPTER
+            ADD_INCLUDE
           </Button>
         </Flex>
       </DndContext>

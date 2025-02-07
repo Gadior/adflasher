@@ -176,7 +176,7 @@ export default function Page7ColumnContainer(props: Props) {
         }}
       >
         <PlusCircleOutlined />
-        ADD_TASK
+        ADD_INCLUDE2
       </Button>
     </div>
   );
