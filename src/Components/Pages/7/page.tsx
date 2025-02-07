@@ -16,6 +16,7 @@ import {
   useSensors,
   useSensor,
   PointerSensor,
+  DragOverEvent,
 } from "@dnd-kit/core";
 import { arrayMove, SortableContext, useSortable } from "@dnd-kit/sortable";
 
@@ -24,6 +25,7 @@ import "./page.css";
 // ~ interface
 import { type_Column, type_Id, type_Tasks } from "./interface.tsx";
 import Page7ColumnContainer from "../../Feature/page7ColumnContainer.tsx";
+import Page7TaskCard from "../../Feature/page7TaskCard.tsx";
 
 const { Text, Title } = Typography;
 
@@ -47,6 +49,9 @@ function Page() {
 
   // ~ активная колонка (подверженная darg)
   const [activeColumn, setActiveColumn] = useState<type_Column | null>(null);
+
+  // ~ активная колонка (подверженная darg)
+  const [activeTask, setActiveTask] = useState<type_Tasks | null>(null);
 
   // ~ sensors для dnd
   const sensors = useSensors(
@@ -80,6 +85,10 @@ function Page() {
       (filt: type_Column) => filt.id !== id
     );
     setColumns(filteredColumns);
+
+    // чистим таски, у удаленной колонки
+    const newTask = tasks.filter((task) => task.columnId !== id);
+    setTasks(newTask);
   };
   // #endregion
 
@@ -134,10 +143,17 @@ function Page() {
       setActiveColumn(e.active.data.current.column);
       return;
     }
+
+    if (e.active.data.current?.type === "Task") {
+      setActiveTask(e.active.data.current.task);
+      return;
+    }
   };
 
   // ~ завершение движения
   const onDragEnd = (e: DragEndEvent) => {
+    setActiveColumn(null);
+    setActiveTask(null);
     // ~ у нас два значения. Активный и наведенные объекты
     const { active, over } = e;
 
@@ -160,6 +176,55 @@ function Page() {
       return arrayMove(columns, activeColumnIndex, overColumnIndex);
     });
   };
+
+  // ~ лоя работы с соедними карточкам
+  const onDragOver = (e: DragOverEvent) => {
+    // ~ у нас два значения. Активный и наведенные объекты
+    const { active, over } = e;
+
+    // ~ Проверка / null -> если нету второй карточки, второй объект нуль
+    if (!over) return;
+    // ~ иначе забираем id двух объектов
+    const activeId = active.id;
+    const overId = over.id;
+
+    // ~ если id совпадают, то
+    if (activeId === overId) return;
+
+    const isActiveATask = active.data.current?.type === "Task";
+    const isOverATask = over.data.current?.type === "Task";
+
+    // Если нет активного таска - выходим
+    if (!isActiveATask) return;
+
+    // Drop over another Task
+    if (isActiveATask && isOverATask) {
+      setTasks((tasks) => {
+        // Если таски в одной колонке
+        const activeIndex = tasks.findIndex((t) => t.id === activeId);
+        const overIndex = tasks.findIndex((t) => t.id === overId);
+
+        // Если таски в разных колонках
+        tasks[activeIndex].columnId = tasks[overIndex].columnId;
+
+        return arrayMove(tasks, activeIndex, overIndex);
+      });
+    }
+
+    const isOverAColumn = over.data.current?.type === "Column";
+    // Drop over another Column
+    if (isActiveATask && isOverAColumn) {
+      setTasks((tasks) => {
+        // Если таски в одной колонке
+        const activeIndex = tasks.findIndex((t) => t.id === activeId);
+
+        // Если таски в разных колонках
+        tasks[activeIndex].columnId = overId;
+
+        return arrayMove(tasks, activeIndex, activeIndex);
+      });
+    }
+  };
   // #endregion
 
   // #endregion
@@ -174,6 +239,7 @@ function Page() {
         sensors={sensors}
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
+        onDragOver={onDragOver}
       >
         <Flex vertical={true} justify="flex-start" align="flex-start" gap={20}>
           <SortableContext items={columnsId}>
@@ -205,6 +271,13 @@ function Page() {
                   tasks={tasks.filter((task) => task.columnId)}
                   deleteTask={deleteTask}
                   updateTask={updateTask}
+                />
+              )}
+              {activeTask && (
+                <Page7TaskCard
+                  task={activeTask}
+                  deleteTask={deleteTask}
+                  updateTask={updateColumn}
                 />
               )}
             </DragOverlay>,

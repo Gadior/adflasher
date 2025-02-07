@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Flex, Typography, Button, Input } from "antd";
 import Icon, { DeleteOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import Page7TaskCard from "./page7TaskCard.tsx";
 
 // ~ dnd
-import { useSortable } from "@dnd-kit/sortable";
+import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // ~ interface
@@ -39,6 +39,9 @@ export default function Page7ColumnContainer(props: Props) {
   // ___ state
   // #region
   const [editMode, setEditMode] = useState<boolean>(false);
+  const tasksIds = useMemo(() => {
+    return tasks.map((task) => task.id);
+  }, [tasks]);
   // #endregion
 
   // ___ dnd sortable
@@ -152,14 +155,16 @@ export default function Page7ColumnContainer(props: Props) {
       </Flex>
 
       {/* ~ container */}
-      {tasks.map((task: type_Tasks) => (
-        <Page7TaskCard
-          key={task.id}
-          task={task}
-          deleteTask={deleteTask}
-          updateTask={updateTask}
-        />
-      ))}
+      <SortableContext items={tasksIds}>
+        {tasks.map((task: type_Tasks) => (
+          <Page7TaskCard
+            key={task.id}
+            task={task}
+            deleteTask={deleteTask}
+            updateTask={updateTask}
+          />
+        ))}
+      </SortableContext>
 
       {/* ~ footer */}
       <Button

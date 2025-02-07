@@ -4,6 +4,10 @@ import { Flex, Typography, Button, Input } from "antd";
 // const { TextArea } = Input;
 import Icon, { DeleteOutlined, PlusCircleOutlined } from "@ant-design/icons";
 
+// ~ dnd
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+
 interface Props {
   task: type_Tasks;
   deleteTask: (id: type_Id) => void;
@@ -23,6 +27,40 @@ export default function Page7TaskCard(props: Props) {
   const [editMode, setEditMode] = useState<boolean>(false);
   // #endregion
 
+  // ___ dnd
+  // #region
+  const {
+    setNodeRef,
+    attributes,
+    listeners,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: task.id,
+    data: {
+      type: "Task",
+      task,
+    },
+    disabled: editMode,
+  });
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
+  if (isDragging) {
+    return (
+      <Flex
+        ref={setNodeRef}
+        style={style}
+        className="test7-container-wrapper-addChaterContainer-task-isDragging"
+      >
+        <p style={{ color: "rgba(0,0,0,0)" }}>1</p>
+      </Flex>
+    );
+  }
+  // #endregion
+
   // ___ toogle EditMode
   // #region
   const toggleEditMode = () => {
@@ -33,6 +71,10 @@ export default function Page7TaskCard(props: Props) {
   if (editMode) {
     return (
       <Flex
+        ref={setNodeRef}
+        style={style}
+        {...attributes}
+        {...listeners}
         justify="space-between"
         align="center"
         className="test7-container-wrapper-addChaterContainer-task"
@@ -62,6 +104,10 @@ export default function Page7TaskCard(props: Props) {
 
   return (
     <Flex
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
       justify="space-between"
       align="center"
       className="test7-container-wrapper-addChaterContainer-task"

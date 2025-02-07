@@ -87,6 +87,16 @@
 .test7-container-wrapper-addChaterContainer-task:hover {
   border: 1px dashed red;
 }
+.test7-container-wrapper-addChaterContainer-task-isDragging {
+  opacity: 0.3;
+  height: 51px;
+  background: black;
+  padding: 10px 20px;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px dashed red;
+}
 /* #endregion */
 
 /* #endregion */
