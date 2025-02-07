@@ -1,0 +1,94 @@
+/* #region ~ hlop */
+
+/* ___ Контейнер */
+/* #region ~ Контейнер */
+.test7-container {
+  margin: 75px 20px 20px 20px;
+  padding: 20px;
+  background: #e2e2e2;
+  max-width: 1000px;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+}
+.test7-container > *:not(:last-child) {
+  margin-bottom: 0;
+}
+/* #endregion ~ Контейнер  */
+
+/* ___ Ячейка */
+/* #region */
+.test7-container-addChater-btn {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.test7-container-wrapper {
+  width: 100%;
+}
+.test7-container-wrapper-addChaterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+/* ___ title */
+/* #region */
+.test7-container-wrapper-addChaterContainer-title {
+  background-color: #d3d3d3;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px dashed #999999;
+}
+.test7-container-wrapper-addChaterContainer-title-count {
+  background-color: #999999;
+  padding: 5px;
+  border-radius: 5px;
+}
+.test7-container-wrapper-addChaterContainer-title-delBtn {
+  border: 2px solid white;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 0;
+  color: white;
+  background: red;
+}
+.test7-container-wrapper-addChaterContainer-title-delBtn:hover {
+  border: 2px solid white;
+  background: black;
+}
+/* #endregion */
+
+/* ___ isdragged */
+/* #region */
+.test7-container-wrapper-addChaterContainer-isdragged {
+  background: black;
+  color: green;
+  width: 100%;
+  height: 150px;
+}
+/* #endregion */
+
+/* ___ Task content */
+/* #region */
+.test7-container-wrapper-addChaterContainer-task {
+  height: 51px;
+  background: black;
+  padding: 10px 20px;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px dashed black;
+}
+.test7-container-wrapper-addChaterContainer-task:hover {
+  border: 1px dashed red;
+}
+/* #endregion */
+
+/* #endregion */
+
+/* #endregion ~ hlop */
