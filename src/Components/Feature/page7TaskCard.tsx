@@ -9,6 +9,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 interface Props {
+  isDragLvl1;
   task: type_Tasks;
   deleteTask: (id: type_Id) => void;
   updateTask: (id: type_Id, content: string) => void;
@@ -16,7 +17,7 @@ interface Props {
 export default function Page7TaskCard(props: Props) {
   // ___ const
   // #region
-  const { task, deleteTask, updateTask } = props;
+  const { isDragLvl1, task, deleteTask, updateTask } = props;
   // #endregion
 
   // ___ state

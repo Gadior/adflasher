@@ -49,8 +49,9 @@ function Page() {
 
   // ~ активная колонка (подверженная darg)
   const [activeColumn, setActiveColumn] = useState<type_Column | null>(null);
-  // ~ отключение вложенных полей на период драга
-  const [isdrag, setIsDrag] = useState(false);
+  // ~ отключение вложенных полей на период драга у слоев
+  const [isDragRoot, setIsDragRoot] = useState(false);
+  const [isDragLvl1, setIsDragLvl1] = useState(false);
 
   // ~ активная колонка (подверженная darg)
   const [activeTask, setActiveTask] = useState<type_Tasks | null>(null);
@@ -142,13 +143,13 @@ function Page() {
   // ~ начала движения
   const onDragStart = (e: DragStartEvent) => {
     if (e.active.data.current?.type === "Column") {
-      setIsDrag((prev) => true);
+      setIsDragRoot((prev) => true);
       setActiveColumn(e.active.data.current.column);
       return;
     }
 
     if (e.active.data.current?.type === "Task") {
-      console.log(e.active.data);
+      setIsDragLvl1((prev) => true);
       setActiveTask(e.active.data.current.task);
       return;
     }
@@ -156,7 +157,7 @@ function Page() {
 
   // ~ завершение движения
   const onDragEnd = (e: DragEndEvent) => {
-    setIsDrag((prev) => false);
+    setIsDragRoot((prev) => false);
     setActiveColumn(null);
     setActiveTask(null);
     // ~ у нас два значения. Активный и наведенные объекты
@@ -251,7 +252,8 @@ function Page() {
             {columns.map((col: type_Column) => (
               <Flex key={col.id} className="test7-container-wrapper">
                 <Page7ColumnContainer
-                  isDragRoot={isdrag}
+                  isDragRoot={isDragRoot}
+                  isDragLvl1={isDragLvl1}
                   key={col.id}
                   column={col}
                   deleteColumn={deleteColumn}
@@ -270,7 +272,8 @@ function Page() {
             <DragOverlay>
               {activeColumn && (
                 <Page7ColumnContainer
-                  isDragRoot={isdrag}
+                  isDragRoot={isDragRoot}
+                  isDragLvl1={isDragLvl1}
                   column={activeColumn}
                   deleteColumn={deleteColumn}
                   updateColumn={updateColumn}
@@ -282,6 +285,7 @@ function Page() {
               )}
               {activeTask && (
                 <Page7TaskCard
+                  isDragLvl1={isDragLvl1}
                   task={activeTask}
                   deleteTask={deleteTask}
                   updateTask={updateColumn}
@@ -298,7 +302,7 @@ function Page() {
             onClick={() => createNewColumn()}
           >
             <PlusCircleOutlined />
-            ADD_INCLUDE
+            ADD_LVL1
           </Button>
         </Flex>
       </DndContext>

@@ -17,6 +17,7 @@ import { type_Column, type_Id, type_Tasks } from "../Pages/7/interface";
 // ~ что получаем через пропсы?
 interface Props {
   isDragRoot: boolean;
+  isDragLvl1: boolean;
   column: type_Column;
   deleteColumn: (id: type_Id) => void;
   updateColumn: (id: type_Id, title: string) => void;
@@ -31,7 +32,8 @@ export default function Page7ColumnContainer(props: Props) {
   // #region
   // деструктуризация
   const {
-    isDragRoot: isdraglvl1,
+    isDragRoot,
+    isDragLvl1,
     column,
     deleteColumn,
     updateColumn,
@@ -44,10 +46,14 @@ export default function Page7ColumnContainer(props: Props) {
 
   // ___ state
   // #region
+  // ~ edit mode для редактирования полей
   const [editMode, setEditMode] = useState<boolean>(false);
+  // ~ memo ids всех lvl1 вложеннойстей
   const tasksIds = useMemo(() => {
     return tasks.map((task) => task.id);
   }, [tasks]);
+  // ~ схлапывание группы данных
+  const [isCollapse, setIsCollapse] = useState<boolean>(false);
   // #endregion
 
   // ___ dnd sortable
@@ -143,6 +149,25 @@ export default function Page7ColumnContainer(props: Props) {
           <div>данные: 1</div>
           <div>данные: 2</div>
           <div>данные: 3</div>
+          {isCollapse ? (
+            <Button
+              type="link"
+              onClick={() => {
+                setIsCollapse(!isCollapse);
+              }}
+            >
+              Раскрыть
+            </Button>
+          ) : (
+            <Button
+              type="link"
+              onClick={() => {
+                setIsCollapse(!isCollapse);
+              }}
+            >
+              Схлопнуть
+            </Button>
+          )}
 
           {/* кнопка удаления раздела */}
           <button
@@ -157,30 +182,36 @@ export default function Page7ColumnContainer(props: Props) {
         </Flex>
       </Flex>
 
-      {!isdraglvl1 && (
+      {/* схлоп и рассхлоп при клике на кнопку / процесс перетягивания */}
+      {!isCollapse && (
         <>
-          {/* ~ container */}
-          <SortableContext items={tasksIds}>
-            {tasks.map((task: type_Tasks) => (
-              <Page7TaskCard
-                key={task.id}
-                task={task}
-                deleteTask={deleteTask}
-                updateTask={updateTask}
-              />
-            ))}
-          </SortableContext>
+          {!isDragRoot && (
+            <>
+              {/* ~ container */}
+              <SortableContext items={tasksIds}>
+                {tasks.map((task: type_Tasks) => (
+                  <Page7TaskCard
+                    isDragLvl1={isDragLvl1}
+                    key={task.id}
+                    task={task}
+                    deleteTask={deleteTask}
+                    updateTask={updateTask}
+                  />
+                ))}
+              </SortableContext>
+              {/* ~ footer */}
+              <Button
+                onClick={() => {
+                  createTask(column.id);
+                }}
+              >
+                <PlusCircleOutlined />
+                ADD_INCLUDE2
+              </Button>
+            </>
+          )}
         </>
       )}
-      {/* ~ footer */}
-      <Button
-        onClick={() => {
-          createTask(column.id);
-        }}
-      >
-        <PlusCircleOutlined />
-        ADD_INCLUDE2
-      </Button>
     </div>
   );
 }
