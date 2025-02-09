@@ -24,14 +24,18 @@ interface Props {
   collapseAllState: boolean;
   isDragRoot: boolean;
   isDragLvl1: boolean;
+  isDragLvl2: boolean;
   column: type_Root;
   deleteRoot: (id: type_Id) => void;
   updateRoot: (id: type_Id, title: string) => void;
-  createLvl1: (columnId: type_Id) => void;
   lvl1: type_Lvl1[];
+  createLvl1: (columnId: type_Id) => void;
   deleteLvl1: (id: type_Id) => void;
   updateLvl1: (id: type_Id, content: string) => void;
-  lvl2: type_Lvl2[];
+  lvls2: type_Lvl2[];
+  createLvl2: (columnId: type_Id, lvl1Id: type_Id) => void;
+  deleteLvl2: (id: type_Id) => void;
+  updateLvl2: (id: type_Id, content: string) => void;
 }
 
 export default function Page7Root(props: Props) {
@@ -42,14 +46,18 @@ export default function Page7Root(props: Props) {
     collapseAllState,
     isDragRoot,
     isDragLvl1,
+    isDragLvl2,
     column,
     deleteRoot,
     updateRoot,
-    createLvl1,
     lvl1,
+    createLvl1,
     deleteLvl1,
     updateLvl1,
-    lvl2,
+    lvls2,
+    createLvl2,
+    deleteLvl2,
+    updateLvl2,
   } = props;
   // #endregion
 
@@ -128,7 +136,6 @@ export default function Page7Root(props: Props) {
           gap={5}
           align="center"
           onClick={() => {
-            console.log("111");
             setEditMode(true);
           }}
         >
@@ -206,13 +213,23 @@ export default function Page7Root(props: Props) {
             <>
               {/* ~ container */}
               <SortableContext items={tasksIds}>
-                {lvl1.map((task: type_Lvl1) => (
+                {lvl1.map((level: type_Lvl1) => (
                   <PageLvl2
                     isDragLvl1={isDragLvl1}
-                    key={task.id}
-                    task={task}
+                    key={level.id}
+                    lvl1={level}
                     deleteLvl1={deleteLvl1}
                     updateLvl1={updateLvl1}
+                    isDragLvl2={isDragLvl2}
+                    lvls2={lvls2.filter((lev) => {
+                      return (
+                        lev.columnId === level.columnId &&
+                        lev.lvl1Id === level.id
+                      );
+                    })}
+                    createLvl2={createLvl2}
+                    deleteLvl2={deleteLvl2}
+                    updateLvl2={updateLvl2}
                   />
                 ))}
               </SortableContext>

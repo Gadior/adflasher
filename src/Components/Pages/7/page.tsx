@@ -51,13 +51,14 @@ function Page() {
   // ~ Данные уровня 2
   const [lvls2, setLvls2] = useState<type_Lvl2[]>([]);
 
-  // ~ активная колонка (подверженная darg)
-  const [activeRoot, setActiveRoot] = useState<type_Root | null>(null);
   // ~ отключение вложенных полей на период драга у слоев
   const [collapseAllState, setCollapseAllState] = useState<boolean>(false);
   const [isDragRoot, setIsDragRoot] = useState(false);
   const [isDragLvl1, setIsDragLvl1] = useState(false);
+  const [isDragLvl2, setIsDragLvl2] = useState(false);
 
+  // ~ активная колонка (подверженная darg)
+  const [activeRoot, setActiveRoot] = useState<type_Root | null>(null);
   // ~ активная (подверженная darg)
   const [activeLvl1, setActiveLvl1] = useState<type_Lvl1 | null>(null);
   const [activeLvl2, setActiveLvl2] = useState<type_Lvl2 | null>(null);
@@ -82,7 +83,7 @@ function Page() {
     // ~ создаем root
     const rootToAdd: type_Root = {
       id: generateID(),
-      title: `include 1_ ${roots.length + 1}`,
+      title: `include root_ ${roots.length + 1}`,
     };
     // ~ сохраняем в state
     setRoots([...roots, rootToAdd]);
@@ -121,7 +122,7 @@ function Page() {
     const newLvl1: type_Lvl1 = {
       id: generateID(),
       columnId,
-      content: `include 11_ ${lvls1.length + 1}`,
+      content: `include 2_ ${lvls1.length + 1}`,
     };
 
     setLvls1([...lvls1, newLvl1]);
@@ -158,7 +159,7 @@ function Page() {
       id: generateID(),
       columnId,
       lvl1Id,
-      content: `include 111_ ${lvls1.length + 1}`,
+      content: `include 3_ ${lvls2.length + 1}`,
     };
 
     setLvls2([...lvls2, newLvl2]);
@@ -191,14 +192,23 @@ function Page() {
   // ~ начала движения
   const onDragStart = (e: DragStartEvent) => {
     if (e.active.data.current?.type === "Root") {
+      // console.log(e.active.data.current);
       setIsDragRoot((prev) => true);
       setActiveRoot(e.active.data.current.column);
       return;
     }
 
     if (e.active.data.current?.type === "Lvl1") {
+      // console.log(e.active.data.current);
       setIsDragLvl1((prev) => true);
-      setActiveLvl1(e.active.data.current.task);
+      setActiveLvl1(e.active.data.current.lvl1);
+      return;
+    }
+
+    if (e.active.data.current?.type === "Lvl2") {
+      // console.log(e.active.data.current);
+      setIsDragLvl2((prev) => true);
+      setActiveLvl2(e.active.data.current.task);
       return;
     }
   };
@@ -208,8 +218,11 @@ function Page() {
     setIsDragRoot((prev) => false);
     setActiveRoot(null);
     setActiveLvl1(null);
+    setActiveLvl2(null);
     // ~ у нас два значения. Активный и наведенные объекты
     const { active, over } = e;
+    console.log("active, over");
+    console.log(active, over);
 
     // ~ Проверка / null -> если нету второй карточки, второй объект нуль
     if (!over) return;
@@ -231,7 +244,7 @@ function Page() {
     });
   };
 
-  // ~ лоя работы с соедними карточкам
+  // ~ для работы с соедними карточкам
   const onDragOver = (e: DragOverEvent) => {
     // ~ у нас два значения. Активный и наведенные объекты
     const { active, over } = e;
@@ -278,6 +291,8 @@ function Page() {
         return arrayMove(tasks, activeIndex, activeIndex);
       });
     }
+
+    // ! нужна доп логика. Есть наведение на другой lvl2
   };
   // #endregion
 
@@ -315,18 +330,24 @@ function Page() {
                   collapseAllState={collapseAllState}
                   isDragRoot={isDragRoot}
                   isDragLvl1={isDragLvl1}
+                  isDragLvl2={isDragLvl2}
                   // Root
                   key={col.id}
                   column={col}
                   deleteRoot={deleteRoot}
                   updateRoot={updateRoot}
                   // lvl 1
-                  createLvl1={createLvl1}
                   lvl1={lvls1.filter((task) => task.columnId === col.id)}
+                  createLvl1={createLvl1}
                   deleteLvl1={deleteLvl1}
                   updateLvl1={updateLvl1}
                   // lvl 2
-                  lvl2={lvls2.filter((level) => level.columnId && level.lvl1Id)}
+                  lvls2={lvls2.filter(
+                    (level) => level.columnId && level.lvl1Id
+                  )}
+                  createLvl2={createLvl2}
+                  deleteLvl2={deleteLvl2}
+                  updateLvl2={updateLvl2}
                 />
               </Flex>
             ))}
@@ -340,6 +361,7 @@ function Page() {
                   collapseAllState={collapseAllState}
                   isDragRoot={isDragRoot}
                   isDragLvl1={isDragLvl1}
+                  isDragLvl2={isDragLvl2}
                   column={activeRoot}
                   deleteRoot={deleteRoot}
                   updateRoot={updateRoot}
@@ -347,15 +369,34 @@ function Page() {
                   lvl1={lvls1.filter((level) => level.columnId)}
                   deleteLvl1={deleteLvl1}
                   updateLvl1={updateLvl1}
-                  lvl2={lvls2.filter((level) => level.columnId && level.lvl1Id)}
+                  lvls2={lvls2.filter(
+                    (level) => level.columnId && level.lvl1Id
+                  )}
+                  createLvl2={createLvl2}
+                  deleteLvl2={deleteLvl2}
+                  updateLvl2={updateLvl2}
                 />
               )}
               {activeLvl1 && (
                 <Page7Lvl2
                   isDragLvl1={isDragLvl1}
-                  task={activeLvl1}
+                  isDragLvl2={isDragLvl2}
+                  lvl1={activeLvl1}
                   deleteLvl1={deleteLvl1}
                   updateLvl1={updateLvl1}
+                  lvls2={lvls2}
+                  createLvl2={createLvl2}
+                  deleteLvl2={deleteLvl2}
+                  updateLvl2={updateLvl2}
+                />
+              )}
+              {activeLvl2 && (
+                <Page7Lvl3
+                  isDragLvl2={isDragLvl2}
+                  column={activeLvl2}
+                  task={activeLvl2}
+                  deleteLvl2={deleteLvl2}
+                  updateLvl2={updateLvl2}
                 />
               )}
             </DragOverlay>,

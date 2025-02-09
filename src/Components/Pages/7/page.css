@@ -79,15 +79,18 @@
 /* ___ Task content */
 /* #region */
 .test7-container-wrapper-addChaterContainer-task {
-  height: 51px;
+  height: 100%;
+  min-height: 51px;
   background: black;
   padding: 10px 20px;
   color: white;
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px dashed black;
+  justify-content: center;
 }
 .test7-container-wrapper-addChaterContainer-task:hover {
+  justify-content: center;
   border: 1px dashed red;
 }
 .test7-container-wrapper-addChaterContainer-task-isDragging {
@@ -100,6 +103,20 @@
   border-radius: 10px;
   border: 1px dashed red;
 }
+/* #endregion */
+
+/* ___ lvl3 */
+/* #region */
+.test7-container-wrapper-addChaterContainer-lvl3 {
+  height: 51px;
+  background: rgb(185, 41, 41);
+  padding: 10px 40px;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px dashed black;
+}
+
 /* #endregion */
 
 /* #endregion */

@@ -1,6 +1,6 @@
 // TODO: LVL3
 import React, { useState } from "react";
-import { type_Id, type_Lvl1 } from "../../Pages/7/interface";
+import { type_Id, type_Lvl1, type_Lvl2 } from "../../Pages/7/interface";
 import { Flex, Typography, Button, Input } from "antd";
 // const { TextArea } = Input;
 import Icon, { DeleteOutlined, DragOutlined } from "@ant-design/icons";
@@ -10,15 +10,16 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 interface Props {
-  isDragLvl1;
-  task: type_Lvl1;
-  deleteTask: (id: type_Id) => void;
-  updateTask: (id: type_Id, content: string) => void;
+  isDragLvl2;
+  column: type_Lvl2;
+  task: type_Lvl2;
+  deleteLvl2: (id: type_Id) => void;
+  updateLvl2: (id: type_Id, content: string) => void;
 }
 export default function Page7Lvl3(props: Props) {
   // ___ const
   // #region
-  const { isDragLvl1, task, deleteTask, updateTask } = props;
+  const { isDragLvl2, column, task, deleteLvl2, updateLvl2 } = props;
   // #endregion
 
   // ___ state
@@ -41,7 +42,7 @@ export default function Page7Lvl3(props: Props) {
   } = useSortable({
     id: task.id,
     data: {
-      type: "Task",
+      type: "Lvl2",
       task,
     },
     disabled: editMode,
@@ -77,9 +78,9 @@ export default function Page7Lvl3(props: Props) {
         style={style}
         {...attributes}
         {...listeners}
-        justify="space-between"
-        align="center"
-        className="test7-container-wrapper-addChaterContainer-task"
+        // justify="space-between"
+        // align="center"
+        // className="test7-container-wrapper-addChaterContainer-task"
       >
         <Input
           placeholder="Введите название задачи"
@@ -94,7 +95,7 @@ export default function Page7Lvl3(props: Props) {
             toggleEditMode();
           }}
           onChange={(e) => {
-            updateTask(task.id, e.target.value);
+            updateLvl2(task.id, e.target.value);
           }}
           maxLength={30}
           showCount={true}
@@ -110,7 +111,7 @@ export default function Page7Lvl3(props: Props) {
       style={style}
       justify="space-between"
       align="center"
-      className="test7-container-wrapper-addChaterContainer-task"
+      className="test7-container-wrapper-addChaterContainer-lvl3"
       // listener наведения мыши для отоброжения кнопки удаления
       onMouseOver={() => {
         setMouseOverFiled(true);
@@ -132,7 +133,7 @@ export default function Page7Lvl3(props: Props) {
         <button
           className="test7-container-wrapper-addChaterContainer-title-delBtn"
           onClick={() => {
-            deleteTask(task.id);
+            deleteLvl2(task.id);
           }}
         >
           <DeleteOutlined style={{ padding: 0, margin: 0 }} />
