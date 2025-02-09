@@ -49,6 +49,8 @@ function Page() {
 
   // ~ активная колонка (подверженная darg)
   const [activeColumn, setActiveColumn] = useState<type_Column | null>(null);
+  // ~ отключение вложенных полей на период драга
+  const [isdrag, setIsDrag] = useState(false);
 
   // ~ активная колонка (подверженная darg)
   const [activeTask, setActiveTask] = useState<type_Tasks | null>(null);
@@ -140,11 +142,13 @@ function Page() {
   // ~ начала движения
   const onDragStart = (e: DragStartEvent) => {
     if (e.active.data.current?.type === "Column") {
+      setIsDrag((prev) => true);
       setActiveColumn(e.active.data.current.column);
       return;
     }
 
     if (e.active.data.current?.type === "Task") {
+      console.log(e.active.data);
       setActiveTask(e.active.data.current.task);
       return;
     }
@@ -152,6 +156,7 @@ function Page() {
 
   // ~ завершение движения
   const onDragEnd = (e: DragEndEvent) => {
+    setIsDrag((prev) => false);
     setActiveColumn(null);
     setActiveTask(null);
     // ~ у нас два значения. Активный и наведенные объекты
@@ -246,6 +251,7 @@ function Page() {
             {columns.map((col: type_Column) => (
               <Flex key={col.id} className="test7-container-wrapper">
                 <Page7ColumnContainer
+                  isDragRoot={isdrag}
                   key={col.id}
                   column={col}
                   deleteColumn={deleteColumn}
@@ -264,6 +270,7 @@ function Page() {
             <DragOverlay>
               {activeColumn && (
                 <Page7ColumnContainer
+                  isDragRoot={isdrag}
                   column={activeColumn}
                   deleteColumn={deleteColumn}
                   updateColumn={updateColumn}

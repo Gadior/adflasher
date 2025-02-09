@@ -16,6 +16,7 @@ import { type_Column, type_Id, type_Tasks } from "../Pages/7/interface";
 
 // ~ что получаем через пропсы?
 interface Props {
+  isDragRoot: boolean;
   column: type_Column;
   deleteColumn: (id: type_Id) => void;
   updateColumn: (id: type_Id, title: string) => void;
@@ -30,6 +31,7 @@ export default function Page7ColumnContainer(props: Props) {
   // #region
   // деструктуризация
   const {
+    isDragRoot: isdraglvl1,
     column,
     deleteColumn,
     updateColumn,
@@ -74,13 +76,11 @@ export default function Page7ColumnContainer(props: Props) {
   };
   if (isDragging) {
     return (
-      <Flex
+      <div
         ref={setNodeRef}
         style={style}
         className="test7-container-wrapper-addChaterContainer-isdragged"
-      >
-        1
-      </Flex>
+      ></div>
     );
   }
   // #endregion
@@ -157,18 +157,21 @@ export default function Page7ColumnContainer(props: Props) {
         </Flex>
       </Flex>
 
-      {/* ~ container */}
-      <SortableContext items={tasksIds}>
-        {tasks.map((task: type_Tasks) => (
-          <Page7TaskCard
-            key={task.id}
-            task={task}
-            deleteTask={deleteTask}
-            updateTask={updateTask}
-          />
-        ))}
-      </SortableContext>
-
+      {!isdraglvl1 && (
+        <>
+          {/* ~ container */}
+          <SortableContext items={tasksIds}>
+            {tasks.map((task: type_Tasks) => (
+              <Page7TaskCard
+                key={task.id}
+                task={task}
+                deleteTask={deleteTask}
+                updateTask={updateTask}
+              />
+            ))}
+          </SortableContext>
+        </>
+      )}
       {/* ~ footer */}
       <Button
         onClick={() => {

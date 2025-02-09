@@ -67,9 +67,12 @@
 /* #region */
 .test7-container-wrapper-addChaterContainer-isdragged {
   background: black;
-  color: green;
+  color: rgba(0, 0, 0, 0);
+  opacity: 0.5;
   width: 100%;
-  height: 150px;
+  height: 95px;
+  border-radius: 10px;
+  border: 1px dashed red;
 }
 /* #endregion */
 
