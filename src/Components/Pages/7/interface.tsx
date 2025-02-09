@@ -2,7 +2,7 @@
 // #region
 export type type_Id = number | string;
 
-export type type_Column = {
+export type type_Root = {
   id: type_Id;
   title: string;
 };
@@ -10,7 +10,7 @@ export type type_Column = {
 
 // ___ Tasks
 // #region
-export type type_Tasks = {
+export type type_Lvl1 = {
   id: type_Id;
   columnId: type_Id;
   content: string;

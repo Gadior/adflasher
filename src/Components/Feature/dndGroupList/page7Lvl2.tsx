@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { type_Id, type_Tasks } from "../Pages/7/interface";
+import { type_Id, type_Lvl1 } from "../../Pages/7/interface";
 import { Flex, Typography, Button, Input } from "antd";
 // const { TextArea } = Input;
 import Icon, { DeleteOutlined, DragOutlined } from "@ant-design/icons";
@@ -10,11 +10,11 @@ import { CSS } from "@dnd-kit/utilities";
 
 interface Props {
   isDragLvl1;
-  task: type_Tasks;
+  task: type_Lvl1;
   deleteTask: (id: type_Id) => void;
   updateTask: (id: type_Id, content: string) => void;
 }
-export default function Page7TaskCard(props: Props) {
+export default function Page7Lvl2(props: Props) {
   // ___ const
   // #region
   const { isDragLvl1, task, deleteTask, updateTask } = props;

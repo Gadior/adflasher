@@ -1,37 +1,39 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Flex, Typography, Button, Input } from "antd";
 import Icon, {
   DeleteOutlined,
   PlusCircleOutlined,
   DragOutlined,
 } from "@ant-design/icons";
-import Page7TaskCard from "./page7TaskCard.tsx";
+import Page7TaskCard from "./page7Lvl2.tsx";
 
 // ~ dnd
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // ~ interface
-import { type_Column, type_Id, type_Tasks } from "../Pages/7/interface";
+import { type_Root, type_Id, type_Lvl1 } from "../../Pages/7/interface.tsx";
 
 // ~ что получаем через пропсы?
 interface Props {
+  collapseAllState: boolean;
   isDragRoot: boolean;
   isDragLvl1: boolean;
-  column: type_Column;
+  column: type_Root;
   deleteColumn: (id: type_Id) => void;
   updateColumn: (id: type_Id, title: string) => void;
   createTask: (columnId: type_Id) => void;
-  tasks: type_Tasks[];
+  tasks: type_Lvl1[];
   deleteTask: (id: type_Id) => void;
   updateTask: (id: type_Id, content: string) => void;
 }
 
-export default function Page7ColumnContainer(props: Props) {
+export default function Page7Root(props: Props) {
   // ___ const
   // #region
   // деструктуризация
   const {
+    collapseAllState,
     isDragRoot,
     isDragLvl1,
     column,
@@ -54,6 +56,13 @@ export default function Page7ColumnContainer(props: Props) {
   }, [tasks]);
   // ~ схлапывание группы данных
   const [isCollapse, setIsCollapse] = useState<boolean>(false);
+  // #endregion
+
+  // ___ схлопнуть "все" __кнопка __root
+  // #region
+  useEffect(() => {
+    setIsCollapse((prev) => true);
+  }, [collapseAllState]);
   // #endregion
 
   // ___ dnd sortable
@@ -149,6 +158,7 @@ export default function Page7ColumnContainer(props: Props) {
           <div>данные: 1</div>
           <div>данные: 2</div>
           <div>данные: 3</div>
+
           {isCollapse ? (
             <Button
               type="link"
@@ -189,7 +199,7 @@ export default function Page7ColumnContainer(props: Props) {
             <>
               {/* ~ container */}
               <SortableContext items={tasksIds}>
-                {tasks.map((task: type_Tasks) => (
+                {tasks.map((task: type_Lvl1) => (
                   <Page7TaskCard
                     isDragLvl1={isDragLvl1}
                     key={task.id}

@@ -23,9 +23,9 @@ import { arrayMove, SortableContext, useSortable } from "@dnd-kit/sortable";
 // ~ style
 import "./page.css";
 // ~ interface
-import { type_Column, type_Id, type_Tasks } from "./interface.tsx";
-import Page7ColumnContainer from "../../Feature/page7ColumnContainer.tsx";
-import Page7TaskCard from "../../Feature/page7TaskCard.tsx";
+import { type_Root, type_Id, type_Lvl1 } from "./interface.tsx";
+import Page7Root from "../../Feature/dndGroupList/page7Root.tsx";
+import Page7Lvl2 from "../../Feature/dndGroupList/page7Lvl2.tsx";
 
 const { Text, Title } = Typography;
 
@@ -39,22 +39,20 @@ function Page() {
   // ___ state
   // #region
   // ~ data колонок
-  const [columns, setColumns] = useState<type_Column[]>([]);
+  const [root, setRoot] = useState<type_Root[]>([]);
   //  ~ id колонок для отрисовки sprtableContext
-  const columnsId = useMemo(
-    () => columns.map((col: type_Column) => col.id),
-    [columns]
-  );
-  const [tasks, setTasks] = useState<type_Tasks[]>([]);
+  const columnsId = useMemo(() => root.map((col: type_Root) => col.id), [root]);
+  const [lvl1, setLvl1] = useState<type_Lvl1[]>([]);
 
   // ~ активная колонка (подверженная darg)
-  const [activeColumn, setActiveColumn] = useState<type_Column | null>(null);
+  const [activeColumn, setActiveColumn] = useState<type_Root | null>(null);
   // ~ отключение вложенных полей на период драга у слоев
+  const [collapseAllState, setCollapseAllState] = useState<boolean>(false);
   const [isDragRoot, setIsDragRoot] = useState(false);
   const [isDragLvl1, setIsDragLvl1] = useState(false);
 
   // ~ активная колонка (подверженная darg)
-  const [activeTask, setActiveTask] = useState<type_Tasks | null>(null);
+  const [activeTask, setActiveTask] = useState<type_Lvl1 | null>(null);
 
   // ~ sensors для dnd
   const sensors = useSensors(
@@ -72,69 +70,67 @@ function Page() {
   // ~ обработчик нажатия колонки
   const createNewColumn = () => {
     // ~ создаем колонку
-    const columnToAdd: type_Column = {
+    const columnToAdd: type_Root = {
       id: generateID(),
-      title: `include 1_ ${columns.length + 1}`,
+      title: `include 1_ ${root.length + 1}`,
     };
     // ~ сохраняем колонку в state
-    setColumns([...columns, columnToAdd]);
+    setRoot([...root, columnToAdd]);
   };
   // #endregion
 
   // ___ deleteColumn
   // #region
   const deleteColumn = (id: type_Id) => {
-    const filteredColumns = columns.filter(
-      (filt: type_Column) => filt.id !== id
-    );
-    setColumns(filteredColumns);
+    const filteredColumns = root.filter((filt: type_Root) => filt.id !== id);
+    setRoot(filteredColumns);
 
     // чистим таски, у удаленной колонки
-    const newTask = tasks.filter((task) => task.columnId !== id);
-    setTasks(newTask);
+    const newTask = lvl1.filter((task) => task.columnId !== id);
+    setLvl1(newTask);
   };
   // #endregion
 
   // ___ updateColumn
   // #region
   const updateColumn = (id: type_Id, title: string) => {
-    const newColumns = columns.map((col: type_Column) => {
+    const newColumns = root.map((col: type_Root) => {
       if (col.id !== id) return col;
       return { ...col, title };
     });
-    setColumns(newColumns);
+    setRoot(newColumns);
   };
   // #endregion
 
   // ___ createTask
   // #region
   const createTask = (columnId: type_Id) => {
-    const newTask: type_Tasks = {
+    const newTask: type_Lvl1 = {
       id: generateID(),
       columnId,
-      content: `include 11_ ${tasks.length + 1}`,
+      content: `include 11_ ${lvl1.length + 1}`,
     };
 
-    setTasks([...tasks, newTask]);
+    setLvl1([...lvl1, newTask]);
   };
   // #endregion
 
   // ___ deleteTask
   // #region
   const deleteTask = (id: type_Id) => {
-    const newTasks = tasks.filter((task: type_Tasks) => task.id !== id);
-    setTasks(newTasks);
+    const newTasks = lvl1.filter((task: type_Lvl1) => task.id !== id);
+    setLvl1(newTasks);
   };
   // #endregion
 
   // ___ updateTask
   // #region
   const updateTask = (id: type_Id, content: string) => {
-    const newTask = tasks.map((task: type_Tasks) => {
+    const newTask = lvl1.map((task: type_Lvl1) => {
       if (task.id !== id) return task;
       return { ...task, content };
     });
-    setTasks(newTask);
+    setLvl1(newTask);
   };
   // #endregion
 
@@ -172,7 +168,7 @@ function Page() {
     // ~ если id совпадают, то
     if (activeColumnId === overColumnId) return;
     // ~ иначе
-    setColumns((columns: any) => {
+    setRoot((columns: any) => {
       const activeColumnIndex = columns.findIndex(
         (col: any) => col.id === activeColumnId
       );
@@ -205,7 +201,7 @@ function Page() {
 
     // Drop over another Task
     if (isActiveATask && isOverATask) {
-      setTasks((tasks) => {
+      setLvl1((tasks) => {
         // Если таски в одной колонке
         const activeIndex = tasks.findIndex((t) => t.id === activeId);
         const overIndex = tasks.findIndex((t) => t.id === overId);
@@ -220,7 +216,7 @@ function Page() {
     const isOverAColumn = over.data.current?.type === "Column";
     // Drop over another Column
     if (isActiveATask && isOverAColumn) {
-      setTasks((tasks) => {
+      setLvl1((tasks) => {
         // Если таски в одной колонке
         const activeIndex = tasks.findIndex((t) => t.id === activeId);
 
@@ -241,6 +237,18 @@ function Page() {
       justify="start"
       wrap={true}
     >
+      {/* Кнопка "схлопнуть все позиции" */}
+      <Button
+        style={{ marginBottom: 20, width: "250px" }}
+        onClick={() => {
+          // setIsDragRoot(true);
+          // setIsDragLvl1(true);
+          setCollapseAllState(!collapseAllState);
+        }}
+      >
+        Схлопнуть все
+      </Button>
+
       <DndContext
         sensors={sensors}
         onDragStart={onDragStart}
@@ -249,9 +257,10 @@ function Page() {
       >
         <Flex vertical={true} justify="flex-start" align="flex-start" gap={20}>
           <SortableContext items={columnsId}>
-            {columns.map((col: type_Column) => (
+            {root.map((col: type_Root) => (
               <Flex key={col.id} className="test7-container-wrapper">
-                <Page7ColumnContainer
+                <Page7Root
+                  collapseAllState={collapseAllState}
                   isDragRoot={isDragRoot}
                   isDragLvl1={isDragLvl1}
                   key={col.id}
@@ -259,7 +268,7 @@ function Page() {
                   deleteColumn={deleteColumn}
                   updateColumn={updateColumn}
                   createTask={createTask}
-                  tasks={tasks.filter((task) => task.columnId === col.id)}
+                  tasks={lvl1.filter((task) => task.columnId === col.id)}
                   deleteTask={deleteTask}
                   updateTask={updateTask}
                 />
@@ -271,20 +280,21 @@ function Page() {
           {createPortal(
             <DragOverlay>
               {activeColumn && (
-                <Page7ColumnContainer
+                <Page7Root
+                  collapseAllState={collapseAllState}
                   isDragRoot={isDragRoot}
                   isDragLvl1={isDragLvl1}
                   column={activeColumn}
                   deleteColumn={deleteColumn}
                   updateColumn={updateColumn}
                   createTask={createTask}
-                  tasks={tasks.filter((task) => task.columnId)}
+                  tasks={lvl1.filter((task) => task.columnId)}
                   deleteTask={deleteTask}
                   updateTask={updateTask}
                 />
               )}
               {activeTask && (
-                <Page7TaskCard
+                <Page7Lvl2
                   isDragLvl1={isDragLvl1}
                   task={activeTask}
                   deleteTask={deleteTask}
