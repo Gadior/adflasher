@@ -5,14 +5,19 @@ import Icon, {
   PlusCircleOutlined,
   DragOutlined,
 } from "@ant-design/icons";
-import Page7TaskCard from "./page7Lvl2.tsx";
+import PageLvl2 from "./page7Lvl2.tsx";
 
 // ~ dnd
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // ~ interface
-import { type_Root, type_Id, type_Lvl1 } from "../../Pages/7/interface.tsx";
+import {
+  type_Root,
+  type_Id,
+  type_Lvl1,
+  type_Lvl2,
+} from "../../Pages/7/interface.tsx";
 
 // ~ что получаем через пропсы?
 interface Props {
@@ -20,12 +25,13 @@ interface Props {
   isDragRoot: boolean;
   isDragLvl1: boolean;
   column: type_Root;
-  deleteColumn: (id: type_Id) => void;
-  updateColumn: (id: type_Id, title: string) => void;
-  createTask: (columnId: type_Id) => void;
-  tasks: type_Lvl1[];
-  deleteTask: (id: type_Id) => void;
-  updateTask: (id: type_Id, content: string) => void;
+  deleteRoot: (id: type_Id) => void;
+  updateRoot: (id: type_Id, title: string) => void;
+  createLvl1: (columnId: type_Id) => void;
+  lvl1: type_Lvl1[];
+  deleteLvl1: (id: type_Id) => void;
+  updateLvl1: (id: type_Id, content: string) => void;
+  lvl2: type_Lvl2[];
 }
 
 export default function Page7Root(props: Props) {
@@ -37,12 +43,13 @@ export default function Page7Root(props: Props) {
     isDragRoot,
     isDragLvl1,
     column,
-    deleteColumn,
-    updateColumn,
-    createTask,
-    tasks,
-    deleteTask,
-    updateTask,
+    deleteRoot,
+    updateRoot,
+    createLvl1,
+    lvl1,
+    deleteLvl1,
+    updateLvl1,
+    lvl2,
   } = props;
   // #endregion
 
@@ -52,8 +59,8 @@ export default function Page7Root(props: Props) {
   const [editMode, setEditMode] = useState<boolean>(false);
   // ~ memo ids всех lvl1 вложеннойстей
   const tasksIds = useMemo(() => {
-    return tasks.map((task) => task.id);
-  }, [tasks]);
+    return lvl1.map((task) => task.id);
+  }, [lvl1]);
   // ~ схлапывание группы данных
   const [isCollapse, setIsCollapse] = useState<boolean>(false);
   // #endregion
@@ -143,7 +150,7 @@ export default function Page7Root(props: Props) {
               placeholder={column.title}
               value={column.title}
               onChange={(e) => {
-                updateColumn(column.id, e.target.value);
+                updateRoot(column.id, e.target.value);
               }}
               onBlur={() => {
                 setEditMode(false);
@@ -184,7 +191,7 @@ export default function Page7Root(props: Props) {
             className="test7-container-wrapper-addChaterContainer-title-delBtn"
             // type="text"
             onClick={() => {
-              deleteColumn(column.id);
+              deleteRoot(column.id);
             }}
           >
             <DeleteOutlined style={{ padding: 0, margin: 0 }} />
@@ -199,20 +206,20 @@ export default function Page7Root(props: Props) {
             <>
               {/* ~ container */}
               <SortableContext items={tasksIds}>
-                {tasks.map((task: type_Lvl1) => (
-                  <Page7TaskCard
+                {lvl1.map((task: type_Lvl1) => (
+                  <PageLvl2
                     isDragLvl1={isDragLvl1}
                     key={task.id}
                     task={task}
-                    deleteTask={deleteTask}
-                    updateTask={updateTask}
+                    deleteLvl1={deleteLvl1}
+                    updateLvl1={updateLvl1}
                   />
                 ))}
               </SortableContext>
               {/* ~ footer */}
               <Button
                 onClick={() => {
-                  createTask(column.id);
+                  createLvl1(column.id);
                 }}
               >
                 <PlusCircleOutlined />

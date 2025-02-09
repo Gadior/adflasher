@@ -23,9 +23,10 @@ import { arrayMove, SortableContext, useSortable } from "@dnd-kit/sortable";
 // ~ style
 import "./page.css";
 // ~ interface
-import { type_Root, type_Id, type_Lvl1 } from "./interface.tsx";
+import { type_Root, type_Id, type_Lvl1, type_Lvl2 } from "./interface.tsx";
 import Page7Root from "../../Feature/dndGroupList/page7Root.tsx";
 import Page7Lvl2 from "../../Feature/dndGroupList/page7Lvl2.tsx";
+import Page7Lvl3 from "../../Feature/dndGroupList/page7Lvl3.tsx";
 
 const { Text, Title } = Typography;
 
@@ -45,7 +46,10 @@ function Page() {
     () => roots.map((col: type_Root) => col.id),
     [roots]
   );
+  // ~ Данные уровня 1
   const [lvls1, setLvls1] = useState<type_Lvl1[]>([]);
+  // ~ Данные уровня 2
+  const [lvls2, setLvls2] = useState<type_Lvl2[]>([]);
 
   // ~ активная колонка (подверженная darg)
   const [activeRoot, setActiveRoot] = useState<type_Root | null>(null);
@@ -54,8 +58,9 @@ function Page() {
   const [isDragRoot, setIsDragRoot] = useState(false);
   const [isDragLvl1, setIsDragLvl1] = useState(false);
 
-  // ~ активная колонка (подверженная darg)
+  // ~ активная (подверженная darg)
   const [activeLvl1, setActiveLvl1] = useState<type_Lvl1 | null>(null);
+  const [activeLvl2, setActiveLvl2] = useState<type_Lvl2 | null>(null);
 
   // ~ sensors для dnd
   const sensors = useSensors(
@@ -110,7 +115,7 @@ function Page() {
 
   // ___ Level 1
   // #region
-  // ___ createLvl1
+  // ___ create
   // #region
   const createLvl1 = (columnId: type_Id) => {
     const newLvl1: type_Lvl1 = {
@@ -123,7 +128,7 @@ function Page() {
   };
   // #endregion
 
-  // ___ deleteLvl1
+  // ___ delete
   // #region
   const deleteLvl1 = (id: type_Id) => {
     const newlvl = lvls1.filter((level: type_Lvl1) => level.id !== id);
@@ -131,7 +136,7 @@ function Page() {
   };
   // #endregion
 
-  // ___ updateLvl1
+  // ___ update
   // #region
   const updateLvl1 = (id: type_Id, content: string) => {
     const newLvl = lvls1.map((level: type_Lvl1) => {
@@ -139,6 +144,43 @@ function Page() {
       return { ...level, content };
     });
     setLvls1(newLvl);
+  };
+  // #endregion
+
+  // #endregion
+
+  // ___ level 2
+  // #region
+  // ___ create
+  // #region
+  const createLvl2 = (columnId: type_Id, lvl1Id: type_Id) => {
+    const newLvl2: type_Lvl2 = {
+      id: generateID(),
+      columnId,
+      lvl1Id,
+      content: `include 111_ ${lvls1.length + 1}`,
+    };
+
+    setLvls2([...lvls2, newLvl2]);
+  };
+  // #endregion
+
+  // ___ delete
+  // #region
+  const deleteLvl2 = (id: type_Id) => {
+    const newlvl = lvls2.filter((level: type_Lvl2) => level.id !== id);
+    setLvls1(newlvl);
+  };
+  // #endregion
+
+  // ___ update
+  // #region
+  const updateLvl2 = (id: type_Id, content: string) => {
+    const newLvl = lvls2.map((level: type_Lvl2) => {
+      if (level.id !== id) return level;
+      return { ...level, content };
+    });
+    setLvls2(newLvl);
   };
   // #endregion
 
@@ -273,14 +315,18 @@ function Page() {
                   collapseAllState={collapseAllState}
                   isDragRoot={isDragRoot}
                   isDragLvl1={isDragLvl1}
+                  // Root
                   key={col.id}
                   column={col}
-                  deleteColumn={deleteRoot}
-                  updateColumn={updateRoot}
-                  createTask={createLvl1}
-                  tasks={lvls1.filter((task) => task.columnId === col.id)}
-                  deleteTask={deleteLvl1}
-                  updateTask={updateLvl1}
+                  deleteRoot={deleteRoot}
+                  updateRoot={updateRoot}
+                  // lvl 1
+                  createLvl1={createLvl1}
+                  lvl1={lvls1.filter((task) => task.columnId === col.id)}
+                  deleteLvl1={deleteLvl1}
+                  updateLvl1={updateLvl1}
+                  // lvl 2
+                  lvl2={lvls2.filter((level) => level.columnId && level.lvl1Id)}
                 />
               </Flex>
             ))}
@@ -295,20 +341,21 @@ function Page() {
                   isDragRoot={isDragRoot}
                   isDragLvl1={isDragLvl1}
                   column={activeRoot}
-                  deleteColumn={deleteRoot}
-                  updateColumn={updateRoot}
-                  createTask={createLvl1}
-                  tasks={lvls1.filter((task) => task.columnId)}
-                  deleteTask={deleteLvl1}
-                  updateTask={updateLvl1}
+                  deleteRoot={deleteRoot}
+                  updateRoot={updateRoot}
+                  createLvl1={createLvl1}
+                  lvl1={lvls1.filter((level) => level.columnId)}
+                  deleteLvl1={deleteLvl1}
+                  updateLvl1={updateLvl1}
+                  lvl2={lvls2.filter((level) => level.columnId && level.lvl1Id)}
                 />
               )}
               {activeLvl1 && (
                 <Page7Lvl2
                   isDragLvl1={isDragLvl1}
                   task={activeLvl1}
-                  deleteTask={deleteLvl1}
-                  updateTask={updateRoot}
+                  deleteLvl1={deleteLvl1}
+                  updateLvl1={updateLvl1}
                 />
               )}
             </DragOverlay>,
