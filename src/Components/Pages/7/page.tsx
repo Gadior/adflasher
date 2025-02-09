@@ -39,20 +39,23 @@ function Page() {
   // ___ state
   // #region
   // ~ data колонок
-  const [root, setRoot] = useState<type_Root[]>([]);
+  const [roots, setRoots] = useState<type_Root[]>([]);
   //  ~ id колонок для отрисовки sprtableContext
-  const columnsId = useMemo(() => root.map((col: type_Root) => col.id), [root]);
-  const [lvl1, setLvl1] = useState<type_Lvl1[]>([]);
+  const rootsIds = useMemo(
+    () => roots.map((col: type_Root) => col.id),
+    [roots]
+  );
+  const [lvls1, setLvls1] = useState<type_Lvl1[]>([]);
 
   // ~ активная колонка (подверженная darg)
-  const [activeColumn, setActiveColumn] = useState<type_Root | null>(null);
+  const [activeRoot, setActiveRoot] = useState<type_Root | null>(null);
   // ~ отключение вложенных полей на период драга у слоев
   const [collapseAllState, setCollapseAllState] = useState<boolean>(false);
   const [isDragRoot, setIsDragRoot] = useState(false);
   const [isDragLvl1, setIsDragLvl1] = useState(false);
 
   // ~ активная колонка (подверженная darg)
-  const [activeTask, setActiveTask] = useState<type_Lvl1 | null>(null);
+  const [activeLvl1, setActiveLvl1] = useState<type_Lvl1 | null>(null);
 
   // ~ sensors для dnd
   const sensors = useSensors(
@@ -65,88 +68,95 @@ function Page() {
   );
   // #endregion
 
-  // ___ createNewColumn
+  // ___ Root
   // #region
-  // ~ обработчик нажатия колонки
-  const createNewColumn = () => {
-    // ~ создаем колонку
-    const columnToAdd: type_Root = {
+  // ___ createNewRoot
+  // #region
+  // ~ обработчик главного уровня
+  const createNewRoot = () => {
+    // ~ создаем root
+    const rootToAdd: type_Root = {
       id: generateID(),
-      title: `include 1_ ${root.length + 1}`,
+      title: `include 1_ ${roots.length + 1}`,
     };
-    // ~ сохраняем колонку в state
-    setRoot([...root, columnToAdd]);
+    // ~ сохраняем в state
+    setRoots([...roots, rootToAdd]);
   };
   // #endregion
 
-  // ___ deleteColumn
+  // ___ deleteRoot
   // #region
-  const deleteColumn = (id: type_Id) => {
-    const filteredColumns = root.filter((filt: type_Root) => filt.id !== id);
-    setRoot(filteredColumns);
+  const deleteRoot = (id: type_Id) => {
+    const filteredRoot = roots.filter((filt: type_Root) => filt.id !== id);
+    setRoots(filteredRoot);
 
     // чистим таски, у удаленной колонки
-    const newTask = lvl1.filter((task) => task.columnId !== id);
-    setLvl1(newTask);
+    const newLvl1 = lvls1.filter((task) => task.columnId !== id);
+    setLvls1(newLvl1);
   };
   // #endregion
 
-  // ___ updateColumn
+  // ___ updateRoot
   // #region
-  const updateColumn = (id: type_Id, title: string) => {
-    const newColumns = root.map((col: type_Root) => {
-      if (col.id !== id) return col;
-      return { ...col, title };
+  const updateRoot = (id: type_Id, title: string) => {
+    const newRoot = roots.map((root: type_Root) => {
+      if (root.id !== id) return root;
+      return { ...root, title };
     });
-    setRoot(newColumns);
+    setRoots(newRoot);
   };
   // #endregion
+  // #endregion
 
-  // ___ createTask
+  // ___ Level 1
   // #region
-  const createTask = (columnId: type_Id) => {
-    const newTask: type_Lvl1 = {
+  // ___ createLvl1
+  // #region
+  const createLvl1 = (columnId: type_Id) => {
+    const newLvl1: type_Lvl1 = {
       id: generateID(),
       columnId,
-      content: `include 11_ ${lvl1.length + 1}`,
+      content: `include 11_ ${lvls1.length + 1}`,
     };
 
-    setLvl1([...lvl1, newTask]);
+    setLvls1([...lvls1, newLvl1]);
   };
   // #endregion
 
-  // ___ deleteTask
+  // ___ deleteLvl1
   // #region
-  const deleteTask = (id: type_Id) => {
-    const newTasks = lvl1.filter((task: type_Lvl1) => task.id !== id);
-    setLvl1(newTasks);
+  const deleteLvl1 = (id: type_Id) => {
+    const newlvl = lvls1.filter((level: type_Lvl1) => level.id !== id);
+    setLvls1(newlvl);
   };
   // #endregion
 
-  // ___ updateTask
+  // ___ updateLvl1
   // #region
-  const updateTask = (id: type_Id, content: string) => {
-    const newTask = lvl1.map((task: type_Lvl1) => {
-      if (task.id !== id) return task;
-      return { ...task, content };
+  const updateLvl1 = (id: type_Id, content: string) => {
+    const newLvl = lvls1.map((level: type_Lvl1) => {
+      if (level.id !== id) return level;
+      return { ...level, content };
     });
-    setLvl1(newTask);
+    setLvls1(newLvl);
   };
+  // #endregion
+
   // #endregion
 
   // ___ DndContext
   // #region
   // ~ начала движения
   const onDragStart = (e: DragStartEvent) => {
-    if (e.active.data.current?.type === "Column") {
+    if (e.active.data.current?.type === "Root") {
       setIsDragRoot((prev) => true);
-      setActiveColumn(e.active.data.current.column);
+      setActiveRoot(e.active.data.current.column);
       return;
     }
 
-    if (e.active.data.current?.type === "Task") {
+    if (e.active.data.current?.type === "Lvl1") {
       setIsDragLvl1((prev) => true);
-      setActiveTask(e.active.data.current.task);
+      setActiveLvl1(e.active.data.current.task);
       return;
     }
   };
@@ -154,8 +164,8 @@ function Page() {
   // ~ завершение движения
   const onDragEnd = (e: DragEndEvent) => {
     setIsDragRoot((prev) => false);
-    setActiveColumn(null);
-    setActiveTask(null);
+    setActiveRoot(null);
+    setActiveLvl1(null);
     // ~ у нас два значения. Активный и наведенные объекты
     const { active, over } = e;
 
@@ -168,7 +178,7 @@ function Page() {
     // ~ если id совпадают, то
     if (activeColumnId === overColumnId) return;
     // ~ иначе
-    setRoot((columns: any) => {
+    setRoots((columns: any) => {
       const activeColumnIndex = columns.findIndex(
         (col: any) => col.id === activeColumnId
       );
@@ -193,15 +203,15 @@ function Page() {
     // ~ если id совпадают, то
     if (activeId === overId) return;
 
-    const isActiveATask = active.data.current?.type === "Task";
-    const isOverATask = over.data.current?.type === "Task";
+    const isActiveATask = active.data.current?.type === "Lvl1";
+    const isOverATask = over.data.current?.type === "Lvl1";
 
     // Если нет активного таска - выходим
     if (!isActiveATask) return;
 
     // Drop over another Task
     if (isActiveATask && isOverATask) {
-      setLvl1((tasks) => {
+      setLvls1((tasks) => {
         // Если таски в одной колонке
         const activeIndex = tasks.findIndex((t) => t.id === activeId);
         const overIndex = tasks.findIndex((t) => t.id === overId);
@@ -213,10 +223,10 @@ function Page() {
       });
     }
 
-    const isOverAColumn = over.data.current?.type === "Column";
+    const isOverAColumn = over.data.current?.type === "Root";
     // Drop over another Column
     if (isActiveATask && isOverAColumn) {
-      setLvl1((tasks) => {
+      setLvls1((tasks) => {
         // Если таски в одной колонке
         const activeIndex = tasks.findIndex((t) => t.id === activeId);
 
@@ -256,8 +266,8 @@ function Page() {
         onDragOver={onDragOver}
       >
         <Flex vertical={true} justify="flex-start" align="flex-start" gap={20}>
-          <SortableContext items={columnsId}>
-            {root.map((col: type_Root) => (
+          <SortableContext items={rootsIds}>
+            {roots.map((col: type_Root) => (
               <Flex key={col.id} className="test7-container-wrapper">
                 <Page7Root
                   collapseAllState={collapseAllState}
@@ -265,12 +275,12 @@ function Page() {
                   isDragLvl1={isDragLvl1}
                   key={col.id}
                   column={col}
-                  deleteColumn={deleteColumn}
-                  updateColumn={updateColumn}
-                  createTask={createTask}
-                  tasks={lvl1.filter((task) => task.columnId === col.id)}
-                  deleteTask={deleteTask}
-                  updateTask={updateTask}
+                  deleteColumn={deleteRoot}
+                  updateColumn={updateRoot}
+                  createTask={createLvl1}
+                  tasks={lvls1.filter((task) => task.columnId === col.id)}
+                  deleteTask={deleteLvl1}
+                  updateTask={updateLvl1}
                 />
               </Flex>
             ))}
@@ -279,26 +289,26 @@ function Page() {
           {/* portal - псевдопроекция эллемента */}
           {createPortal(
             <DragOverlay>
-              {activeColumn && (
+              {activeRoot && (
                 <Page7Root
                   collapseAllState={collapseAllState}
                   isDragRoot={isDragRoot}
                   isDragLvl1={isDragLvl1}
-                  column={activeColumn}
-                  deleteColumn={deleteColumn}
-                  updateColumn={updateColumn}
-                  createTask={createTask}
-                  tasks={lvl1.filter((task) => task.columnId)}
-                  deleteTask={deleteTask}
-                  updateTask={updateTask}
+                  column={activeRoot}
+                  deleteColumn={deleteRoot}
+                  updateColumn={updateRoot}
+                  createTask={createLvl1}
+                  tasks={lvls1.filter((task) => task.columnId)}
+                  deleteTask={deleteLvl1}
+                  updateTask={updateLvl1}
                 />
               )}
-              {activeTask && (
+              {activeLvl1 && (
                 <Page7Lvl2
                   isDragLvl1={isDragLvl1}
-                  task={activeTask}
-                  deleteTask={deleteTask}
-                  updateTask={updateColumn}
+                  task={activeLvl1}
+                  deleteTask={deleteLvl1}
+                  updateTask={updateRoot}
                 />
               )}
             </DragOverlay>,
@@ -309,7 +319,7 @@ function Page() {
           <Button
             type="primary"
             className="test7-container-addChater-btn"
-            onClick={() => createNewColumn()}
+            onClick={() => createNewRoot()}
           >
             <PlusCircleOutlined />
             ADD_LVL1

@@ -40,7 +40,7 @@ export default function Page7Lvl2(props: Props) {
   } = useSortable({
     id: task.id,
     data: {
-      type: "Task",
+      type: "Lvl1",
       task,
     },
     disabled: editMode,

@@ -80,7 +80,7 @@ export default function Page7Root(props: Props) {
   } = useSortable({
     id: column.id,
     data: {
-      type: "Column",
+      type: "Root",
       column,
     },
     disabled: editMode,
