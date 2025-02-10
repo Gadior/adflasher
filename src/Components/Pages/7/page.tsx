@@ -282,12 +282,11 @@ function Page() {
 
     // ~ Если id наведенного и активного не равны, то
     if (activeId !== overId) {
-      console.table("3");
       // ~ Если перемещение между карточками в рамкх root карточки
       let activeType = active.data.current?.type === "Lvl2";
       let overType = over.data.current?.type === "Lvl1";
       if (activeType && overType && isOverAColumn) {
-        console.table("2");
+        console.table("4");
         const currentLvlId = over.data.current?.lvl1.id;
         const currentColId = over.data.current?.lvl1.columnId;
         setLvls2((level) => {
@@ -329,6 +328,7 @@ function Page() {
 
     // Drop over another Task
     if (isActiveATask && isOverATask) {
+      console.table("0");
       setLvls1((tasks) => {
         // Если таски в одной колонке
         const activeIndex = tasks.findIndex((t) => t.id === activeId);
@@ -339,10 +339,22 @@ function Page() {
 
         return arrayMove(tasks, activeIndex, overIndex);
       });
+      // setLvls2((tasks) => {
+      //   console.log(tasks);
+      //   // Если таски в одной колонке
+      //   const activeIndex = tasks.findIndex((t) => t.id === activeId);
+      //   const overIndex = tasks.findIndex((t) => t.id === overId);
+
+      //   // Если таски в разных колонках
+      //   tasks[activeIndex].lvl1Id = over.data.current?.lvl1.id;
+
+      //   return arrayMove(tasks, activeIndex, overIndex);
+      // });
     }
 
     // Drop over another Column
     if (isActiveATask && isOverAColumn) {
+      // !!!!
       setLvls1((tasks) => {
         // Если таски в одной колонке
         const activeIndex = tasks.findIndex((t) => t.id === activeId);

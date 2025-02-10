@@ -159,7 +159,7 @@ export default function Page7Lvl2(props: Props) {
           <Flex gap={20}>
             <DragOutlined />
 
-            {lvl1.columnId}
+            {lvl1.content}
           </Flex>
 
           {mouseOverFiled && (
