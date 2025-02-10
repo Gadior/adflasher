@@ -170,7 +170,7 @@ function Page() {
   // #region
   const deleteLvl2 = (id: type_Id) => {
     const newlvl = lvls2.filter((level: type_Lvl2) => level.id !== id);
-    setLvls1(newlvl);
+    setLvls2(newlvl);
   };
   // #endregion
 
@@ -199,7 +199,6 @@ function Page() {
     }
 
     if (e.active.data.current?.type === "Lvl1") {
-      // console.log(e.active.data.current);
       setIsDragLvl1((prev) => true);
       setActiveLvl1(e.active.data.current.lvl1);
       return;
@@ -216,13 +215,12 @@ function Page() {
   // ~ завершение движения
   const onDragEnd = (e: DragEndEvent) => {
     setIsDragRoot((prev) => false);
+    setIsDragLvl1((prev) => false);
     setActiveRoot(null);
     setActiveLvl1(null);
     setActiveLvl2(null);
     // ~ у нас два значения. Активный и наведенные объекты
     const { active, over } = e;
-    console.log("active, over");
-    console.log(active, over);
 
     // ~ Проверка / null -> если нету второй карточки, второй объект нуль
     if (!over) return;
@@ -230,6 +228,7 @@ function Page() {
     const activeColumnId = active.id;
     const overColumnId = over.id;
 
+    // ! не трогать
     // ~ если id совпадают, то
     if (activeColumnId === overColumnId) return;
     // ~ иначе
@@ -258,6 +257,70 @@ function Page() {
     // ~ если id совпадают, то
     if (activeId === overId) return;
 
+    // ___ общая проверка. Не приходим ли мы в root?
+    const isOverAColumn = over.data.current?.type === "Root";
+    const isOverALvl1 = over.data.current?.type === "Lvl1";
+
+    // ___ для lvl2
+    const isActiveALvl2 = active.data.current?.type === "Lvl2";
+    const isOverALvl2 = over.data.current?.type === "Lvl2";
+
+    // + перемещение в между карточками lvl2
+    if (isActiveALvl2 && isOverALvl2) {
+      console.table("4");
+      setLvls2((level) => {
+        // Если таски в одной колонке
+        const activeIndex = level.findIndex((t) => t.id === activeId);
+        const overIndex = level.findIndex((t) => t.id === overId);
+        // Если таски в разных колонках
+        level[activeIndex].lvl1Id = level[overIndex].lvl1Id;
+        level[activeIndex].columnId = level[overIndex].columnId;
+
+        return arrayMove(level, activeIndex, overIndex);
+      });
+    }
+
+    // ~ Если id наведенного и активного не равны, то
+    if (activeId !== overId) {
+      console.table("3");
+      // ~ Если перемещение между карточками в рамкх root карточки
+      let activeType = active.data.current?.type === "Lvl2";
+      let overType = over.data.current?.type === "Lvl1";
+      if (activeType && overType && isOverAColumn) {
+        console.table("2");
+        const currentLvlId = over.data.current?.lvl1.id;
+        const currentColId = over.data.current?.lvl1.columnId;
+        setLvls2((level) => {
+          const columnIndex = level.findIndex((t) => t.id === activeId);
+          const overIndex = level.findIndex((t) => t.lvl1Id === overId);
+
+          level[columnIndex].lvl1Id = currentLvlId;
+          level[columnIndex].columnId = currentColId;
+
+          return arrayMove(level, columnIndex, overIndex);
+        });
+      }
+
+      // Если нужно перенести между колонками и тасками
+      if (isOverALvl1 && !isOverAColumn && activeType) {
+        console.table("1");
+        setLvls2((level) => {
+          const currentRootId = over.data.current?.lvl1.columnId;
+          const currentLvlId = over.data.current?.lvl1.id;
+          const columnIndex = level.findIndex((t) => t.id === activeId);
+          const overIndex = level.findIndex((t) => t.lvl1Id === overId);
+
+          // Если таски в разных колонках
+          level[columnIndex].columnId = currentRootId;
+          level[columnIndex].lvl1Id = currentLvlId;
+
+          // console.log(level);
+          return arrayMove(level, columnIndex, overIndex);
+        });
+      }
+    }
+
+    // ___ для lvl1
     const isActiveATask = active.data.current?.type === "Lvl1";
     const isOverATask = over.data.current?.type === "Lvl1";
 
@@ -278,7 +341,6 @@ function Page() {
       });
     }
 
-    const isOverAColumn = over.data.current?.type === "Root";
     // Drop over another Column
     if (isActiveATask && isOverAColumn) {
       setLvls1((tasks) => {
@@ -291,8 +353,6 @@ function Page() {
         return arrayMove(tasks, activeIndex, activeIndex);
       });
     }
-
-    // ! нужна доп логика. Есть наведение на другой lvl2
   };
   // #endregion
 
@@ -308,8 +368,6 @@ function Page() {
       <Button
         style={{ marginBottom: 20, width: "250px" }}
         onClick={() => {
-          // setIsDragRoot(true);
-          // setIsDragLvl1(true);
           setCollapseAllState(!collapseAllState);
         }}
       >
@@ -379,6 +437,7 @@ function Page() {
               )}
               {activeLvl1 && (
                 <Page7Lvl2
+                  isDragRoot={isDragRoot}
                   isDragLvl1={isDragLvl1}
                   isDragLvl2={isDragLvl2}
                   lvl1={activeLvl1}

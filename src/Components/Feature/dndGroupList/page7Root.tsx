@@ -114,7 +114,6 @@ export default function Page7Root(props: Props) {
     );
   }
   // #endregion
-
   return (
     <div
       // Область, которая будет drageble
@@ -150,7 +149,7 @@ export default function Page7Root(props: Props) {
           </div>
 
           {/* Здесь функционал редактирования имени раздела */}
-          {!editMode && <div> {column.title} </div>}
+          {!editMode && <div> {column.id} </div>}
           {editMode && (
             <Input
               autoFocus
@@ -215,6 +214,7 @@ export default function Page7Root(props: Props) {
               <SortableContext items={tasksIds}>
                 {lvl1.map((level: type_Lvl1) => (
                   <PageLvl2
+                    isDragRoot={isDragRoot}
                     isDragLvl1={isDragLvl1}
                     key={level.id}
                     lvl1={level}

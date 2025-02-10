@@ -15,6 +15,7 @@ import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 interface Props {
+  isDragRoot;
   isDragLvl1;
   isDragLvl2;
   lvl1: type_Lvl1;
@@ -29,6 +30,7 @@ export default function Page7Lvl2(props: Props) {
   // ___ const
   // #region
   const {
+    isDragRoot,
     isDragLvl1,
     isDragLvl2,
     lvl1,
@@ -40,7 +42,6 @@ export default function Page7Lvl2(props: Props) {
     updateLvl2,
   } = props;
   // #endregion
-
   // ___ state
   // #region
   // ~ наведение мыши на карточку
@@ -158,7 +159,7 @@ export default function Page7Lvl2(props: Props) {
           <Flex gap={20}>
             <DragOutlined />
 
-            {lvl1.content}
+            {lvl1.columnId}
           </Flex>
 
           {mouseOverFiled && (
@@ -173,28 +174,31 @@ export default function Page7Lvl2(props: Props) {
           )}
         </Flex>
       </Flex>
-      {/* ~ container */}
-      <SortableContext items={lvls2Ids}>
-        {lvls2.map((level: type_Lvl2) => (
-          <Page7Lvl3
-            key={level.id}
-            column={level}
-            isDragLvl2={isDragLvl2}
-            task={level}
-            deleteLvl2={deleteLvl2}
-            updateLvl2={updateLvl2}
-          />
-        ))}
-      </SortableContext>
-
-      <Button
-        danger
-        onClick={() => {
-          createLvl2(lvl1.columnId, lvl1.id);
-        }}
-      >
-        ADD_INCLUDE3
-      </Button>
+      {!isDragLvl1 && (
+        <>
+          {/* ~ container */}
+          <SortableContext items={lvls2Ids}>
+            {lvls2.map((level: type_Lvl2) => (
+              <Page7Lvl3
+                key={level.id}
+                column={level}
+                isDragLvl2={isDragLvl2}
+                task={level}
+                deleteLvl2={deleteLvl2}
+                updateLvl2={updateLvl2}
+              />
+            ))}
+          </SortableContext>
+          <Button
+            danger
+            onClick={() => {
+              createLvl2(lvl1.columnId, lvl1.id);
+            }}
+          >
+            ADD_INCLUDE3
+          </Button>
+        </>
+      )}
     </Flex>
   );
 }
