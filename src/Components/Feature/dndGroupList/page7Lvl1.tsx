@@ -182,7 +182,10 @@ export default function Page7Lvl1(props: Props) {
             }}
           >
             {overMarker?.id === lvl1.id && overMarker?.type !== null && (
-              <>{overMarker?.type === "Lvl1" && <DragAndDropAnimation />}</>
+              <>
+                {overMarker?.type === "Lvl1" &&
+                  overMarker?.activeType !== "Lvl1" && <DragAndDropAnimation />}
+              </>
             )}
 
             <DragOutlined />
