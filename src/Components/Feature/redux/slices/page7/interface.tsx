@@ -25,4 +25,14 @@ export type type_Lvl2 = {
   lvl1Id: type_Id;
   content: string;
 };
+
+// #endregion
+
+// ___ CheckOver
+// #region
+export type type_CheckOver = {
+  type: string | null;
+  id: type_Id | null;
+  activeType: string | null;
+};
 // #endregion

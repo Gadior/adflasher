@@ -1,8 +1,13 @@
 // #region ~ hlop
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // ~ interface
-import { type_Root, type_Id, type_Lvl1, type_Lvl2 } from "./interface.tsx";
-import { act } from "react";
+import {
+  type_Root,
+  type_Id,
+  type_Lvl1,
+  type_Lvl2,
+  type_CheckOver,
+} from "./interface.tsx";
 
 // ~ interface
 // #region ~ счетчик сердец
@@ -17,6 +22,7 @@ interface int_State {
   isDragLvl1: boolean;
   isDragLvl2: boolean;
   collapseAllState: boolean;
+  checkOver: type_CheckOver | null;
 }
 const initialState: int_State = {
   // - главный слой
@@ -39,6 +45,8 @@ const initialState: int_State = {
   isDragLvl2: false,
   // - схлопнуть все карточки
   collapseAllState: false,
+  // - маска [] -> {type: 'Root', id: id}. маска для выявления наведения
+  checkOver: null,
 };
 // #region ~ счетчик сердец
 
@@ -245,6 +253,24 @@ const page7_dataCntl = createSlice({
       state.collapseAllState = action.payload.fl;
     },
     // #endregion
+
+    // ___ checkOver
+    // #region
+    setCheckOver: (
+      state,
+      action: PayloadAction<{
+        type: string | null;
+        id: type_Id | null;
+        activeType: string | null;
+      }>
+    ) => {
+      state.checkOver = {
+        type: action.payload.type,
+        id: action.payload.id,
+        activeType: action.payload.activeType,
+      };
+    },
+    // #endregion
   },
 });
 // #endregion ~ функции
@@ -264,6 +290,8 @@ export const { setIsDragRoot, setIsDragLvl1, setIsDragLvl2 } =
   page7_dataCntl.actions;
 // - collapse
 export const { setCollapseAllState } = page7_dataCntl.actions;
+// - checkOver
+export const { setCheckOver } = page7_dataCntl.actions;
 
 // ~ Экспорт редуьюсера для проводника store
 export default page7_dataCntl.reducer;

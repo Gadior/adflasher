@@ -8,8 +8,9 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // ~ regux
-import { useAppDispatch } from "../redux/hooks.tsx";
+import { useAppDispatch, useAppSelector } from "../redux/hooks.tsx";
 import { deleteLvls2, updateLvls2 } from "../redux/slices/page7/dataCntl.tsx";
+import DragAndDropAnimation from "../../Shared/dragAndDropAnimation.tsx";
 // #endregion
 
 export default function Page7Lvl2(props: any) {
@@ -38,6 +39,9 @@ export default function Page7Lvl2(props: any) {
   const [mouseOverFiled, setMouseOverFiled] = useState<boolean>(false);
   // ~ edit Mode
   const [editMode, setEditMode] = useState<boolean>(false);
+
+  // ~ маркер наведенного состояния
+  let overMarker = useAppSelector((state) => state.page7_dataCntl.checkOver);
   // #endregion
 
   // #endregion
@@ -130,6 +134,10 @@ export default function Page7Lvl2(props: any) {
         toggleEditMode();
       }}
     >
+      {overMarker?.id === lvl2.id && overMarker?.type !== null && (
+        <>{overMarker?.type !== "Lvl2" && <DragAndDropAnimation />}</>
+      )}
+
       <Flex gap={20} {...attributes} {...listeners}>
         <DragOutlined />
         {lvl2.content}

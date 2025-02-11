@@ -17,6 +17,7 @@ import {
   deleteLvls1,
   updateLvls1,
 } from "../redux/slices/page7/dataCntl.tsx";
+import DragAndDropAnimation from "../../Shared/dragAndDropAnimation.tsx";
 // #endregion
 
 interface Props {
@@ -56,6 +57,8 @@ export default function Page7Lvl1(props: Props) {
   }, [lvls2]);
   // ~ edit Mode
   const [editMode, setEditMode] = useState<boolean>(false);
+  // ~ маркер наведенного состояния
+  let overMarker = useAppSelector((state) => state.page7_dataCntl.checkOver);
 
   // ___ схлопнуть "все" __кнопка __root
   // #region
@@ -178,6 +181,10 @@ export default function Page7Lvl1(props: Props) {
               toggleEditMode();
             }}
           >
+            {overMarker?.id === lvl1.id && overMarker?.type !== null && (
+              <>{overMarker?.type === "Lvl1" && <DragAndDropAnimation />}</>
+            )}
+
             <DragOutlined />
 
             {lvl1.content}

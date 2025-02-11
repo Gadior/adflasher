@@ -1,10 +1,11 @@
 // ___ import
 // #region
-import React, { act, useMemo } from "react";
+import React, { act, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 import { Flex, Button } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
+import DragAndDropAnimation from "../../Shared/dragAndDropAnimation.tsx";
 
 // ~ dnd
 import {
@@ -45,6 +46,7 @@ import {
   setIsDragLvl1,
   setIsDragLvl2,
   setCollapseAllState,
+  setCheckOver,
 } from "../../Feature/redux/slices/page7/dataCntl.tsx";
 // #endregion
 
@@ -120,16 +122,10 @@ function Page() {
     dispatch(setActiveRoot({ rt: null }));
     dispatch(setActiveLvl1({ rt: null }));
     dispatch(setActiveLvl2({ rt: null }));
+    dispatch(setCheckOver({ type: null, id: null, activeType: null }));
 
     // ~ у нас два значения. Активный и наведенные объекты
     const { active, over } = e;
-
-    // console.log("===================");
-    // console.log("===================");
-    // console.log("Active");
-    // console.log(active);
-    // console.log("Over");
-    // console.log(over);
 
     // ~ Проверка / null -> если нету второй карточки, второй объект нуль
     if (!over) return;
@@ -139,11 +135,6 @@ function Page() {
 
     const activeType = active.data.current?.type;
     const overType = over.data.current?.type;
-    // console.log(``);
-    // console.log(`activeColumnId - ${activeColumnId}`);
-    // console.log(`overColumnId - ${overColumnId}`);
-    // console.log(`activeType - ${activeType}`);
-    // console.log(`overType - ${overType}`);
 
     // ___ ROOT
     // #region
@@ -256,7 +247,6 @@ function Page() {
       activeType === "Lvl2" &&
       overType === "Lvl1"
     ) {
-      console.log("im here");
       let __data: type_Lvl2[] = [...lvls2];
       let __overLvl2Id = over.data.current?.data.id;
       let __overLvl2ColId = over.data.current?.data.columnId;
@@ -275,6 +265,31 @@ function Page() {
       }
     }
     // #endregion
+  };
+
+  // ~ при наведении
+  const onDragOver = (e: DragOverEvent) => {
+    // ~ у нас два значения. Активный и наведенные объекты
+    const { active, over } = e;
+
+    // ~ Проверка / null -> если нету второй карточки, второй объект нуль
+    if (!over) return;
+
+    // ~ Получаем id, над которым мы навели
+    const activeId = active.data.current?.data.id;
+    const overId = over.data.current?.data.id;
+
+    // ~ Получаем type, над которым мы навели
+    const activeType = active.data.current?.type;
+    const overType = over.data.current?.type;
+
+    dispatch(
+      setCheckOver({
+        type: activeId === overId ? null : overType,
+        id: overId,
+        activeType: activeId === overId ? null : activeType,
+      })
+    );
   };
 
   // #endregion
@@ -301,6 +316,7 @@ function Page() {
         sensors={sensors}
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
+        onDragOver={onDragOver}
       >
         <Flex vertical={true} justify="flex-start" align="flex-start" gap={20}>
           <SortableContext items={rootsIds}>

@@ -22,6 +22,7 @@ import {
   updateRoot,
   createLvl1,
 } from "../../Feature/redux/slices/page7/dataCntl.tsx";
+import DragAndDropAnimation from "../../Shared/dragAndDropAnimation.tsx";
 // #endregion
 
 // ~ что получаем через пропсы?
@@ -32,15 +33,19 @@ interface Props {
 }
 
 export default function Page7Root(props: Props) {
-  // ___ redux in data
-  // #region
-  const dispatch = useAppDispatch();
-  // #endregion
-
   // ___ const
   // #region
   // деструктуризация
   const { column, lvl1, lvls2 } = props;
+  // #endregion
+
+  // ___ redux in data
+  // #region
+  const dispatch = useAppDispatch();
+
+  // ~ маркер наведенного состояния
+  let overMarker = useAppSelector((state) => state.page7_dataCntl.checkOver);
+
   // #endregion
 
   // ___ state
@@ -138,6 +143,13 @@ export default function Page7Root(props: Props) {
             setEditMode(true);
           }}
         >
+          {overMarker?.id === column.id && overMarker?.type !== null && (
+            <>
+              {overMarker?.type === "Root" &&
+                overMarker?.activeType !== "Root" &&
+                overMarker?.activeType !== "Lvl2" && <DragAndDropAnimation />}
+            </>
+          )}
           {/* Иконка для перетаскивания */}
           <div
             // маркер dragged

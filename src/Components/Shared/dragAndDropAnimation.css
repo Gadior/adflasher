@@ -1,0 +1,82 @@
+/* ___ Анимация папки */
+/* Контейнер для центрирования */
+.test7-container-wrapper-addChaterContainer-container {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+.test7-container-wrapper-addChaterContainer-folder {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  width: 20px;
+  height: 15px;
+  background: #f4b400;
+  border-radius: 3px;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 0 #c98a00;
+}
+.test7-container-wrapper-addChaterContainer-folder::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  width: 8px;
+  height: 4px;
+  background: #f4b400;
+  border-radius: 3px;
+}
+
+/* Файл */
+.test7-container-wrapper-addChaterContainer-file {
+  position: absolute;
+  top: -7px;
+  left: 12px;
+  width: 10px;
+  height: 12px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: flyToFolder 2s ease-in-out infinite;
+}
+
+/* Загнутый уголок файла */
+.test7-container-wrapper-addChaterContainer-file::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 5px;
+  background: #f4b400;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* Анимация файла */
+@keyframes flyToFolder {
+  0% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 1;
+  }
+  35% {
+    transform: translate(-7px, 10px) rotate(10deg) scale(1.1);
+  }
+  50% {
+    transform: translate(-8px, 15px) rotate(-10deg) scale(0.5);
+  }
+  60% {
+    transform: translate(-8px, 18px) rotate(-10deg) scale(0);
+  }
+  100% {
+    transform: translate(-8px, 18px) rotate(-10deg) scale(0);
+  }
+  /* 60% {
+    transform: translate(-50px, 10px) rotate(-10deg) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50px, 10px) rotate(-10deg) scale(0);
+    opacity: 0;
+  } */
+}
