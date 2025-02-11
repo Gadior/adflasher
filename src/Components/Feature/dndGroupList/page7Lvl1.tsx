@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { type_Id, type_Lvl1, type_Lvl2 } from "../../Pages/7/interface.tsx";
-import { Flex, Typography, Button, Input } from "antd";
+import { type_Lvl1, type_Lvl2 } from "../../Pages/7/interface.tsx";
+import { Flex, Button, Input } from "antd";
 // const { TextArea } = Input;
 import { DeleteOutlined, DragOutlined } from "@ant-design/icons";
 import Page7Lvl2 from "./page7Lvl2.tsx";
