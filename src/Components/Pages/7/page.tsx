@@ -1,6 +1,6 @@
 // ___ import
 // #region
-import React, { useMemo } from "react";
+import React, { act, useMemo } from "react";
 import { createPortal } from "react-dom";
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 import { Flex, Button } from "antd";
@@ -91,20 +91,19 @@ function Page() {
   const onDragStart = (e: DragStartEvent) => {
     if (e.active.data.current?.type === "Root") {
       dispatch(setIsDragRoot({ fl: true }));
-      dispatch(setActiveRoot({ rt: e.active.data.current.column }));
-
+      dispatch(setActiveRoot({ rt: e.active.data.current.data }));
       return;
     }
 
     if (e.active.data.current?.type === "Lvl1") {
       dispatch(setIsDragLvl1({ fl: true }));
-      dispatch(setActiveLvl1({ rt: e.active.data.current.lvl1 }));
+      dispatch(setActiveLvl1({ rt: e.active.data.current.data }));
       return;
     }
 
     if (e.active.data.current?.type === "Lvl2") {
       dispatch(setIsDragLvl2({ fl: true }));
-      dispatch(setActiveLvl2({ rt: e.active.data.current.task }));
+      dispatch(setActiveLvl2({ rt: e.active.data.current.data }));
       return;
     }
   };
@@ -119,6 +118,13 @@ function Page() {
 
     // ~ у нас два значения. Активный и наведенные объекты
     const { active, over } = e;
+
+    console.log("===================");
+    console.log("===================");
+    console.log("Active");
+    console.log(active);
+    console.log("Over");
+    console.log(over);
 
     // ~ Проверка / null -> если нету второй карточки, второй объект нуль
     if (!over) return;
@@ -146,141 +152,142 @@ function Page() {
     // ~ у нас два значения. Активный и наведенные объекты
     const { active, over } = e;
 
-    // ~ Проверка / null -> если нету второй карточки, второй объект нуль
+    // // ~ Проверка / null -> если нету второй карточки, второй объект нуль
     if (!over) return;
-    // ~ иначе забираем id двух объектов
+    // // ~ иначе забираем id двух объектов
     const activeId = active.id;
     const overId = over.id;
 
-    // ~ если id совпадают, то
-    if (activeId === overId) return;
+    // // ~ если id совпадают, то
+    // if (activeId === overId) return;
 
-    // ___ общая проверка. Не приходим ли мы в root?
-    const isOverAColumn = over.data.current?.type === "Root";
-    const isOverALvl1 = over.data.current?.type === "Lvl1";
+    // // ___ общая проверка. Не приходим ли мы в root?
+    // const isOverAColumn = over.data.current?.type === "Root";
+    // const isOverALvl1 = over.data.current?.type === "Lvl1";
 
-    // ___ для lvl2
-    const isActiveALvl2 = active.data.current?.type === "Lvl2";
-    const isOverALvl2 = over.data.current?.type === "Lvl2";
+    // // ___ для lvl2
+    // const isActiveALvl2 = active.data.current?.type === "Lvl2";
+    // const isOverALvl2 = over.data.current?.type === "Lvl2";
 
-    // + перемещение в между карточками lvl2
-    if (isActiveALvl2 && isOverALvl2) {
-      dispatch(
-        setLvls2({
-          lvl: arrayMove(
-            lvls2.map((task) =>
-              task.id === activeId
-                ? {
-                    ...task,
-                    lvl1Id:
-                      lvls2.find((t) => t.id === overId)?.lvl1Id ?? task.lvl1Id,
-                    columnId:
-                      lvls2.find((t) => t.id === overId)?.columnId ??
-                      task.columnId,
-                  }
-                : task
-            ),
-            lvls2.findIndex((t) => t.id === activeId),
-            lvls2.findIndex((t) => t.id === overId)
-          ),
-        })
-      );
-    }
+    // // + перемещение в между карточками lvl2
+    // if (isActiveALvl2 && isOverALvl2) {
+    //   dispatch(
+    //     setLvls2({
+    //       lvl: arrayMove(
+    //         lvls2.map((task) =>
+    //           task.id === activeId
+    //             ? {
+    //                 ...task,
+    //                 lvl1Id:
+    //                   lvls2.find((t) => t.id === overId)?.lvl1Id ?? task.lvl1Id,
+    //                 columnId:
+    //                   lvls2.find((t) => t.id === overId)?.columnId ??
+    //                   task.columnId,
+    //               }
+    //             : task
+    //         ),
+    //         lvls2.findIndex((t) => t.id === activeId),
+    //         lvls2.findIndex((t) => t.id === overId)
+    //       ),
+    //     })
+    //   );
+    // }
 
-    // ~ Если id наведенного и активного не равны, то
-    if (activeId !== overId) {
-      // ~ Если перемещение между карточками в рамкх root карточки
-      let activeType = active.data.current?.type === "Lvl2";
-      let overType = over.data.current?.type === "Lvl1";
-      if (activeType && overType && isOverAColumn) {
-        const currentLvlId = over.data.current?.lvl1.id;
-        const currentColId = over.data.current?.lvl1.columnId;
+    // // ~ Если id наведенного и активного не равны, то
+    // if (activeId !== overId) {
+    //   // ~ Если перемещение между карточками в рамкх root карточки
+    //   let activeType = active.data.current?.type === "Lvl2";
+    //   let overType = over.data.current?.type === "Lvl1";
+    //   if (activeType && overType && isOverAColumn) {
+    //     const currentLvlId = over.data.current?.lvl1.id;
+    //     const currentColId = over.data.current?.lvl1.columnId;
 
-        dispatch(
-          setLvls2({
-            lvl: arrayMove(
-              lvls2.map((task) =>
-                task.id === activeId
-                  ? {
-                      ...task,
-                      lvl1Id: currentLvlId,
-                      columnId: currentColId,
-                    }
-                  : task
-              ),
-              lvls2.findIndex((t) => t.id === activeId),
-              lvls2.findIndex((t) => t.lvl1Id === overId)
-            ),
-          })
-        );
-      }
+    //     dispatch(
+    //       setLvls2({
+    //         lvl: arrayMove(
+    //           lvls2.map((task) =>
+    //             task.id === activeId
+    //               ? {
+    //                   ...task,
+    //                   lvl1Id: currentLvlId,
+    //                   columnId: currentColId,
+    //                 }
+    //               : task
+    //           ),
+    //           lvls2.findIndex((t) => t.id === activeId),
+    //           lvls2.findIndex((t) => t.lvl1Id === overId)
+    //         ),
+    //       })
+    //     );
+    //   }
 
-      // Если нужно перенести между колонками и тасками
-      if (isOverALvl1 && !isOverAColumn && activeType) {
-        dispatch(
-          setLvls2({
-            lvl: arrayMove(
-              lvls2.map((task) =>
-                task.id === activeId
-                  ? {
-                      ...task,
-                      columnId:
-                        over.data.current?.lvl1.columnId ?? task.columnId,
-                      lvl1Id: over.data.current?.lvl1.id ?? task.lvl1Id,
-                    }
-                  : task
-              ),
-              lvls2.findIndex((t) => t.id === activeId),
-              lvls2.findIndex((t) => t.lvl1Id === overId)
-            ),
-          })
-        );
-      }
-    }
+    //   // Если нужно перенести между колонками и тасками
+    //   if (isOverALvl1 && !isOverAColumn && activeType) {
+    //     dispatch(
+    //       setLvls2({
+    //         lvl: arrayMove(
+    //           lvls2.map((task) =>
+    //             task.id === activeId
+    //               ? {
+    //                   ...task,
+    //                   columnId:
+    //                     over.data.current?.lvl1.columnId ?? task.columnId,
+    //                   lvl1Id: over.data.current?.lvl1.id ?? task.lvl1Id,
+    //                 }
+    //               : task
+    //           ),
+    //           lvls2.findIndex((t) => t.id === activeId),
+    //           lvls2.findIndex((t) => t.lvl1Id === overId)
+    //         ),
+    //       })
+    //     );
+    //   }
+    // }
 
-    // ___ для lvl1
-    const isActiveATask = active.data.current?.type === "Lvl1";
-    const isOverATask = over.data.current?.type === "Lvl1";
+    // // ___ для lvl1
 
-    // Если нет активного таска - выходим
-    if (!isActiveATask) return;
+    // const isActiveATask = active.data.current?.type === "Lvl1";
+    // const isOverATask = over.data.current?.type === "Lvl1";
 
-    // Drop over another Task
-    if (isActiveATask && isOverATask) {
-      dispatch(
-        setLvls1({
-          lvl: arrayMove(
-            lvls1.map((task) =>
-              task.id === activeId
-                ? {
-                    ...task,
-                    columnId:
-                      lvls1.find((t) => t.id === overId)?.columnId ??
-                      task.columnId,
-                  }
-                : task
-            ),
-            lvls1.findIndex((t) => t.id === activeId),
-            lvls1.findIndex((t) => t.id === overId)
-          ),
-        })
-      );
-    }
+    // // Если нет активного таска - выходим
+    // if (!isActiveATask) return;
 
-    // Drop over another Column
-    if (isActiveATask && isOverAColumn) {
-      dispatch(
-        setLvls1({
-          lvl: arrayMove(
-            lvls1.map((task) =>
-              task.id === activeId ? { ...task, columnId: overId } : task
-            ),
-            lvls1.findIndex((t) => t.id === activeId),
-            lvls1.findIndex((t) => t.id === activeId) // Перемещение на то же место
-          ),
-        })
-      );
-    }
+    // // Drop over another Task
+    // if (isActiveATask && isOverATask) {
+    //   dispatch(
+    //     setLvls1({
+    //       lvl: arrayMove(
+    //         lvls1.map((task) =>
+    //           task.id === activeId
+    //             ? {
+    //                 ...task,
+    //                 columnId:
+    //                   lvls1.find((t) => t.id === overId)?.columnId ??
+    //                   task.columnId,
+    //               }
+    //             : task
+    //         ),
+    //         lvls1.findIndex((t) => t.id === activeId),
+    //         lvls1.findIndex((t) => t.id === overId)
+    //       ),
+    //     })
+    //   );
+    // }
+
+    // // Drop over another Column
+    // if (isActiveATask && isOverAColumn) {
+    //   dispatch(
+    //     setLvls1({
+    //       lvl: arrayMove(
+    //         lvls1.map((task) =>
+    //           task.id === activeId ? { ...task, columnId: overId } : task
+    //         ),
+    //         lvls1.findIndex((t) => t.id === activeId),
+    //         lvls1.findIndex((t) => t.id === activeId) // Перемещение на то же место
+    //       ),
+    //     })
+    //   );
+    // }
   };
   // #endregion
 

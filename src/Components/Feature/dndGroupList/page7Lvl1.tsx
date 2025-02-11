@@ -84,7 +84,7 @@ export default function Page7Lvl1(props: Props) {
     id: lvl1.id,
     data: {
       type: "Lvl1",
-      lvl1,
+      data: lvl1,
     },
     disabled: editMode,
   });

@@ -55,7 +55,7 @@ export default function Page7Lvl2(props: any) {
     id: lvl2.id,
     data: {
       type: "Lvl2",
-      task: lvl2,
+      data: lvl2,
     },
     disabled: editMode,
   });

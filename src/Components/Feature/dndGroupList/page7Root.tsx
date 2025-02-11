@@ -96,7 +96,7 @@ export default function Page7Root(props: Props) {
     id: column.id,
     data: {
       type: "Root",
-      column,
+      data: column,
     },
     disabled: editMode,
   });
