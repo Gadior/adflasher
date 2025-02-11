@@ -340,15 +340,20 @@ function Page() {
         return arrayMove(tasks, activeIndex, overIndex);
       });
       // setLvls2((tasks) => {
-      //   console.log(tasks);
+      //   const __task = tasks.map((it) => {
+      //     return { ...it, columnId: activeId };
+      //   });
       //   // Если таски в одной колонке
-      //   const activeIndex = tasks.findIndex((t) => t.id === activeId);
-      //   const overIndex = tasks.findIndex((t) => t.id === overId);
+      //   // const activeIndex = tasks.findIndex((t) => t.id === activeId);
+      //   // const overIndex = tasks.findIndex((t) => t.id === overId);
 
+      //   // console.log("activeIndex");
+      //   // console.log(overIndex);
       //   // Если таски в разных колонках
-      //   tasks[activeIndex].lvl1Id = over.data.current?.lvl1.id;
+      //   // tasks[overIndex].columnId = activeId;
 
-      //   return arrayMove(tasks, activeIndex, overIndex);
+      //   // return arrayMove(tasks, overIndex, overIndex);
+      //   return __task;
       // });
     }
 
@@ -364,9 +369,22 @@ function Page() {
 
         return arrayMove(tasks, activeIndex, activeIndex);
       });
+      // setLvls2((tasks) => {
+      //   // Если таски в одной колонке
+      //   const activeIndex = tasks.findIndex((t) => t.id === activeId);
+
+      //   // Если таски в разных колонках
+      //   // tasks[activeIndex].columnId = activeId;
+      //   // tasks[activeIndex].lvl1Id = overId;
+
+      //   return arrayMove(tasks, activeIndex, activeIndex);
+      // });
     }
   };
   // #endregion
+
+  console.log("==========");
+  console.log(lvls2);
 
   // #endregion
   return (
