@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Flex, Typography, Button, Input } from "antd";
-import Icon, {
+import { Flex, Button, Input } from "antd";
+import {
   DeleteOutlined,
   PlusCircleOutlined,
   DragOutlined,

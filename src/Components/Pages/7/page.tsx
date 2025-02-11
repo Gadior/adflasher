@@ -5,7 +5,6 @@ import { createPortal } from "react-dom";
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 import { Flex, Button } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
-import DragAndDropAnimation from "../../Shared/dragAndDropAnimation.tsx";
 
 // ~ dnd
 import {
