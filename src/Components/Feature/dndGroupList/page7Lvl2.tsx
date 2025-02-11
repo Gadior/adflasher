@@ -15,7 +15,7 @@ import { deleteLvls2, updateLvls2 } from "../redux/slices/page7/dataCntl.tsx";
 export default function Page7Lvl2(props: any) {
   // ___ const
   // #region
-  const { task } = props;
+  const { lvl2 } = props;
   // #endregion
 
   // ___ redux in data
@@ -28,16 +28,18 @@ export default function Page7Lvl2(props: any) {
   // ___ states  с названиями для формы
   // #region
   // ~ заголовок
-  const [titleState, setTitleState] = useState<string>(task.content);
+  const [titleState, setTitleState] = useState<string>(lvl2.content);
   useEffect(() => {
-    setTitleState(task.content);
-  }, [task.content]);
+    setTitleState(lvl2.content);
+  }, [lvl2.content]);
   // #endregion
 
   // ~ наведение мыши на карточку
   const [mouseOverFiled, setMouseOverFiled] = useState<boolean>(false);
   // ~ edit Mode
   const [editMode, setEditMode] = useState<boolean>(false);
+  // #endregion
+
   // #endregion
 
   // ___ dnd
@@ -50,10 +52,10 @@ export default function Page7Lvl2(props: any) {
     transition,
     isDragging,
   } = useSortable({
-    id: task.id,
+    id: lvl2.id,
     data: {
       type: "Lvl2",
-      task,
+      task: lvl2,
     },
     disabled: editMode,
   });
@@ -90,12 +92,12 @@ export default function Page7Lvl2(props: any) {
           autoFocus
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              dispatch(updateLvls2({ id: task.id, content: titleState }));
+              dispatch(updateLvls2({ id: lvl2.id, content: titleState }));
               toggleEditMode();
             }
           }}
           onBlur={() => {
-            dispatch(updateLvls2({ id: task.id, content: titleState }));
+            dispatch(updateLvls2({ id: lvl2.id, content: titleState }));
             toggleEditMode();
           }}
           onChange={(e) => {
@@ -130,14 +132,14 @@ export default function Page7Lvl2(props: any) {
     >
       <Flex gap={20} {...attributes} {...listeners}>
         <DragOutlined />
-        {task.content}
+        {lvl2.content}
       </Flex>
 
       {mouseOverFiled && (
         <button
           className="test7-container-wrapper-addChaterContainer-title-delBtn"
           onClick={() => {
-            dispatch(deleteLvls2({ id: task.id }));
+            dispatch(deleteLvls2({ id: lvl2.id }));
           }}
         >
           <DeleteOutlined style={{ padding: 0, margin: 0 }} />

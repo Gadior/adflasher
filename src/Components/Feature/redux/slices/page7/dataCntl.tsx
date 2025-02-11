@@ -21,12 +21,15 @@ interface int_State {
 const initialState: int_State = {
   // - главный слой
   roots: [] as type_Root[],
+  // -- слой для отображение портала
   activeRoot: null,
   // - второй слой
   lvls1: [] as type_Lvl1[],
+  // -- слой для отображение портала
   activeLvl1: null,
   // - третий слой
   lvls2: [] as type_Lvl2[],
+  // -- слой для отображение портала
   activeLvl2: null,
   // - если драгать root слои
   isDragRoot: false,
@@ -117,6 +120,41 @@ const page7_dataCntl = createSlice({
     setActiveLvl1: (state, action: PayloadAction<{ rt: type_Lvl1 | null }>) => {
       state.activeLvl1 = action.payload.rt;
     },
+
+    // ~ CREATE
+    createLvl1: (state, action: PayloadAction<{ id: type_Id }>) => {
+      // ~ element
+      let __columnId = action.payload.id;
+      const newLvl1: type_Lvl1 = {
+        id: generateID(),
+        columnId: __columnId,
+        content: `include 2_ ${state.lvls1.length + 1}`,
+      };
+      // ~ save state
+      state.lvls1 = [...state.lvls1, newLvl1];
+    },
+
+    // ~ DELETE
+    deleteLvls1: (state, action: PayloadAction<{ id: type_Id }>) => {
+      // ~ delete in root
+      const newlvl = state.lvls1.filter(
+        (filt: type_Lvl1) => filt.id !== action.payload.id
+      );
+      state.lvls1 = newlvl;
+    },
+
+    // ~ UPDATE
+    updateLvls1: (
+      state,
+      action: PayloadAction<{ id: type_Id; content: string }>
+    ) => {
+      const newLvl = state.lvls1.map((level: type_Lvl1) => {
+        if (level.id !== action.payload.id) return level;
+        let __title = action.payload.content;
+        return { ...level, content: __title };
+      });
+      state.lvls1 = newLvl;
+    },
     // #endregion
 
     // ___ lvls2
@@ -204,7 +242,8 @@ const page7_dataCntl = createSlice({
 export const { setRoots, setActiveRoot, createRoot, deleteRoot, updateRoot } =
   page7_dataCntl.actions;
 // - lvls1
-export const { setLvls1, setActiveLvl1 } = page7_dataCntl.actions;
+export const { setLvls1, setActiveLvl1, createLvl1, deleteLvls1, updateLvls1 } =
+  page7_dataCntl.actions;
 // - lvls2
 export const { setLvls2, setActiveLvl2, createLvl2, deleteLvls2, updateLvls2 } =
   page7_dataCntl.actions;

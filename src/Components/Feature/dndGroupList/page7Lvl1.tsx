@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { type_Id, type_Lvl1, type_Lvl2 } from "../../Pages/7/interface.tsx";
 import { Flex, Typography, Button, Input } from "antd";
 // const { TextArea } = Input;
@@ -12,24 +12,35 @@ import { CSS } from "@dnd-kit/utilities";
 // ~ regux
 // #region
 import { useAppDispatch, useAppSelector } from "../redux/hooks.tsx";
-import { createLvl2 } from "../redux/slices/page7/dataCntl.tsx";
+import {
+  createLvl2,
+  deleteLvls1,
+  updateLvls1,
+} from "../redux/slices/page7/dataCntl.tsx";
 // #endregion
 
 interface Props {
   lvl1: type_Lvl1;
-  deleteLvl1: (id: type_Id) => void;
-  updateLvl1: (id: type_Id, content: string) => void;
   lvls2: type_Lvl2[];
 }
 export default function Page7Lvl1(props: Props) {
   // ___ const
   // #region
-  const { lvl1, deleteLvl1, updateLvl1, lvls2 } = props;
+  const { lvl1, lvls2 } = props;
   // #endregion
 
   // ___ redux in data
   // #region
   const dispatch = useAppDispatch();
+  // #endregion
+
+  // ___ states  с названиями для формы
+  // #region
+  // ~ заголовок
+  const [titleState, setTitleState] = useState<string>(lvl1.content);
+  useEffect(() => {
+    setTitleState(lvl1.content);
+  }, [lvl1.content]);
   // #endregion
 
   // ~ Драг слоя на lvl1
@@ -45,6 +56,19 @@ export default function Page7Lvl1(props: Props) {
   }, [lvls2]);
   // ~ edit Mode
   const [editMode, setEditMode] = useState<boolean>(false);
+
+  // ___ схлопнуть "все" __кнопка __root
+  // #region
+  // ~ схлапывание карточек
+  const collapseAllState = useAppSelector(
+    (state) => state.page7_dataCntl.collapseAllState
+  );
+  // ~ схлапывание группы данных
+  const [isCollapse, setIsCollapse] = useState<boolean>(false);
+  useEffect(() => {
+    setIsCollapse((prev) => true);
+  }, [collapseAllState]);
+  // #endregion
   // #endregion
 
   // ___ dnd
@@ -103,18 +127,20 @@ export default function Page7Lvl1(props: Props) {
       >
         <Input
           placeholder="Введите название задачи"
-          value={lvl1.content}
+          value={titleState}
           autoFocus
           onKeyDown={(e) => {
             if (e.key === "Enter") {
+              dispatch(updateLvls1({ id: lvl1.id, content: titleState }));
               toggleEditMode();
             }
           }}
           onBlur={() => {
+            dispatch(updateLvls1({ id: lvl1.id, content: titleState }));
             toggleEditMode();
           }}
           onChange={(e) => {
-            updateLvl1(lvl1.id, e.target.value);
+            setTitleState(e.target.value);
           }}
           maxLength={30}
           showCount={true}
@@ -136,10 +162,6 @@ export default function Page7Lvl1(props: Props) {
         onMouseOut={() => {
           setMouseOverFiled(false);
         }}
-        // режим редактировать
-        onClick={() => {
-          toggleEditMode();
-        }}
         className="test7-container-wrapper-addChaterContainer-task"
       >
         <Flex
@@ -149,42 +171,72 @@ export default function Page7Lvl1(props: Props) {
           align="center"
           style={{ width: "100%" }}
         >
-          <Flex gap={20}>
+          <Flex
+            gap={20}
+            // режим редактировать
+            onClick={() => {
+              toggleEditMode();
+            }}
+          >
             <DragOutlined />
 
             {lvl1.content}
           </Flex>
-
-          {mouseOverFiled && (
-            <button
-              className="test7-container-wrapper-addChaterContainer-title-delBtn"
-              onClick={() => {
-                deleteLvl1(lvl1.id);
-              }}
-            >
-              <DeleteOutlined style={{ padding: 0, margin: 0 }} />
-            </button>
-          )}
+          <Flex gap={10}>
+            {mouseOverFiled && (
+              <button
+                className="test7-container-wrapper-addChaterContainer-title-delBtn"
+                onClick={() => {
+                  dispatch(deleteLvls1({ id: lvl1.id }));
+                }}
+              >
+                <DeleteOutlined style={{ padding: 0, margin: 0 }} />
+              </button>
+            )}
+            {isCollapse ? (
+              <Button
+                type="link"
+                onClick={() => {
+                  setIsCollapse(!isCollapse);
+                }}
+              >
+                Раскрыть
+              </Button>
+            ) : (
+              <Button
+                type="link"
+                onClick={() => {
+                  setIsCollapse(!isCollapse);
+                }}
+              >
+                Схлопнуть
+              </Button>
+            )}
+          </Flex>
         </Flex>
       </Flex>
-      {!isDragLvl1 && (
+      {!isCollapse && (
         <>
-          {/* ~ container */}
-          <SortableContext items={lvls2Ids}>
-            {lvls2.map((level: type_Lvl2) => (
-              <Page7Lvl2 key={level.id} task={level} />
-            ))}
-          </SortableContext>
-          <Button
-            danger
-            onClick={() => {
-              dispatch(
-                createLvl2({ columnId: lvl1.columnId, lvl1Id: lvl1.id })
-              );
-            }}
-          >
-            ADD_INCLUDE3
-          </Button>
+          {!isDragLvl1 && (
+            <>
+              {/* ~ container */}
+              <SortableContext items={lvls2Ids}>
+                {lvls2.map((level: type_Lvl2) => (
+                  <Page7Lvl2 key={level.id} lvl2={level} />
+                ))}
+              </SortableContext>
+              <Button
+                danger
+                onClick={() => {
+                  dispatch(
+                    createLvl2({ columnId: lvl1.columnId, lvl1Id: lvl1.id })
+                  );
+                }}
+              >
+                ADD_INCLUDE3
+              </Button>
+            </>
+          )}
         </>
       )}
     </Flex>

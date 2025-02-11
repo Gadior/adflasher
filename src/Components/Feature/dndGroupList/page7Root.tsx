@@ -12,12 +12,7 @@ import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // ~ interface
-import {
-  type_Root,
-  type_Id,
-  type_Lvl1,
-  type_Lvl2,
-} from "../../Pages/7/interface.tsx";
+import { type_Root, type_Lvl1, type_Lvl2 } from "../../Pages/7/interface.tsx";
 
 // ~ regux
 // #region
@@ -25,6 +20,7 @@ import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks.tsx";
 import {
   deleteRoot,
   updateRoot,
+  createLvl1,
 } from "../../Feature/redux/slices/page7/dataCntl.tsx";
 // #endregion
 
@@ -32,9 +28,6 @@ import {
 interface Props {
   column: type_Root;
   lvl1: type_Lvl1[];
-  createLvl1: (columnId: type_Id) => void;
-  deleteLvl1: (id: type_Id) => void;
-  updateLvl1: (id: type_Id, content: string) => void;
   lvls2: type_Lvl2[];
 }
 
@@ -47,7 +40,7 @@ export default function Page7Root(props: Props) {
   // ___ const
   // #region
   // деструктуризация
-  const { column, lvl1, createLvl1, deleteLvl1, updateLvl1, lvls2 } = props;
+  const { column, lvl1, lvls2 } = props;
   // #endregion
 
   // ___ state
@@ -79,6 +72,7 @@ export default function Page7Root(props: Props) {
   // #endregion
 
   // #endregion
+
   // ___ схлопнуть "все" __кнопка __root
   // #region
   useEffect(() => {
@@ -168,6 +162,12 @@ export default function Page7Root(props: Props) {
                 dispatch(updateRoot({ id: column.id, title: titleState }));
                 setEditMode(false);
               }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  dispatch(updateRoot({ id: column.id, title: titleState }));
+                  setEditMode(false);
+                }
+              }}
             />
           )}
         </Flex>
@@ -223,8 +223,6 @@ export default function Page7Root(props: Props) {
                   <PageLvl1
                     key={level.id}
                     lvl1={level}
-                    deleteLvl1={deleteLvl1}
-                    updateLvl1={updateLvl1}
                     lvls2={lvls2.filter((lev) => {
                       return (
                         lev.columnId === level.columnId &&
@@ -237,7 +235,7 @@ export default function Page7Root(props: Props) {
               {/* ~ footer */}
               <Button
                 onClick={() => {
-                  createLvl1(column.id);
+                  dispatch(createLvl1({ id: column.id }));
                 }}
               >
                 <PlusCircleOutlined />
