@@ -360,7 +360,7 @@ function Page() {
             onClick={() => dispatch(createRoot())}
           >
             <PlusCircleOutlined />
-            ADD_LVL1
+            ADD_ROOT
           </Button>
         </Flex>
       </DndContext>
