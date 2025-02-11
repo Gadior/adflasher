@@ -5,7 +5,7 @@ import Icon, {
   PlusCircleOutlined,
   DragOutlined,
 } from "@ant-design/icons";
-import PageLvl2 from "./page7Lvl2.tsx";
+import PageLvl1 from "./page7Lvl1.tsx";
 
 // ~ dnd
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
@@ -19,15 +19,18 @@ import {
   type_Lvl2,
 } from "../../Pages/7/interface.tsx";
 
+// ~ regux
+// #region
+import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks.tsx";
+import {
+  deleteRoot,
+  updateRoot,
+} from "../../Feature/redux/slices/page7/dataCntl.tsx";
+// #endregion
+
 // ~ что получаем через пропсы?
 interface Props {
-  collapseAllState: boolean;
-  isDragRoot: boolean;
-  isDragLvl1: boolean;
-  isDragLvl2: boolean;
   column: type_Root;
-  deleteRoot: (id: type_Id) => void;
-  updateRoot: (id: type_Id, title: string) => void;
   lvl1: type_Lvl1[];
   createLvl1: (columnId: type_Id) => void;
   deleteLvl1: (id: type_Id) => void;
@@ -39,17 +42,16 @@ interface Props {
 }
 
 export default function Page7Root(props: Props) {
+  // ___ redux in data
+  // #region
+  const dispatch = useAppDispatch();
+  // #endregion
+
   // ___ const
   // #region
   // деструктуризация
   const {
-    collapseAllState,
-    isDragRoot,
-    isDragLvl1,
-    isDragLvl2,
     column,
-    deleteRoot,
-    updateRoot,
     lvl1,
     createLvl1,
     deleteLvl1,
@@ -63,6 +65,12 @@ export default function Page7Root(props: Props) {
 
   // ___ state
   // #region
+  // ~ Драг слоя на root
+  const isDragRoot = useAppSelector((state) => state.page7_dataCntl.isDragRoot);
+  const collapseAllState = useAppSelector(
+    (state) => state.page7_dataCntl.collapseAllState
+  );
+
   // ~ edit mode для редактирования полей
   const [editMode, setEditMode] = useState<boolean>(false);
   // ~ memo ids всех lvl1 вложеннойстей
@@ -73,6 +81,17 @@ export default function Page7Root(props: Props) {
   const [isCollapse, setIsCollapse] = useState<boolean>(false);
   // #endregion
 
+  // ___ form states __comp
+  // #region
+  // ___title
+  // #region
+  const [titleState, setTitleState] = useState<string>(column.title);
+  useEffect(() => {
+    setTitleState(column.title);
+  }, [column.title]);
+  // #endregion
+
+  // #endregion
   // ___ схлопнуть "все" __кнопка __root
   // #region
   useEffect(() => {
@@ -149,16 +168,17 @@ export default function Page7Root(props: Props) {
           </div>
 
           {/* Здесь функционал редактирования имени раздела */}
-          {!editMode && <div> {column.id} </div>}
+          {!editMode && <div> {column.title} </div>}
           {editMode && (
             <Input
               autoFocus
-              placeholder={column.title}
-              value={column.title}
+              placeholder="Введите название"
+              value={titleState}
               onChange={(e) => {
-                updateRoot(column.id, e.target.value);
+                setTitleState((prev) => e.target.value);
               }}
               onBlur={() => {
+                dispatch(updateRoot({ id: column.id, title: titleState }));
                 setEditMode(false);
               }}
             />
@@ -197,7 +217,7 @@ export default function Page7Root(props: Props) {
             className="test7-container-wrapper-addChaterContainer-title-delBtn"
             // type="text"
             onClick={() => {
-              deleteRoot(column.id);
+              dispatch(deleteRoot({ id: column.id }));
             }}
           >
             <DeleteOutlined style={{ padding: 0, margin: 0 }} />
@@ -213,14 +233,11 @@ export default function Page7Root(props: Props) {
               {/* ~ container */}
               <SortableContext items={tasksIds}>
                 {lvl1.map((level: type_Lvl1) => (
-                  <PageLvl2
-                    isDragRoot={isDragRoot}
-                    isDragLvl1={isDragLvl1}
+                  <PageLvl1
                     key={level.id}
                     lvl1={level}
                     deleteLvl1={deleteLvl1}
                     updateLvl1={updateLvl1}
-                    isDragLvl2={isDragLvl2}
                     lvls2={lvls2.filter((lev) => {
                       return (
                         lev.columnId === level.columnId &&

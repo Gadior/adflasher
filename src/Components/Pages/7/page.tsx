@@ -5,7 +5,7 @@ import React, { useState, useMemo, act } from "react";
 import { createPortal } from "react-dom";
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 import { Flex, Typography, Button } from "antd";
-import { PlusCircleOutlined } from "@ant-design/icons";
+import { ConsoleSqlOutlined, PlusCircleOutlined } from "@ant-design/icons";
 
 // ~ dnd
 import {
@@ -25,8 +25,26 @@ import "./page.css";
 // ~ interface
 import { type_Root, type_Id, type_Lvl1, type_Lvl2 } from "./interface.tsx";
 import Page7Root from "../../Feature/dndGroupList/page7Root.tsx";
+import Page7Lvl1 from "../../Feature/dndGroupList/page7Lvl1.tsx";
 import Page7Lvl2 from "../../Feature/dndGroupList/page7Lvl2.tsx";
-import Page7Lvl3 from "../../Feature/dndGroupList/page7Lvl3.tsx";
+
+// ~ regux
+// #region
+import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks.tsx";
+import {
+  setRoots,
+  setActiveRoot,
+  createRoot,
+  setLvls1,
+  setActiveLvl1,
+  setLvls2,
+  setActiveLvl2,
+  setIsDragRoot,
+  setIsDragLvl1,
+  setIsDragLvl2,
+  setCollapseAllState,
+} from "../../Feature/redux/slices/page7/dataCntl.tsx";
+// #endregion
 
 const { Text, Title } = Typography;
 
@@ -37,31 +55,36 @@ const generateID = (): number => {
 };
 
 function Page() {
+  // ___ redux in data
+  // #region
+  const dispatch = useAppDispatch();
+  // #endregion
+
   // ___ state
   // #region
-  // ~ data колонок
-  const [roots, setRoots] = useState<type_Root[]>([]);
-  //  ~ id колонок для отрисовки sprtableContext
+  // ~ root
+  const roots = useAppSelector((state) => state.page7_dataCntl.roots);
+  //  ~ id root
   const rootsIds = useMemo(
     () => roots.map((col: type_Root) => col.id),
     [roots]
   );
-  // ~ Данные уровня 1
-  const [lvls1, setLvls1] = useState<type_Lvl1[]>([]);
-  // ~ Данные уровня 2
-  const [lvls2, setLvls2] = useState<type_Lvl2[]>([]);
+  // ~ lvls 1
+  const lvls1 = useAppSelector((state) => state.page7_dataCntl.lvls1);
+  // ~ lvls 2
+  const lvls2 = useAppSelector((state) => state.page7_dataCntl.lvls2);
 
-  // ~ отключение вложенных полей на период драга у слоев
-  const [collapseAllState, setCollapseAllState] = useState<boolean>(false);
-  const [isDragRoot, setIsDragRoot] = useState(false);
-  const [isDragLvl1, setIsDragLvl1] = useState(false);
-  const [isDragLvl2, setIsDragLvl2] = useState(false);
+  // ~ схлапывание всех карточек разом
+  const collapseAllState = useAppSelector(
+    (state) => state.page7_dataCntl.collapseAllState
+  );
 
   // ~ активная колонка (подверженная darg)
-  const [activeRoot, setActiveRoot] = useState<type_Root | null>(null);
+  const activeRoot = useAppSelector((state) => state.page7_dataCntl.activeRoot);
+  const activeLvl1 = useAppSelector((state) => state.page7_dataCntl.activeLvl1);
+  const activeLvl2 = useAppSelector((state) => state.page7_dataCntl.activeLvl2);
+  // !
   // ~ активная (подверженная darg)
-  const [activeLvl1, setActiveLvl1] = useState<type_Lvl1 | null>(null);
-  const [activeLvl2, setActiveLvl2] = useState<type_Lvl2 | null>(null);
 
   // ~ sensors для dnd
   const sensors = useSensors(
@@ -72,46 +95,6 @@ function Page() {
       },
     })
   );
-  // #endregion
-
-  // ___ Root
-  // #region
-  // ___ createNewRoot
-  // #region
-  // ~ обработчик главного уровня
-  const createNewRoot = () => {
-    // ~ создаем root
-    const rootToAdd: type_Root = {
-      id: generateID(),
-      title: `include root_ ${roots.length + 1}`,
-    };
-    // ~ сохраняем в state
-    setRoots([...roots, rootToAdd]);
-  };
-  // #endregion
-
-  // ___ deleteRoot
-  // #region
-  const deleteRoot = (id: type_Id) => {
-    const filteredRoot = roots.filter((filt: type_Root) => filt.id !== id);
-    setRoots(filteredRoot);
-
-    // чистим таски, у удаленной колонки
-    const newLvl1 = lvls1.filter((task) => task.columnId !== id);
-    setLvls1(newLvl1);
-  };
-  // #endregion
-
-  // ___ updateRoot
-  // #region
-  const updateRoot = (id: type_Id, title: string) => {
-    const newRoot = roots.map((root: type_Root) => {
-      if (root.id !== id) return root;
-      return { ...root, title };
-    });
-    setRoots(newRoot);
-  };
-  // #endregion
   // #endregion
 
   // ___ Level 1
@@ -125,7 +108,9 @@ function Page() {
       content: `include 2_ ${lvls1.length + 1}`,
     };
 
-    setLvls1([...lvls1, newLvl1]);
+    // ~ сохранение state
+    let __data = [...lvls1, newLvl1];
+    dispatch(setLvls1({ lvl: __data }));
   };
   // #endregion
 
@@ -133,7 +118,7 @@ function Page() {
   // #region
   const deleteLvl1 = (id: type_Id) => {
     const newlvl = lvls1.filter((level: type_Lvl1) => level.id !== id);
-    setLvls1(newlvl);
+    dispatch(setLvls1({ lvl: newlvl }));
   };
   // #endregion
 
@@ -144,7 +129,7 @@ function Page() {
       if (level.id !== id) return level;
       return { ...level, content };
     });
-    setLvls1(newLvl);
+    dispatch(setLvls1({ lvl: newLvl }));
   };
   // #endregion
 
@@ -162,7 +147,7 @@ function Page() {
       content: `include 3_ ${lvls2.length + 1}`,
     };
 
-    setLvls2([...lvls2, newLvl2]);
+    dispatch(setLvls2({ lvl: [...lvls2, newLvl2] }));
   };
   // #endregion
 
@@ -170,7 +155,7 @@ function Page() {
   // #region
   const deleteLvl2 = (id: type_Id) => {
     const newlvl = lvls2.filter((level: type_Lvl2) => level.id !== id);
-    setLvls2(newlvl);
+    dispatch(setLvls2({ lvl: newlvl }));
   };
   // #endregion
 
@@ -181,7 +166,7 @@ function Page() {
       if (level.id !== id) return level;
       return { ...level, content };
     });
-    setLvls2(newLvl);
+    dispatch(setLvls2({ lvl: newLvl }));
   };
   // #endregion
 
@@ -192,33 +177,33 @@ function Page() {
   // ~ начала движения
   const onDragStart = (e: DragStartEvent) => {
     if (e.active.data.current?.type === "Root") {
-      // console.log(e.active.data.current);
-      setIsDragRoot((prev) => true);
-      setActiveRoot(e.active.data.current.column);
+      dispatch(setIsDragRoot({ fl: true }));
+      dispatch(setActiveRoot({ rt: e.active.data.current.column }));
+
       return;
     }
 
     if (e.active.data.current?.type === "Lvl1") {
-      setIsDragLvl1((prev) => true);
-      setActiveLvl1(e.active.data.current.lvl1);
+      dispatch(setIsDragLvl1({ fl: true }));
+      dispatch(setActiveLvl1({ rt: e.active.data.current.lvl1 }));
       return;
     }
 
     if (e.active.data.current?.type === "Lvl2") {
-      // console.log(e.active.data.current);
-      setIsDragLvl2((prev) => true);
-      setActiveLvl2(e.active.data.current.task);
+      dispatch(setIsDragLvl2({ fl: true }));
+      dispatch(setActiveLvl2({ rt: e.active.data.current.lvl2 }));
       return;
     }
   };
 
   // ~ завершение движения
   const onDragEnd = (e: DragEndEvent) => {
-    setIsDragRoot((prev) => false);
-    setIsDragLvl1((prev) => false);
-    setActiveRoot(null);
-    setActiveLvl1(null);
-    setActiveLvl2(null);
+    dispatch(setIsDragRoot({ fl: false }));
+    dispatch(setIsDragLvl1({ fl: false }));
+    dispatch(setActiveRoot({ rt: null }));
+
+    dispatch(setActiveLvl1({ rt: null }));
+    dispatch(setActiveLvl2({ rt: null }));
     // ~ у нас два значения. Активный и наведенные объекты
     const { active, over } = e;
 
@@ -232,15 +217,15 @@ function Page() {
     // ~ если id совпадают, то
     if (activeColumnId === overColumnId) return;
     // ~ иначе
-    setRoots((columns: any) => {
-      const activeColumnIndex = columns.findIndex(
-        (col: any) => col.id === activeColumnId
-      );
-      const overColumnIndex = columns.findIndex(
-        (col: any) => col.id === overColumnId
-      );
-      return arrayMove(columns, activeColumnIndex, overColumnIndex);
-    });
+    dispatch(
+      setRoots({
+        rt: arrayMove(
+          roots,
+          roots.findIndex((col) => col.id === activeColumnId),
+          roots.findIndex((col) => col.id === overColumnId)
+        ),
+      })
+    );
   };
 
   // ~ для работы с соедними карточкам
@@ -267,17 +252,26 @@ function Page() {
 
     // + перемещение в между карточками lvl2
     if (isActiveALvl2 && isOverALvl2) {
-      console.table("4");
-      setLvls2((level) => {
-        // Если таски в одной колонке
-        const activeIndex = level.findIndex((t) => t.id === activeId);
-        const overIndex = level.findIndex((t) => t.id === overId);
-        // Если таски в разных колонках
-        level[activeIndex].lvl1Id = level[overIndex].lvl1Id;
-        level[activeIndex].columnId = level[overIndex].columnId;
-
-        return arrayMove(level, activeIndex, overIndex);
-      });
+      dispatch(
+        setLvls2({
+          lvl: arrayMove(
+            lvls2.map((task) =>
+              task.id === activeId
+                ? {
+                    ...task,
+                    lvl1Id:
+                      lvls2.find((t) => t.id === overId)?.lvl1Id ?? task.lvl1Id,
+                    columnId:
+                      lvls2.find((t) => t.id === overId)?.columnId ??
+                      task.columnId,
+                  }
+                : task
+            ),
+            lvls2.findIndex((t) => t.id === activeId),
+            lvls2.findIndex((t) => t.id === overId)
+          ),
+        })
+      );
     }
 
     // ~ Если id наведенного и активного не равны, то
@@ -286,36 +280,71 @@ function Page() {
       let activeType = active.data.current?.type === "Lvl2";
       let overType = over.data.current?.type === "Lvl1";
       if (activeType && overType && isOverAColumn) {
-        console.table("4");
         const currentLvlId = over.data.current?.lvl1.id;
         const currentColId = over.data.current?.lvl1.columnId;
-        setLvls2((level) => {
-          const columnIndex = level.findIndex((t) => t.id === activeId);
-          const overIndex = level.findIndex((t) => t.lvl1Id === overId);
 
-          level[columnIndex].lvl1Id = currentLvlId;
-          level[columnIndex].columnId = currentColId;
+        dispatch(
+          setLvls2({
+            lvl: arrayMove(
+              lvls2.map((task) =>
+                task.id === activeId
+                  ? {
+                      ...task,
+                      lvl1Id: currentLvlId,
+                      columnId: currentColId,
+                    }
+                  : task
+              ),
+              lvls2.findIndex((t) => t.id === activeId),
+              lvls2.findIndex((t) => t.lvl1Id === overId)
+            ),
+          })
+        );
 
-          return arrayMove(level, columnIndex, overIndex);
-        });
+        // setLvls2((level) => {
+        //   const columnIndex = level.findIndex((t) => t.id === activeId);
+        //   const overIndex = level.findIndex((t) => t.lvl1Id === overId);
+
+        //   level[columnIndex].lvl1Id = currentLvlId;
+        //   level[columnIndex].columnId = currentColId;
+
+        //   return arrayMove(level, columnIndex, overIndex);
+        // });
       }
 
       // Если нужно перенести между колонками и тасками
       if (isOverALvl1 && !isOverAColumn && activeType) {
-        console.table("1");
-        setLvls2((level) => {
-          const currentRootId = over.data.current?.lvl1.columnId;
-          const currentLvlId = over.data.current?.lvl1.id;
-          const columnIndex = level.findIndex((t) => t.id === activeId);
-          const overIndex = level.findIndex((t) => t.lvl1Id === overId);
+        dispatch(
+          setLvls2({
+            lvl: arrayMove(
+              lvls2.map((task) =>
+                task.id === activeId
+                  ? {
+                      ...task,
+                      columnId:
+                        over.data.current?.lvl1.columnId ?? task.columnId,
+                      lvl1Id: over.data.current?.lvl1.id ?? task.lvl1Id,
+                    }
+                  : task
+              ),
+              lvls2.findIndex((t) => t.id === activeId),
+              lvls2.findIndex((t) => t.lvl1Id === overId)
+            ),
+          })
+        );
 
-          // Если таски в разных колонках
-          level[columnIndex].columnId = currentRootId;
-          level[columnIndex].lvl1Id = currentLvlId;
+        // setLvls2((level) => {
+        //   const currentRootId = over.data.current?.lvl1.columnId;
+        //   const currentLvlId = over.data.current?.lvl1.id;
+        //   const columnIndex = level.findIndex((t) => t.id === activeId);
+        //   const overIndex = level.findIndex((t) => t.lvl1Id === overId);
 
-          // console.log(level);
-          return arrayMove(level, columnIndex, overIndex);
-        });
+        //   // Если таски в разных колонках
+        //   level[columnIndex].columnId = currentRootId;
+        //   level[columnIndex].lvl1Id = currentLvlId;
+
+        //   return arrayMove(level, columnIndex, overIndex);
+        // });
       }
     }
 
@@ -328,63 +357,42 @@ function Page() {
 
     // Drop over another Task
     if (isActiveATask && isOverATask) {
-      console.table("0");
-      setLvls1((tasks) => {
-        // Если таски в одной колонке
-        const activeIndex = tasks.findIndex((t) => t.id === activeId);
-        const overIndex = tasks.findIndex((t) => t.id === overId);
-
-        // Если таски в разных колонках
-        tasks[activeIndex].columnId = tasks[overIndex].columnId;
-
-        return arrayMove(tasks, activeIndex, overIndex);
-      });
-      // setLvls2((tasks) => {
-      //   const __task = tasks.map((it) => {
-      //     return { ...it, columnId: activeId };
-      //   });
-      //   // Если таски в одной колонке
-      //   // const activeIndex = tasks.findIndex((t) => t.id === activeId);
-      //   // const overIndex = tasks.findIndex((t) => t.id === overId);
-
-      //   // console.log("activeIndex");
-      //   // console.log(overIndex);
-      //   // Если таски в разных колонках
-      //   // tasks[overIndex].columnId = activeId;
-
-      //   // return arrayMove(tasks, overIndex, overIndex);
-      //   return __task;
-      // });
+      dispatch(
+        setLvls1({
+          lvl: arrayMove(
+            lvls1.map((task) =>
+              task.id === activeId
+                ? {
+                    ...task,
+                    columnId:
+                      lvls1.find((t) => t.id === overId)?.columnId ??
+                      task.columnId,
+                  }
+                : task
+            ),
+            lvls1.findIndex((t) => t.id === activeId),
+            lvls1.findIndex((t) => t.id === overId)
+          ),
+        })
+      );
     }
 
     // Drop over another Column
     if (isActiveATask && isOverAColumn) {
-      // !!!!
-      setLvls1((tasks) => {
-        // Если таски в одной колонке
-        const activeIndex = tasks.findIndex((t) => t.id === activeId);
-
-        // Если таски в разных колонках
-        tasks[activeIndex].columnId = overId;
-
-        return arrayMove(tasks, activeIndex, activeIndex);
-      });
-      // setLvls2((tasks) => {
-      //   // Если таски в одной колонке
-      //   const activeIndex = tasks.findIndex((t) => t.id === activeId);
-
-      //   // Если таски в разных колонках
-      //   // tasks[activeIndex].columnId = activeId;
-      //   // tasks[activeIndex].lvl1Id = overId;
-
-      //   return arrayMove(tasks, activeIndex, activeIndex);
-      // });
+      dispatch(
+        setLvls1({
+          lvl: arrayMove(
+            lvls1.map((task) =>
+              task.id === activeId ? { ...task, columnId: overId } : task
+            ),
+            lvls1.findIndex((t) => t.id === activeId),
+            lvls1.findIndex((t) => t.id === activeId) // Перемещение на то же место
+          ),
+        })
+      );
     }
   };
   // #endregion
-
-  console.log("==========");
-  console.log(lvls2);
 
   // #endregion
   return (
@@ -398,7 +406,7 @@ function Page() {
       <Button
         style={{ marginBottom: 20, width: "250px" }}
         onClick={() => {
-          setCollapseAllState(!collapseAllState);
+          dispatch(setCollapseAllState({ fl: !collapseAllState }));
         }}
       >
         Схлопнуть все
@@ -415,15 +423,9 @@ function Page() {
             {roots.map((col: type_Root) => (
               <Flex key={col.id} className="test7-container-wrapper">
                 <Page7Root
-                  collapseAllState={collapseAllState}
-                  isDragRoot={isDragRoot}
-                  isDragLvl1={isDragLvl1}
-                  isDragLvl2={isDragLvl2}
                   // Root
                   key={col.id}
                   column={col}
-                  deleteRoot={deleteRoot}
-                  updateRoot={updateRoot}
                   // lvl 1
                   lvl1={lvls1.filter((task) => task.columnId === col.id)}
                   createLvl1={createLvl1}
@@ -446,13 +448,7 @@ function Page() {
             <DragOverlay>
               {activeRoot && (
                 <Page7Root
-                  collapseAllState={collapseAllState}
-                  isDragRoot={isDragRoot}
-                  isDragLvl1={isDragLvl1}
-                  isDragLvl2={isDragLvl2}
                   column={activeRoot}
-                  deleteRoot={deleteRoot}
-                  updateRoot={updateRoot}
                   createLvl1={createLvl1}
                   lvl1={lvls1.filter((level) => level.columnId)}
                   deleteLvl1={deleteLvl1}
@@ -466,10 +462,7 @@ function Page() {
                 />
               )}
               {activeLvl1 && (
-                <Page7Lvl2
-                  isDragRoot={isDragRoot}
-                  isDragLvl1={isDragLvl1}
-                  isDragLvl2={isDragLvl2}
+                <Page7Lvl1
                   lvl1={activeLvl1}
                   deleteLvl1={deleteLvl1}
                   updateLvl1={updateLvl1}
@@ -479,15 +472,7 @@ function Page() {
                   updateLvl2={updateLvl2}
                 />
               )}
-              {activeLvl2 && (
-                <Page7Lvl3
-                  isDragLvl2={isDragLvl2}
-                  column={activeLvl2}
-                  task={activeLvl2}
-                  deleteLvl2={deleteLvl2}
-                  updateLvl2={updateLvl2}
-                />
-              )}
+              {activeLvl2 && <Page7Lvl2 task={activeLvl2} />}
             </DragOverlay>,
             document.body
           )}
@@ -496,7 +481,7 @@ function Page() {
           <Button
             type="primary"
             className="test7-container-addChater-btn"
-            onClick={() => createNewRoot()}
+            onClick={() => dispatch(createRoot())}
           >
             <PlusCircleOutlined />
             ADD_LVL1

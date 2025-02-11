@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./slices/task4__hearts.tsx";
 import listCont from "./slices/task4__addPartners.tsx";
 import page5_dataCntl from "./slices/page5/dataCntl.tsx";
+import page7_dataCntl from "./slices/page7/dataCntl.tsx";
 
 // ~ Store
 const store = configureStore({
@@ -9,6 +10,7 @@ const store = configureStore({
     counter: counterReducer,
     newList: listCont,
     page5_dataCntl: page5_dataCntl,
+    page7_dataCntl: page7_dataCntl,
   },
 });
 

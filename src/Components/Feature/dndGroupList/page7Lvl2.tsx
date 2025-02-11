@@ -1,55 +1,51 @@
-import React, { useState, useMemo } from "react";
-import {
-  type_Id,
-  type_Root,
-  type_Lvl1,
-  type_Lvl2,
-} from "../../Pages/7/interface";
+// TODO: LVL3
+import React, { useState, useEffect } from "react";
+import { type_Id, type_Lvl1, type_Lvl2 } from "../../Pages/7/interface.tsx";
 import { Flex, Typography, Button, Input } from "antd";
 // const { TextArea } = Input;
 import Icon, { DeleteOutlined, DragOutlined } from "@ant-design/icons";
-import Page7Lvl3 from "./page7Lvl3.tsx";
 
 // ~ dnd
-import { SortableContext, useSortable } from "@dnd-kit/sortable";
+import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
+// ~ regux
+// #region
+import { useAppDispatch, useAppSelector } from "../redux/hooks.tsx";
+import { deleteLvls2, updateLvls2 } from "../redux/slices/page7/dataCntl.tsx";
+// #endregion
+
 interface Props {
-  isDragRoot;
-  isDragLvl1;
-  isDragLvl2;
-  lvl1: type_Lvl1;
-  deleteLvl1: (id: type_Id) => void;
-  updateLvl1: (id: type_Id, content: string) => void;
-  lvls2: type_Lvl2[];
-  createLvl2: (columnId: type_Id, lvl1Id: type_Id) => void;
-  deleteLvl2: (id: type_Id) => void;
-  updateLvl2: (id: type_Id, content: string) => void;
+  task: type_Lvl2;
 }
 export default function Page7Lvl2(props: Props) {
   // ___ const
   // #region
-  const {
-    isDragRoot,
-    isDragLvl1,
-    isDragLvl2,
-    lvl1,
-    deleteLvl1,
-    updateLvl1,
-    lvls2,
-    createLvl2,
-    deleteLvl2,
-    updateLvl2,
-  } = props;
+  const { task } = props;
+
   // #endregion
+  // ___ redux in data
+  // #region
+  const dispatch = useAppDispatch();
+  // #endregion
+
   // ___ state
   // #region
+  // ~ Драг слоя на root
+  const isDragLvl2 = useAppSelector((state) => state.page7_dataCntl.isDragLvl2);
+
+  // ___ form states __comp
+  // #region
+  // ___title
+  // #region
+  const [titleState, setTitleState] = useState<string>(task.content);
+  useEffect(() => {
+    setTitleState(task.content);
+  }, [task.content]);
+  // #endregion
+
   // ~ наведение мыши на карточку
   const [mouseOverFiled, setMouseOverFiled] = useState<boolean>(false);
-  // ~ memo ids всех lvl1 вложеннойстей
-  const lvls2Ids = useMemo(() => {
-    return lvls2.map((task) => task.id);
-  }, [lvls2]);
   // ~ edit Mode
   const [editMode, setEditMode] = useState<boolean>(false);
   // #endregion
@@ -64,10 +60,10 @@ export default function Page7Lvl2(props: Props) {
     transition,
     isDragging,
   } = useSortable({
-    id: lvl1.id,
+    id: task.id,
     data: {
-      type: "Lvl1",
-      lvl1,
+      type: "Lvl2",
+      task,
     },
     disabled: editMode,
   });
@@ -94,34 +90,26 @@ export default function Page7Lvl2(props: Props) {
     setEditMode((prev) => !prev);
     setMouseOverFiled(false);
   };
-  // #endregion
-
   // ~ если режим включен вернем следующий контент
   if (editMode) {
     return (
-      <Flex
-        ref={setNodeRef}
-        style={style}
-        {...attributes}
-        {...listeners}
-        justify="space-between"
-        align="center"
-        className="test7-container-wrapper-addChaterContainer-task"
-      >
+      <Flex ref={setNodeRef} style={style} {...attributes} {...listeners}>
         <Input
           placeholder="Введите название задачи"
-          value={lvl1.content}
+          value={titleState}
           autoFocus
           onKeyDown={(e) => {
             if (e.key === "Enter") {
+              dispatch(updateLvls2({ id: task.id, content: titleState }));
               toggleEditMode();
             }
           }}
           onBlur={() => {
+            dispatch(updateLvls2({ id: task.id, content: titleState }));
             toggleEditMode();
           }}
           onChange={(e) => {
-            updateLvl1(lvl1.id, e.target.value);
+            setTitleState(e.target.value);
           }}
           maxLength={30}
           showCount={true}
@@ -132,72 +120,38 @@ export default function Page7Lvl2(props: Props) {
   // #endregion
 
   return (
-    <Flex vertical={true} gap={5}>
-      <Flex
-        vertical={true}
-        ref={setNodeRef}
-        style={style}
-        onMouseOver={() => {
-          setMouseOverFiled(true);
-        }}
-        onMouseOut={() => {
-          setMouseOverFiled(false);
-        }}
-        // режим редактировать
-        onClick={() => {
-          toggleEditMode();
-        }}
-        className="test7-container-wrapper-addChaterContainer-task"
-      >
-        <Flex
-          {...attributes}
-          {...listeners}
-          justify="space-between"
-          align="center"
-          style={{ width: "100%" }}
-        >
-          <Flex gap={20}>
-            <DragOutlined />
-
-            {lvl1.content}
-          </Flex>
-
-          {mouseOverFiled && (
-            <button
-              className="test7-container-wrapper-addChaterContainer-title-delBtn"
-              onClick={() => {
-                deleteLvl1(lvl1.id);
-              }}
-            >
-              <DeleteOutlined style={{ padding: 0, margin: 0 }} />
-            </button>
-          )}
-        </Flex>
+    <Flex
+      ref={setNodeRef}
+      style={style}
+      justify="space-between"
+      align="center"
+      className="test7-container-wrapper-addChaterContainer-lvl3"
+      // listener наведения мыши для отоброжения кнопки удаления
+      onMouseOver={() => {
+        setMouseOverFiled(true);
+      }}
+      onMouseOut={() => {
+        setMouseOverFiled(false);
+      }}
+      // режим редактировать
+      onClick={() => {
+        toggleEditMode();
+      }}
+    >
+      <Flex gap={20} {...attributes} {...listeners}>
+        <DragOutlined />
+        {task.content}
       </Flex>
-      {!isDragLvl1 && (
-        <>
-          {/* ~ container */}
-          <SortableContext items={lvls2Ids}>
-            {lvls2.map((level: type_Lvl2) => (
-              <Page7Lvl3
-                key={level.id}
-                column={level}
-                isDragLvl2={isDragLvl2}
-                task={level}
-                deleteLvl2={deleteLvl2}
-                updateLvl2={updateLvl2}
-              />
-            ))}
-          </SortableContext>
-          <Button
-            danger
-            onClick={() => {
-              createLvl2(lvl1.columnId, lvl1.id);
-            }}
-          >
-            ADD_INCLUDE3
-          </Button>
-        </>
+
+      {mouseOverFiled && (
+        <button
+          className="test7-container-wrapper-addChaterContainer-title-delBtn"
+          onClick={() => {
+            dispatch(deleteLvls2({ id: task.id }));
+          }}
+        >
+          <DeleteOutlined style={{ padding: 0, margin: 0 }} />
+        </button>
       )}
     </Flex>
   );
