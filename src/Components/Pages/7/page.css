@@ -39,7 +39,10 @@
 /* ___ title */
 /* #region */
 .test7-container-wrapper-addChaterContainer-title {
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 1fr);
   background-color: #d3d3d3;
+  flex-wrap: wrap;
   padding: 10px;
   border-radius: 10px;
   border: 2px dashed #999999;
@@ -61,6 +64,34 @@
 .test7-container-wrapper-addChaterContainer-title-delBtn:hover {
   border: 2px solid white;
   background: black;
+  /* width: 100%; */
+}
+.test7-container-wrapper-addChaterContainer-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.test7-container-wrapper-addChaterContainer-right > div {
+  white-space: nowrap;
+}
+
+@media (max-width: 840px) {
+  .test7-container-wrapper-addChaterContainer-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .test7-container-wrapper-addChaterContainer-right {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .test7-container-wrapper-addChaterContainer-right
+    > Button:not(.test7-container-wrapper-addChaterContainer-title-delBtn) {
+    padding: 0;
+  }
 }
 /* #endregion */
 
@@ -94,7 +125,7 @@
   justify-content: center;
   border: 1px dashed red;
 }
-.test7-container-wrapper-addChaterContainer-task-isDragging {
+.test7-container-wrapper-addChaterContainer-task-isDragging-lvl2 {
   opacity: 0.3;
   height: 51px;
   background: black;
@@ -104,11 +135,55 @@
   border-radius: 10px;
   border: 1px dashed red;
 }
+
+.test7-container-wrapper-addChaterContainer-task-isDragging-lvl1 {
+  opacity: 0.3;
+  height: 51px;
+  background: black;
+  padding: 10px 20px;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px dashed red;
+}
+
+.test7-container-wrapper-addChaterContainer-task-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 400px) {
+  .test7-container-wrapper-addChaterContainer-task {
+    height: 150px;
+    padding: 15px 15px;
+  }
+  .test7-container-wrapper-addChaterContainer-task-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .test7-container-wrapper-addChaterContainer-task-row__reverse
+    > Button:not(.test7-container-wrapper-addChaterContainer-title-delBtn) {
+    padding: 0;
+  }
+  .test7-container-wrapper-addChaterContainer-task-row__reverse {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .test7-container-wrapper-addChaterContainer-task-isDragging-lvl1 {
+    height: 150px;
+  }
+}
 /* #endregion */
 
 /* ___ lvl3 */
 /* #region */
 .test7-container-wrapper-addChaterContainer-lvl3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 51px;
   background: rgb(185, 41, 41);
   padding: 10px 40px;
@@ -116,6 +191,21 @@
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px dashed black;
+}
+
+@media (max-width: 400px) {
+  .test7-container-wrapper-addChaterContainer-lvl3 {
+    height: 100px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 20px;
+    white-space: wrap;
+  }
+  .test7-container-wrapper-addChaterContainer-task-isDragging-lvl2 {
+    height: 100px;
+  }
 }
 
 /* #endregion */

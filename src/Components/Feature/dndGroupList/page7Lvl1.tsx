@@ -100,7 +100,7 @@ export default function Page7Lvl1(props: Props) {
       <Flex
         ref={setNodeRef}
         style={style}
-        className="test7-container-wrapper-addChaterContainer-task-isDragging"
+        className="test7-container-wrapper-addChaterContainer-task-isDragging-lvl1"
       >
         <p style={{ color: "rgba(0,0,0,0)" }}>1</p>
       </Flex>
@@ -170,12 +170,12 @@ export default function Page7Lvl1(props: Props) {
         <Flex
           {...attributes}
           {...listeners}
-          justify="space-between"
-          align="center"
           style={{ width: "100%" }}
+          className="test7-container-wrapper-addChaterContainer-task-row"
         >
           <Flex
             gap={20}
+            className="test7-container-wrapper-addChaterContainer-task-row"
             // режим редактировать
             onClick={() => {
               toggleEditMode();
@@ -192,7 +192,10 @@ export default function Page7Lvl1(props: Props) {
 
             {lvl1.content}
           </Flex>
-          <Flex gap={10}>
+          <Flex
+            gap={10}
+            className="test7-container-wrapper-addChaterContainer-task-row__reverse"
+          >
             {mouseOverFiled && (
               <button
                 className="test7-container-wrapper-addChaterContainer-title-delBtn"

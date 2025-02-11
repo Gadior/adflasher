@@ -131,9 +131,7 @@ export default function Page7Root(props: Props) {
       <Flex
         // иные настройки
         className="test7-container-wrapper-addChaterContainer-title"
-        justify="space-between"
-        align="center"
-        wrap={true}
+        // wrap={true}
       >
         {/* Левая часть раздела */}
         <Flex
@@ -186,7 +184,11 @@ export default function Page7Root(props: Props) {
         </Flex>
 
         {/* Правая часть раздела */}
-        <Flex justify="end" gap={10} align="center" wrap={true}>
+        <Flex
+          gap={10}
+          // wrap={true}
+          className="test7-container-wrapper-addChaterContainer-right"
+        >
           {/* свойства раздела */}
           <div>данные: 1</div>
           <div>данные: 2</div>

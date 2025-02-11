@@ -72,7 +72,7 @@ export default function Page7Lvl2(props: any) {
       <Flex
         ref={setNodeRef}
         style={style}
-        className="test7-container-wrapper-addChaterContainer-task-isDragging"
+        className="test7-container-wrapper-addChaterContainer-task-isDragging-lvl2"
       >
         <p style={{ color: "rgba(0,0,0,0)" }}>1</p>
       </Flex>
@@ -89,7 +89,13 @@ export default function Page7Lvl2(props: any) {
   // ~ если режим включен вернем следующий контент
   if (editMode) {
     return (
-      <Flex ref={setNodeRef} style={style} {...attributes} {...listeners}>
+      <Flex
+        ref={setNodeRef}
+        style={style}
+        {...attributes}
+        {...listeners}
+        className="test7-container-wrapper-addChaterContainer-lvl3"
+      >
         <Input
           placeholder="Введите название задачи"
           value={titleState}
@@ -119,8 +125,6 @@ export default function Page7Lvl2(props: any) {
     <Flex
       ref={setNodeRef}
       style={style}
-      justify="space-between"
-      align="center"
       className="test7-container-wrapper-addChaterContainer-lvl3"
       // listener наведения мыши для отоброжения кнопки удаления
       onMouseOver={() => {
