@@ -1,43 +1,33 @@
-// TODO: LVL3
+// #region
 import React, { useState, useEffect } from "react";
-import { type_Id, type_Lvl1, type_Lvl2 } from "../../Pages/7/interface.tsx";
-import { Flex, Typography, Button, Input } from "antd";
-// const { TextArea } = Input;
-import Icon, { DeleteOutlined, DragOutlined } from "@ant-design/icons";
+import { Flex, Input } from "antd";
+import { DeleteOutlined, DragOutlined } from "@ant-design/icons";
 
 // ~ dnd
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // ~ regux
-// #region
-import { useAppDispatch, useAppSelector } from "../redux/hooks.tsx";
+import { useAppDispatch } from "../redux/hooks.tsx";
 import { deleteLvls2, updateLvls2 } from "../redux/slices/page7/dataCntl.tsx";
 // #endregion
 
-interface Props {
-  task: type_Lvl2;
-}
-export default function Page7Lvl2(props: Props) {
+export default function Page7Lvl2(props: any) {
   // ___ const
   // #region
   const { task } = props;
-
   // #endregion
+
   // ___ redux in data
   // #region
   const dispatch = useAppDispatch();
   // #endregion
 
-  // ___ state
-  // #region
-  // ~ Драг слоя на root
-  const isDragLvl2 = useAppSelector((state) => state.page7_dataCntl.isDragLvl2);
-
   // ___ form states __comp
   // #region
-  // ___title
+  // ___ states  с названиями для формы
   // #region
+  // ~ заголовок
   const [titleState, setTitleState] = useState<string>(task.content);
   useEffect(() => {
     setTitleState(task.content);

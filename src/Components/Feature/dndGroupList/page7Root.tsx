@@ -36,9 +36,6 @@ interface Props {
   deleteLvl1: (id: type_Id) => void;
   updateLvl1: (id: type_Id, content: string) => void;
   lvls2: type_Lvl2[];
-  createLvl2: (columnId: type_Id, lvl1Id: type_Id) => void;
-  deleteLvl2: (id: type_Id) => void;
-  updateLvl2: (id: type_Id, content: string) => void;
 }
 
 export default function Page7Root(props: Props) {
@@ -50,17 +47,7 @@ export default function Page7Root(props: Props) {
   // ___ const
   // #region
   // деструктуризация
-  const {
-    column,
-    lvl1,
-    createLvl1,
-    deleteLvl1,
-    updateLvl1,
-    lvls2,
-    createLvl2,
-    deleteLvl2,
-    updateLvl2,
-  } = props;
+  const { column, lvl1, createLvl1, deleteLvl1, updateLvl1, lvls2 } = props;
   // #endregion
 
   // ___ state
@@ -244,9 +231,6 @@ export default function Page7Root(props: Props) {
                         lev.lvl1Id === level.id
                       );
                     })}
-                    createLvl2={createLvl2}
-                    deleteLvl2={deleteLvl2}
-                    updateLvl2={updateLvl2}
                   />
                 ))}
               </SortableContext>

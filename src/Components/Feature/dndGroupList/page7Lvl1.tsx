@@ -1,13 +1,8 @@
 import React, { useState, useMemo } from "react";
-import {
-  type_Id,
-  type_Root,
-  type_Lvl1,
-  type_Lvl2,
-} from "../../Pages/7/interface.tsx";
+import { type_Id, type_Lvl1, type_Lvl2 } from "../../Pages/7/interface.tsx";
 import { Flex, Typography, Button, Input } from "antd";
 // const { TextArea } = Input;
-import Icon, { DeleteOutlined, DragOutlined } from "@ant-design/icons";
+import { DeleteOutlined, DragOutlined } from "@ant-design/icons";
 import Page7Lvl2 from "./page7Lvl2.tsx";
 
 // ~ dnd
@@ -17,7 +12,7 @@ import { CSS } from "@dnd-kit/utilities";
 // ~ regux
 // #region
 import { useAppDispatch, useAppSelector } from "../redux/hooks.tsx";
-import {} from "../redux/slices/page7/dataCntl.tsx";
+import { createLvl2 } from "../redux/slices/page7/dataCntl.tsx";
 // #endregion
 
 interface Props {
@@ -25,22 +20,16 @@ interface Props {
   deleteLvl1: (id: type_Id) => void;
   updateLvl1: (id: type_Id, content: string) => void;
   lvls2: type_Lvl2[];
-  createLvl2: (columnId: type_Id, lvl1Id: type_Id) => void;
-  deleteLvl2: (id: type_Id) => void;
-  updateLvl2: (id: type_Id, content: string) => void;
 }
 export default function Page7Lvl1(props: Props) {
   // ___ const
   // #region
-  const {
-    lvl1,
-    deleteLvl1,
-    updateLvl1,
-    lvls2,
-    createLvl2,
-    deleteLvl2,
-    updateLvl2,
-  } = props;
+  const { lvl1, deleteLvl1, updateLvl1, lvls2 } = props;
+  // #endregion
+
+  // ___ redux in data
+  // #region
+  const dispatch = useAppDispatch();
   // #endregion
 
   // ~ Драг слоя на lvl1
@@ -189,7 +178,9 @@ export default function Page7Lvl1(props: Props) {
           <Button
             danger
             onClick={() => {
-              createLvl2(lvl1.columnId, lvl1.id);
+              dispatch(
+                createLvl2({ columnId: lvl1.columnId, lvl1Id: lvl1.id })
+              );
             }}
           >
             ADD_INCLUDE3

@@ -135,43 +135,6 @@ function Page() {
 
   // #endregion
 
-  // ___ level 2
-  // #region
-  // ___ create
-  // #region
-  const createLvl2 = (columnId: type_Id, lvl1Id: type_Id) => {
-    const newLvl2: type_Lvl2 = {
-      id: generateID(),
-      columnId,
-      lvl1Id,
-      content: `include 3_ ${lvls2.length + 1}`,
-    };
-
-    dispatch(setLvls2({ lvl: [...lvls2, newLvl2] }));
-  };
-  // #endregion
-
-  // ___ delete
-  // #region
-  const deleteLvl2 = (id: type_Id) => {
-    const newlvl = lvls2.filter((level: type_Lvl2) => level.id !== id);
-    dispatch(setLvls2({ lvl: newlvl }));
-  };
-  // #endregion
-
-  // ___ update
-  // #region
-  const updateLvl2 = (id: type_Id, content: string) => {
-    const newLvl = lvls2.map((level: type_Lvl2) => {
-      if (level.id !== id) return level;
-      return { ...level, content };
-    });
-    dispatch(setLvls2({ lvl: newLvl }));
-  };
-  // #endregion
-
-  // #endregion
-
   // ___ DndContext
   // #region
   // ~ начала движения
@@ -435,9 +398,6 @@ function Page() {
                   lvls2={lvls2.filter(
                     (level) => level.columnId && level.lvl1Id
                   )}
-                  createLvl2={createLvl2}
-                  deleteLvl2={deleteLvl2}
-                  updateLvl2={updateLvl2}
                 />
               </Flex>
             ))}
@@ -456,9 +416,6 @@ function Page() {
                   lvls2={lvls2.filter(
                     (level) => level.columnId && level.lvl1Id
                   )}
-                  createLvl2={createLvl2}
-                  deleteLvl2={deleteLvl2}
-                  updateLvl2={updateLvl2}
                 />
               )}
               {activeLvl1 && (
@@ -467,9 +424,6 @@ function Page() {
                   deleteLvl1={deleteLvl1}
                   updateLvl1={updateLvl1}
                   lvls2={lvls2}
-                  createLvl2={createLvl2}
-                  deleteLvl2={deleteLvl2}
-                  updateLvl2={updateLvl2}
                 />
               )}
               {activeLvl2 && <Page7Lvl2 task={activeLvl2} />}

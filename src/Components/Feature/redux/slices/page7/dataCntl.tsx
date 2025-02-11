@@ -131,6 +131,24 @@ const page7_dataCntl = createSlice({
       state.activeLvl2 = action.payload.rt;
     },
 
+    // ~ CREATE
+    createLvl2: (
+      state,
+      action: PayloadAction<{ columnId: type_Id; lvl1Id: type_Id }>
+    ) => {
+      // ~ element
+      let __columnId = action.payload.columnId;
+      let __lvl1Id = action.payload.lvl1Id;
+      const newLvl2: type_Lvl2 = {
+        id: generateID(),
+        columnId: __columnId,
+        lvl1Id: __lvl1Id,
+        content: `include 3_ ${state.lvls2.length + 1}`,
+      };
+      // ~ save state
+      state.lvls2 = [...state.lvls2, newLvl2];
+    },
+
     // ~ DELETE
     deleteLvls2: (state, action: PayloadAction<{ id: type_Id }>) => {
       // ~ delete in root
@@ -188,7 +206,7 @@ export const { setRoots, setActiveRoot, createRoot, deleteRoot, updateRoot } =
 // - lvls1
 export const { setLvls1, setActiveLvl1 } = page7_dataCntl.actions;
 // - lvls2
-export const { setLvls2, setActiveLvl2, deleteLvls2, updateLvls2 } =
+export const { setLvls2, setActiveLvl2, createLvl2, deleteLvls2, updateLvls2 } =
   page7_dataCntl.actions;
 // - drag
 export const { setIsDragRoot, setIsDragLvl1, setIsDragLvl2 } =
