@@ -93,6 +93,12 @@ const page7_dataCntl = createSlice({
         (filt: type_Lvl1) => filt.columnId !== action.payload.id
       );
       state.lvls1 = filtLvl1;
+
+      // ~ delete in lvl2
+      const filtLvl2 = state.lvls2.filter(
+        (filt: type_Lvl2) => filt.columnId !== action.payload.id
+      );
+      state.lvls2 = filtLvl2;
     },
 
     // ~ UPDATE
@@ -141,6 +147,12 @@ const page7_dataCntl = createSlice({
         (filt: type_Lvl1) => filt.id !== action.payload.id
       );
       state.lvls1 = newlvl;
+
+      // ~ delete in lvl2
+      const filtLvl2 = state.lvls2.filter(
+        (filt: type_Lvl2) => filt.lvl1Id !== action.payload.id
+      );
+      state.lvls2 = filtLvl2;
     },
 
     // ~ UPDATE

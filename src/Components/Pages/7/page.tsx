@@ -22,7 +22,11 @@ import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 // ~ style
 import "./page.css";
 // ~ interface
-import { type_Root } from "./interface.tsx";
+import {
+  type_Lvl1,
+  type_Root,
+  type_Lvl2,
+} from "../../Feature/redux/slices/page7/interface.tsx";
 import Page7Root from "../../Feature/dndGroupList/page7Root.tsx";
 import Page7Lvl1 from "../../Feature/dndGroupList/page7Lvl1.tsx";
 import Page7Lvl2 from "../../Feature/dndGroupList/page7Lvl2.tsx";
@@ -54,6 +58,7 @@ function Page() {
   // #region
   // ~ root
   const roots = useAppSelector((state) => state.page7_dataCntl.roots);
+
   //  ~ id root
   const rootsIds = useMemo(
     () => roots.map((col: type_Root) => col.id),
@@ -129,22 +134,143 @@ function Page() {
     // ~ Проверка / null -> если нету второй карточки, второй объект нуль
     if (!over) return;
     // ~ иначе забираем id двух объектов
-    const activeColumnId = active.id;
-    const overColumnId = over.id;
+    const activeId = active.id;
+    const overId = over.id;
 
-    // ! не трогать
-    // ~ если id совпадают, то
-    if (activeColumnId === overColumnId) return;
-    // ~ иначе
-    dispatch(
-      setRoots({
-        rt: arrayMove(
-          roots,
-          roots.findIndex((col) => col.id === activeColumnId),
-          roots.findIndex((col) => col.id === overColumnId)
-        ),
-      })
-    );
+    const activeType = active.data.current?.type;
+    const overType = over.data.current?.type;
+    // console.log(``);
+    // console.log(`activeColumnId - ${activeColumnId}`);
+    // console.log(`overColumnId - ${overColumnId}`);
+    // console.log(`activeType - ${activeType}`);
+    // console.log(`overType - ${overType}`);
+
+    // ___ ROOT
+    // #region
+    // - [*******]
+    // - если переносим тип root карточек
+    if (
+      activeType === overType &&
+      activeType === "Root" &&
+      overType === "Root"
+    ) {
+      // - [*******]
+      // -- Если id root карточек разный
+      if (activeId !== overId) {
+        console.log("SAME __ ROOT __ !ID -- save(setRoots)");
+        dispatch(
+          setRoots({
+            rt: arrayMove(
+              roots,
+              roots.findIndex((item) => item.id === activeId),
+              roots.findIndex((item) => item.id === overId)
+            ),
+          })
+        );
+      }
+    }
+    // #endregion
+
+    // ___ LVL1
+    // #region
+    // - [*******]
+    // - карточки внутри одной root карточки
+    if (
+      activeType === overType &&
+      activeType === "Lvl1" &&
+      overType === "Lvl1"
+    ) {
+      if (activeId !== overId) {
+        console.log("SAME __ LVL1 __ !ID -- save(setLvl1)");
+        dispatch(
+          setLvls1({
+            lvl: arrayMove(
+              lvls1,
+              lvls1.findIndex((item) => item.id === activeId),
+              lvls1.findIndex((item) => item.id === overId)
+            ),
+          })
+        );
+      }
+    }
+    // - [*******]
+    // - карточка переносится между root карточками
+    if (
+      activeType !== overType &&
+      activeType === "Lvl1" &&
+      overType === "Root"
+    ) {
+      let __data: type_Lvl1[] = [...lvls1];
+      let __overRootId = over.data.current?.data.id;
+
+      const activeIndex: number = __data.findIndex(
+        (item) => item.id === activeId
+      );
+
+      if (activeIndex !== -1) {
+        __data[activeIndex] = {
+          ...__data[activeIndex],
+          columnId: __overRootId,
+        };
+
+        dispatch(setLvls1({ lvl: __data }));
+      }
+    }
+    // #endregion
+
+    // ___ LVL2
+    // #region
+    // - [*******]
+    // - карточки внутри одной LVL1 карточки
+    if (
+      activeType === overType &&
+      activeType === "Lvl2" &&
+      overType === "Lvl2"
+    ) {
+      if (activeId !== overId) {
+        console.log("SAME __ LVL1 __ !ID -- save(setLvl2)");
+        dispatch(
+          setLvls2({
+            lvl: arrayMove(
+              lvls2,
+              lvls2.findIndex((item) => item.id === activeId),
+              lvls2.findIndex((item) => item.id === overId)
+            ),
+          })
+        );
+      }
+    }
+    // - [*******]
+    // - карточки lvl2 переносяться между карточками lvl1
+    if (
+      activeType !== overType &&
+      activeType === "Lvl2" &&
+      overType === "Lvl1"
+    ) {
+      let __data: type_Lvl2[] = [...lvls2];
+      let __overLvl2Id = over.data.current?.data.id;
+
+      const activeIndex: number = __data.findIndex(
+        (item) => item.id === activeId
+      );
+
+      if (activeIndex !== -1) {
+        __data[activeIndex] = {
+          ...__data[activeIndex],
+          id: __overLvl2Id,
+        };
+        console.table(__data);
+        dispatch(setLvls2({ lvl: __data }));
+      }
+
+      console.log("succes LVL2");
+    }
+    // #endregion
+
+    // else {
+    //   console.log("EXIT");
+    //   return;
+    // }
   };
 
   // ~ для работы с соедними карточкам
