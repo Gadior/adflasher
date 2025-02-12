@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import store from "./Components/Feature/redux/store.tsx";
@@ -17,7 +17,7 @@ import Page8 from "./Components/Pages/8/page.tsx";
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -31,7 +31,7 @@ function App() {
           <Route path="8" element={<Page8 />} />
         </Routes>
       </Provider>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
