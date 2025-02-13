@@ -16,7 +16,7 @@ function Article(props: Props) {
   // ___ styles
   // #region
   let cardTheme = "test8__article__card ";
-  let linkTheme = "test8__article__card__left__block__link ";
+  let linkTheme = "test8__article__block__link ";
   let h3Theme = "";
   let arrowTheme = "";
   let urlTextTheme = "";
@@ -26,31 +26,31 @@ function Article(props: Props) {
       cardTheme = cardTheme + "__darkTheme " + " __darkColor";
       h3Theme = "__whiteTheme";
       arrowTheme = "__whiteTheme";
-      urlTextTheme = "__whiteColor __urlWhiteTheme";
+      urlTextTheme = "__whiteColor --urlWhiteTheme";
       break;
     case "white":
       cardTheme = cardTheme + "__whiteTheme " + " __whiteColor";
       h3Theme = "__greenTheme" + " __darkColor";
       arrowTheme = "__darkTheme";
-      urlTextTheme = "__darkColor __urlDarkTheme";
+      urlTextTheme = "__darkColor --urlDarkTheme";
       break;
     case "green":
       cardTheme = cardTheme + " __greenTheme  __whiteColor";
       h3Theme = "__whiteTheme" + " __darkColor";
       arrowTheme = "__darkTheme";
-      urlTextTheme = "__darkColor __urlDarkTheme";
+      urlTextTheme = "__darkColor --urlDarkTheme";
       break;
     default:
       cardTheme = cardTheme + "__darkTheme ";
       h3Theme = "__whiteTheme";
       arrowTheme = "__whiteTheme";
-      urlTextTheme = urlTextTheme + "__urlWhiteTheme";
+      urlTextTheme = urlTextTheme + "--urlWhiteTheme";
       break;
   }
   // #endregion
 
   return (
-    <div className={cardTheme}>
+    <article className={cardTheme}>
       <div className="test8__article__card__left">
         <div>
           {text.map((txt) => (
@@ -74,7 +74,7 @@ function Article(props: Props) {
         </div>
       </div>
       <img src={image} title={imageTitle}></img>
-    </div>
+    </article>
   );
 }
 

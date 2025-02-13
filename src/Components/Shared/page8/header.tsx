@@ -28,7 +28,7 @@ function Header() {
       <div className="test8__header__left">
         <img src={__logo} alt="Positivus" height={56} width={"auto"} />
       </div>
-      <div className="test8__header__right --hidden">
+      <div className="--hidden test8__header__right">
         {/* map menu */}
         {menuItems.map((item: int_header) => (
           <nav
@@ -53,7 +53,7 @@ function Header() {
         <div className="test8__mobMenu">
           <X
             size={16}
-            className="--vissible menu--closeIcon"
+            className="--vissible test8__mobMenu--closeIcon"
             onClick={() => {
               setIsOpen(!isOpen);
             }}

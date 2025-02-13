@@ -6,18 +6,18 @@ import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 
 // ~ styles
 import "./reset.css";
-import "./page.css";
+import "./style.css";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // ~comps
 import Header from "../../Shared/page8/header.tsx";
 import Article from "../../Shared/page8/article.tsx";
-import { Flex, Typography } from "antd";
-import { Menu, X } from "lucide-react";
-import { Button } from "antd";
 
 // ~ assets
+import { MoveUpRight } from "lucide-react";
+
 import __bannerJpg from "../../Shared/page8/images/__mainjpg.jpg";
 // - партнеры
 import __parnterJpg_1 from "../../Shared/page8/images/__partner.jpg";
@@ -33,6 +33,8 @@ import __card3 from "../../Shared/page8/images/__card3.png";
 import __card4 from "../../Shared/page8/images/__card4.png";
 import __card5 from "../../Shared/page8/images/__card5.png";
 import __card6 from "../../Shared/page8/images/__card6.png";
+// - contacts
+import __contactJpg from "../../Shared/page8/images/__contact.png";
 
 // #endregion ~ import
 
@@ -62,23 +64,23 @@ export default function Page() {
 
   return (
     <div className="test8__wrapper">
-      <div className="test8__container">
+      <div className="test8__section">
         <Header />
       </div>
 
       {/* BANNER */}
-      <section className="test8__banner">
-        <div className="test8__banner--web">
-          <div className="test8__banner--left">
+      <section className="test8__section">
+        <div className="test8__banner__web --hidden">
+          <div className="test8__banner__left">
             <h1>Navigating the digital landscape for success</h1>
             <p>
               Our digital marketing agency helps businesses grow and succeed
               online through a range of services including SEO, PPC, social
               media marketing, and content creation.
             </p>
-            <div className="">Book a consultation</div>
+            <div>Book a consultation</div>
           </div>
-          <div className="test8__banner--right">
+          <div className="test8__banner__right">
             <img
               src={__bannerJpg}
               alt="Navigating the digital landscape for success"
@@ -86,8 +88,8 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="test8__banner--mobile">
-          <div className="test8__banner--left">
+        <div className="test8__banner__mobile">
+          <div className="test8__banner__left">
             <h1>Navigating the digital landscape for success</h1>
             <img
               src={__bannerJpg}
@@ -104,7 +106,7 @@ export default function Page() {
       </section>
 
       {/* Parters */}
-      <section className="test8__parters">
+      <section className="test8__section">
         <div className="test8__partners__wrapper">
           {partnersList.map((partner) => (
             <img
@@ -117,7 +119,7 @@ export default function Page() {
       </section>
 
       {/* Services */}
-      <section className="test8__service">
+      <section className="test8__section">
         <div className="test8__service__wrapper">
           <h2>Services</h2>
           <p>
@@ -128,7 +130,7 @@ export default function Page() {
       </section>
 
       {/* Articles */}
-      <section className="test8__article">
+      <section className="test8__section">
         <div className="test8__article__wrapper">
           <Article
             cardType="white"
@@ -172,6 +174,79 @@ export default function Page() {
             image={__card6}
             imageTitle="Analytics and Tracking"
           />
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="test8__section">
+        <div className="test8__contact__wrapper">
+          <div className="test8__contact__wrapper__bg"></div>
+
+          <div className="test8__banner__left ">
+            <h2>Let’s make things happen</h2>
+            <p>
+              Contact us today to learn more about how our digital marketing
+              services can help your business grow and succeed online.
+            </p>
+            <div>Get your free proposal</div>
+          </div>
+          <img src={__contactJpg} />
+        </div>
+      </section>
+
+      {/* Case Studies */}
+      <section className="test8__section">
+        <div className="test8__service__wrapper">
+          <h2>Case Studies</h2>
+          <p>
+            Explore Real-Life Examples of Our Proven Digital Marketing Success
+            through Our Case Studies
+          </p>
+        </div>
+      </section>
+
+      {/* Case */}
+      <section className="test8__section">
+        <div className="case__wrapper">
+          <div className="case__wrapper__row">
+            <p>
+              For a local restaurant, we implemented a targeted PPC campaign
+              that resulted in a 50% increase in website traffic and a 25%
+              increase in sales.
+            </p>
+            <div>
+              <div>
+                <MoveUpRight />
+              </div>
+              <p>learn more</p>
+            </div>
+          </div>
+          <div className="case__wrapper__row">
+            <p>
+              For a local restaurant, we implemented a targeted PPC campaign
+              that resulted in a 50% increase in website traffic and a 25%
+              increase in sales.
+            </p>
+            <div>
+              <div>
+                <MoveUpRight />
+              </div>
+              <p>learn more</p>
+            </div>
+          </div>
+          <div className="case__wrapper__row">
+            <p>
+              For a local restaurant, we implemented a targeted PPC campaign
+              that resulted in a 50% increase in website traffic and a 25%
+              increase in sales.
+            </p>
+            <div>
+              <div>
+                <MoveUpRight />
+              </div>
+              <p>learn more</p>
+            </div>
+          </div>
         </div>
       </section>
 
