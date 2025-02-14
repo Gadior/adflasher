@@ -13,6 +13,8 @@ import React from "react";
 // ~comps
 import Header from "../../Shared/page8/header.tsx";
 import Article from "../../Shared/page8/article.tsx";
+import ProcessStep from "../../Shared/page8/processStep.tsx";
+import TeamItem from "../../Shared/page8/teamItem.tsx";
 
 // ~ assets
 import { MoveUpRight } from "lucide-react";
@@ -34,7 +36,13 @@ import __card5 from "../../Shared/page8/images/__card5.png";
 import __card6 from "../../Shared/page8/images/__card6.png";
 // - contacts
 import __contactJpg from "../../Shared/page8/images/__contact.png";
-import ProcessStep from "../../Shared/page8/processStep.tsx";
+// - teamItem
+import __teamItem1 from "../../Shared/page8/images/__teamItem1.png";
+import __teamItem2 from "../../Shared/page8/images/__teamItem2.png";
+import __teamItem3 from "../../Shared/page8/images/__teamItem3.png";
+import __teamItem4 from "../../Shared/page8/images/__teamItem4.png";
+import __teamItem5 from "../../Shared/page8/images/__teamItem5.png";
+import __teamItem6 from "../../Shared/page8/images/__teamItem6.png";
 
 // #endregion ~ import
 
@@ -322,6 +330,63 @@ export default function Page() {
             Meet the skilled and experienced team behind our successful digital
             marketing strategies
           </p>
+        </div>
+      </section>
+
+      {/* TeamBlock  */}
+      <section className="test8__section">
+        <div className="test8__teamBlock__wrapper">
+          <TeamItem
+            itemPic={__teamItem1}
+            itemName={"John Smith"}
+            itemJob={"CEO and Founder"}
+            itemDescription={
+              "10+ years of experience in digital marketing. Expertise in SEO, PPC, and content strategy"
+            }
+          />
+          <TeamItem
+            itemPic={__teamItem2}
+            itemName={"Jane Doe"}
+            itemJob={"Director of Operations"}
+            itemDescription={
+              "7+ years of experience in project management and team leadership. Strong organizational and communication skills"
+            }
+          />
+          <TeamItem
+            itemPic={__teamItem3}
+            itemName={"Michael Brown"}
+            itemJob={"Senior SEO Specialist"}
+            itemDescription={
+              "5+ years of experience in SEO and content creation. Proficient in keyword research and on-page optimization"
+            }
+          />
+          <TeamItem
+            itemPic={__teamItem4}
+            itemName={"Emily Johnson"}
+            itemJob={"PPC Manager"}
+            itemDescription={
+              "3+ years of experience in paid search advertising. Skilled in campaign management and performance analysis"
+            }
+          />
+          <TeamItem
+            itemPic={__teamItem5}
+            itemName={"Brian Williams"}
+            itemJob={"Social Media Specialist"}
+            itemDescription={
+              "4+ years of experience in social media marketing. Proficient in creating and scheduling content, analyzing metrics, and building engagement"
+            }
+          />
+          <TeamItem
+            itemPic={__teamItem6}
+            itemName={"Sarah Kim"}
+            itemJob={"Content Creator"}
+            itemDescription={
+              "2+ years of experience in writing and editing. Skilled in creating compelling, SEO-optimized content for various industries"
+            }
+          />
+        </div>
+        <div className="test8__banner__left test8__section--seeAll">
+          <div>See all team</div>
         </div>
       </section>
 

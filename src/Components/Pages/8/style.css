@@ -663,6 +663,105 @@ a {
 }
 
 /* #endregion ~ process steps */
+/* --- teamBlock */
+/* #region ~ teamBlock */
+.test8__teamBlock__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: 0 20px;
+}
+.teamBlock__wrapper__card {
+  position: relative;
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  padding: 35px 40px;
+  border-radius: 44px;
+  border: 1px solid #191a23;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 1);
+  gap: 28px;
+}
+.teamBlock__card__ln {
+  display: flex;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  cursor: pointer;
+}
+.teamBlock__card__ln a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 35px;
+  top: 35px;
+  background-color: #191a23;
+  color: #b9ff66;
+  width: 34px;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+}
+.teamBlock__wrapper__card > span {
+  height: 1px;
+  width: 100%;
+  background-color: #191a23;
+}
+.teamBlock__card__header {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  gap: 20px;
+}
+.teamBlock__card__header .header__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.teamBlock__card__header > div > span:first-child {
+  font-size: 20px;
+  font-weight: 400;
+}
+.teamBlock__card__header > div > span:last-child {
+  font-size: 18px;
+  font-weight: 100;
+}
+.teamBlock__wrapper__card .teamBlock__card__footer {
+  font-size: 18px;
+}
+/* ! media */
+/* Смена рядности карточек на две на около планшетах */
+@media (max-width: calc(400px * 3 + 40px * 2)) {
+  .test8__teamBlock__wrapper {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+  }
+}
+@media (max-width: calc(400px * 2 + 40px * 1)) {
+  .test8__teamBlock__wrapper {
+    grid-template-columns: repeat(1, 1fr); /* 2 колонки */
+  }
+}
+@media (max-width: 1000px) {
+  .teamBlock__wrapper__card {
+    border-radius: 25px;
+    padding: 20px 20px;
+  }
+  .teamBlock__card__header > img {
+    width: 75px;
+    height: auto;
+  }
+  .teamBlock__card__ln a {
+    right: 15px;
+    top: 15px;
+    font-size: 12px;
+    width: 20px;
+  }
+}
+
+/* #endregion ~ teamBlock */
 
 /* #endregion ~ el */
 
@@ -725,8 +824,8 @@ a {
   color: #b9ff66;
 }
 /* #endregion ~ case */
-/* --- process steps */
-/* #region ~ process steps */
+/* --- process */
+/* #region ~ process */
 .test8__prStep__wrapper--vissible {
   display: none;
 }
@@ -735,7 +834,31 @@ a {
   flex-direction: column;
   gap: 20px;
 }
-/* #endregion ~ process steps */
+/* #endregion ~ process */
+/* --- teamBlock */
+/* #region ~ teamBlock */
+.test8__section--seeAll {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 40px;
+}
+.test8__section--seeAll div {
+  margin-right: 20px;
+}
+
+/* ! Media */
+@media (max-width: 1000px) {
+  .test8__section--seeAll div {
+    margin-left: 20px;
+  }
+  .test8__banner__left > div:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* #endregion ~ teamBlock */
 
 /* #endregion ~ mod */
 
