@@ -268,13 +268,61 @@ export default function Page() {
 
       {/* Process Steps */}
       <section className="test8__section">
-        <ProcessStep
-          stepNum={"01"}
-          stepTitle={"Consultation"}
-          stepDescription={
-            "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
-          }
-        />
+        <div className="test8__section--gap">
+          <ProcessStep
+            stepNum={"01"}
+            stepTitle={"Consultation"}
+            stepDescription={
+              "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+            }
+          />
+          <ProcessStep
+            stepNum={"02"}
+            stepTitle={"Research and Strategy Development"}
+            stepDescription={
+              "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+            }
+          />
+          <ProcessStep
+            stepNum={"03"}
+            stepTitle={"Implementation"}
+            stepDescription={
+              "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+            }
+          />
+          <ProcessStep
+            stepNum={"04"}
+            stepTitle={"Monitoring and Optimization"}
+            stepDescription={
+              "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+            }
+          />
+          <ProcessStep
+            stepNum={"05"}
+            stepTitle={"Reporting and Communication"}
+            stepDescription={
+              "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+            }
+          />
+          <ProcessStep
+            stepNum={"06"}
+            stepTitle={"Continual Improvement"}
+            stepDescription={
+              "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+            }
+          />
+        </div>
+      </section>
+
+      {/* Team  */}
+      <section className="test8__section">
+        <div className="test8__service__wrapper">
+          <h2>Team</h2>
+          <p>
+            Meet the skilled and experienced team behind our successful digital
+            marketing strategies
+          </p>
+        </div>
       </section>
 
       <TasksBackBtn />

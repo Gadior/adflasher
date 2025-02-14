@@ -576,6 +576,7 @@ a {
   .case__wrapper {
     padding: 20px;
     flex-direction: column;
+    border-radius: 25px;
   }
   .case__wrapper span {
     width: auto;
@@ -607,7 +608,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: stretch;
+  width: 100%;
+  gap: 20px;
 }
 .prStep__header__left {
   display: flex;
@@ -618,20 +620,46 @@ a {
 .prStep__header__left > p {
   font-size: 60px;
 }
+.prStep__header__left > h3 {
+  white-space: wrap;
+}
 .prStep__header__open {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f3f3f3;
   width: 50px;
+  min-width: 50px;
   height: 50px;
+  min-height: 50px;
   border-radius: 100%;
   cursor: pointer;
   user-select: none;
+  border: 1px solid #191a23;
 }
 .prStep__header__open > span {
   font-size: 30px;
   transform: translateY(-8%);
+}
+
+/* ! Media */
+@media (max-width: 1000px) {
+  .test8__prStep__wrapper {
+    border-radius: 25px;
+    padding: 20px;
+  }
+  .prStep__header__left > p {
+    font-size: 40px;
+  }
+  .prStep__header__open {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+  }
+  .prStep__header__open > span {
+    font-size: 20px;
+    transform: translateY(-8%);
+  }
 }
 
 /* #endregion ~ process steps */
@@ -699,14 +727,13 @@ a {
 /* #endregion ~ case */
 /* --- process steps */
 /* #region ~ process steps */
-.test8__prStep__wrapper--green {
-  background: #b9ff66;
-}
-.test8__prStep__wrapper--white {
-  background: white;
-}
 .test8__prStep__wrapper--vissible {
   display: none;
+}
+.test8__section--gap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 /* #endregion ~ process steps */
 

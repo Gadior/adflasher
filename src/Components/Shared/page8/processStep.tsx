@@ -20,14 +20,24 @@ export default function ProcessStep(props: Props) {
   // #endregion
 
   return (
-    <div className="test8__prStep__wrapper test8__prStep__wrapper--green">
+    <div
+      className={
+        isOpen
+          ? "test8__prStep__wrapper __whiteTheme"
+          : "test8__prStep__wrapper __greenTheme"
+      }
+    >
       <div className="prStep__header">
         <div className="prStep__header__left">
           <p>{stepNum}</p>
           <h3>{stepTitle}</h3>
         </div>
         <div
-          className="prStep__header__open"
+          className={
+            isOpen
+              ? "prStep__header__open __greenTheme"
+              : "prStep__header__open __whiteTheme"
+          }
           onClick={() => {
             setIsOpen(!isOpen);
           }}
