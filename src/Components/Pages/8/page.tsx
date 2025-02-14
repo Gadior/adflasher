@@ -9,7 +9,6 @@ import "./reset.css";
 import "./style.css";
 
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 // ~comps
 import Header from "../../Shared/page8/header.tsx";
@@ -35,6 +34,7 @@ import __card5 from "../../Shared/page8/images/__card5.png";
 import __card6 from "../../Shared/page8/images/__card6.png";
 // - contacts
 import __contactJpg from "../../Shared/page8/images/__contact.png";
+import ProcessStep from "../../Shared/page8/processStep.tsx";
 
 // #endregion ~ import
 
@@ -218,9 +218,12 @@ export default function Page() {
               <div>
                 <MoveUpRight />
               </div>
-              <p>learn more</p>
+              <a href="#" className="case__wrapper--linkColor">
+                learn more
+              </a>
             </div>
           </div>
+          <span></span>
           <div className="case__wrapper__row">
             <p>
               For a local restaurant, we implemented a targeted PPC campaign
@@ -231,9 +234,12 @@ export default function Page() {
               <div>
                 <MoveUpRight />
               </div>
-              <p>learn more</p>
+              <a href="#" className="case__wrapper--linkColor">
+                learn more
+              </a>
             </div>
           </div>
+          <span></span>
           <div className="case__wrapper__row">
             <p>
               For a local restaurant, we implemented a targeted PPC campaign
@@ -244,10 +250,31 @@ export default function Page() {
               <div>
                 <MoveUpRight />
               </div>
-              <p>learn more</p>
+              <a href="#" className="case__wrapper--linkColor">
+                learn more
+              </a>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Our Working Process  */}
+      <section className="test8__section">
+        <div className="test8__service__wrapper">
+          <h2>Our Working Process</h2>
+          <p>Step-by-Step Guide to Achieving Your Business Goals</p>
+        </div>
+      </section>
+
+      {/* Process Steps */}
+      <section className="test8__section">
+        <ProcessStep
+          stepNum={"01"}
+          stepTitle={"Consultation"}
+          stepDescription={
+            "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."
+          }
+        />
       </section>
 
       <TasksBackBtn />
