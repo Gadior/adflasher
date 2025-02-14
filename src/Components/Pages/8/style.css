@@ -837,20 +837,20 @@ a {
 /* #endregion ~ process */
 /* --- teamBlock */
 /* #region ~ teamBlock */
-.test8__section--seeAll {
+.--fullWidthRightPos {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   width: 100%;
   margin-top: 40px;
 }
-.test8__section--seeAll div {
+.--fullWidthRightPos div {
   margin-right: 20px;
 }
 
 /* ! Media */
 @media (max-width: 1000px) {
-  .test8__section--seeAll div {
+  .--fullWidthRightPos div {
     margin-left: 20px;
   }
   .test8__banner__left > div:hover {

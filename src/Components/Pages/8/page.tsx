@@ -385,8 +385,19 @@ export default function Page() {
             }
           />
         </div>
-        <div className="test8__banner__left test8__section--seeAll">
+        <div className="test8__banner__left --fullWidthRightPos">
           <div>See all team</div>
+        </div>
+      </section>
+
+      {/* Testimonials  */}
+      <section className="test8__section">
+        <div className="test8__service__wrapper">
+          <h2>Testimonials</h2>
+          <p>
+            Hear from Our Satisfied Clients: Read Our Testimonials to Learn More
+            about Our Digital Marketing Services
+          </p>
         </div>
       </section>
 
