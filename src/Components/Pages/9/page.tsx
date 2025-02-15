@@ -133,14 +133,18 @@ const EfitParams = (props: Props) => {
                 </div>
               ))}
             </div>
-            <Text>
-              Дополнительный параметры color содержит параметры:{" "}
-              {exportModel.colors.toString()}
-            </Text>
-            <Flex gap={5}>
-              <Text>Дополнительный параметры Size содержит параметры: </Text>
+            <Text>Дополнительный параметры color содержит параметры: </Text>
+            <Flex gap={5} wrap={true}>
+              {exportModel.colors.map((item) => (
+                <Text key={item}>{item} |</Text>
+              ))}
+            </Flex>
+
+            <br />
+            <Text>Дополнительный параметры Size содержит параметры: </Text>
+            <Flex gap={5} wrap={true}>
               {exportModel.size.map((item: Size) => (
-                <Text key={item.id}>{item.name},</Text>
+                <Text key={item.id}>{item.name} |</Text>
               ))}
             </Flex>
           </>
