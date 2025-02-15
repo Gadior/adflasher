@@ -2,19 +2,13 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 // ~ interface
-import { int_header } from "./interface.tsx";
+import { int_header, menuItems } from "./interface.tsx";
 // ~ assets
 import __logo from "./images/__logo.jpg";
 
 // ___ const
 // #region
-const menuItems: int_header[] = [
-  { name: "About us", url: "#" },
-  { name: "Services", url: "#" },
-  { name: "Use Cases", url: "#" },
-  { name: "Pricing", url: "#" },
-  { name: "Blog", url: "#" },
-];
+
 // #endregion
 
 function Header() {
@@ -31,14 +25,15 @@ function Header() {
       <div className="--hidden test8__header__right">
         {/* map menu */}
         {menuItems.map((item: int_header) => (
-          <nav
+          <a
+            href={`#${item.ancor}`}
             key={Date.now() - Math.floor(Math.random() * 1000)}
             className={
               item.name === "About us" ? "test8__menuItem--active" : ""
             }
           >
             {item.name}
-          </nav>
+          </a>
         ))}
         <button className="test8__header__right--req">Request a quote</button>
       </div>

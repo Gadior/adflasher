@@ -47,6 +47,7 @@ import __teamItem5 from "../../Shared/page8/images/__teamItem5.png";
 import __teamItem6 from "../../Shared/page8/images/__teamItem6.png";
 // - bg
 import __formBg from "../../Shared/page8/images/__bg.png";
+import Footer from "../../Shared/page8/footer.tsx";
 
 // #endregion ~ import
 
@@ -122,10 +123,11 @@ export default function Page() {
       msg: !formData.msg.trim(),
     };
     setErrors(newErrors);
-    console.log(newErrors);
+
     setTimeout(() => setErrors({}), 500);
     return !Object.values(newErrors).includes(true);
   };
+
   const executeForm = () => {
     if (!isEmpty()) {
       return;
@@ -142,6 +144,7 @@ export default function Page() {
 
   return (
     <div className="test8__wrapper">
+      <TasksBackBtn />
       <div className="test8__section">
         <Header />
       </div>
@@ -489,16 +492,14 @@ export default function Page() {
                 checked={radioBtn === 0 ? true : false}
                 onClick={(e: any) => setRadioBtn(0)}
               />
-              {/* <span className="checkmark"></span> */}
-              Say Hi!
+              <span>Say Hi!</span>
               <input
                 type="radio"
                 name="language"
                 checked={radioBtn === 1 ? true : false}
                 onClick={(e: any) => setRadioBtn(1)}
               />
-              {/* <span className="checkmark"></span> */}
-              Get a Quote
+              <span>Get a Quote</span>
             </div>
 
             <div className="__form">
@@ -545,7 +546,10 @@ export default function Page() {
         </div>
       </section>
 
-      <TasksBackBtn />
+      {/* footer  */}
+      <footer className="test8__section">
+        <Footer />
+      </footer>
     </div>
   );
   // #endregion ~ return
