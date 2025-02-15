@@ -33,20 +33,6 @@ html {
   margin-bottom: 15px;
 }
 
-.container-info {
-  animation: pulse-scale 1s infinite ease-in-out;
-}
-
-@keyframes pulse-scale {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-}
-
 /* Основной контейнер */
 
 .container {

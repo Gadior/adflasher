@@ -162,52 +162,39 @@ export default function Main() {
                 align="flex-start"
               >
                 <div className="modal-window-container-body-skills">
-                  <Text className="modal-window-container-body-skills__font">
-                    <b>status</b>: "в поиске" | "фриланс",
-                    <br />
-                    <b>salaryPrice</b>: "от ? ₽",
-                    <br />
-                    <b>workFromHome</b>: true | null,
-                    <br />
-                    <b>skills</b>:
-                    <br />[{"{"}
-                    <br />
-                    <div className="modal-window-container-body-skills">
-                      <b>Репозиторий</b>:
-                      "https://git.bb-media.ru/Tartos/tuts.git",
-                      <br />
-                      <b
-                        style={{
-                          whiteSpace: "wrap",
-                          wordBreak: "break-all",
-                          overflowWrap: "break-word",
-                        }}
-                      >
-                        frontEnd
-                      </b>
-                      : "React, TypeScript, Redux, html/css, atnd, map, filter,
-                      functions, useState, UseEffect, components",
-                      <br />
-                      <b>backEnd</b>: "python (example -{" "}
+                  <Flex gap={10}>status: "в поиске" | "фриланс",</Flex>
+                  <Flex gap={10}>salaryPrice: "от ? ₽",</Flex>
+                  <Flex gap={10}>workFromHome: true | null,</Flex>
+                  <Flex gap={10}>skills:</Flex>[{"{"}
+                  <div className="modal-window-container-body-skills__list">
+                    <Flex wrap={true}>
+                      Репозиторий: "https://git.bb-media.ru/Tartos/tuts.git",
+                    </Flex>
+                    <Flex wrap={true}>
+                      frontEnd: React, TypeScript, Redux, html/css, atnd, map,
+                      filter, functions, useState, UseEffect, components,
+                    </Flex>
+                    <Flex wrap={true}>
+                      backEnd: python example href=
                       <a href="https://bannersbox.ru/" target="__blank">
                         bannersbox.ru
                       </a>
-                      )",
-                      <br />
-                      <b>uniti</b>: "C# (example -{" "}
+                    </Flex>
+                    <Flex wrap={true}>
+                      uniti: C# ~ example href=
                       <a
                         href="https://disk.yandex.ru/i/lhKnMERhcYXY_Q"
                         target="__blank"
                       >
                         game
                       </a>
-                      )",
-                      <br />
-                      <b>design</b>: "figma, photoshop, aftereffect, animateCC",
-                      <br />
-                      <b>soft</b>: "коммуникация, позитив",
-                      <br />
-                      <b>contact</b>:{" "}
+                    </Flex>
+                    <Flex wrap={true}>
+                      design: "figma, photoshop, aftereffect, animateCC",
+                    </Flex>
+                    <Flex wrap={true}>soft: "коммуникация, позитив",</Flex>
+                    <Flex wrap={true} gap={5}>
+                      contact:
                       <a
                         href=" https://career.habr.com/tartos"
                         target="__blank"
@@ -222,12 +209,10 @@ export default function Main() {
                         hh
                       </a>{" "}
                       | <a href="mailto:adflasher@mail.ru">adflasher@mail.ru</a>
-                      ,
-                      <br />
-                      {"}"}],
-                    </div>
-                    <b>]</b>
-                  </Text>
+                    </Flex>
+                    {"}"}],
+                  </div>
+                  ]
                 </div>
                 <Text style={{ fontSize: 16 }}></Text>
               </Flex>
