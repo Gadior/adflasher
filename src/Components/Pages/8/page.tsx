@@ -59,6 +59,36 @@ const partnersList = [
   { name: __parnterJpg_5, title: "Netflix logotype" },
   { name: __parnterJpg_6, title: "Zoom logotype" },
 ];
+// ~ слайды слайдера
+const sliderData = [
+  {
+    id: 0,
+    description:
+      "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence",
+    name: "John Smith",
+    job: "Marketing Director at XYZ Corp",
+  },
+  {
+    id: 1,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore vitae iste magnam exercitationem, cupiditate ad repudiandae reiciendis inventore ea commodi eos ipsum consequatur rerum hic voluptas maiores dicta quam eaque",
+    name: "Jane Doe",
+    job: "Director of Operations",
+  },
+  {
+    id: 2,
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    name: "Michael Brown",
+    job: "Senior SEO Specialist",
+  },
+  {
+    id: 3,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore vitae iste magnam exercitationem",
+    name: "Emily Johnson",
+    job: "PPC Manager",
+  },
+];
 // #endregion
 
 // ___ component
@@ -405,8 +435,32 @@ export default function Page() {
 
       {/* slider  */}
       <section className="test8__section">
-        <div className="">
-          <Slider />
+        <div className="test8__slider__wrapper __darkTheme">
+          <Slider data={sliderData} />
+        </div>
+      </section>
+
+      {/* form  */}
+      <section className="test8__section">
+        <div className="test8__form__wrapper">
+          <div className="form__wrapper__left">
+            <div className="form__wrapper__left__row">
+              <input type="radio" name="language" value="javascript" />
+              Say Hi!
+              <input type="radio" name="language" value="javascript" />
+              Get a Quote
+            </div>
+
+            <div className="__form">
+              <span>Name</span>
+              <input type="text" placeholder="Enter name" />
+              <span>Email*</span>
+              <input type="text" placeholder="Enter Email" />
+              <span>Message*</span>
+              <textarea placeholder="Enter message" />
+            </div>
+          </div>
+          <div className="form__wrapper__bg"></div>
         </div>
       </section>
 
@@ -420,4 +474,4 @@ export default function Page() {
   // #endregion ~ function
 }
 // #endregion ~ component
-// #region ~ hlop
+// #endregion ~ hlop

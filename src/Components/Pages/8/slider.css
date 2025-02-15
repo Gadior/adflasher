@@ -1,40 +1,17 @@
 .slider-container {
+  display: flex;
+  align-items: center;
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 1440px;
+  padding: 60px 0;
 }
-
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.slide-content {
-  background: #f3f3f3;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Центрирование активного слайда */
-.swiper-slide {
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-}
-
-.swiper-slide-active {
-  opacity: 1;
-}
-
+/* ___ Стрелки */
+/* #region */
 /* Стрелки управления */
-.swiper-button-next,
-.swiper-button-prev {
+.swiper-next,
+.swiper-prev {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   width: 40px;
   height: 40px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -46,23 +23,75 @@
   cursor: pointer;
   z-index: 10;
 }
-
-.swiper-button-next {
+.swiper-next {
   right: 10px;
 }
-
-.swiper-button-prev {
+.swiper-prev {
   left: 10px;
 }
+/* #endregion */
 
-/* Пагинация */
-.swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #ccc;
+/* ___ слайды */
+/* #region */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+}
+.slide-content__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.content__wrapper__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.content__wrapper__title > h3 {
+  color: #b9ff66;
+  font-weight: 400;
+}
+.content__wrapper__title > p {
+  color: white;
+  font-weight: 100;
+  text-align: center;
+}
+.slide-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 40px;
+  height: fit-content;
+  border: 2px solid #b9ff66;
+  border-radius: 25px;
+}
+.slide-content > p {
+  color: white;
+  text-align: center;
+}
+.swiper-slide-active {
   opacity: 1;
 }
+/* #endregion */
 
-.swiper-pagination-bullet-active {
-  background-color: #000;
+/* ! Media */
+@media (max-width: 1000px) {
+  .slider-container {
+    padding: 20px 0;
+  }
+  .slide-content {
+    border-radius: 15px;
+    padding: 20px;
+  }
+  .swiper-next,
+  .swiper-prev {
+    width: 20px;
+    height: 20px;
+  }
 }
