@@ -18,7 +18,7 @@ import TeamItem from "../../Shared/page8/teamItem.tsx";
 import Slider from "../../Shared/page8/slider.tsx";
 
 // ~ assets
-import { Check, MoveUpRight } from "lucide-react";
+import { MoveUpRight } from "lucide-react";
 
 import __bannerJpg from "../../Shared/page8/images/__mainjpg.jpg";
 // - партнеры
@@ -149,7 +149,7 @@ export default function Page() {
       </div>
 
       {/* BANNER */}
-      <section className="test8__section">
+      <section className="test8__section" id="About_us">
         <div className="test8__banner__web --hidden">
           <div className="test8__banner__left">
             <h1>Navigating the digital landscape for success</h1>
@@ -199,7 +199,7 @@ export default function Page() {
       </section>
 
       {/* Services */}
-      <section className="test8__section">
+      <section className="test8__section" id="services">
         <div className="test8__service__wrapper">
           <h2>Services</h2>
           <p>
@@ -275,7 +275,7 @@ export default function Page() {
       </section>
 
       {/* Case Studies */}
-      <section className="test8__section">
+      <section className="test8__section" id="cases">
         <div className="test8__service__wrapper">
           <h2>Case Studies</h2>
           <p>
@@ -347,7 +347,7 @@ export default function Page() {
       </section>
 
       {/* Process Steps */}
-      <section className="test8__section">
+      <section className="test8__section" id="process">
         <div className="test8__section--gap">
           <ProcessStep
             stepNum={"01"}
@@ -395,7 +395,7 @@ export default function Page() {
       </section>
 
       {/* Team  */}
-      <section className="test8__section">
+      <section className="test8__section" id="team">
         <div className="test8__service__wrapper">
           <h2>Team</h2>
           <p>
@@ -481,7 +481,7 @@ export default function Page() {
       </section>
 
       {/* form  */}
-      <section className="test8__section">
+      <section className="test8__section" id="contact">
         <div className="test8__form__wrapper">
           <div className="form__wrapper__left">
             <div className="form__wrapper__left__row">

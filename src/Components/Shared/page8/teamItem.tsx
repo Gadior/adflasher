@@ -22,7 +22,7 @@ export default function TeamItem(props: Props) {
         <img src={itemPic} alt={itemName} />
         <div className="header__col">
           <span>{itemName}</span>
-          <span>{itemJob}</span>
+          <p>{itemJob}</p>
         </div>
       </div>
 

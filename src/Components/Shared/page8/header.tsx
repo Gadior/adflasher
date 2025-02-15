@@ -55,7 +55,14 @@ function Header() {
           />
           <div className="test8__header__right test8__mobMenu__rows">
             {menuItems.map((item: int_header) => (
-              <nav>{item.name}</nav>
+              <a
+                href={`#${item.ancor}`}
+                onClick={() => {
+                  setIsOpen(!isOpen);
+                }}
+              >
+                {item.name}
+              </a>
             ))}
             <button className="test8__header__right--req">
               Request a quote

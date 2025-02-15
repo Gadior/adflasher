@@ -6,10 +6,11 @@ export type int_header = {
   ancor: string;
 };
 export const menuItems: int_header[] = [
-  { name: "About us", url: "#", ancor: "ancor1" },
-  { name: "Services", url: "#", ancor: "ancor2" },
-  { name: "Use Cases", url: "#", ancor: "ancor3" },
-  { name: "Pricing", url: "#", ancor: "ancor4" },
-  { name: "Blog", url: "#", ancor: "ancor5" },
+  { name: "About us", url: "#", ancor: "About_us" },
+  { name: "Services", url: "#", ancor: "services" },
+  { name: "Use Cases", url: "#", ancor: "cases" },
+  { name: "Process", url: "#", ancor: "process" },
+  { name: "Team", url: "#", ancor: "team" },
+  { name: "Contact", url: "#", ancor: "contact" },
 ];
 // #endregion
