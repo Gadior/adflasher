@@ -165,7 +165,7 @@ export default function Main() {
                   <Text className="modal-window-container-body-skills__font">
                     <b>status</b>: "в поиске" | "фриланс",
                     <br />
-                    <b>salaryPrice</b>: "от 150 000 ₽",
+                    <b>salaryPrice</b>: "от ? ₽",
                     <br />
                     <b>workFromHome</b>: true | null,
                     <br />
@@ -173,18 +173,56 @@ export default function Main() {
                     <br />[{"{"}
                     <br />
                     <div className="modal-window-container-body-skills">
-                      <b>frontEnd</b>: "React + TypeScript + css + atnd +
-                      map/filter/functions/useState/UseEffect/components",
+                      <b>Репозиторий</b>:
+                      "https://git.bb-media.ru/Tartos/tuts.git",
                       <br />
-                      <b>backEnd</b>: "python (example -
-                      https://bannersbox.ru/)",
+                      <b
+                        style={{
+                          whiteSpace: "wrap",
+                          wordBreak: "break-all",
+                          overflowWrap: "break-word",
+                        }}
+                      >
+                        frontEnd
+                      </b>
+                      : "React, TypeScript, Redux, html/css, atnd, map, filter,
+                      functions, useState, UseEffect, components",
+                      <br />
+                      <b>backEnd</b>: "python (example -{" "}
+                      <a href="https://bannersbox.ru/" target="__blank">
+                        bannersbox.ru
+                      </a>
+                      )",
+                      <br />
+                      <b>uniti</b>: "C# (example -{" "}
+                      <a
+                        href="https://disk.yandex.ru/i/lhKnMERhcYXY_Q"
+                        target="__blank"
+                      >
+                        game
+                      </a>
+                      )",
                       <br />
                       <b>design</b>: "figma, photoshop, aftereffect, animateCC",
                       <br />
                       <b>soft</b>: "коммуникация, позитив",
                       <br />
-                      <b>contact</b>: https://career.habr.com/tartos |
-                      adflasher@mail.ru,
+                      <b>contact</b>:{" "}
+                      <a
+                        href=" https://career.habr.com/tartos"
+                        target="__blank"
+                      >
+                        habr
+                      </a>{" "}
+                      |{" "}
+                      <a
+                        href="https://spb.hh.ru/resume/34de443cff018bae240039ed1f6e7036576436"
+                        target="__blank"
+                      >
+                        hh
+                      </a>{" "}
+                      | <a href="mailto:adflasher@mail.ru">adflasher@mail.ru</a>
+                      ,
                       <br />
                       {"}"}],
                     </div>
