@@ -9,7 +9,7 @@ import "./reset.css";
 import "./style.css";
 import "./slider.css";
 
-import React from "react";
+import React, { useState } from "react";
 
 // ~comps
 import Header from "../../Shared/page8/header.tsx";
@@ -19,7 +19,7 @@ import TeamItem from "../../Shared/page8/teamItem.tsx";
 import Slider from "../../Shared/page8/slider.tsx";
 
 // ~ assets
-import { MoveUpRight } from "lucide-react";
+import { Check, MoveUpRight } from "lucide-react";
 
 import __bannerJpg from "../../Shared/page8/images/__mainjpg.jpg";
 // - партнеры
@@ -45,6 +45,8 @@ import __teamItem3 from "../../Shared/page8/images/__teamItem3.png";
 import __teamItem4 from "../../Shared/page8/images/__teamItem4.png";
 import __teamItem5 from "../../Shared/page8/images/__teamItem5.png";
 import __teamItem6 from "../../Shared/page8/images/__teamItem6.png";
+// - bg
+import __formBg from "../../Shared/page8/images/__bg.png";
 
 // #endregion ~ import
 
@@ -94,9 +96,45 @@ const sliderData = [
 // ___ component
 // #region ~ component
 export default function Page() {
-  // ___ state
+  // ___ formData
   // #region
-
+  // ~ radioBtn info
+  const [radioBtn, setRadioBtn] = useState<number>(0);
+  const [isSaved, setIsSaved] = useState<boolean>(false);
+  const [errors, setErrors] = useState<Record<string, boolean>>({});
+  // ~ formData
+  interface Data {
+    name: string;
+    email: string;
+    msg: string;
+  }
+  const data = {
+    name: "",
+    email: "",
+    msg: "",
+  };
+  const [formData, setFormData] = useState<Data>(data);
+  // ~ validation
+  const isEmpty = (): boolean => {
+    // Валидация на обязательные (не пустые) поля
+    let newErrors: Record<string, boolean> = {
+      email: !formData.name.trim(),
+      msg: !formData.msg.trim(),
+    };
+    setErrors(newErrors);
+    console.log(newErrors);
+    setTimeout(() => setErrors({}), 500);
+    return !Object.values(newErrors).includes(true);
+  };
+  const executeForm = () => {
+    if (!isEmpty()) {
+      return;
+    } else {
+      setIsSaved(true);
+      setTimeout(() => setIsSaved(false), 3000);
+      setFormData(data);
+    }
+  };
   // #endregion
 
   // ___ return
@@ -445,22 +483,65 @@ export default function Page() {
         <div className="test8__form__wrapper">
           <div className="form__wrapper__left">
             <div className="form__wrapper__left__row">
-              <input type="radio" name="language" value="javascript" />
+              <input
+                type="radio"
+                name="language"
+                checked={radioBtn === 0 ? true : false}
+                onClick={(e: any) => setRadioBtn(0)}
+              />
+              {/* <span className="checkmark"></span> */}
               Say Hi!
-              <input type="radio" name="language" value="javascript" />
+              <input
+                type="radio"
+                name="language"
+                checked={radioBtn === 1 ? true : false}
+                onClick={(e: any) => setRadioBtn(1)}
+              />
+              {/* <span className="checkmark"></span> */}
               Get a Quote
             </div>
 
             <div className="__form">
               <span>Name</span>
-              <input type="text" placeholder="Enter name" />
+              <input
+                type="text"
+                placeholder="Enter name"
+                value={formData.name}
+                onChange={(e) => {
+                  setFormData({ ...formData, name: e.target.value });
+                }}
+              />
               <span>Email*</span>
-              <input type="text" placeholder="Enter Email" />
+              <input
+                type="text"
+                placeholder="Enter Email"
+                className={errors.email ? "--redMarker" : ""}
+                value={formData.email}
+                onChange={(e) => {
+                  setFormData({ ...formData, email: e.target.value });
+                }}
+              />
               <span>Message*</span>
-              <textarea placeholder="Enter message" />
+              <textarea
+                placeholder="Enter message"
+                className={errors.msg ? "--redMarker" : ""}
+                value={formData.msg}
+                onChange={(e) => {
+                  setFormData({ ...formData, msg: e.target.value });
+                }}
+              />
+              <button
+                className="__whiteColor"
+                onClick={() => {
+                  executeForm();
+                }}
+              >
+                Send Message
+              </button>
+              {isSaved && <div className="__darkColor">Данные сохранены!</div>}
             </div>
           </div>
-          <div className="form__wrapper__bg"></div>
+          <img src={__formBg} className="form__wrapper__bg"></img>
         </div>
       </section>
 

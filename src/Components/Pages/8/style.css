@@ -787,20 +787,27 @@ a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
   gap: 40px;
   margin: 0 20px;
   border-radius: 45px;
   padding: 40px;
   background-color: #f3f3f3;
   overflow: hidden;
-  width: 100%;
   gap: 20px;
 }
+.form__wrapper__bg {
+  position: absolute;
+  aspect-ratio: 1/1;
+  right: 0;
+}
+
 .form__wrapper__left {
   display: flex;
   flex-direction: column;
   width: 50%;
   gap: 20px;
+  z-index: 1;
 }
 .form__wrapper__left .__form {
   display: flex;
@@ -840,8 +847,45 @@ a {
   background: #b9ff66;
   border-left: 2px solid #191a23;
 }
+.__form button {
+  font-size: 18px;
+  background-color: #191a23;
+  height: 60px;
+  border-radius: 14px;
+  border: none;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+.__form button:hover {
+  transform: scale(1.05);
+}
+
 textarea::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+.form__wrapper__left__row {
+  display: flex;
+  gap: 5px;
+  font-size: 18px;
+}
+
+.form__wrapper__left__row input:checked {
+  background-color: #b9ff66;
+}
+
+/* !Media */
+@media (max-width: 1000px) {
+  .test8__form__wrapper {
+    padding: 20px;
+    border-radius: 25px;
+  }
+  .form__wrapper__left {
+    width: 100%;
+    gap: 10px;
+  }
+  .form__wrapper__left .__form {
+    gap: 10px;
+  }
 }
 
 /* #endregion ~ form */
@@ -850,6 +894,28 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 /* ___ mod */
 /* #region ~ mod */
+.--redMarker {
+  border: 2px solid red;
+  animation: horizontal-shaking 0.2s 3;
+}
+@keyframes horizontal-shaking {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 /* --- header */
 /* #region ~ header */
 .test8__menuItem--active {
