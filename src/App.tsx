@@ -14,6 +14,7 @@ import Page5 from "./Components/Pages/5/page.tsx";
 import Page6 from "./Components/Pages/6/page.tsx";
 import Page7 from "./Components/Pages/7/page.tsx";
 import Page8 from "./Components/Pages/8/page.tsx";
+import Page9 from "./Components/Pages/9/page.tsx";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="6" element={<Page6 />} />
           <Route path="7" element={<Page7 />} />
           <Route path="8" element={<Page8 />} />
+          <Route path="9" element={<Page9 />} />
         </Routes>
       </Provider>
     </BrowserRouter>

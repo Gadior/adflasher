@@ -1,0 +1,42 @@
+/* #region ~ hlop */
+
+/* ___ Контейнер */
+/* #region ~ Контейнер */
+.test9__container {
+  margin: 75px 20px 20px 20px;
+  padding: 20px;
+  background: #e2e2e2;
+  max-width: 1000px;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+}
+.test9__container > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+/* #endregion ~ Контейнер  */
+
+/* ___ table */
+/* #region */
+.test9__container__table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.test9__container__table > * {
+  margin-bottom: 20px;
+}
+
+.test9__container__export {
+  display: flex;
+  flex-direction: column;
+}
+.test9__exportBlock {
+  padding: 20px;
+}
+
+/* #endregion */
+
+/* #endregion */
+
+/* #endregion ~ hlop */

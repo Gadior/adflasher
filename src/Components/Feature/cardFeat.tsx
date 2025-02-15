@@ -40,20 +40,27 @@ export default function CardFeat(props: any) {
       </Space>
       <CardDescription description={props.description} />
       <Flex>
-        <Link to={props.openExample} style={{ width: "100%" }}>
-          <Button
-            style={{ width: "100%" }}
-            type="primary"
-            href={props.href}
-            disabled={blockBtn ? true : false}
-          >
-            Смотреть пример
-          </Button>
-        </Link>
+        {/* <Link to={props.openExample} style={{ width: "100%" }}> */}
+        <Button
+          style={{ width: "100%" }}
+          type="primary"
+          href={props.openExample}
+          disabled={blockBtn ? true : false}
+        >
+          Смотреть пример
+        </Button>
+        {/* </Link> */}
       </Flex>
       <Space className="container-card-tags">
         {tagsData &&
-          tagsData.map((tag: any) => <Tag color={"gold"}>{tag}</Tag>)}
+          tagsData.map((tag: any) => (
+            <Tag
+              color={"gold"}
+              key={Date.now() - Math.floor(Math.random() * 1000)}
+            >
+              {tag}
+            </Tag>
+          ))}
       </Space>
     </Flex>
   );

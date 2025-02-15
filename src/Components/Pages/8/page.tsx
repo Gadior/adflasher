@@ -7,6 +7,7 @@ import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 // ~ styles
 import "./reset.css";
 import "./style.css";
+import "./slider.css";
 
 import React from "react";
 
@@ -15,6 +16,7 @@ import Header from "../../Shared/page8/header.tsx";
 import Article from "../../Shared/page8/article.tsx";
 import ProcessStep from "../../Shared/page8/processStep.tsx";
 import TeamItem from "../../Shared/page8/teamItem.tsx";
+import Slider from "../../Shared/page8/slider.tsx";
 
 // ~ assets
 import { MoveUpRight } from "lucide-react";
@@ -398,6 +400,13 @@ export default function Page() {
             Hear from Our Satisfied Clients: Read Our Testimonials to Learn More
             about Our Digital Marketing Services
           </p>
+        </div>
+      </section>
+
+      {/* slider  */}
+      <section className="test8__section">
+        <div className="">
+          <Slider />
         </div>
       </section>
 

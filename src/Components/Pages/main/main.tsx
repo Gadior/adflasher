@@ -115,7 +115,11 @@ export default function Main() {
         <Space className="container-tags">
           {tagsList &&
             tagsList.map((tag: any) => (
-              <SearchTag tagValue={tag} selectTag={selectTag} />
+              <SearchTag
+                tagValue={tag}
+                selectTag={selectTag}
+                key={Date.now() - Math.floor(Math.random() * 1000)}
+              />
             ))}
         </Space>
       </Space>
@@ -127,7 +131,7 @@ export default function Main() {
         <div className="container-cards">
           {mainData.map((item: int_mainData) => (
             <CardFeat
-              key={item}
+              key={Date.now() - Math.floor(Math.random() * 1000)}
               title={item.title}
               description={item.description}
               href={item.href}
