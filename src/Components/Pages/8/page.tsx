@@ -1,13 +1,12 @@
+// ~ styles
+import "./reset.css";
+import "./style.css";
+import "./slider.css";
 // #region ~ hlop
 // ___ import
 // #region ~ import
 // ~ comps
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
-
-// ~ styles
-import "./reset.css";
-import "./style.css";
-import "./slider.css";
 
 import React, { useState } from "react";
 
