@@ -9,7 +9,7 @@ export default function CardTitle(props: any) {
       className="container-card__name"
       style={{ fontWeight: 600 }}
     >
-      <Text>{props.title}</Text>
+      <p>{props.title}</p>
     </Flex>
   );
 }
