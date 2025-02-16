@@ -103,7 +103,7 @@ const EfitParams = (props: Props) => {
           const paramValue = paramValues.find((pv) => pv.paramId === param.id);
           return (
             <div key={param.id} className="test9__container__table">
-              <Text>{param.name}</Text>
+              <Flex>{param.name}</Flex>
               <Input
                 type="text"
                 value={paramValue ? paramValue.value : ""}
@@ -124,27 +124,31 @@ const EfitParams = (props: Props) => {
         <Title level={2}>Модель</Title>
         {exportModel && (
           <>
-            <Text>Основные параметры:</Text>
+            <Flex wrap={true}>Основные параметры:</Flex>
             <div className="test9__exportBlock">
               {exportModel.paramValues.map((param: ParamValue) => (
                 <div key={param.paramId}>
-                  <Text>value: </Text>
-                  <Text>{param.value}</Text>
+                  <Flex>value: </Flex>
+                  <Flex>{param.value}</Flex>
                 </div>
               ))}
             </div>
-            <Text>Дополнительный параметры color содержит параметры: </Text>
+            <Flex wrap={true}>
+              Дополнительный параметры color содержит параметры:{" "}
+            </Flex>
             <Flex gap={5} wrap={true}>
               {exportModel.colors.map((item) => (
-                <Text key={item}>{item} |</Text>
+                <Flex key={item}>{item} |</Flex>
               ))}
             </Flex>
 
             <br />
-            <Text>Дополнительный параметры Size содержит параметры: </Text>
+            <Flex wrap={true}>
+              Дополнительный параметры Size содержит параметры:{" "}
+            </Flex>
             <Flex gap={5} wrap={true}>
               {exportModel.size.map((item: Size) => (
-                <Text key={item.id}>{item.name} |</Text>
+                <Flex key={item.id}>{item.name} |</Flex>
               ))}
             </Flex>
           </>
