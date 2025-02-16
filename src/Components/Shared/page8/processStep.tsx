@@ -42,7 +42,9 @@ export default function ProcessStep(props: Props) {
             setIsOpen(!isOpen);
           }}
         >
-          <span>{isOpen ? "+" : "-"}</span>
+          <span>
+            <b>{isOpen ? "+" : "-"}</b>
+          </span>
         </div>
       </div>
 

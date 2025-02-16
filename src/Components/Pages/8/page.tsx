@@ -1,10 +1,10 @@
+// #region ~ hlop
+// ___ import
+// #region ~ import
 // ~ styles
 import "./reset.css";
 import "./style.css";
 import "./slider.css";
-// #region ~ hlop
-// ___ import
-// #region ~ import
 // ~ comps
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 
@@ -47,7 +47,6 @@ import __teamItem6 from "../../Shared/page8/images/__teamItem6.png";
 // - bg
 import __formBg from "../../Shared/page8/images/__bg.png";
 import Footer from "../../Shared/page8/footer.tsx";
-
 // #endregion ~ import
 
 // ___ const

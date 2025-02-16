@@ -616,6 +616,7 @@ a {
   width: 100%;
   gap: 20px;
 }
+
 .prStep__header__left {
   display: flex;
   justify-content: flex-start;
