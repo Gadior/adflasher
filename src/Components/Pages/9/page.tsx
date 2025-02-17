@@ -8,7 +8,6 @@ import React, { useState } from "react";
 import { Input, Typography, Button, Divider, Flex } from "antd";
 
 // ~ styles
-import "./reset.css";
 import "./page.css";
 
 const { Text, Title } = Typography;

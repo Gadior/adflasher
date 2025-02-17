@@ -4,7 +4,6 @@
 // ~ comps
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 // ~ styles
-import "./reset.css";
 import "./page.css";
 // ~ interface
 import { int__mainData } from "./interface.tsx";

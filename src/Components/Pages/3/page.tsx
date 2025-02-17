@@ -6,7 +6,6 @@
 // ~ comps
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 // ~ styles
-import "./reset.css";
 import "./page.css";
 import { toCookies, toCookies_obj } from "../../Feature/cookiesController.tsx";
 // ~ interface

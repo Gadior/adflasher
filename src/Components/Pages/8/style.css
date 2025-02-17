@@ -1,9 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next&display=swap&v=1.0.0");
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap");
 
-body {
-  font-family: "Atkinson Hyperlegible Next", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 18px;
+.test8__wrapper > * {
+  font-family: "Atkinson Hyperlegible Next", sans-serif, serif;
 }
 /* #region ~ hlop */
 

@@ -2,9 +2,8 @@
 // ___ import
 // #region ~ import
 // ~ styles
-import "./reset.css";
-import "./style.css";
 import "./slider.css";
+import "./style.css";
 // ~ comps
 import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 

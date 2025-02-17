@@ -19,7 +19,6 @@ import __logo from "./src/images/__logo.png";
 import __plane from "./src/images/__plane.png";
 import __arrow from "./src/images/__arrow.jpg";
 // ~ styles
-import "./reset.css";
 import "./page.css";
 // #endregion ~ import
 

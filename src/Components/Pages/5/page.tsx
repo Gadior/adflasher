@@ -7,8 +7,8 @@ import Tab1Page5 from "../../Widjet/tab1Page5.tsx";
 import Tab2Page5 from "../../Widjet/tab2Page5.tsx";
 
 // ~ styles
-import "./reset.css";
 import "./page.css";
+
 import React from "react";
 import { Flex, Button, Tabs, Typography } from "antd";
 import type { TabsProps } from "antd";

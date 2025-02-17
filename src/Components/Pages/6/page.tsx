@@ -6,7 +6,6 @@ import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 import { throttle } from "lodash";
 
 // ~ styles
-import "./reset.css";
 import "./page.css";
 import React, { useState, useEffect } from "react";
 import { Flex, Typography } from "antd";

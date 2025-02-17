@@ -9,7 +9,6 @@ import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
 import AddPartnersWJT from "../../Widjet/addPartnersWJT.tsx";
 
 // ~ styles
-import "./reset.css";
 import "./page.css";
 
 import React from "react";

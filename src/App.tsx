@@ -4,6 +4,9 @@ import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Components/Feature/redux/store.tsx";
 
+// ~ style
+import "./index.css";
+
 // ~ routes comps
 import Main from "./Components/Pages/main/main.tsx";
 import Page1 from "./Components/Pages/1/page.tsx";
