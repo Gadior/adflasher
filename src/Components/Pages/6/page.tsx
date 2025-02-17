@@ -119,18 +119,15 @@ export default function Page() {
   // ~ component ячейки хвоста
   const TailBlock = (props: any) => {
     return (
-      <Flex
+      <div
         className="test6-container-block"
-        justify="center"
-        align="center"
         style={{
           maxWidth: Math.abs(props.tail),
-          width: "100%",
           background: props.tail < 0 ? "#cc3366" : "#8ccc99",
         }}
       >
-        <>{props.tail.toFixed(2)}</>
-      </Flex>
+        {props.tail.toFixed(2)}
+      </div>
     );
   };
 
@@ -180,7 +177,7 @@ export default function Page() {
       >
         {/* info */}
         <Title level={3}>Змейка BTC</Title>
-        <Text>
+        <p>
           Мне захотелось понять, как работают WebSocket, и я решил создать нечто
           простое, но интересное — всем известную "змейку". <br />
           Идея проста: змейка состоит из ячеек хвоста, каждая из которых
@@ -191,7 +188,7 @@ export default function Page() {
           Эта задача не преследует практическую цель, она служит скорее
           экспериментом для того, чтобы лучше понять поведение WebSocket в
           реальных условиях.
-        </Text>
+        </p>
         <Flex
           className="test6-container-block-price"
           justify="center"
@@ -201,12 +198,12 @@ export default function Page() {
         </Flex>
 
         {/* Snake */}
-        <Flex wrap={true} justify="flex-start" gap={5}>
+        <div className="test6-container-block-body">
           {snake.map((tail: any) => (
             <TailBlock tail={tail} />
           ))}
           <SnakeHead />
-        </Flex>
+        </div>
       </Flex>
       <TasksBackBtn />
     </>

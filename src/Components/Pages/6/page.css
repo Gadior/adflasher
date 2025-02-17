@@ -18,8 +18,16 @@
 
 /* ___ Ячейка */
 /* #region */
+.test6-container-block-body {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
+}
 .test6-container-block {
-  /* width: 100px; */
+  box-sizing: border-box;
+  width: 100px;
   height: 15px;
   border: 1px dashed white;
   border-radius: 5px;
@@ -32,6 +40,7 @@
   font-size: 32px;
 }
 .test6-container-block-head {
+  box-sizing: border-box;
   height: 15px;
   width: 15px;
   border: 1px dashed white;

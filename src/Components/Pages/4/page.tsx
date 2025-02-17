@@ -25,7 +25,7 @@ export default function Page() {
   return (
     <>
       <Flex vertical={true} className="test4-container" justify="flex-start">
-        <Text>
+        <p>
           Ниже представлены два компонента - виджета, которые обрабатывают
           данные своих состояний через контекст. Контекст реализован через 
           библиотеку Redux.
@@ -34,7 +34,7 @@ export default function Page() {
           свободно пеермещаемы.
           <br />
           Подробности в репозитории
-        </Text>
+        </p>
         <AddPartnersWJT />
         <ClickLikeWJT />
       </Flex>

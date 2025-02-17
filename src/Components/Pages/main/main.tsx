@@ -9,6 +9,8 @@ import "./media.css";
 import json from "../../Data/jsonData.json";
 // ~ interface
 import { int_mainData } from "./interface";
+// ~ cardImgList
+import { imgList } from "./cardImgList.tsx";
 
 // ~ components
 import CardFeat from "../../Feature/cardFeat.tsx";
@@ -134,6 +136,7 @@ export default function Main() {
               key={Date.now() - Math.floor(Math.random() * 1000)}
               title={item.title}
               description={item.description}
+              imgSrc={imgList[item.imgSrc]}
               href={item.href}
               cardName={item.cardName}
               tags={item.tags}
