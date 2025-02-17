@@ -83,10 +83,10 @@ export default function Page() {
   // #region ~ return
   return (
     <Flex className="test2-container" vertical={true}>
-      <Text>
+      <p>
         Данная форма не сохраняет и не обрабатывает данные. Поле "о себе" не
         является обязательным
-      </Text>
+      </p>
 
       <Divider style={{ margin: "0px 0 15px 0" }} />
 

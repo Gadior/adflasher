@@ -66,10 +66,10 @@ export default function Page() {
   return (
     <>
       <Flex vertical={true} className="test5-container" justify="start">
-        <Text>
+        <p>
           Необходимо создать хотя бы две группы и в каждой создать хотя бы по 2
           записи. Потом перейти в раздел сводной.
-        </Text>
+        </p>
         <Tabs defaultActiveKey="1" items={tabsItems} />
       </Flex>
       <TasksBackBtn />

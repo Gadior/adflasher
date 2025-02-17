@@ -110,3 +110,17 @@ html {
   flex-wrap: wrap;
   gap: 20;
 }
+.container-card__picture {
+  display: block;
+  box-sizing: border-box;
+  width: auto;
+  height: min-content;
+}
+.container-card__picture > img {
+  box-sizing: border-box;
+  border: 1px dashed red;
+  border-radius: 10px;
+  display: block;
+  width: 100%;
+  height: auto;
+}

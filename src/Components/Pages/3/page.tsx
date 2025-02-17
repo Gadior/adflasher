@@ -54,10 +54,10 @@ export default function Page() {
   return (
     <>
       <Flex className="test3-container" vertical={true}>
-        <Text>
+        <p>
           Данная форма обрабатывает файлы Cookies. Если вы согласны на обработку
           Cookies файлов, то нажмите кнопку "Продолжить"
-        </Text>
+        </p>
 
         {!isCookieAccept && (
           <Button
@@ -82,24 +82,22 @@ export default function Page() {
               }}
             >
               <TabPane tab="Анализ" key="1">
-                <Text>
+                <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Dolores laborum repudiandae beatae assumenda tenetur fuga
                   libero explicabo atque recusandae, sint facilis quos, dolore
                   voluptatum quod, nobis commodi at quia a?
-                </Text>
+                </p>
               </TabPane>
               <TabPane tab="Результат" key="2">
-                <Text>
+                <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Dolores laborum repudiandae beatae assumenda tenetur fuga
                   libero!
-                </Text>
+                </p>
               </TabPane>
               <TabPane tab="Тест" key="3">
-                <Text>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </Text>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
               </TabPane>
             </Tabs>
 

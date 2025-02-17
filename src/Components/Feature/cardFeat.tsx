@@ -4,10 +4,11 @@ import CardTitle from "../Shared/cardTitle.tsx";
 
 import React from "react";
 import { Flex, Button, Space, Tag } from "antd";
-import { Link } from "react-router-dom";
 import { FieldTimeOutlined } from "@ant-design/icons";
 
 export default function CardFeat(props: any) {
+  const path = props.imgSrc;
+  console.log(path);
   // ~ список тагов
   const tagsData = props.tags;
   // ~ для главного экрана отключаем кнопку
@@ -38,6 +39,11 @@ export default function CardFeat(props: any) {
         </Flex>
         <CardTitle title={props.title} />
       </Space>
+      {props.imgSrc && (
+        <div className="container-card__picture">
+          <img src={props.imgSrc}></img>
+        </div>
+      )}
       <CardDescription description={props.description} />
       <Flex>
         {/* <Link to={props.openExample} style={{ width: "100%" }}> */}
