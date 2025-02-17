@@ -163,7 +163,7 @@ a {
 .test8__header__right {
   justify-content: flex-end;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 }
 .test8__header__right > a {
   text-decoration: none;

@@ -11,6 +11,5 @@ export const menuItems: int_header[] = [
   { name: "Use Cases", url: "#", ancor: "cases" },
   { name: "Process", url: "#", ancor: "process" },
   { name: "Team", url: "#", ancor: "team" },
-  { name: "Contact", url: "#", ancor: "contact" },
 ];
 // #endregion
