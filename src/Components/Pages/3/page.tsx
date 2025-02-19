@@ -4,10 +4,10 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
+import TasksBackBtn from "../../Shared/tasksBackBtn";
 // ~ styles
 import "./page.css";
-import { toCookies, toCookies_obj } from "../../Feature/cookiesController.tsx";
+import { toCookies, toCookies_obj } from "../../Feature/cookiesController";
 // ~ interface
 import Cookies from "universal-cookie";
 // import Cookies from "js-cookie";

@@ -10,11 +10,11 @@ import json from "../../Data/jsonData.json";
 // ~ interface
 import { int_mainData } from "./interface";
 // ~ cardImgList
-import { imgList } from "./cardImgList.tsx";
+import { imgList } from "./cardImgList";
 
 // ~ components
-import CardFeat from "../../Feature/cardFeat.tsx";
-import SearchTag from "../../Shared/searchTag.tsx";
+import CardFeat from "../../Feature/cardFeat";
+import SearchTag from "../../Shared/searchTag";
 
 import React, { useState, useEffect } from "react";
 import { Button, Space, Tag, Typography, Flex } from "antd";

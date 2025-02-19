@@ -1,6 +1,6 @@
 // ~ components
-import CardDescription from "../Shared/cardDescription.tsx";
-import CardTitle from "../Shared/cardTitle.tsx";
+import CardDescription from "../Shared/cardDescription";
+import CardTitle from "../Shared/cardTitle";
 
 import React from "react";
 import { Flex, Button, Space, Tag } from "antd";

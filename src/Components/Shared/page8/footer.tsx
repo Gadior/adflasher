@@ -1,5 +1,5 @@
 import React from "react";
-import { int_header, menuItems } from "./interface.tsx";
+import { int_header, menuItems } from "./interface";
 // ~ assets
 import __logo_w from "./images/__logo__white.png";
 import __ss1 from "./images/__ss1.png";

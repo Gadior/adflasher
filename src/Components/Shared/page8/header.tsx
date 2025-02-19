@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 // ~ interface
-import { int_header, menuItems } from "./interface.tsx";
+import { int_header, menuItems } from "./interface";
 // ~ assets
 import __logo from "./images/__logo.jpg";
 

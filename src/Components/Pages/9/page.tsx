@@ -2,7 +2,7 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
+import TasksBackBtn from "../../Shared/tasksBackBtn";
 
 import React, { useState } from "react";
 import { Input, Typography, Button, Divider, Flex } from "antd";
@@ -10,7 +10,7 @@ import { Input, Typography, Button, Divider, Flex } from "antd";
 // ~ styles
 import "./page.css";
 
-const { Text, Title } = Typography;
+const { Title } = Typography;
 // #endregion ~ import
 
 // ___ interface
@@ -87,7 +87,6 @@ const EfitParams = (props: Props) => {
   };
   // ~ получить модель данных
   const handleGetModel = () => {
-    const ttt = getModel();
     setExportModel(getModel());
   };
   //   #endregion

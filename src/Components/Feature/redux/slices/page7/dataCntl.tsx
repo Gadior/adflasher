@@ -7,7 +7,7 @@ import {
   type_Lvl1,
   type_Lvl2,
   type_CheckOver,
-} from "./interface.tsx";
+} from "./interface";
 
 // ~ interface
 // #region ~ счетчик сердец

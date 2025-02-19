@@ -1,6 +1,5 @@
 import React from "react";
-import { Typography, Flex } from "antd";
-const { Text } = Typography;
+import {  Flex } from "antd";
 
 export default function CardDescription(props: any) {
   const str = props.description.toString();

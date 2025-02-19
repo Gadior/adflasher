@@ -5,24 +5,24 @@ import {
   PlusCircleOutlined,
   DragOutlined,
 } from "@ant-design/icons";
-import PageLvl1 from "./page7Lvl1.tsx";
+import PageLvl1 from "./page7Lvl1";
 
 // ~ dnd
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // ~ interface
-import { type_Root, type_Lvl1, type_Lvl2 } from "../../Pages/7/interface.tsx";
+import { type_Root, type_Lvl1, type_Lvl2 } from "../../Pages/7/interface";
 
 // ~ regux
 // #region
-import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks.tsx";
+import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks";
 import {
   deleteRoot,
   updateRoot,
   createLvl1,
-} from "../../Feature/redux/slices/page7/dataCntl.tsx";
-import DragAndDropAnimation from "../../Shared/dragAndDropAnimation.tsx";
+} from "../../Feature/redux/slices/page7/dataCntl";
+import DragAndDropAnimation from "../../Shared/dragAndDropAnimation";
 // #endregion
 
 // ~ что получаем через пропсы?

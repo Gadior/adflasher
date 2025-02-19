@@ -4,8 +4,8 @@
 // #region
 import React, { useState } from "react";
 import { Flex, Table, Button, Typography } from "antd";
-import { useAppSelector } from "../Feature/redux/hooks.tsx";
-import PartnersSelectModal from "../Feature/partnersSelectModal.tsx";
+import { useAppSelector } from "../Feature/redux/hooks";
+import PartnersSelectModal from "../Feature/partnersSelectModal";
 import "./addPartners__wjt.css";
 const { Text } = Typography;
 // #endregion

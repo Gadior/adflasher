@@ -1,8 +1,8 @@
 // ___ import
 // #region
-import React, { act, useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { createPortal } from "react-dom";
-import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
+import TasksBackBtn from "../../Shared/tasksBackBtn";
 import { Flex, Button } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
@@ -26,13 +26,13 @@ import {
   type_Lvl1,
   type_Root,
   type_Lvl2,
-} from "../../Feature/redux/slices/page7/interface.tsx";
-import Page7Root from "../../Feature/dndGroupList/page7Root.tsx";
-import Page7Lvl1 from "../../Feature/dndGroupList/page7Lvl1.tsx";
-import Page7Lvl2 from "../../Feature/dndGroupList/page7Lvl2.tsx";
+} from "../../Feature/redux/slices/page7/interface";
+import Page7Root from "../../Feature/dndGroupList/page7Root";
+import Page7Lvl1 from "../../Feature/dndGroupList/page7Lvl1";
+import Page7Lvl2 from "../../Feature/dndGroupList/page7Lvl2";
 
 // ~ regux
-import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks.tsx";
+import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks";
 import {
   setRoots,
   setActiveRoot,
@@ -46,7 +46,7 @@ import {
   setIsDragLvl2,
   setCollapseAllState,
   setCheckOver,
-} from "../../Feature/redux/slices/page7/dataCntl.tsx";
+} from "../../Feature/redux/slices/page7/dataCntl";
 // #endregion
 
 function Page() {
@@ -152,8 +152,8 @@ function Page() {
           setRoots({
             rt: arrayMove(
               roots,
-              roots.findIndex((item) => item.id === activeId),
-              roots.findIndex((item) => item.id === overId)
+              roots.findIndex((item:any) => item.id === activeId),
+              roots.findIndex((item:any) => item.id === overId)
             ),
           })
         );
@@ -175,8 +175,8 @@ function Page() {
           setLvls1({
             lvl: arrayMove(
               lvls1,
-              lvls1.findIndex((item) => item.id === activeId),
-              lvls1.findIndex((item) => item.id === overId)
+              lvls1.findIndex((item:any) => item.id === activeId),
+              lvls1.findIndex((item:any) => item.id === overId)
             ),
           })
         );
@@ -206,7 +206,7 @@ function Page() {
 
         // ~ обновили данные колонок в lvl2
         let __data2: type_Lvl2[];
-        __data2 = lvls2.map((lvl) => {
+        __data2 = lvls2.map((lvl:type_Lvl2) => {
           if (lvl.lvl1Id === __data[activeIndex].id) {
             return { ...lvl, columnId: __data[activeIndex].columnId };
           }
@@ -232,8 +232,8 @@ function Page() {
           setLvls2({
             lvl: arrayMove(
               lvls2,
-              lvls2.findIndex((item) => item.id === activeId),
-              lvls2.findIndex((item) => item.id === overId)
+              lvls2.findIndex((item:any) => item.id === activeId),
+              lvls2.findIndex((item:any) => item.id === overId)
             ),
           })
         );
@@ -325,30 +325,30 @@ function Page() {
                   // Root
                   key={col.id}
                   column={col}
-                  lvl1={lvls1.filter((task) => task.columnId === col.id)}
+                  lvl1={lvls1.filter((task:any) => task.columnId === col.id)}
                   lvls2={lvls2.filter(
-                    (level) => level.columnId && level.lvl1Id
+                    (level:any) => level.columnId && level.lvl1Id
                   )}
                 />
               </Flex>
             ))}
           </SortableContext>
 
-          {/* portal - псевдопроекция эллемента */}
+          {/* portal - псевдопроекция эллемента */}          
           {createPortal(
+              <>
             <DragOverlay>
               {activeRoot && (
                 <Page7Root
                   column={activeRoot}
-                  lvl1={lvls1.filter((level) => level.columnId)}
-                  lvls2={lvls2.filter(
-                    (level) => level.columnId && level.lvl1Id
-                  )}
+                  lvl1={lvls1.filter((level: any) => level.columnId)}
+                  lvls2={lvls2.filter((level: any) => level.columnId && level.lvl1Id)}
                 />
               )}
               {activeLvl1 && <Page7Lvl1 lvl1={activeLvl1} lvls2={lvls2} />}
               {activeLvl2 && <Page7Lvl2 lvl2={activeLvl2} />}
-            </DragOverlay>,
+            
+            </DragOverlay></>,
             document.body
           )}
 

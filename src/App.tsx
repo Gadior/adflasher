@@ -2,22 +2,22 @@ import React from "react";
 import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Provider } from "react-redux";
-import store from "./Components/Feature/redux/store.tsx";
+import store from "./Components/Feature/redux/store";
 
 // ~ style
 import "./index.css";
 
 // ~ routes comps
-import Main from "./Components/Pages/main/main.tsx";
-import Page1 from "./Components/Pages/1/page.tsx";
-import Page2 from "./Components/Pages/2/page.tsx";
-import Page3 from "./Components/Pages/3/page.tsx";
-import Page4 from "./Components/Pages/4/page.tsx";
-import Page5 from "./Components/Pages/5/page.tsx";
-import Page6 from "./Components/Pages/6/page.tsx";
-import Page7 from "./Components/Pages/7/page.tsx";
-import Page8 from "./Components/Pages/8/page.tsx";
-import Page9 from "./Components/Pages/9/page.tsx";
+import Main from "./Components/Pages/main/main";
+import Page1 from "./Components/Pages/1/page";
+import Page2 from "./Components/Pages/2/page";
+import Page3 from "./Components/Pages/3/page";
+import Page4 from "./Components/Pages/4/page";
+import Page5 from "./Components/Pages/5/page";
+import Page6 from "./Components/Pages/6/page";
+import Page7 from "./Components/Pages/7/page";
+import Page8 from "./Components/Pages/8/page";
+import Page9 from "./Components/Pages/9/page";
 
 function App() {
   return (

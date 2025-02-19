@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./slices/task4__hearts.tsx";
-import listCont from "./slices/task4__addPartners.tsx";
-import page5_dataCntl from "./slices/page5/dataCntl.tsx";
-import page7_dataCntl from "./slices/page7/dataCntl.tsx";
+import counterReducer from "./slices/task4__hearts";
+import listCont from "./slices/task4__addPartners";
+import page5_dataCntl from "./slices/page5/dataCntl";
+import page7_dataCntl from "./slices/page7/dataCntl";
 
 // ~ Store
 const store = configureStore({

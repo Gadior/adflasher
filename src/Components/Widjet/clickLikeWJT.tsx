@@ -4,8 +4,8 @@
 import React from "react";
 import { Flex } from "antd";
 // redux
-import ClickHeart from "../Shared/clickHeart.tsx";
-import HeartsCounter from "../Shared/heartsCounter.tsx";
+import ClickHeart from "../Shared/clickHeart";
+import HeartsCounter from "../Shared/heartsCounter";
 // #endregion ~ import
 
 // ___ component

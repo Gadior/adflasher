@@ -2,7 +2,7 @@
 
 // ___ import
 // #region ~ import
-import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
+import TasksBackBtn from "../../Shared/tasksBackBtn";
 import React, { useState, useEffect, useRef } from "react";
 
 // ~ days
@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/ru"; // Подключаем русскую локализацию для вывода месяца и дня недели
 
 // ~ interface
-import { int_tickets, Flags } from "./interface.tsx";
+import { int_tickets, Flags } from "./interface";
 // ~ jsonData
 import json from "./src/tickets.json";
 // ~ assets
@@ -61,7 +61,7 @@ export default function MainPage() {
   // ~ управление чекбоксами
   const handleCheckboxChange = (name: string) => {
     checkFocus();
-    let __check = checkboxes;
+    let __check:any = checkboxes;
     if (name === "all") {
       const newState = !checkboxes.all;
       setAllSelected(newState);

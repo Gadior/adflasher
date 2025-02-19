@@ -2,20 +2,18 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
-import Tab1Page5 from "../../Widjet/tab1Page5.tsx";
-import Tab2Page5 from "../../Widjet/tab2Page5.tsx";
+import TasksBackBtn from "../../Shared/tasksBackBtn";
+import Tab1Page5 from "../../Widjet/tab1Page5";
+import Tab2Page5 from "../../Widjet/tab2Page5";
 
 // ~ styles
 import "./page.css";
 
 import React from "react";
-import { Flex, Button, Tabs, Typography } from "antd";
+import { Flex, Button, Tabs } from "antd";
 import type { TabsProps } from "antd";
-import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks.tsx";
-import { addGroup } from "../../Feature/redux/slices/page5/dataCntl.tsx";
-
-const { Text } = Typography;
+import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks";
+import { addGroup } from "../../Feature/redux/slices/page5/dataCntl";
 
 // ~ redux
 // ~ redux

@@ -2,7 +2,7 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
+import TasksBackBtn from "../../Shared/tasksBackBtn";
 import { throttle } from "lodash";
 
 // ~ styles
@@ -10,7 +10,7 @@ import "./page.css";
 import React, { useState, useEffect } from "react";
 import { Flex, Typography } from "antd";
 
-const { Text, Title } = Typography;
+const { Title } = Typography;
 
 // #endregion ~ import
 
@@ -51,7 +51,7 @@ export default function Page() {
     */
 
     // ~ обработка
-    const handleMessage = throttle((message) => {
+    const handleMessage = throttle((message:any) => {
       if (flagReq) {
         setFlagReq(false);
         const newNumber = message;

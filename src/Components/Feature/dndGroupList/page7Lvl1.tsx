@@ -1,9 +1,9 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { type_Lvl1, type_Lvl2 } from "../../Pages/7/interface.tsx";
+import { type_Lvl1, type_Lvl2 } from "../../Pages/7/interface";
 import { Flex, Button, Input } from "antd";
 // const { TextArea } = Input;
 import { DeleteOutlined, DragOutlined } from "@ant-design/icons";
-import Page7Lvl2 from "./page7Lvl2.tsx";
+import Page7Lvl2 from "./page7Lvl2";
 
 // ~ dnd
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
@@ -11,13 +11,13 @@ import { CSS } from "@dnd-kit/utilities";
 
 // ~ regux
 // #region
-import { useAppDispatch, useAppSelector } from "../redux/hooks.tsx";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import {
   createLvl2,
   deleteLvls1,
   updateLvls1,
-} from "../redux/slices/page7/dataCntl.tsx";
-import DragAndDropAnimation from "../../Shared/dragAndDropAnimation.tsx";
+} from "../redux/slices/page7/dataCntl";
+import DragAndDropAnimation from "../../Shared/dragAndDropAnimation";
 // #endregion
 
 interface Props {

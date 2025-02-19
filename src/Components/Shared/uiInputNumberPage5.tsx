@@ -5,8 +5,8 @@ import React from "react";
 import { Input } from "antd";
 
 // ~ redux
-import { useAppDispatch } from "../Feature/redux/hooks.tsx";
-import { editItemNumber } from "../Feature/redux/slices/page5/dataCntl.tsx";
+import { useAppDispatch } from "../Feature/redux/hooks";
+import { editItemNumber } from "../Feature/redux/slices/page5/dataCntl";
 // #endregion ~ import
 
 export default function UiInputNumberPage5(props: any) {

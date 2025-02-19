@@ -2,11 +2,11 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
+import TasksBackBtn from "../../Shared/tasksBackBtn";
 // ~ styles
 import "./page.css";
 // ~ interface
-import { int__mainData } from "./interface.tsx";
+import { int__mainData } from "./interface";
 // ~ settings
 import {
   nameLength,
@@ -14,7 +14,7 @@ import {
   fioLength,
   fioReg,
   descriptionLength,
-} from "./settings.tsx";
+} from "./settings";
 
 import React, { useState } from "react";
 import { Input, Button, Typography, Flex, Divider } from "antd";

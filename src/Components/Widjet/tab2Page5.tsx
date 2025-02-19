@@ -7,7 +7,7 @@ import { Flex } from "antd";
 // ~ style
 import "./tab2_page5.css";
 // ~ redux
-import { useAppSelector } from "../Feature/redux/hooks.tsx";
+import { useAppSelector } from "../Feature/redux/hooks";
 // #endregion
 
 export default function Tab2Page5() {
@@ -25,7 +25,7 @@ export default function Tab2Page5() {
   }, [allmainData]);
   // ~ Получить количество записей в списке группы
   const getRecodsLength = (data: any): number => {
-    return data.reduce((sum, row: any) => sum + row.sallary, 0);
+    return data.reduce((sum:any, row: any) => sum + row.sallary, 0);
   };
   // #endregion
 
@@ -36,7 +36,7 @@ export default function Tab2Page5() {
       <Flex>Групп создано: {getGroupLength}</Flex>
       {getGroupLength > 0 && (
         <Flex vertical={true} gap={10} className="tab2-page5-info">
-          {allmainData.map((item) => (
+          {allmainData.map((item:any) => (
             <Flex vertical={true} className="tab2-page5-info-group">
               <Flex className="tab2-page5-info-group-_bold">
                 <b>Группа: {item.id}</b>

@@ -4,9 +4,9 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import ClickLikeWJT from "../../Widjet/clickLikeWJT.tsx";
-import TasksBackBtn from "../../Shared/tasksBackBtn.tsx";
-import AddPartnersWJT from "../../Widjet/addPartnersWJT.tsx";
+import ClickLikeWJT from "../../Widjet/clickLikeWJT";
+import TasksBackBtn from "../../Shared/tasksBackBtn";
+import AddPartnersWJT from "../../Widjet/addPartnersWJT";
 
 // ~ styles
 import "./page.css";
