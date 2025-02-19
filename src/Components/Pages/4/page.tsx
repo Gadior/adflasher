@@ -12,8 +12,7 @@ import AddPartnersWJT from "../../Widjet/addPartnersWJT";
 import "./page.css";
 
 import React from "react";
-import { Flex, Typography } from "antd";
-const { Text } = Typography;
+import { Flex } from "antd";
 // #endregion ~ import
 
 // ___ component

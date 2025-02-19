@@ -11,12 +11,10 @@ import "./page.css";
 
 import React from "react";
 import { Flex, Button, Tabs } from "antd";
-import type { TabsProps } from "antd";
+import { TabsProps } from "antd";
 import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks";
 import { addGroup } from "../../Feature/redux/slices/page5/dataCntl";
 
-// ~ redux
-// ~ redux
 // #endregion ~ import
 
 // ___ component
@@ -80,4 +78,4 @@ export default function Page() {
   // #endregion ~ function
 }
 // #endregion ~ component
-// #region ~ hlop
+// #endregion ~ hlop

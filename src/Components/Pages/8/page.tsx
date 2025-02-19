@@ -268,7 +268,7 @@ export default function Page() {
             </p>
             <div>Get your free proposal</div>
           </div>
-          <img src={__contactJpg} />
+          <img src={__contactJpg} alt=""/>
         </div>
       </section>
 

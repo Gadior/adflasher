@@ -142,11 +142,11 @@ export default function Page7Root(props: Props) {
             setEditMode(true);
           }}
         >
-          {overMarker?.id === column.id && overMarker?.type !== null && (
+          {overMarker && overMarker.id === column.id && overMarker.type !== null && (
             <>
-              {overMarker?.type === "Root" &&
-                overMarker?.activeType !== "Root" &&
-                overMarker?.activeType !== "Lvl2" && <DragAndDropAnimation />}
+              {overMarker.type === "Root" &&
+                overMarker.activeType !== "Root" &&
+                overMarker.activeType !== "Lvl2" && <DragAndDropAnimation />}
             </>
           )}
           {/* Иконка для перетаскивания */}

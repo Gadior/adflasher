@@ -95,19 +95,19 @@ function Page() {
   // #region
   // ~ начала движения
   const onDragStart = (e: DragStartEvent) => {
-    if (e.active.data.current?.type === "Root") {
+    if (e.active.data.current && e.active.data.current.type === "Root") {
       dispatch(setIsDragRoot({ fl: true }));
       dispatch(setActiveRoot({ rt: e.active.data.current.data }));
       return;
     }
 
-    if (e.active.data.current?.type === "Lvl1") {
+    if (e.active.data.current && e.active.data.current.type === "Lvl1") {
       dispatch(setIsDragLvl1({ fl: true }));
       dispatch(setActiveLvl1({ rt: e.active.data.current.data }));
       return;
     }
 
-    if (e.active.data.current?.type === "Lvl2") {
+    if (e.active.data.current && e.active.data.current.type === "Lvl2") {
       dispatch(setIsDragLvl2({ fl: true }));
       dispatch(setActiveLvl2({ rt: e.active.data.current.data }));
       return;
@@ -132,8 +132,11 @@ function Page() {
     const activeId = active.id;
     const overId = over.id;
 
-    const activeType = active.data.current?.type;
-    const overType = over.data.current?.type;
+    let activeType;
+    if(active.data.current){      activeType = active.data.current.type;}
+
+    let overType;
+    if(over.data.current){     overType = over.data.current.type;}
 
     // ___ ROOT
     // #region
@@ -190,7 +193,11 @@ function Page() {
       overType === "Root"
     ) {
       let __data: type_Lvl1[] = [...lvls1];
-      let __overRootId = over.data.current?.data.id;
+      let __overRootId;
+      if(over.data.current){
+        __overRootId = over.data.current.data.id;
+
+      }
 
       const activeIndex: number = __data.findIndex(
         (item) => item.id === activeId
@@ -247,8 +254,14 @@ function Page() {
       overType === "Lvl1"
     ) {
       let __data: type_Lvl2[] = [...lvls2];
-      let __overLvl2Id = over.data.current?.data.id;
-      let __overLvl2ColId = over.data.current?.data.columnId;
+      let __overLvl2Id;
+      if(over.data.current){
+        __overLvl2Id = over.data.current.data.id;
+      }
+      let __overLvl2ColId;
+      if(over.data.current){
+        __overLvl2ColId = over.data.current.data.columnId;
+      }
 
       const activeIndex: number = __data.findIndex(
         (item) => item.id === activeId
@@ -275,12 +288,26 @@ function Page() {
     if (!over) return;
 
     // ~ Получаем id, над которым мы навели
-    const activeId = active.data.current?.data.id;
-    const overId = over.data.current?.data.id;
+    let activeId
+    if(active.data.current){
+      activeId = active.data.current.data.id;
+    }
+
+    let overId;
+    if(over.data.current){
+      overId = over.data.current.data.id;
+    }
 
     // ~ Получаем type, над которым мы навели
-    const activeType = active.data.current?.type;
-    const overType = over.data.current?.type;
+    let activeType
+    if(active.data.current){
+      activeType = active.data.current.type;
+    }
+
+    let overType;
+    if(over.data.current){
+      overType = over.data.current.type;
+    }
 
     dispatch(
       setCheckOver({

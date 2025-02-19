@@ -138,8 +138,8 @@ export default function Page7Lvl2(props: any) {
         toggleEditMode();
       }}
     >
-      {overMarker?.id === lvl2.id && overMarker?.type !== null && (
-        <>{overMarker?.type !== "Lvl2" && <DragAndDropAnimation />}</>
+      {overMarker && overMarker.id === lvl2.id && overMarker.type !== null && (
+        <>{overMarker.type !== "Lvl2" && <DragAndDropAnimation />}</>
       )}
 
       <Flex gap={20} {...attributes} {...listeners}>
