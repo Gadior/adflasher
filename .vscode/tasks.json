@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile SCSS to CSS",
+      "type": "shell",
+      "command": "sass ./src/Components/Pages/10/style.scss ./src/Components/Pages/10/style.css",
+      "group": "build"
+    }
+  ]
+}

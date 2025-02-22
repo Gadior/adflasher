@@ -896,7 +896,7 @@ textarea::-webkit-scrollbar-thumb:hover {
     text-align: left;
   }
   .form__wrapper__left__row > input,
-  span {
+  .form__wrapper__left__row > span {
     width: min-content;
     white-space: nowrap;
   }

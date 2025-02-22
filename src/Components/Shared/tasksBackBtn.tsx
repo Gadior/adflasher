@@ -6,7 +6,7 @@ export default function TasksBackBtn(props: any) {
   return (
     <Link to="/">
       <Button className="backBtn" type="primary">
-        ← ВЕРНУТЬСЯ
+        ←
       </Button>
     </Link>
   );
