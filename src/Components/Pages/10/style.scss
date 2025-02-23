@@ -107,8 +107,10 @@ $redColor: red;
 
 // ! media
 @media (max-width: 500px) {
-  .test10--sing {
-    font-size: 10px;
+  .test10__section {
+    * {
+      font-size: 10px;
+    }
   }
 }
 // #endregion

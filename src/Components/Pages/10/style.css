@@ -94,7 +94,7 @@
 }
 
 @media (max-width: 500px) {
-  .test10--sing {
+  .test10__section * {
     font-size: 10px;
   }
 }
