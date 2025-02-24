@@ -366,19 +366,22 @@ function Page() {
 
           {/* portal - псевдопроекция эллемента */}
           {createPortal(
-            <DragOverlay>
-              {activeRoot && (
-                <Page7Root
-                  column={activeRoot}
-                  lvl1={lvls1.filter((level: any) => level.columnId)}
-                  lvls2={lvls2.filter(
-                    (level: any) => level.columnId && level.lvl1Id
-                  )}
-                />
-              )}
-              {activeLvl1 && <Page7Lvl1 lvl1={activeLvl1} lvls2={lvls2} />}
-              {activeLvl2 && <Page7Lvl2 lvl2={activeLvl2} />}
-            </DragOverlay>,
+            <>
+              {/* @ts-ignore */}
+              <DragOverlay>
+                {activeRoot && (
+                  <Page7Root
+                    column={activeRoot}
+                    lvl1={lvls1.filter((level: any) => level.columnId)}
+                    lvls2={lvls2.filter(
+                      (level: any) => level.columnId && level.lvl1Id
+                    )}
+                  />
+                )}
+                {activeLvl1 && <Page7Lvl1 lvl1={activeLvl1} lvls2={lvls2} />}
+                {activeLvl2 && <Page7Lvl2 lvl2={activeLvl2} />}
+              </DragOverlay>
+            </>,
             document.body
           )}
 
