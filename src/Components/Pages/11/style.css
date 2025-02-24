@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+.test11__wrapper {
+  font-family: Roboto, cursive !important;
+  font-size: 16px;
+  font-weight: 200;
+}
+.test11__wrapper * {
+  font-family: Roboto, cursive !important;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.test11__wrapper {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 80px 20px 20px 20px;
+  width: 100%;
+}
+.test11__wrapper > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+.test11__wrapper .test11__btn {
+  width: 100%;
+}
+.test11__wrapper__tab {
+  width: 100%;
+}
+
+.text11__option {
+  width: 100%;
+}
+.text11__option .__totalPrice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.text11__option .text11__option__selector {
+  width: 100%;
+}
+.text11__option .__cards {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 20px;
+}
+.text11__option .__cards .__card {
+  padding: 20px;
+  border-radius: 20px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.text11__option .__cards .__card.__color {
+  background-color: #ddf0e7;
+}
+.text11__option .__cards .__card.__color1 {
+  background-color: #f0e9dd;
+}
+.text11__option .__cards .__card.__color2 {
+  background-color: #dde0f0;
+}
+.text11__option .__cards .__card * {
+  width: 100%;
+}
+.text11__option .__cards .__card .__price {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.test11__modal {
+  background-color: #ccc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+.test11__modal *:not(:last-child) {
+  margin-bottom: 10px;
+}
+.test11__modal__text {
+  width: 100%;
+  text-align: left;
+}
+.test11__modal .test11__modal__title {
+  width: 100%;
+}

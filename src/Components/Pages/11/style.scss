@@ -1,0 +1,165 @@
+// ___ шрифт
+// #region
+@import url("https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+.test11__wrapper {
+  font-family: Roboto, cursive !important;
+  font-size: 16px;
+  font-weight: 200;
+
+  * {
+    font-family: Roboto, cursive !important;
+    font-size: 16px;
+    font-weight: 200;
+  }
+}
+// #endregion
+
+// __ vars
+// #region
+$modalBgColor: #ccc;
+$whiteBgColor: white;
+$cardBgColor: #ddf0e7;
+$cardBgColor1: #f0e9dd;
+$cardBgColor2: #dde0f0;
+$totalBgColor: #ff4d4f;
+// #endregion
+
+// ___ all
+// #region
+.test11__wrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 80px 20px 20px 20px;
+  width: 100%;
+
+  & > *:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  .test11__btn {
+    width: 100%;
+  }
+
+  &__tab {
+    width: 100%;
+  }
+}
+// #endregion
+
+// ___ main
+// #region
+// #endregion
+
+// ___ sections
+// #region
+
+// --- option
+// #region
+.text11__option {
+  width: 100%;
+
+  .__totalPrice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    color: $whiteBgColor;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .text11__option__selector {
+    width: 100%;
+  }
+
+  & .__cards {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+
+    & .__card {
+      padding: 20px;
+      border-radius: 20px;
+      width: 100%;
+      box-sizing: border-box;
+
+      &.__color {
+        background-color: $cardBgColor;
+      }
+
+      &.__color1 {
+        background-color: $cardBgColor1;
+      }
+
+      &.__color2 {
+        background-color: $cardBgColor2;
+      }
+
+      & * {
+        width: 100%;
+      }
+
+      & .__price {
+        align-items: center;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+// #endregion
+
+// --- test11__modal
+// #region
+.test11__modal {
+  background-color: $modalBgColor;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  *:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    width: 100%;
+    text-align: left;
+  }
+
+  .test11__modal__title {
+    width: 100%;
+  }
+}
+// #endregion
+// ---
+// #region
+// #endregion
+// ---
+// #region
+// #endregion
+// ---
+// #region
+// #endregion
+// ---
+// #region
+// #endregion
+
+// #endregion
+
+// __ animation
+// #region
+// #endregion

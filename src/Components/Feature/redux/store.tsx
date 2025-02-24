@@ -3,6 +3,7 @@ import counterReducer from "./slices/task4__hearts";
 import listCont from "./slices/task4__addPartners";
 import page5_dataCntl from "./slices/page5/dataCntl";
 import page7_dataCntl from "./slices/page7/dataCntl";
+import page11_dataCntl from "./slices/page11/dataCntl";
 
 // ~ Store
 const store = configureStore({
@@ -11,6 +12,7 @@ const store = configureStore({
     newList: listCont,
     page5_dataCntl: page5_dataCntl,
     page7_dataCntl: page7_dataCntl,
+    page11_dataCntl: page11_dataCntl,
   },
 });
 
