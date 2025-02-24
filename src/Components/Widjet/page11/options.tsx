@@ -96,7 +96,9 @@ export default function Options(props: any) {
   // #region
   const getTotalPrice = () => {
     let __total: number = 0;
-
+    estimateData.map((item: any) => {
+      __total = __total + parseInt(item.data.cost);
+    });
     return __total;
   };
   // #endregion

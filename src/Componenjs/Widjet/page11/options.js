@@ -93,6 +93,9 @@ function Options(props) {
   // #region
   var getTotalPrice = function getTotalPrice() {
     var __total = 0;
+    estimateData.map(function (item) {
+      __total = __total + parseInt(item.data.cost);
+    });
     return __total;
   };
   // #endregion

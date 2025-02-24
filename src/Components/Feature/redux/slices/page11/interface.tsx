@@ -16,6 +16,16 @@ export interface int__lvl2Selector {
   min: number;
   cost: number;
   type: string;
+  pay?: int_PayPls;
+}
+
+export interface int_PayPls {
+  studio: number;
+  photo: number;
+  makeup: number;
+  cake: number;
+  decor: number;
+  clean: number;
 }
 
 export interface int__EstimateData {

@@ -33,16 +33,66 @@ var paketSelector = exports.paketSelector = [{
   prePrice: 0,
   min: 30,
   cost: 5000,
-  type: ""
+  type: "",
+  pay: {
+    studio: 2500,
+    photo: 2500,
+    makeup: 0,
+    cake: 0,
+    decor: 0,
+    clean: 0
+  }
 }, {
   id: 1,
   value: "Пакет Family",
-  label: "Family",
+  label: "Пакет Family",
   marker: "Family",
   prePrice: 0,
   min: 55,
   cost: 8000,
-  type: ""
+  type: "",
+  pay: {
+    studio: 4000,
+    photo: 4000,
+    makeup: 0,
+    cake: 0,
+    decor: 0,
+    clean: 0
+  }
+}, {
+  id: 2,
+  value: "Пакет Тортик Макси",
+  label: "Пакет Тортик Макси",
+  marker: "tortMaksi",
+  prePrice: 0,
+  min: 55,
+  cost: 12000,
+  type: "",
+  pay: {
+    studio: 3000,
+    photo: 4000,
+    makeup: 0,
+    cake: 1500,
+    decor: 2500,
+    clean: 500
+  }
+}, {
+  id: 3,
+  value: "Пакет Тортик Мини",
+  label: "Пакет Тортик Мини",
+  marker: "tortMini",
+  prePrice: 0,
+  min: 30,
+  cost: 6000,
+  type: "",
+  pay: {
+    studio: 3000,
+    photo: 2500,
+    makeup: 0,
+    cake: 0,
+    decor: 1000,
+    clean: 0
+  }
 }];
 // - опция
 var optionSelector = exports.optionSelector = [{
