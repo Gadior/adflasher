@@ -33,7 +33,7 @@ function Service(props: any) {
   };
 
   if (!lvl2Selector) {
-    return;
+    return <div>error</div>;
   } else {
     return (
       <Select
@@ -122,7 +122,7 @@ export default function Options(props: any) {
   // ___ return
   // #region ~ return
   if (!rootSelector) {
-    return;
+    return <div>error</div>;
   } else {
     return (
       <Flex vertical={true} gap={20} className="text11__option">

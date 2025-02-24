@@ -54,7 +54,7 @@ export default function Price(props: any) {
 
   const getAllPrice = () => {
     let __data = __blankObj;
-    estimateData.map((item) => {
+    estimateData.map((item: any) => {
       if (item.data.pay) {
         __data = { ...__data, studio: __data.studio + item.data.pay.studio };
         __data = { ...__data, photo: __data.photo + item.data.pay.photo };
