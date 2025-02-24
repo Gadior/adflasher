@@ -7,9 +7,16 @@ import Options from "../../Widjet/page11/options";
 import Price from "../../Widjet/page11/price";
 
 import React, { useState } from "react";
-import { Button, Divider, Input, Typography } from "antd";
-import { Tabs } from "antd";
-import { TabsProps } from "antd";
+import {
+  Button,
+  Checkbox,
+  Divider,
+  Input,
+  Typography,
+  CheckboxProps,
+  TabsProps,
+  Tabs,
+} from "antd";
 
 // ~ redux
 import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks";
@@ -21,6 +28,8 @@ import {
 
 // ~ styles
 import "./style.css";
+import { CheckCheck } from "lucide-react";
+import { parseInt } from "lodash";
 
 const { Text, Title } = Typography;
 // #endregion ~ import
@@ -45,7 +54,7 @@ function Form(props: any) {
   );
   const [__data, set__Data] = useState({
     preCost: 0,
-    count: 1,
+    count: 0,
     total: formData ? formData.cost : 0,
   });
   // #endregion
@@ -56,6 +65,9 @@ function Form(props: any) {
     dispatch(isModalFalse());
   };
 
+  // ___ paket
+  // #region
+  // ~ save data from modal
   const saveData = () => {
     let __type = rootSelectorName ? rootSelectorName : "";
     dispatch(
@@ -69,12 +81,30 @@ function Form(props: any) {
           min: formData ? formData.min : 0,
           cost: __data.total,
           type: __type,
+          pay: {
+            studio: formData ? (formData.pay ? formData.pay.studio : 0) : 0,
+            photo: formData ? (formData.pay ? formData.pay.photo : 0) : 0,
+            makeup: formData ? (formData.pay ? formData.pay.makeup : 0) : 0,
+            cake: formData ? (formData.pay ? formData.pay.cake : 0) : 0,
+            decor: formData ? (formData.pay ? formData.pay.decor : 0) : 0,
+            clean: formData ? (formData.pay ? formData.pay.clean : 0) : 0,
+          },
         },
       })
     );
     dispatch(setRootSelectorName({ value: null, marker: null }));
     dispatch(isModalFalse());
   };
+  // #endregion
+
+  // ___ rent
+  // #region
+  // ~ горячие дни выбраны?
+  const [isHotDay, setIsHotDay] = useState(false);
+  const setHotDayCheck = (e: any) => {
+    setIsHotDay(e.target.checked);
+  };
+  // #endregion
 
   const marker = props.marker;
   switch (marker) {
@@ -88,14 +118,16 @@ function Form(props: any) {
           <Text className="test11__modal__text">Предоплата</Text>
           <Input
             type="number"
+            min={0}
             value={__data.preCost}
             onChange={(e) => {
+              let __value: number = parseInt(e.target.value);
               let data = __data;
 
               let cost = formData ? formData.cost : 0;
-              cost = cost - parseInt(e.target.value);
+              cost = cost - __value;
 
-              data = { ...data, preCost: parseInt(e.target.value) };
+              data = { ...data, preCost: __value };
               data = { ...data, total: cost };
 
               set__Data(data);
@@ -124,11 +156,94 @@ function Form(props: any) {
       );
     case "arenda":
       return (
-        <div>
-          <div>arenda</div>
+        <div className="test11__modal">
+          <Title level={3} className="test11__modal__title">
+            {formData ? formData.value : 0}
+          </Title>
+
+          <Divider className="__divider" />
+
+          <Checkbox
+            checked={isHotDay}
+            onChange={setHotDayCheck}
+            className="__checkbox"
+          >
+            HOT TIME
+          </Checkbox>
+
+          <Divider className="__divider" />
+
+          <Text className="test11__modal__text">Предоплата</Text>
+          <Input
+            type="number"
+            value={__data.preCost}
+            onChange={(e) => {
+              let data = __data;
+
+              let cost = formData ? formData.cost : 0;
+              cost = cost - parseInt(e.target.value);
+
+              data = { ...data, preCost: parseInt(e.target.value) };
+              data = { ...data, total: cost };
+
+              set__Data(data);
+            }}
+          />
+          <Text className="test11__modal__text">
+            Сколько слотов по 30 минут добавить к основному времени?
+          </Text>
+
+          <Input
+            type="number"
+            value={__data.count}
+            onChange={(e) => {
+              let data = __data;
+              data = { ...data, count: parseInt(e.target.value) };
+              set__Data(data);
+            }}
+          />
+
+          <Title level={3} className="test11__modal__title">
+            Итого:{" "}
+            {isHotDay
+              ? formData
+                ? formData.halphPrice
+                  ? (
+                      formData.halphPrice -
+                      __data.preCost +
+                      (formData.halphPrice / 2) * __data.count
+                    ).toLocaleString()
+                  : 0
+                : 0
+              : formData
+              ? (
+                  formData.cost -
+                  __data.preCost +
+                  (formData.cost / 2) * __data.count
+                ).toLocaleString()
+              : 0}{" "}
+            ₽
+          </Title>
+
+          <Divider />
+
+          <Button type="primary" className="test11__btn" onClick={saveData}>
+            Сохранить
+          </Button>
+
+          <Button
+            type="primary"
+            danger={true}
+            className="test11__btn"
+            onClick={cleanData}
+          >
+            Отменить
+          </Button>
         </div>
       );
     case "option":
+      console.log("option");
+      console.log(marker);
       return (
         <div>
           <div>option</div>
@@ -165,6 +280,9 @@ export default function Page(props: any) {
   const isModal: boolean = useAppSelector(
     (state) => state.page11_dataCntl.isModal
   );
+  const rootSelectorName = useAppSelector(
+    (state) => state.page11_dataCntl.rootSelectorName
+  );
 
   // const dispatch = useAppDispatch();
   // #endregion
@@ -178,7 +296,7 @@ export default function Page(props: any) {
   return (
     <div className="test11__wrapper">
       <TasksBackBtn />
-      <Button
+      {/* <Button
         type="primary"
         danger={true}
         className="test11__btn"
@@ -197,7 +315,7 @@ export default function Page(props: any) {
         }}
       >
         Загрузить последнюю смету
-      </Button>
+      </Button> */}
 
       {/* Табер */}
       <Tabs
@@ -209,7 +327,7 @@ export default function Page(props: any) {
       {/* модалка по услуге */}
       {isModal && (
         <div>
-          <Form marker={"paket"} />
+          <Form marker={rootSelectorName} />
         </div>
       )}
     </div>

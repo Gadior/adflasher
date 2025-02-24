@@ -71,7 +71,6 @@ function Options(props) {
   var estimateData = (0, _hooks.useAppSelector)(function (state) {
     return state.page11_dataCntl.estimateData;
   });
-  console.log(estimateData);
   // ~ card color style
 
   // ~ стиль фона карточки, в зависимости от переданого маркера в type объекта
@@ -100,6 +99,17 @@ function Options(props) {
   };
   // #endregion
 
+  // ___ предоплата со всех карточек
+  // #region
+  var getPrePayPrice = function getPrePayPrice() {
+    var __total = 0;
+    estimateData.map(function (item) {
+      __total = __total + parseInt(item.data.prePrice);
+    });
+    return __total;
+  };
+  // #endregion
+
   // ___ реакция root селектора
   // #region
   var handleChange = function handleChange(value, index) {
@@ -121,7 +131,11 @@ function Options(props) {
       className: "text11__option"
     }, estimateData.length > 0 && /*#__PURE__*/_react.default.createElement("div", {
       className: "__totalPrice"
-    }, "\u0418\u0422\u041E\u0413\u041E ", getTotalPrice().toLocaleString(), " \u20BD"), /*#__PURE__*/_react.default.createElement(_antd.Select, {
+    }, /*#__PURE__*/_react.default.createElement("div", null, "\u0418\u0422\u041E\u0413\u041E ", getTotalPrice().toLocaleString(), " \u20BD"), /*#__PURE__*/_react.default.createElement("div", {
+      className: "__prePay"
+    }, "\u041F\u0420\u0415\u0414\u041F\u041E\u041B\u0410\u0422\u0410 ", getPrePayPrice().toLocaleString(), " \u20BD"), /*#__PURE__*/_react.default.createElement("div", {
+      className: "__totalPrice--red"
+    }, "\u0412\u0417\u042F\u0422\u042C ", (getTotalPrice() - getPrePayPrice()).toLocaleString(), " \u20BD")), /*#__PURE__*/_react.default.createElement(_antd.Select, {
       className: "text11__option__selector",
       placeholder: "\u0427\u0442\u043E \u0434\u043E\u0431\u0430\u0432\u043B\u044F\u0435\u043C?",
       value: positionTitle,
@@ -148,7 +162,6 @@ function Options(props) {
         type: "primary",
         danger: true,
         onClick: function onClick() {
-          console.log(item.id);
           dispatch((0, _dataCntl.deleteEstimateData)({
             id: item.id
           }));

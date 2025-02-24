@@ -73,8 +73,6 @@ export default function Options(props: any) {
   const estimateData = useAppSelector(
     (state) => state.page11_dataCntl.estimateData
   );
-
-  console.log(estimateData);
   // ~ card color style
 
   // ~ стиль фона карточки, в зависимости от переданого маркера в type объекта
@@ -103,6 +101,17 @@ export default function Options(props: any) {
   };
   // #endregion
 
+  // ___ предоплата со всех карточек
+  // #region
+  const getPrePayPrice = () => {
+    let __total: number = 0;
+    estimateData.map((item: any) => {
+      __total = __total + parseInt(item.data.prePrice);
+    });
+    return __total;
+  };
+  // #endregion
+
   // ___ реакция root селектора
   // #region
   const handleChange = (value: string, index: any) => {
@@ -120,7 +129,13 @@ export default function Options(props: any) {
         {/* Плашка оплаты */}
         {estimateData.length > 0 && (
           <div className="__totalPrice">
-            ИТОГО {getTotalPrice().toLocaleString()} ₽
+            <div>ИТОГО {getTotalPrice().toLocaleString()} ₽</div>
+            <div className="__prePay">
+              ПРЕДПОЛАТА {getPrePayPrice().toLocaleString()} ₽
+            </div>
+            <div className="__totalPrice--red">
+              ВЗЯТЬ {(getTotalPrice() - getPrePayPrice()).toLocaleString()} ₽
+            </div>
           </div>
         )}
 
@@ -164,8 +179,6 @@ export default function Options(props: any) {
                   type="primary"
                   danger
                   onClick={() => {
-                    console.log(item.id);
-
                     dispatch(deleteEstimateData({ id: item.id }));
                   }}
                 >

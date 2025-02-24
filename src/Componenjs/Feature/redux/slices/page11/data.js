@@ -114,5 +114,76 @@ var rentSelector = exports.rentSelector = [{
   prePrice: 0,
   min: 60,
   cost: 2200,
-  type: ""
+  type: "",
+  halphPrice: 1900
+}, {
+  id: 1,
+  value: "Аренда FOCUS",
+  label: "Аренда FOCUS",
+  marker: "focus",
+  prePrice: 0,
+  min: 60,
+  cost: 1600,
+  type: "",
+  halphPrice: 1400
+}, {
+  id: 2,
+  value: "Аренда WHITE",
+  label: "Аренда WHITE",
+  marker: "white",
+  prePrice: 0,
+  min: 60,
+  cost: 1800,
+  type: "",
+  halphPrice: 1600
+}, {
+  id: 3,
+  value: "Аренда OLFI",
+  label: "Аренда OLFI",
+  marker: "olfi",
+  prePrice: 0,
+  min: 60,
+  cost: 1600,
+  type: "",
+  halphPrice: 1400
+}, {
+  id: 4,
+  value: "Аренда BLOOM",
+  label: "Аренда BLOOM",
+  marker: "bloom",
+  prePrice: 0,
+  min: 60,
+  cost: 1400,
+  type: "",
+  halphPrice: 1200
+}, {
+  id: 5,
+  value: "Аренда ЗАЛ-ФОН",
+  label: "Аренда ЗАЛ-ФОН",
+  marker: "bg",
+  prePrice: 0,
+  min: 60,
+  cost: 1000,
+  type: "",
+  halphPrice: 800
+}, {
+  id: 6,
+  value: "Аренда 'ЛОКАЦИЯ ПОД КЛЮЧ'",
+  label: "Аренда 'ЛОКАЦИЯ ПОД КЛЮЧ'",
+  marker: "key",
+  prePrice: 0,
+  min: 60,
+  cost: 3600,
+  type: "",
+  halphPrice: 1400
+}, {
+  id: 6,
+  value: "Аренда TOTAL-WHITE",
+  label: "Аренда TOTAL-WHITE",
+  marker: "totalWhite",
+  prePrice: 0,
+  min: 60,
+  cost: 1400,
+  type: "",
+  halphPrice: 1400
 }];

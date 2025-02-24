@@ -13,6 +13,8 @@ var _antd = require("antd");
 var _hooks = require("../../Feature/redux/hooks");
 var _dataCntl = require("../../Feature/redux/slices/page11/dataCntl");
 require("./style.css");
+var _lucideReact = require("lucide-react");
+var _lodash = require("lodash");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -57,7 +59,7 @@ function Form(props) {
   });
   var _useState = (0, _react.useState)({
       preCost: 0,
-      count: 1,
+      count: 0,
       total: formData ? formData.cost : 0
     }),
     _useState2 = _slicedToArray(_useState, 2),
@@ -73,6 +75,10 @@ function Form(props) {
     }));
     dispatch((0, _dataCntl.isModalFalse)());
   };
+
+  // ___ paket
+  // #region
+  // ~ save data from modal
   var saveData = function saveData() {
     var __type = rootSelectorName ? rootSelectorName : "";
     dispatch((0, _dataCntl.setEstimateData)({
@@ -84,7 +90,15 @@ function Form(props) {
         prePrice: __data.preCost,
         min: formData ? formData.min : 0,
         cost: __data.total,
-        type: __type
+        type: __type,
+        pay: {
+          studio: formData ? formData.pay ? formData.pay.studio : 0 : 0,
+          photo: formData ? formData.pay ? formData.pay.photo : 0 : 0,
+          makeup: formData ? formData.pay ? formData.pay.makeup : 0 : 0,
+          cake: formData ? formData.pay ? formData.pay.cake : 0 : 0,
+          decor: formData ? formData.pay ? formData.pay.decor : 0 : 0,
+          clean: formData ? formData.pay ? formData.pay.clean : 0 : 0
+        }
       }
     }));
     dispatch((0, _dataCntl.setRootSelectorName)({
@@ -93,6 +107,20 @@ function Form(props) {
     }));
     dispatch((0, _dataCntl.isModalFalse)());
   };
+  // #endregion
+
+  // ___ rent
+  // #region
+  // ~ горячие дни выбраны?
+  var _useState3 = (0, _react.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isHotDay = _useState4[0],
+    setIsHotDay = _useState4[1];
+  var setHotDayCheck = function setHotDayCheck(e) {
+    setIsHotDay(e.target.checked);
+  };
+  // #endregion
+
   var marker = props.marker;
   switch (marker) {
     case "paket":
@@ -105,13 +133,15 @@ function Form(props) {
         className: "test11__modal__text"
       }, "\u041F\u0440\u0435\u0434\u043E\u043F\u043B\u0430\u0442\u0430"), /*#__PURE__*/_react.default.createElement(_antd.Input, {
         type: "number",
+        min: 0,
         value: __data.preCost,
         onChange: function onChange(e) {
+          var __value = (0, _lodash.parseInt)(e.target.value);
           var data = __data;
           var cost = formData ? formData.cost : 0;
-          cost = cost - parseInt(e.target.value);
+          cost = cost - __value;
           data = _objectSpread(_objectSpread({}, data), {}, {
-            preCost: parseInt(e.target.value)
+            preCost: __value
           });
           data = _objectSpread(_objectSpread({}, data), {}, {
             total: cost
@@ -132,8 +162,64 @@ function Form(props) {
         onClick: cleanData
       }, "\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C"));
     case "arenda":
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, "arenda"));
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "test11__modal"
+      }, /*#__PURE__*/_react.default.createElement(Title, {
+        level: 3,
+        className: "test11__modal__title"
+      }, formData ? formData.value : 0), /*#__PURE__*/_react.default.createElement(_antd.Divider, {
+        className: "__divider"
+      }), /*#__PURE__*/_react.default.createElement(_antd.Checkbox, {
+        checked: isHotDay,
+        onChange: setHotDayCheck,
+        className: "__checkbox"
+      }, "HOT TIME"), /*#__PURE__*/_react.default.createElement(_antd.Divider, {
+        className: "__divider"
+      }), /*#__PURE__*/_react.default.createElement(Text, {
+        className: "test11__modal__text"
+      }, "\u041F\u0440\u0435\u0434\u043E\u043F\u043B\u0430\u0442\u0430"), /*#__PURE__*/_react.default.createElement(_antd.Input, {
+        type: "number",
+        value: __data.preCost,
+        onChange: function onChange(e) {
+          var data = __data;
+          var cost = formData ? formData.cost : 0;
+          cost = cost - (0, _lodash.parseInt)(e.target.value);
+          data = _objectSpread(_objectSpread({}, data), {}, {
+            preCost: (0, _lodash.parseInt)(e.target.value)
+          });
+          data = _objectSpread(_objectSpread({}, data), {}, {
+            total: cost
+          });
+          set__Data(data);
+        }
+      }), /*#__PURE__*/_react.default.createElement(Text, {
+        className: "test11__modal__text"
+      }, "\u0421\u043A\u043E\u043B\u044C\u043A\u043E \u0441\u043B\u043E\u0442\u043E\u0432 \u043F\u043E 30 \u043C\u0438\u043D\u0443\u0442 \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043A \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u043C\u0443 \u0432\u0440\u0435\u043C\u0435\u043D\u0438?"), /*#__PURE__*/_react.default.createElement(_antd.Input, {
+        type: "number",
+        value: __data.count,
+        onChange: function onChange(e) {
+          var data = __data;
+          data = _objectSpread(_objectSpread({}, data), {}, {
+            count: (0, _lodash.parseInt)(e.target.value)
+          });
+          set__Data(data);
+        }
+      }), /*#__PURE__*/_react.default.createElement(Title, {
+        level: 3,
+        className: "test11__modal__title"
+      }, "\u0418\u0442\u043E\u0433\u043E:", " ", isHotDay ? formData ? formData.halphPrice ? (formData.halphPrice - __data.preCost + formData.halphPrice / 2 * __data.count).toLocaleString() : 0 : 0 : formData ? (formData.cost - __data.preCost + formData.cost / 2 * __data.count).toLocaleString() : 0, " ", "\u20BD"), /*#__PURE__*/_react.default.createElement(_antd.Divider, null), /*#__PURE__*/_react.default.createElement(_antd.Button, {
+        type: "primary",
+        className: "test11__btn",
+        onClick: saveData
+      }, "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C"), /*#__PURE__*/_react.default.createElement(_antd.Button, {
+        type: "primary",
+        danger: true,
+        className: "test11__btn",
+        onClick: cleanData
+      }, "\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C"));
     case "option":
+      console.log("option");
+      console.log(marker);
       return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, "option"));
     default:
       return /*#__PURE__*/_react.default.createElement("div", null, "somthing wrong");
@@ -163,6 +249,9 @@ function Page(props) {
   var isModal = (0, _hooks.useAppSelector)(function (state) {
     return state.page11_dataCntl.isModal;
   });
+  var rootSelectorName = (0, _hooks.useAppSelector)(function (state) {
+    return state.page11_dataCntl.rootSelectorName;
+  });
 
   // const dispatch = useAppDispatch();
   // #endregion
@@ -175,26 +264,12 @@ function Page(props) {
   // #region ~ return
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "test11__wrapper"
-  }, /*#__PURE__*/_react.default.createElement(_tasksBackBtn.default, null), /*#__PURE__*/_react.default.createElement(_antd.Button, {
-    type: "primary",
-    danger: true,
-    className: "test11__btn",
-    onClick: function onClick() {
-      console.log("click on save btn");
-    }
-  }, "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0441\u043C\u0435\u0442\u0443"), /*#__PURE__*/_react.default.createElement(_antd.Button, {
-    type: "primary",
-    danger: true,
-    className: "test11__btn",
-    onClick: function onClick() {
-      console.log("click on save btn");
-    }
-  }, "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u044E\u044E \u0441\u043C\u0435\u0442\u0443"), /*#__PURE__*/_react.default.createElement(_antd.Tabs, {
+  }, /*#__PURE__*/_react.default.createElement(_tasksBackBtn.default, null), /*#__PURE__*/_react.default.createElement(_antd.Tabs, {
     defaultActiveKey: "1",
     items: items,
     className: "test11__wrapper__tab"
   }), isModal && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Form, {
-    marker: "paket"
+    marker: rootSelectorName
   })));
   // #endregion ~ return
 

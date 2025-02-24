@@ -17,6 +17,7 @@ export interface int__lvl2Selector {
   cost: number;
   type: string;
   pay?: int_PayPls;
+  halphPrice?: number;
 }
 
 export interface int_PayPls {
