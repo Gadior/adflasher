@@ -6,7 +6,7 @@ import TasksBackBtn from "../../Shared/tasksBackBtn";
 import Options from "../../Widjet/page11/options";
 import Price from "../../Widjet/page11/price";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Checkbox,
@@ -30,6 +30,7 @@ import {
 import "./style.css";
 import { CheckCheck } from "lucide-react";
 import { parseInt } from "lodash";
+import { data } from "react-router-dom";
 
 const { Text, Title } = Typography;
 // #endregion ~ import
@@ -63,6 +64,7 @@ function Form(props: any) {
   const cleanData = () => {
     dispatch(setRootSelectorName({ value: null, marker: null }));
     dispatch(isModalFalse());
+    setIsNumber(false);
   };
 
   // ___ paket
@@ -82,17 +84,42 @@ function Form(props: any) {
           cost: __data.total,
           type: __type,
           pay: {
-            studio: formData ? (formData.pay ? formData.pay.studio : 0) : 0,
-            photo: formData ? (formData.pay ? formData.pay.photo : 0) : 0,
-            makeup: formData ? (formData.pay ? formData.pay.makeup : 0) : 0,
-            cake: formData ? (formData.pay ? formData.pay.cake : 0) : 0,
-            decor: formData ? (formData.pay ? formData.pay.decor : 0) : 0,
-            clean: formData ? (formData.pay ? formData.pay.clean : 0) : 0,
+            studio: formData
+              ? formData.pay
+                ? formData.pay.studio + __data.count * formData.pay.studio
+                : 0
+              : 0,
+            photo: formData
+              ? formData.pay
+                ? formData.pay.photo + __data.count * formData.pay.photo
+                : 0
+              : 0,
+            makeup: formData
+              ? formData.pay
+                ? formData.pay.makeup + __data.count * formData.pay.makeup
+                : 0
+              : 0,
+            cake: formData
+              ? formData.pay
+                ? formData.pay.cake + __data.count * formData.pay.cake
+                : 0
+              : 0,
+            decor: formData
+              ? formData.pay
+                ? formData.pay.decor + __data.count * formData.pay.decor
+                : 0
+              : 0,
+            clean: formData
+              ? formData.pay
+                ? formData.pay.clean + __data.count * formData.pay.clean
+                : 0
+              : 0,
           },
         },
       })
     );
     dispatch(setRootSelectorName({ value: null, marker: null }));
+    setIsNumber(false);
     dispatch(isModalFalse());
   };
   // #endregion
@@ -104,6 +131,45 @@ function Form(props: any) {
   const setHotDayCheck = (e: any) => {
     setIsHotDay(e.target.checked);
   };
+  const [isStopList, setIsStopList] = useState<boolean>(false);
+  const setStopShow = () => {
+    let __list = ["key", "totalWhite"];
+
+    if (formData) {
+      __list.map((item) => {
+        if (item === formData.marker) {
+          if (!isStopList) {
+            setIsStopList((prev) => true);
+          }
+        }
+      });
+    }
+  };
+  useEffect(() => {
+    setStopShow();
+  }, [formData]);
+  // #endregion
+
+  // ___ option
+  // #region
+  // ~ есть ли в списке "считаемых" услуг
+  const [isNUmber, setIsNumber] = useState<boolean>(false);
+  const checkIsNumber = () => {
+    let __list = ["retush", "bg", "animal"];
+
+    if (formData) {
+      __list.map((item) => {
+        if (item === formData.marker) {
+          if (!isNUmber) {
+            setIsNumber((prev) => true);
+          }
+        }
+      });
+    }
+  };
+  useEffect(() => {
+    checkIsNumber();
+  }, [formData]);
   // #endregion
 
   const marker = props.marker;
@@ -162,16 +228,18 @@ function Form(props: any) {
           </Title>
 
           <Divider className="__divider" />
-
-          <Checkbox
-            checked={isHotDay}
-            onChange={setHotDayCheck}
-            className="__checkbox"
-          >
-            HOT TIME
-          </Checkbox>
-
-          <Divider className="__divider" />
+          {!isStopList && (
+            <>
+              <Checkbox
+                checked={isHotDay}
+                onChange={setHotDayCheck}
+                className="__checkbox"
+              >
+                HOT TIME
+              </Checkbox>
+              <Divider className="__divider" />
+            </>
+          )}
 
           <Text className="test11__modal__text">Предоплата</Text>
           <Input
@@ -211,45 +279,69 @@ function Form(props: any) {
               const __value: number = parseInt(e.target.value);
 
               let data = __data;
-              let cost;
-              if (!isHotDay) {
-                cost = formData ? formData.cost : 0;
-              } else {
-                cost = formData ? formData.halphPrice : 0;
-              }
-              if (cost === undefined) {
-                cost = 0;
-              }
+              let cost: number;
 
-              data = { ...data, count: __value };
-              data = {
-                ...data,
-                total: cost - data.preCost + (data.count * cost) / 2,
-              };
+              if (formData) {
+                if (!isHotDay) {
+                  cost = formData ? formData.cost : 0;
+                } else {
+                  cost =
+                    formData && formData.halphPrice ? formData.halphPrice : 0;
+                }
+                if (cost === undefined) {
+                  cost = 0;
+                }
 
-              set__Data(data);
+                data = { ...data, count: __value };
+                if (!isStopList) {
+                  data = {
+                    ...data,
+                    total: cost - data.preCost + (data.count * cost) / 2,
+                  };
+                } else {
+                  if (formData) {
+                    data = {
+                      ...data,
+                      total:
+                        formData && formData.halphPrice
+                          ? cost -
+                            data.preCost +
+                            data.count * formData.halphPrice
+                          : 0,
+                    };
+                  }
+                }
+
+                set__Data(data);
+              }
             }}
           />
 
           <Title level={3} className="test11__modal__title">
             Итого:{" "}
-            {isHotDay
-              ? formData
-                ? formData.halphPrice
+            {!isStopList ? (
+              <>
+                {isHotDay
+                  ? formData
+                    ? formData.halphPrice
+                      ? (
+                          formData.halphPrice -
+                          __data.preCost +
+                          (formData.halphPrice / 2) * __data.count
+                        ).toLocaleString()
+                      : 0
+                    : 0
+                  : formData
                   ? (
-                      formData.halphPrice -
+                      formData.cost -
                       __data.preCost +
-                      (formData.halphPrice / 2) * __data.count
+                      (formData.cost / 2) * __data.count
                     ).toLocaleString()
-                  : 0
-                : 0
-              : formData
-              ? (
-                  formData.cost -
-                  __data.preCost +
-                  (formData.cost / 2) * __data.count
-                ).toLocaleString()
-              : 0}{" "}
+                  : 0}
+              </>
+            ) : (
+              <>{__data.total}</>
+            )}{" "}
             ₽
           </Title>
 
@@ -270,11 +362,85 @@ function Form(props: any) {
         </div>
       );
     case "option":
-      console.log("option");
-      console.log(marker);
       return (
-        <div>
-          <div>option</div>
+        <div className="test11__modal">
+          <Title level={3} className="test11__modal__title">
+            {formData ? formData.value : 0}
+          </Title>
+          <Divider />
+          <Text className="test11__modal__text">Предоплата</Text>
+          <Input
+            type="number"
+            min={0}
+            value={__data.preCost}
+            onChange={(e) => {
+              let __value: number = parseInt(e.target.value);
+              let data = __data;
+
+              let cost = formData ? formData.cost : 0;
+              cost = cost - __value;
+
+              data = { ...data, preCost: __value };
+              data = { ...data, total: cost };
+
+              set__Data(data);
+            }}
+          />
+
+          {isNUmber && (
+            <>
+              <Text className="test11__modal__text">
+                Сколько дополнительных раз применить опцию?
+              </Text>
+              <Input
+                type="number"
+                value={__data.count}
+                onChange={(e) => {
+                  const __value: number = parseInt(e.target.value);
+
+                  let data = __data;
+                  let cost;
+                  cost = formData ? formData.cost : 0;
+                  if (cost === undefined) {
+                    cost = 0;
+                  }
+
+                  data = { ...data, count: __value };
+                  data = {
+                    ...data,
+                    total: cost - data.preCost + data.count * cost,
+                  };
+                  set__Data(data);
+                }}
+              />
+            </>
+          )}
+          <Title level={3} className="test11__modal__title">
+            Итого:{" "}
+            {formData
+              ? (
+                  formData.cost -
+                  __data.preCost +
+                  __data.count * formData.cost
+                ).toLocaleString()
+              : 0}{" "}
+            ₽
+          </Title>
+
+          <Divider />
+
+          <Button type="primary" className="test11__btn" onClick={saveData}>
+            Сохранить
+          </Button>
+
+          <Button
+            type="primary"
+            danger={true}
+            className="test11__btn"
+            onClick={cleanData}
+          >
+            Отменить
+          </Button>
         </div>
       );
     default:

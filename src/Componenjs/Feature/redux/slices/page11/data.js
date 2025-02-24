@@ -94,6 +94,7 @@ var paketSelector = exports.paketSelector = [{
     clean: 0
   }
 }];
+
 // - опция
 var optionSelector = exports.optionSelector = [{
   id: 0,
@@ -103,9 +104,103 @@ var optionSelector = exports.optionSelector = [{
   prePrice: 0,
   min: 0,
   cost: 2000,
-  type: ""
+  type: "",
+  pay: {
+    studio: 1000,
+    photo: 1000,
+    makeup: 0,
+    cake: 0,
+    decor: 0,
+    clean: 0
+  }
+}, {
+  id: 1,
+  value: "Макияж с укладкой",
+  label: "Макияж с укладкой",
+  marker: "makeUp",
+  prePrice: 0,
+  min: 0,
+  cost: 5000,
+  type: "",
+  pay: {
+    studio: 1000,
+    photo: 0,
+    makeup: 4000,
+    cake: 0,
+    decor: 0,
+    clean: 0
+  }
+}, {
+  id: 2,
+  value: "Ретушь 1 фотографии",
+  label: "Ретушь 1 фотографии",
+  marker: "retush",
+  prePrice: 0,
+  min: 0,
+  cost: 300,
+  type: "",
+  pay: {
+    studio: 150,
+    photo: 150,
+    makeup: 0,
+    cake: 0,
+    decor: 0,
+    clean: 0
+  }
+}, {
+  id: 3,
+  value: "Расскатка фона",
+  label: "Расскатка фона",
+  marker: "bg",
+  prePrice: 0,
+  min: 0,
+  cost: 600,
+  type: "",
+  pay: {
+    studio: 600,
+    photo: 0,
+    makeup: 0,
+    cake: 0,
+    decor: 0,
+    clean: 0
+  }
+}, {
+  id: 4,
+  value: "Влажная уборка",
+  label: "Влажная уборка",
+  marker: "clean",
+  prePrice: 0,
+  min: 0,
+  cost: 1000,
+  type: "",
+  pay: {
+    studio: 500,
+    photo: 0,
+    makeup: 0,
+    cake: 0,
+    decor: 0,
+    clean: 500
+  }
+}, {
+  id: 5,
+  value: "Животные в зале",
+  label: "Животные в зале",
+  marker: "animal",
+  prePrice: 0,
+  min: 0,
+  cost: 500,
+  type: "",
+  pay: {
+    studio: 500,
+    photo: 0,
+    makeup: 0,
+    cake: 0,
+    decor: 0,
+    clean: 0
+  }
 }];
-// - опция
+
+// - аренда
 var rentSelector = exports.rentSelector = [{
   id: 0,
   value: "Аренда SOFT",

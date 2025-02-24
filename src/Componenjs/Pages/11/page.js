@@ -15,6 +15,7 @@ var _dataCntl = require("../../Feature/redux/slices/page11/dataCntl");
 require("./style.css");
 var _lucideReact = require("lucide-react");
 var _lodash = require("lodash");
+var _reactRouterDom = require("react-router-dom");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -74,6 +75,7 @@ function Form(props) {
       marker: null
     }));
     dispatch((0, _dataCntl.isModalFalse)());
+    setIsNumber(false);
   };
 
   // ___ paket
@@ -92,12 +94,12 @@ function Form(props) {
         cost: __data.total,
         type: __type,
         pay: {
-          studio: formData ? formData.pay ? formData.pay.studio : 0 : 0,
-          photo: formData ? formData.pay ? formData.pay.photo : 0 : 0,
-          makeup: formData ? formData.pay ? formData.pay.makeup : 0 : 0,
-          cake: formData ? formData.pay ? formData.pay.cake : 0 : 0,
-          decor: formData ? formData.pay ? formData.pay.decor : 0 : 0,
-          clean: formData ? formData.pay ? formData.pay.clean : 0 : 0
+          studio: formData ? formData.pay ? formData.pay.studio + __data.count * formData.pay.studio : 0 : 0,
+          photo: formData ? formData.pay ? formData.pay.photo + __data.count * formData.pay.photo : 0 : 0,
+          makeup: formData ? formData.pay ? formData.pay.makeup + __data.count * formData.pay.makeup : 0 : 0,
+          cake: formData ? formData.pay ? formData.pay.cake + __data.count * formData.pay.cake : 0 : 0,
+          decor: formData ? formData.pay ? formData.pay.decor + __data.count * formData.pay.decor : 0 : 0,
+          clean: formData ? formData.pay ? formData.pay.clean + __data.count * formData.pay.clean : 0 : 0
         }
       }
     }));
@@ -105,6 +107,7 @@ function Form(props) {
       value: null,
       marker: null
     }));
+    setIsNumber(false);
     dispatch((0, _dataCntl.isModalFalse)());
   };
   // #endregion
@@ -119,6 +122,53 @@ function Form(props) {
   var setHotDayCheck = function setHotDayCheck(e) {
     setIsHotDay(e.target.checked);
   };
+  var _useState5 = (0, _react.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    isStopList = _useState6[0],
+    setIsStopList = _useState6[1];
+  var setStopShow = function setStopShow() {
+    var __list = ["key", "totalWhite"];
+    if (formData) {
+      __list.map(function (item) {
+        if (item === formData.marker) {
+          if (!isStopList) {
+            setIsStopList(function (prev) {
+              return true;
+            });
+          }
+        }
+      });
+    }
+  };
+  (0, _react.useEffect)(function () {
+    setStopShow();
+  }, [formData]);
+  // #endregion
+
+  // ___ option
+  // #region
+  // ~ есть ли в списке "считаемых" услуг
+  var _useState7 = (0, _react.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    isNUmber = _useState8[0],
+    setIsNumber = _useState8[1];
+  var checkIsNumber = function checkIsNumber() {
+    var __list = ["retush", "bg", "animal"];
+    if (formData) {
+      __list.map(function (item) {
+        if (item === formData.marker) {
+          if (!isNUmber) {
+            setIsNumber(function (prev) {
+              return true;
+            });
+          }
+        }
+      });
+    }
+  };
+  (0, _react.useEffect)(function () {
+    checkIsNumber();
+  }, [formData]);
   // #endregion
 
   var marker = props.marker;
@@ -169,13 +219,13 @@ function Form(props) {
         className: "test11__modal__title"
       }, formData ? formData.value : 0), /*#__PURE__*/_react.default.createElement(_antd.Divider, {
         className: "__divider"
-      }), /*#__PURE__*/_react.default.createElement(_antd.Checkbox, {
+      }), !isStopList && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_antd.Checkbox, {
         checked: isHotDay,
         onChange: setHotDayCheck,
         className: "__checkbox"
       }, "HOT TIME"), /*#__PURE__*/_react.default.createElement(_antd.Divider, {
         className: "__divider"
-      }), /*#__PURE__*/_react.default.createElement(Text, {
+      })), /*#__PURE__*/_react.default.createElement(Text, {
         className: "test11__modal__text"
       }, "\u041F\u0440\u0435\u0434\u043E\u043F\u043B\u0430\u0442\u0430"), /*#__PURE__*/_react.default.createElement(_antd.Input, {
         type: "number",
@@ -209,26 +259,36 @@ function Form(props) {
           var __value = (0, _lodash.parseInt)(e.target.value);
           var data = __data;
           var cost;
-          if (!isHotDay) {
-            cost = formData ? formData.cost : 0;
-          } else {
-            cost = formData ? formData.halphPrice : 0;
+          if (formData) {
+            if (!isHotDay) {
+              cost = formData ? formData.cost : 0;
+            } else {
+              cost = formData && formData.halphPrice ? formData.halphPrice : 0;
+            }
+            if (cost === undefined) {
+              cost = 0;
+            }
+            data = _objectSpread(_objectSpread({}, data), {}, {
+              count: __value
+            });
+            if (!isStopList) {
+              data = _objectSpread(_objectSpread({}, data), {}, {
+                total: cost - data.preCost + data.count * cost / 2
+              });
+            } else {
+              if (formData) {
+                data = _objectSpread(_objectSpread({}, data), {}, {
+                  total: formData && formData.halphPrice ? cost - data.preCost + data.count * formData.halphPrice : 0
+                });
+              }
+            }
+            set__Data(data);
           }
-          if (cost === undefined) {
-            cost = 0;
-          }
-          data = _objectSpread(_objectSpread({}, data), {}, {
-            count: __value
-          });
-          data = _objectSpread(_objectSpread({}, data), {}, {
-            total: cost - data.preCost + data.count * cost / 2
-          });
-          set__Data(data);
         }
       }), /*#__PURE__*/_react.default.createElement(Title, {
         level: 3,
         className: "test11__modal__title"
-      }, "\u0418\u0442\u043E\u0433\u043E:", " ", isHotDay ? formData ? formData.halphPrice ? (formData.halphPrice - __data.preCost + formData.halphPrice / 2 * __data.count).toLocaleString() : 0 : 0 : formData ? (formData.cost - __data.preCost + formData.cost / 2 * __data.count).toLocaleString() : 0, " ", "\u20BD"), /*#__PURE__*/_react.default.createElement(_antd.Divider, null), /*#__PURE__*/_react.default.createElement(_antd.Button, {
+      }, "\u0418\u0442\u043E\u0433\u043E:", " ", !isStopList ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, isHotDay ? formData ? formData.halphPrice ? (formData.halphPrice - __data.preCost + formData.halphPrice / 2 * __data.count).toLocaleString() : 0 : 0 : formData ? (formData.cost - __data.preCost + formData.cost / 2 * __data.count).toLocaleString() : 0) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __data.total), " ", "\u20BD"), /*#__PURE__*/_react.default.createElement(_antd.Divider, null), /*#__PURE__*/_react.default.createElement(_antd.Button, {
         type: "primary",
         className: "test11__btn",
         onClick: saveData
@@ -239,9 +299,64 @@ function Form(props) {
         onClick: cleanData
       }, "\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C"));
     case "option":
-      console.log("option");
-      console.log(marker);
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, "option"));
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "test11__modal"
+      }, /*#__PURE__*/_react.default.createElement(Title, {
+        level: 3,
+        className: "test11__modal__title"
+      }, formData ? formData.value : 0), /*#__PURE__*/_react.default.createElement(_antd.Divider, null), /*#__PURE__*/_react.default.createElement(Text, {
+        className: "test11__modal__text"
+      }, "\u041F\u0440\u0435\u0434\u043E\u043F\u043B\u0430\u0442\u0430"), /*#__PURE__*/_react.default.createElement(_antd.Input, {
+        type: "number",
+        min: 0,
+        value: __data.preCost,
+        onChange: function onChange(e) {
+          var __value = (0, _lodash.parseInt)(e.target.value);
+          var data = __data;
+          var cost = formData ? formData.cost : 0;
+          cost = cost - __value;
+          data = _objectSpread(_objectSpread({}, data), {}, {
+            preCost: __value
+          });
+          data = _objectSpread(_objectSpread({}, data), {}, {
+            total: cost
+          });
+          set__Data(data);
+        }
+      }), isNUmber && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(Text, {
+        className: "test11__modal__text"
+      }, "\u0421\u043A\u043E\u043B\u044C\u043A\u043E \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0445 \u0440\u0430\u0437 \u043F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C \u043E\u043F\u0446\u0438\u044E?"), /*#__PURE__*/_react.default.createElement(_antd.Input, {
+        type: "number",
+        value: __data.count,
+        onChange: function onChange(e) {
+          var __value = (0, _lodash.parseInt)(e.target.value);
+          var data = __data;
+          var cost;
+          cost = formData ? formData.cost : 0;
+          if (cost === undefined) {
+            cost = 0;
+          }
+          data = _objectSpread(_objectSpread({}, data), {}, {
+            count: __value
+          });
+          data = _objectSpread(_objectSpread({}, data), {}, {
+            total: cost - data.preCost + data.count * cost
+          });
+          set__Data(data);
+        }
+      })), /*#__PURE__*/_react.default.createElement(Title, {
+        level: 3,
+        className: "test11__modal__title"
+      }, "\u0418\u0442\u043E\u0433\u043E:", " ", formData ? (formData.cost - __data.preCost + __data.count * formData.cost).toLocaleString() : 0, " ", "\u20BD"), /*#__PURE__*/_react.default.createElement(_antd.Divider, null), /*#__PURE__*/_react.default.createElement(_antd.Button, {
+        type: "primary",
+        className: "test11__btn",
+        onClick: saveData
+      }, "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C"), /*#__PURE__*/_react.default.createElement(_antd.Button, {
+        type: "primary",
+        danger: true,
+        className: "test11__btn",
+        onClick: cleanData
+      }, "\u041E\u0442\u043C\u0435\u043D\u0438\u0442\u044C"));
     default:
       return /*#__PURE__*/_react.default.createElement("div", null, "somthing wrong");
   }
