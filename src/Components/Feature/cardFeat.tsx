@@ -8,7 +8,6 @@ import { FieldTimeOutlined } from "@ant-design/icons";
 
 export default function CardFeat(props: any) {
   const path = props.imgSrc;
-  console.log(path);
   // ~ список тагов
   const tagsData = props.tags;
   // ~ для главного экрана отключаем кнопку
