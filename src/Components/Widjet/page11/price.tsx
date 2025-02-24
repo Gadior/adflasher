@@ -42,18 +42,18 @@ export default function Price(props: any) {
     decor: number;
     clean: number;
   }
-  const [exportObj, setExportObj] = useState<int_PayPls>({
+  const __blankObj: int_PayPls = {
     studio: 0,
     photo: 0,
     makeup: 0,
     cake: 0,
     decor: 0,
     clean: 0,
-  });
+  };
+  const [exportObj, setExportObj] = useState<int_PayPls>(__blankObj);
 
   const getAllPrice = () => {
-    let __data = exportObj;
-
+    let __data = __blankObj;
     estimateData.map((item) => {
       if (item.data.pay) {
         __data = { ...__data, studio: __data.studio + item.data.pay.studio };
@@ -63,8 +63,9 @@ export default function Price(props: any) {
         __data = { ...__data, decor: __data.decor + item.data.pay.decor };
         __data = { ...__data, clean: __data.clean + item.data.pay.clean };
       }
-      setExportObj(__data);
     });
+
+    setExportObj(__data);
   };
 
   useEffect(() => {

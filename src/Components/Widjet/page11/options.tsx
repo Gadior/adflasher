@@ -129,12 +129,12 @@ export default function Options(props: any) {
         {/* Плашка оплаты */}
         {estimateData.length > 0 && (
           <div className="__totalPrice">
-            <div>ИТОГО {getTotalPrice().toLocaleString()} ₽</div>
+            {/* <div>ИТОГО {getTotalPrice().toLocaleString()} ₽</div> */}
+            <div className="__totalPrice--red">
+              ВЗЯТЬ {getTotalPrice().toLocaleString()} ₽
+            </div>
             <div className="__prePay">
               ПРЕДПОЛАТА {getPrePayPrice().toLocaleString()} ₽
-            </div>
-            <div className="__totalPrice--red">
-              ВЗЯТЬ {(getTotalPrice() - getPrePayPrice()).toLocaleString()} ₽
             </div>
           </div>
         )}
@@ -167,7 +167,7 @@ export default function Options(props: any) {
                 <Divider />
                 <Flex vertical={true}>
                   <Text>Предоплата: {item.data.prePrice}</Text>
-                  <Text>Время: {item.data.min}</Text>
+                  {/* <Text>Время: {item.data.min}</Text> */}
                 </Flex>
                 <Divider />
                 <Flex className="__price" justify="space-between">

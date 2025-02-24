@@ -131,11 +131,11 @@ function Options(props) {
       className: "text11__option"
     }, estimateData.length > 0 && /*#__PURE__*/_react.default.createElement("div", {
       className: "__totalPrice"
-    }, /*#__PURE__*/_react.default.createElement("div", null, "\u0418\u0422\u041E\u0413\u041E ", getTotalPrice().toLocaleString(), " \u20BD"), /*#__PURE__*/_react.default.createElement("div", {
-      className: "__prePay"
-    }, "\u041F\u0420\u0415\u0414\u041F\u041E\u041B\u0410\u0422\u0410 ", getPrePayPrice().toLocaleString(), " \u20BD"), /*#__PURE__*/_react.default.createElement("div", {
+    }, /*#__PURE__*/_react.default.createElement("div", {
       className: "__totalPrice--red"
-    }, "\u0412\u0417\u042F\u0422\u042C ", (getTotalPrice() - getPrePayPrice()).toLocaleString(), " \u20BD")), /*#__PURE__*/_react.default.createElement(_antd.Select, {
+    }, "\u0412\u0417\u042F\u0422\u042C ", getTotalPrice().toLocaleString(), " \u20BD"), /*#__PURE__*/_react.default.createElement("div", {
+      className: "__prePay"
+    }, "\u041F\u0420\u0415\u0414\u041F\u041E\u041B\u0410\u0422\u0410 ", getPrePayPrice().toLocaleString(), " \u20BD")), /*#__PURE__*/_react.default.createElement(_antd.Select, {
       className: "text11__option__selector",
       placeholder: "\u0427\u0442\u043E \u0434\u043E\u0431\u0430\u0432\u043B\u044F\u0435\u043C?",
       value: positionTitle,
@@ -153,7 +153,7 @@ function Options(props) {
         level: 4
       }, item.data.value), /*#__PURE__*/_react.default.createElement(_antd.Divider, null), /*#__PURE__*/_react.default.createElement(_antd.Flex, {
         vertical: true
-      }, /*#__PURE__*/_react.default.createElement(Text, null, "\u041F\u0440\u0435\u0434\u043E\u043F\u043B\u0430\u0442\u0430: ", item.data.prePrice), /*#__PURE__*/_react.default.createElement(Text, null, "\u0412\u0440\u0435\u043C\u044F: ", item.data.min)), /*#__PURE__*/_react.default.createElement(_antd.Divider, null), /*#__PURE__*/_react.default.createElement(_antd.Flex, {
+      }, /*#__PURE__*/_react.default.createElement(Text, null, "\u041F\u0440\u0435\u0434\u043E\u043F\u043B\u0430\u0442\u0430: ", item.data.prePrice)), /*#__PURE__*/_react.default.createElement(_antd.Divider, null), /*#__PURE__*/_react.default.createElement(_antd.Flex, {
         className: "__price",
         justify: "space-between"
       }, /*#__PURE__*/_react.default.createElement(Title, {

@@ -178,13 +178,24 @@ function Form(props: any) {
             type="number"
             value={__data.preCost}
             onChange={(e) => {
+              const __value: number = parseInt(e.target.value);
               let data = __data;
 
-              let cost = formData ? formData.cost : 0;
-              cost = cost - parseInt(e.target.value);
+              let cost;
+              if (!isHotDay) {
+                cost = formData ? formData.cost : 0;
+              } else {
+                cost = formData ? formData.halphPrice : 0;
+              }
+              if (cost === undefined) {
+                cost = 0;
+              }
 
-              data = { ...data, preCost: parseInt(e.target.value) };
-              data = { ...data, total: cost };
+              data = { ...data, preCost: __value };
+              data = {
+                ...data,
+                total: cost - data.preCost + (data.count * cost) / 2,
+              };
 
               set__Data(data);
             }}
@@ -197,8 +208,25 @@ function Form(props: any) {
             type="number"
             value={__data.count}
             onChange={(e) => {
+              const __value: number = parseInt(e.target.value);
+
               let data = __data;
-              data = { ...data, count: parseInt(e.target.value) };
+              let cost;
+              if (!isHotDay) {
+                cost = formData ? formData.cost : 0;
+              } else {
+                cost = formData ? formData.halphPrice : 0;
+              }
+              if (cost === undefined) {
+                cost = 0;
+              }
+
+              data = { ...data, count: __value };
+              data = {
+                ...data,
+                total: cost - data.preCost + (data.count * cost) / 2,
+              };
+
               set__Data(data);
             }}
           />

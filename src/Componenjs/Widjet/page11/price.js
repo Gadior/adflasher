@@ -48,19 +48,20 @@ function Price(props) {
   // __ Получение объекта с распределительными ценами на команду
   // #region
 
-  var _useState = (0, _react.useState)({
-      studio: 0,
-      photo: 0,
-      makeup: 0,
-      cake: 0,
-      decor: 0,
-      clean: 0
-    }),
+  var __blankObj = {
+    studio: 0,
+    photo: 0,
+    makeup: 0,
+    cake: 0,
+    decor: 0,
+    clean: 0
+  };
+  var _useState = (0, _react.useState)(__blankObj),
     _useState2 = _slicedToArray(_useState, 2),
     exportObj = _useState2[0],
     setExportObj = _useState2[1];
   var getAllPrice = function getAllPrice() {
-    var __data = exportObj;
+    var __data = __blankObj;
     estimateData.map(function (item) {
       if (item.data.pay) {
         __data = _objectSpread(_objectSpread({}, __data), {}, {
@@ -82,8 +83,8 @@ function Price(props) {
           clean: __data.clean + item.data.pay.clean
         });
       }
-      setExportObj(__data);
     });
+    setExportObj(__data);
   };
   (0, _react.useEffect)(function () {
     getAllPrice();

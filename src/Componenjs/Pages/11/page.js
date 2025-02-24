@@ -181,14 +181,22 @@ function Form(props) {
         type: "number",
         value: __data.preCost,
         onChange: function onChange(e) {
+          var __value = (0, _lodash.parseInt)(e.target.value);
           var data = __data;
-          var cost = formData ? formData.cost : 0;
-          cost = cost - (0, _lodash.parseInt)(e.target.value);
+          var cost;
+          if (!isHotDay) {
+            cost = formData ? formData.cost : 0;
+          } else {
+            cost = formData ? formData.halphPrice : 0;
+          }
+          if (cost === undefined) {
+            cost = 0;
+          }
           data = _objectSpread(_objectSpread({}, data), {}, {
-            preCost: (0, _lodash.parseInt)(e.target.value)
+            preCost: __value
           });
           data = _objectSpread(_objectSpread({}, data), {}, {
-            total: cost
+            total: cost - data.preCost + data.count * cost / 2
           });
           set__Data(data);
         }
@@ -198,9 +206,22 @@ function Form(props) {
         type: "number",
         value: __data.count,
         onChange: function onChange(e) {
+          var __value = (0, _lodash.parseInt)(e.target.value);
           var data = __data;
+          var cost;
+          if (!isHotDay) {
+            cost = formData ? formData.cost : 0;
+          } else {
+            cost = formData ? formData.halphPrice : 0;
+          }
+          if (cost === undefined) {
+            cost = 0;
+          }
           data = _objectSpread(_objectSpread({}, data), {}, {
-            count: (0, _lodash.parseInt)(e.target.value)
+            count: __value
+          });
+          data = _objectSpread(_objectSpread({}, data), {}, {
+            total: cost - data.preCost + data.count * cost / 2
           });
           set__Data(data);
         }
