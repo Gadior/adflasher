@@ -13,7 +13,6 @@ import {
   Divider,
   Input,
   Typography,
-  CheckboxProps,
   TabsProps,
   Tabs,
 } from "antd";
@@ -28,9 +27,7 @@ import {
 
 // ~ styles
 import "./style.css";
-import { CheckCheck } from "lucide-react";
 import { parseInt } from "lodash";
-import { data } from "react-router-dom";
 
 const { Text, Title } = Typography;
 // #endregion ~ import

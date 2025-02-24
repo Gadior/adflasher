@@ -133,10 +133,14 @@ function Page() {
     const overId = over.id;
 
     let activeType;
-    if(active.data.current){      activeType = active.data.current.type;}
+    if (active.data.current) {
+      activeType = active.data.current.type;
+    }
 
     let overType;
-    if(over.data.current){     overType = over.data.current.type;}
+    if (over.data.current) {
+      overType = over.data.current.type;
+    }
 
     // ___ ROOT
     // #region
@@ -155,8 +159,8 @@ function Page() {
           setRoots({
             rt: arrayMove(
               roots,
-              roots.findIndex((item:any) => item.id === activeId),
-              roots.findIndex((item:any) => item.id === overId)
+              roots.findIndex((item: any) => item.id === activeId),
+              roots.findIndex((item: any) => item.id === overId)
             ),
           })
         );
@@ -178,8 +182,8 @@ function Page() {
           setLvls1({
             lvl: arrayMove(
               lvls1,
-              lvls1.findIndex((item:any) => item.id === activeId),
-              lvls1.findIndex((item:any) => item.id === overId)
+              lvls1.findIndex((item: any) => item.id === activeId),
+              lvls1.findIndex((item: any) => item.id === overId)
             ),
           })
         );
@@ -194,9 +198,8 @@ function Page() {
     ) {
       let __data: type_Lvl1[] = [...lvls1];
       let __overRootId;
-      if(over.data.current){
+      if (over.data.current) {
         __overRootId = over.data.current.data.id;
-
       }
 
       const activeIndex: number = __data.findIndex(
@@ -213,7 +216,7 @@ function Page() {
 
         // ~ обновили данные колонок в lvl2
         let __data2: type_Lvl2[];
-        __data2 = lvls2.map((lvl:type_Lvl2) => {
+        __data2 = lvls2.map((lvl: type_Lvl2) => {
           if (lvl.lvl1Id === __data[activeIndex].id) {
             return { ...lvl, columnId: __data[activeIndex].columnId };
           }
@@ -239,8 +242,8 @@ function Page() {
           setLvls2({
             lvl: arrayMove(
               lvls2,
-              lvls2.findIndex((item:any) => item.id === activeId),
-              lvls2.findIndex((item:any) => item.id === overId)
+              lvls2.findIndex((item: any) => item.id === activeId),
+              lvls2.findIndex((item: any) => item.id === overId)
             ),
           })
         );
@@ -255,11 +258,11 @@ function Page() {
     ) {
       let __data: type_Lvl2[] = [...lvls2];
       let __overLvl2Id;
-      if(over.data.current){
+      if (over.data.current) {
         __overLvl2Id = over.data.current.data.id;
       }
       let __overLvl2ColId;
-      if(over.data.current){
+      if (over.data.current) {
         __overLvl2ColId = over.data.current.data.columnId;
       }
 
@@ -288,24 +291,24 @@ function Page() {
     if (!over) return;
 
     // ~ Получаем id, над которым мы навели
-    let activeId
-    if(active.data.current){
+    let activeId;
+    if (active.data.current) {
       activeId = active.data.current.data.id;
     }
 
     let overId;
-    if(over.data.current){
+    if (over.data.current) {
       overId = over.data.current.data.id;
     }
 
     // ~ Получаем type, над которым мы навели
-    let activeType
-    if(active.data.current){
+    let activeType;
+    if (active.data.current) {
       activeType = active.data.current.type;
     }
 
     let overType;
-    if(over.data.current){
+    if (over.data.current) {
       overType = over.data.current.type;
     }
 
@@ -352,30 +355,30 @@ function Page() {
                   // Root
                   key={col.id}
                   column={col}
-                  lvl1={lvls1.filter((task:any) => task.columnId === col.id)}
+                  lvl1={lvls1.filter((task: any) => task.columnId === col.id)}
                   lvls2={lvls2.filter(
-                    (level:any) => level.columnId && level.lvl1Id
+                    (level: any) => level.columnId && level.lvl1Id
                   )}
                 />
               </Flex>
             ))}
           </SortableContext>
 
-          {/* portal - псевдопроекция эллемента */}          
+          {/* portal - псевдопроекция эллемента */}
           {createPortal(
-              <>
             <DragOverlay>
               {activeRoot && (
                 <Page7Root
                   column={activeRoot}
                   lvl1={lvls1.filter((level: any) => level.columnId)}
-                  lvls2={lvls2.filter((level: any) => level.columnId && level.lvl1Id)}
+                  lvls2={lvls2.filter(
+                    (level: any) => level.columnId && level.lvl1Id
+                  )}
                 />
               )}
               {activeLvl1 && <Page7Lvl1 lvl1={activeLvl1} lvls2={lvls2} />}
               {activeLvl2 && <Page7Lvl2 lvl2={activeLvl2} />}
-            
-            </DragOverlay></>,
+            </DragOverlay>,
             document.body
           )}
 

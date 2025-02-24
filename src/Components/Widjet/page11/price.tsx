@@ -6,12 +6,7 @@ import React, { useEffect, useState } from "react";
 import {} from "lucide-react";
 
 // ~ redux
-import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks";
-import {
-  setRootSelectorName,
-  setlvl2SelectorName,
-  deleteEstimateData,
-} from "../../Feature/redux/slices/page11/dataCntl";
+import { useAppSelector } from "../../Feature/redux/hooks";
 import { Flex, Typography } from "antd";
 const { Title } = Typography;
 
