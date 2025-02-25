@@ -25,6 +25,6 @@ steps:
       - git checkout master
       - git pull
       - docker-compose up -d --build
-      - docker builder prune
-      - docker image prune
-      - docker volume prune
+      - docker builder prune -f
+      - docker image prune -f
+      - docker volume prune -f
