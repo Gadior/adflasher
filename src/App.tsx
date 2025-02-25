@@ -25,7 +25,7 @@ import Page11 from "./Components/Pages/11/page";
 function App() {
   return (
     <BrowserRouter>
-      <Provider store={store}>
+      {/* <Provider store={store}> */}
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="1" element={<Page1 />} />
@@ -40,7 +40,7 @@ function App() {
           <Route path="10" element={<Page10 />} />
           <Route path="11" element={<Page11 />} />
         </Routes>
-      </Provider>
+      {/* </Provider> */}
     </BrowserRouter>
   );
 }
