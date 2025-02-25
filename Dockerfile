@@ -7,4 +7,6 @@ RUN npm install
 # RUN ls
 RUN npm run build
 EXPOSE 3000
-CMD ["npm", "start"]
+# RUN npm install pm2 -g
+RUN pm2 serve build/ 3000 --name "my-react-app" --spa
+# CMD ["npm", "start"]
