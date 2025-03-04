@@ -9,8 +9,8 @@ import {
   type_CheckOver,
 } from "./interface";
 
-// ~ interface
-// #region ~ счетчик сердец
+// ___ interface
+// #region
 interface int_State {
   roots: type_Root[];
   activeRoot: type_Root | null;
@@ -48,7 +48,7 @@ const initialState: int_State = {
   // - маска [] -> {type: 'Root', id: id}. маска для выявления наведения
   checkOver: null,
 };
-// #region ~ счетчик сердец
+// #endregion
 
 // ___ Генератор отметки времени для ID
 // #region

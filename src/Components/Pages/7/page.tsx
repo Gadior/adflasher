@@ -1,3 +1,4 @@
+// #region ~ hlop
 // ___ import
 // #region
 import React, { useMemo } from "react";
@@ -49,7 +50,7 @@ import {
 } from "../../Feature/redux/slices/page7/dataCntl";
 // #endregion
 
-function Page() {
+export default function Page() {
   // ___ redux in data
   // #region
   const dispatch = useAppDispatch();
@@ -323,7 +324,8 @@ function Page() {
 
   // #endregion
 
-  // #endregion
+  // ___ return
+  // #region
   return (
     <Flex
       vertical={true}
@@ -399,6 +401,7 @@ function Page() {
       <TasksBackBtn />
     </Flex>
   );
+  // #endregion
 }
 
-export default Page;
+// #endregion ~ hlop

@@ -1,4 +1,6 @@
 // #region ~ hlop
+// ___ import
+// #region
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // ~ interface
 import {
@@ -13,9 +15,10 @@ import {
   optionSelector,
   rentSelector,
 } from "./data";
+// #endregion
 
-// ~ interface
-// #region ~ счетчик сердец
+// ___ interface
+// #region ~
 interface int_State {
   isModal: boolean;
   rootSelector: int__rootSelect[] | null;
@@ -38,16 +41,15 @@ const initialState: int_State = {
   formData: null,
   estimateData: [],
 };
-// #region ~ счетчик сердец
+// #endregion ~
 
-// ~ функции
+// ___ функции
 // #region ~ функции
 const page11_dataCntl = createSlice({
   name: "name",
   initialState,
   reducers: {
     // #region
-    // setRoots: (state, action: PayloadAction<{ rt: type_Root[] }>) => {
 
     // ___ rootSelector
     setRootSelectorName: (

@@ -21,25 +21,27 @@ import Page8 from "./Components/Pages/8/page";
 import Page9 from "./Components/Pages/9/page";
 import Page10 from "./Components/Pages/10/page";
 import Page11 from "./Components/Pages/11/page";
+import Banners from "./Components/Pages/banners/page";
 
 function App() {
   return (
     <BrowserRouter>
       {/* <Provider store={store}> */}
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="1" element={<Page1 />} />
-          <Route path="2" element={<Page2 />} />
-          <Route path="3" element={<Page3 />} />
-          <Route path="4" element={<Page4 />} />
-          <Route path="5" element={<Page5 />} />
-          <Route path="6" element={<Page6 />} />
-          <Route path="7" element={<Page7 />} />
-          <Route path="8" element={<Page8 />} />
-          <Route path="9" element={<Page9 />} />
-          <Route path="10" element={<Page10 />} />
-          <Route path="11" element={<Page11 />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="1" element={<Page1 />} />
+        <Route path="2" element={<Page2 />} />
+        <Route path="3" element={<Page3 />} />
+        <Route path="4" element={<Page4 />} />
+        <Route path="5" element={<Page5 />} />
+        <Route path="6" element={<Page6 />} />
+        <Route path="7" element={<Page7 />} />
+        <Route path="8" element={<Page8 />} />
+        <Route path="9" element={<Page9 />} />
+        <Route path="10" element={<Page10 />} />
+        <Route path="11" element={<Page11 />} />
+        <Route path="banners" element={<Banners />} />
+      </Routes>
       {/* </Provider> */}
     </BrowserRouter>
   );
