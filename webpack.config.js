@@ -8,13 +8,17 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // Импорт�
 module.exports = {
   entry: "./src/index.tsx",
   output: {
+    // path: path.resolve(__dirname, "build"),
+    // filename: "bundle.js",
+    // publicPath: "/", // Указываем корневой путь
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
-    publicPath: "/", // Указываем корневой путь
   },
+
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
+
   module: {
     rules: [
       {
@@ -22,6 +26,7 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+
       {
         test: /\.scss$/,
         use: [
@@ -57,13 +62,13 @@ module.exports = {
       },
     ],
   },
+
   plugins: [
     new CleanWebpackPlugin(), // Очищает папку 'build' перед каждой сборкой
-    new MiniCssExtractPlugin({
-      filename: "styles.css",
-    }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
+
+    // Копирование файла из папки public  в экспортную папку
+    new CopyWebpackPlugin({
+      patterns: [{ from: "files", to: "files" }],
     }),
 
     new MiniCssExtractPlugin({
@@ -71,88 +76,6 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
-    }),
-    // Копирование файла из папки public  в экспортную папку
-    new CopyWebpackPlugin({
-      patterns: [
-        // 1
-        {
-          from: path.resolve(__dirname, "public/files/1/index.html"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/1/index.html"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/1/index.js"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/1/index.js"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/1/index_atlas_NP_.jpg"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/1/index_atlas_NP_.jpg"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/1/index_atlas_P_.png"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/1/index_atlas_P_.png"), // В папку build
-        },
-        // 2
-        {
-          from: path.resolve(__dirname, "public/files/2/index.html"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/2/index.html"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/2/index.js"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/2/index.js"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/2/index_atlas_NP_.jpg"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/2/index_atlas_NP_.jpg"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/2/index_atlas_P_.png"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/2/index_atlas_P_.png"), // В папку build
-        },
-        // 3
-        {
-          from: path.resolve(__dirname, "public/files/3/index.html"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/3/index.html"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/3/index.js"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/3/index.js"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/3/index_atlas_NP_.jpg"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/3/index_atlas_NP_.jpg"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/3/index_atlas_P_.png"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/3/index_atlas_P_.png"), // В папку build
-        },
-        // 4
-        {
-          from: path.resolve(__dirname, "public/files/4/index.html"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/4/index.html"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/4/index.js"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/4/index.js"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/4/index_atlas_NP_.jpg"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/4/index_atlas_NP_.jpg"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/4/index_atlas_P_.png"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/4/index_atlas_P_.png"), // В папку build
-        },
-        // 5
-        {
-          from: path.resolve(__dirname, "public/files/5/index.html"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/5/index.html"), // В папку build
-        },
-        {
-          from: path.resolve(__dirname, "public/files/5/index.js"), // Копируем index.html
-          to: path.resolve(__dirname, "build/files/5/index.js"), // В папку build
-        },
-      ],
     }),
   ],
 
