@@ -6,7 +6,9 @@ import __task5 from "../../Shared/image/__task5.png";
 import __task3 from "../../Shared/image/__task3.png";
 import __task2 from "../../Shared/image/__task2.png";
 import __task1 from "../../Shared/image/__task1.png";
-export const imgList:any = {
+import __banners from "../../Shared/image/__banners.png";
+export const imgList: any = {
+  __banners: __banners,
   __task9: __task9,
   __task8: __task8,
   __task7: __task7,
