@@ -19,7 +19,8 @@ import { menuItems } from "./data";
 // ~ assets
 import __logo from "../../Shared/page10/images/__logo.svg";
 // ~ styles
-import "./style.css";
+import "./style.scss";
+
 import DropdownMenu from "../../Shared/page10/dropdownMenu";
 // #endregion ~ import
 

@@ -23,17 +23,19 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
+          "style-loader", // Встраивает стили в DOM
+          "css-loader", // Обрабатывает CSS
           {
             loader: "postcss-loader",
             options: {
               postcssOptions: {
-                plugins: [require("autoprefixer")],
+                plugins: [
+                  require("autoprefixer"), // Добавляет префиксы
+                ],
               },
             },
           },
-          "sass-loader",
+          "sass-loader", // Компилирует SCSS в CSS
         ],
       },
       {
@@ -72,10 +74,11 @@ module.exports = {
 
   devServer: {
     static: {
-      directory: path.join(__dirname, "build"), // Название выходной папки при команде npm build
+      directory: path.join(__dirname, "build"),
     },
     compress: true,
     port: 3000,
+    hot: true, // Включаем Hot Module Replacement
     historyApiFallback: true,
   },
 };
