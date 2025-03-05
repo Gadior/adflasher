@@ -26,7 +26,6 @@ import Banners from "./Components/Pages/banners/page";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Provider store={store}> */}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="1" element={<Page1 />} />
@@ -42,7 +41,6 @@ function App() {
         <Route path="11" element={<Page11 />} />
         <Route path="banners" element={<Banners />} />
       </Routes>
-      {/* </Provider> */}
     </BrowserRouter>
   );
 }
