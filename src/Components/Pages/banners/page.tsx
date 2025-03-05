@@ -143,7 +143,8 @@ export default function Page() {
         {htmlContent1 && (
           <>
             <iframe
-              srcDoc={htmlContent1}
+              src="/files/1/index.html"
+              // srcDoc={htmlContent1}
               title="Embedded Content"
               width="300px"
               height="600px"
@@ -155,7 +156,8 @@ export default function Page() {
         {htmlContent2 && (
           <>
             <iframe
-              srcDoc={htmlContent2}
+              // src={htmlContent2}
+              src="/files/2/index.html"
               title="Embedded Content"
               width="300px"
               height="600px"
@@ -167,7 +169,8 @@ export default function Page() {
         {htmlContent3 && (
           <>
             <iframe
-              srcDoc={htmlContent3}
+              // src={htmlContent3}
+              src="/files/3/index.html"
               title="Embedded Content"
               width="300px"
               height="600px"
@@ -179,7 +182,8 @@ export default function Page() {
         {htmlContent4 && (
           <>
             <iframe
-              srcDoc={htmlContent4}
+              // src={htmlContent4}
+              src="/files/4/index.html"
               title="Embedded Content"
               width="300px"
               height="600px"
@@ -191,7 +195,8 @@ export default function Page() {
         {htmlContent5 && (
           <>
             <iframe
-              srcDoc={htmlContent5}
+              // src={htmlContent5}
+              src="/files/5/index.html"
               title="Embedded Content"
               width="300px"
               height="600px"

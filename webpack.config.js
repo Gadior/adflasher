@@ -8,8 +8,9 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // Импорт�
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "build"), // Название выходной папки при команде npm build
+    path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
+    publicPath: "/", // Указываем корневой путь
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
@@ -71,6 +72,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
+    // Копирование файла из папки public  в экспортную папку
     new CopyWebpackPlugin({
       patterns: [
         // 1
