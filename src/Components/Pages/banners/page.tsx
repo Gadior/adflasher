@@ -120,7 +120,7 @@ export default function Page() {
           - Perfect понимание ТТ для анимированных баннеров. Собственный сервис
           проверки баннеров{" "}
           <a href="http://bannersbox.ru" target="_blank">
-            banners.ru
+            bannersbox.ru
           </a>
         </p>
         <Divider />
