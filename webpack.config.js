@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
+    clean: true,
   },
 
   resolve: {
@@ -62,8 +63,6 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(), // Очищает папку 'build' перед каждой сборкой
-
     // Копирование файла из папки public  в экспортную папку
     new CopyWebpackPlugin({
       patterns: [{ from: "files", to: "files" }],
