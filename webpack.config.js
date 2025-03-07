@@ -7,10 +7,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // Импорт�
 
 module.exports = {
   entry: "./src/index.tsx",
+
   output: {
-    // path: path.resolve(__dirname, "build"),
-    // filename: "bundle.js",
-    // publicPath: "/", // Указываем корневой путь
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
   },
@@ -78,6 +76,8 @@ module.exports = {
       template: "./public/index.html",
     }),
   ],
+
+  mode: "development",
 
   devServer: {
     static: {
