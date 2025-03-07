@@ -6,18 +6,22 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // Импортируем плагин
 
 module.exports = {
+  // Входная точка
   entry: "./src/index.tsx",
 
+  // Выходная точка
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
     clean: true,
   },
 
+  // Обрабатываемые файлы
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
 
+  // Модули
   module: {
     rules: [
       {
@@ -62,29 +66,38 @@ module.exports = {
     ],
   },
 
+  // Плагины
   plugins: [
-    // Копирование файла из папки public  в экспортную папку
+    // Копирование статичыеских файлов из public в build
     new CopyWebpackPlugin({
       patterns: [{ from: "files", to: "files" }],
     }),
-
+    // Минификация стилей
     new MiniCssExtractPlugin({
       filename: "styles.css",
     }),
+    // Вставляем хтмл
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
   ],
 
+  // Режим разработки (может быть режим production)
   mode: "development",
 
+  // Сервер
   devServer: {
+    // Расположение статических файлов после сборки
     static: {
       directory: path.join(__dirname, "build"),
     },
+    // Компресия
     compress: true,
+    // Порт
     port: 3000,
-    hot: true, // Включаем Hot Module Replacement
+    // релоуд страницы при разработке
+    hot: true,
+    // относительная адресация в путях
     historyApiFallback: true,
   },
 };
