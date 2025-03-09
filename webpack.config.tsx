@@ -111,7 +111,7 @@ export default (env: int_Config) => {
       // Компресия
       compress: true,
       // Порт
-      port: env.port,
+      port: env.port ?? "3000",
       // релоуд страницы при разработке
       hot: true,
       // относительная адресация в путях
