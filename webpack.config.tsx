@@ -4,6 +4,7 @@ import webpack from "webpack";
 
 // plugins
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 
@@ -19,7 +20,10 @@ interface int_Config {
 
 // ___ export
 export default (env: int_Config) => {
-  console.log(env);
+  // У нас dev?
+  let isDev: boolean;
+  env.mode === "development" ? (isDev = true) : (isDev = false);
+
   const config: webpack.Configuration = {
     // Режим разработки (может быть режим production)
     mode: env.mode ?? "development",
@@ -79,6 +83,10 @@ export default (env: int_Config) => {
       ],
     },
 
+    optimization: {
+      minimizer: [new CssMinimizerPlugin()],
+    },
+
     // Плагины
     plugins: [
       // Копирование статичыеских файлов из public в build
@@ -93,7 +101,8 @@ export default (env: int_Config) => {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "public", "index.html"),
       }),
-      new webpack.ProgressPlugin(), // процентр загрузки в логах
+      isDev && new webpack.ProgressPlugin(), // процентр загрузки в логах только dev
+      new MiniCssExtractPlugin(), // минификатор css
     ],
 
     // Обрабатываемые файлы
