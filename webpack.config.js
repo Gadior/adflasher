@@ -2,6 +2,8 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+// progress
+const webpack = require("webpack");
 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // Импортируем плагин
 
@@ -84,6 +86,7 @@ module.exports = (env) => {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "public", "index.html"),
       }),
+      new webpack.ProgressPlugin(), // процентр загрузки в логах
     ],
 
     // Сервер
