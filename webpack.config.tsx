@@ -1,14 +1,15 @@
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+import path from "path";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import devServer from "webpack-dev-server";
 // progress
-const webpack = require("webpack");
+import webpack from "webpack";
 
-const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // Импортируем плагин
+import { CleanWebpackPlugin } from "clean-webpack-plugin"; // Импортируем плагин
 
-module.exports = (env) => {
-  return {
+export default (env: any) => {
+  const config: webpack.Configuration = {
     // Режим разработки (может быть режим production)
     mode: env.mode ?? "development",
 
@@ -88,7 +89,6 @@ module.exports = (env) => {
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".jsx"],
     },
-
     // Сервер
     devServer: {
       // Расположение статических файлов после сборки
@@ -105,4 +105,5 @@ module.exports = (env) => {
       historyApiFallback: true,
     },
   };
+  return config;
 };
