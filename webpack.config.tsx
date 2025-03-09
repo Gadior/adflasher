@@ -20,25 +20,43 @@ interface int_Config {
 
 // ___ export
 export default (env: int_Config) => {
-  // У нас dev?
-  let isDev: boolean;
-  env.mode === "development" ? (isDev = true) : (isDev = false);
+  // Тип сборки
+  let isDev = env.mode === "development";
+  let isProd = env.mode === "production";
 
   const config: webpack.Configuration = {
-    // Режим разработки (может быть режим production)
+    // ~ Режим разработки (может быть режим production)
     mode: env.mode ?? "development",
 
-    // Входная точка
+    // ~ Входная точка
     entry: "./src/index.tsx",
 
-    // Выходная точка
+    // ~ Выходная точка
     output: {
       path: path.resolve(__dirname, "build"),
       filename: "bundle.[contenthash].js",
       clean: true,
     },
 
-    // Модули
+    // ~ Плагины
+    plugins: [
+      // Копирование статичыеских файлов из public в build
+      new CopyWebpackPlugin({
+        patterns: [{ from: "files", to: "files" }],
+      }),
+      // Минификация стилей
+      new MiniCssExtractPlugin({
+        filename: "css/[name].[contenthash:8].css",
+        chunkFilename: "css/[name].[contenthash:8].css",
+      }),
+      // Вставляем хтмл
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, "public", "index.html"),
+      }),
+      isProd && new webpack.ProgressPlugin(), // процентр загрузки в логах только dev
+    ],
+
+    // ~ Модули
     module: {
       rules: [
         // --- tsx
@@ -52,8 +70,8 @@ export default (env: int_Config) => {
         {
           test: /\.scss$/,
           use: [
-            "style-loader", // Встраивает стили в DOM
-            "css-loader", // Обрабатывает CSS
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            "css-loader",
             {
               loader: "postcss-loader",
               options: {
@@ -71,7 +89,10 @@ export default (env: int_Config) => {
         // --- css
         {
           test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, "css-loader"],
+          use: [
+            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            "css-loader",
+          ],
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/i,
@@ -87,35 +108,17 @@ export default (env: int_Config) => {
       ],
     },
 
+    // ~ оптимизация
     optimization: {
       minimizer: [new CssMinimizerPlugin()],
     },
 
-    // Плагины
-    plugins: [
-      // Копирование статичыеских файлов из public в build
-      new CopyWebpackPlugin({
-        patterns: [{ from: "files", to: "files" }],
-      }),
-      // Минификация стилей
-      new MiniCssExtractPlugin({
-        filename: "css/[name].[contenthash:8].css",
-        chunkFilename: "css/[name].[contenthash:8].css",
-      }),
-      // Вставляем хтмл
-      new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, "public", "index.html"),
-      }),
-      isDev && new webpack.ProgressPlugin(), // процентр загрузки в логах только dev
-      new MiniCssExtractPlugin(), // минификатор css
-    ],
-
-    // Обрабатываемые файлы
+    // ~ Обрабатываемые файлы
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".jsx"],
     },
 
-    // Сервер
+    // ~ Сервер
     devtool: "inline-source-map",
     devServer: {
       // Расположение статических файлов после сборки
