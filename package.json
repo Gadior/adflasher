@@ -24,7 +24,7 @@
     "universal-cookie": "^7.2.2"
   },
   "scripts": {
-    "start": "webpack serve --mode development",
+    "start": "webpack serve --mode development --port 3010",
     "express": "node server.js",
     "build:prod": "webpack --mode production",
     "build:dev": "webpack --mode development",

@@ -1,14 +1,25 @@
 import path from "path";
+import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
+import webpack from "webpack";
+
+// plugins
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import devServer from "webpack-dev-server";
-// progress
-import webpack from "webpack";
 
-import { CleanWebpackPlugin } from "clean-webpack-plugin"; // Импортируем плагин
+const devServer: DevServerConfiguration = {};
 
-export default (env: any) => {
+// __ int
+type Mode = "production" | "development";
+
+interface int_Config {
+  mode: Mode;
+  port?: number;
+}
+
+// ___ export
+export default (env: int_Config) => {
+  console.log(env);
   const config: webpack.Configuration = {
     // Режим разработки (может быть режим production)
     mode: env.mode ?? "development",
@@ -89,7 +100,9 @@ export default (env: any) => {
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".jsx"],
     },
+
     // Сервер
+    devtool: "inline-source-map",
     devServer: {
       // Расположение статических файлов после сборки
       static: {
@@ -98,7 +111,7 @@ export default (env: any) => {
       // Компресия
       compress: true,
       // Порт
-      port: 3000,
+      port: env.port,
       // релоуд страницы при разработке
       hot: true,
       // относительная адресация в путях
