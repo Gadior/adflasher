@@ -5,99 +5,101 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // Импортируем плагин
 
-module.exports = {
-  // Входная точка
-  entry: "./src/index.tsx",
+module.exports = (env) => {
+  return {
+    // Режим разработки (может быть режим production)
+    mode: env.mode ?? "development",
 
-  // Выходная точка
-  output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "bundle.[contenthash].js",
-    clean: true,
-  },
+    // Входная точка
+    entry: "./src/index.tsx",
 
-  // Обрабатываемые файлы
-  resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
-  },
+    // Выходная точка
+    output: {
+      path: path.resolve(__dirname, "build"),
+      filename: "bundle.[contenthash].js",
+      clean: true,
+    },
 
-  // Модули
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
+    // Обрабатываемые файлы
+    resolve: {
+      extensions: [".ts", ".tsx", ".js", ".jsx"],
+    },
 
-      {
-        test: /\.scss$/,
-        use: [
-          "style-loader", // Встраивает стили в DOM
-          "css-loader", // Обрабатывает CSS
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  require("autoprefixer"), // Добавляет префиксы
-                ],
+    // Модули
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: "ts-loader",
+          exclude: /node_modules/,
+        },
+
+        {
+          test: /\.scss$/,
+          use: [
+            "style-loader", // Встраивает стили в DOM
+            "css-loader", // Обрабатывает CSS
+            {
+              loader: "postcss-loader",
+              options: {
+                postcssOptions: {
+                  plugins: [
+                    require("autoprefixer"), // Добавляет префиксы
+                  ],
+                },
               },
             },
-          },
-          "sass-loader", // Компилирует SCSS в CSS
-        ],
-      },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[path][name].[ext]",
+            "sass-loader", // Компилирует SCSS в CSS
+          ],
+        },
+        {
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, "css-loader"],
+        },
+        {
+          test: /\.(png|jpe?g|gif|svg)$/i,
+          use: [
+            {
+              loader: "file-loader",
+              options: {
+                name: "[path][name].[ext]",
+              },
             },
-          },
-        ],
-      },
-    ],
-  },
-
-  // Плагины
-  plugins: [
-    // Копирование статичыеских файлов из public в build
-    new CopyWebpackPlugin({
-      patterns: [{ from: "files", to: "files" }],
-    }),
-    // Минификация стилей
-    new MiniCssExtractPlugin({
-      filename: "styles.css",
-    }),
-    // Вставляем хтмл
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
-
-  // Режим разработки (может быть режим production)
-  mode: "development",
-
-  // Сервер
-  devServer: {
-    // Расположение статических файлов после сборки
-    static: {
-      directory: path.join(__dirname, "build"),
+          ],
+        },
+      ],
     },
-    // Компресия
-    compress: true,
-    // Порт
-    port: 3000,
-    // релоуд страницы при разработке
-    hot: true,
-    // относительная адресация в путях
-    historyApiFallback: true,
-  },
+
+    // Плагины
+    plugins: [
+      // Копирование статичыеских файлов из public в build
+      new CopyWebpackPlugin({
+        patterns: [{ from: "files", to: "files" }],
+      }),
+      // Минификация стилей
+      new MiniCssExtractPlugin({
+        filename: "styles.css",
+      }),
+      // Вставляем хтмл
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, "public", "index.html"),
+      }),
+    ],
+
+    // Сервер
+    devServer: {
+      // Расположение статических файлов после сборки
+      static: {
+        directory: path.join(__dirname, "build"),
+      },
+      // Компресия
+      compress: true,
+      // Порт
+      port: 3000,
+      // релоуд страницы при разработке
+      hot: true,
+      // относительная адресация в путях
+      historyApiFallback: true,
+    },
+  };
 };
