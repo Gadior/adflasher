@@ -41,12 +41,14 @@ export default (env: int_Config) => {
     // Модули
     module: {
       rules: [
+        // --- tsx
         {
           test: /\.tsx?$/,
           use: "ts-loader",
           exclude: /node_modules/,
         },
 
+        // --- scss
         {
           test: /\.scss$/,
           use: [
@@ -65,6 +67,8 @@ export default (env: int_Config) => {
             "sass-loader", // Компилирует SCSS в CSS
           ],
         },
+
+        // --- css
         {
           test: /\.css$/,
           use: [MiniCssExtractPlugin.loader, "css-loader"],
@@ -95,7 +99,8 @@ export default (env: int_Config) => {
       }),
       // Минификация стилей
       new MiniCssExtractPlugin({
-        filename: "styles.css",
+        filename: "css/[name].[contenthash:8].css",
+        chunkFilename: "css/[name].[contenthash:8].css",
       }),
       // Вставляем хтмл
       new HtmlWebpackPlugin({
