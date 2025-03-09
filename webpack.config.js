@@ -22,11 +22,6 @@ module.exports = (env) => {
       clean: true,
     },
 
-    // Обрабатываемые файлы
-    resolve: {
-      extensions: [".ts", ".tsx", ".js", ".jsx"],
-    },
-
     // Модули
     module: {
       rules: [
@@ -88,6 +83,11 @@ module.exports = (env) => {
       }),
       new webpack.ProgressPlugin(), // процентр загрузки в логах
     ],
+
+    // Обрабатываемые файлы
+    resolve: {
+      extensions: [".ts", ".tsx", ".js", ".jsx"],
+    },
 
     // Сервер
     devServer: {
