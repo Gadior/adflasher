@@ -46,6 +46,9 @@ $redColor: red;
   .--blackBg {
     background-color: $darkColor;
   }
+  .--greyBg {
+    background-color: $greyColor;
+  }
 }
 // #endregion
 
@@ -291,8 +294,11 @@ $redColor: red;
 
 // #endregion
 
-// ---
+// --- banners
 // #region
+.test10--banner {
+  color: #dadada;
+}
 // #endregion
 // ---
 // #region

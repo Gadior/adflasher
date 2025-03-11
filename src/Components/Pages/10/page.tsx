@@ -144,6 +144,11 @@ export default function Page(props: any) {
           )}
         </header>
       </div>
+
+      {/* banner */}
+      <div className="test10__section --greyBg">
+        <div className="test10--banner --w1240">sdf</div>
+      </div>
     </div>
   );
   // #endregion ~ return
