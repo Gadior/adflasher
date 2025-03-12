@@ -186,7 +186,7 @@ export default function Page(props: any) {
         </div>
       </div>
 
-      {/* logos */}
+      {/* partners */}
       <div className="test10__section --blackBg">
         <div className="tes10--partners --w1240">
           <img src={__part1} alt="versace" />
@@ -195,6 +195,11 @@ export default function Page(props: any) {
           <img src={__part4} alt="prada" />
           <img src={__part5} alt="calvin klein" />
         </div>
+      </div>
+
+      {/* title new arrivles */}
+      <div className="test10__section --blackBg">
+        <div className="test10--title">NEW ARRIVALS</div>
       </div>
     </div>
   );
