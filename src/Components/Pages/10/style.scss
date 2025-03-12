@@ -474,11 +474,30 @@ $redColor: red;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 45px 0px;
+  padding: 45px 20px;
+  gap: 20px;
+  flex-wrap: wrap;
 
   & > img {
     height: 33px;
     width: auto;
+  }
+}
+// ! media
+@media (max-width: 1000px) {
+  .tes10--partners {
+    justify-content: center;
+  }
+}
+@media (max-width: 500px) {
+  .tes10--partners {
+    justify-content: center;
+    padding: 25px 20px;
+    gap: 10px;
+
+    & > img {
+      height: 20px;
+    }
   }
 }
 // #endregion
