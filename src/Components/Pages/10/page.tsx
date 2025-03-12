@@ -198,8 +198,10 @@ export default function Page(props: any) {
       </div>
 
       {/* title new arrivles */}
-      <div className="test10__section --blackBg">
-        <div className="test10--title">NEW ARRIVALS</div>
+      <div className="test10__section">
+        <div className="test10--title">
+          <h2>NEW ARRIVALS</h2>
+        </div>
       </div>
     </div>
   );

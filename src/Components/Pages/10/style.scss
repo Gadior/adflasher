@@ -501,8 +501,26 @@ $redColor: red;
   }
 }
 // #endregion
-// ---
+
+// --- title
 // #region
+.test10--title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+// !media
+@media (max-width: 500px) {
+  .test10--title {
+    & > h2 {
+      font-size: 32px;
+    }
+  }
+}
 // #endregion
 // ---
 // #region
