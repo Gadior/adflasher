@@ -177,9 +177,11 @@ export default function Page(props: any) {
               </div>
             </div>
           </div>
-          <div className="__rightSide"></div>
         </div>
       </div>
+
+      {/* logos */}
+      <div className="test10__section --blackBg">sdfsdfs</div>
     </div>
   );
   // #endregion ~ return

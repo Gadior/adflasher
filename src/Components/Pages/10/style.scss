@@ -415,6 +415,14 @@ $redColor: red;
       & > p {
         font-size: 16px;
       }
+
+      & .__btnWrapper {
+        width: 100%;
+
+        & > button {
+          font-size: 16px;
+        }
+      }
     }
 
     &.--w1240 > img {
@@ -425,6 +433,13 @@ $redColor: red;
 
     & .__cards {
       flex-wrap: wrap;
+
+      & .__card > h3 {
+        font-size: 24px;
+      }
+      & .__card > div {
+        font-size: 12px;
+      }
     }
   }
 }
