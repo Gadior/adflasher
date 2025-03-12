@@ -22,7 +22,7 @@ $darkColor: black;
 // ~ основной светлый
 $whiteColor: white;
 // ~ дополнительный
-$greyColor: #dadada;
+$greyColor: #f2f0f1;
 // ~ дополнительный 2
 $redColor: red;
 // #endregion
@@ -49,6 +49,10 @@ $redColor: red;
   .--greyBg {
     background-color: $greyColor;
   }
+
+  .--whiteColor {
+    color: $whiteColor;
+  }
 }
 // #endregion
 
@@ -66,6 +70,31 @@ $redColor: red;
     display: flex;
     justify-content: center;
     width: 100%;
+  }
+
+  & h2 {
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 90%;
+  }
+  & h3 {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 90%;
+  }
+
+  & p {
+    font-size: 20px;
+  }
+
+  // _ speshial
+  .__mainBtn {
+    padding: 16px 54px;
+    width: 100%;
+    height: 100%;
+    border-radius: 54px;
+
+    // ! HOVER
   }
 }
 // #endregion
@@ -297,7 +326,107 @@ $redColor: red;
 // --- banners
 // #region
 .test10--banner {
-  color: #dadada;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  &.--w1240 > img {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    right: 0;
+    z-index: 0;
+  }
+
+  & .__leftSide {
+    width: 50%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 40px 20px;
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      rgba(242, 240, 241, 1),
+      rgba(242, 240, 241, 0)
+    );
+
+    & .__btnWrapper {
+      width: 210;
+      height: 52px;
+    }
+
+    & .__cards {
+      white-space: nowrap;
+      display: flex;
+      align-content: flex-start;
+      gap: 20px;
+
+      & .__card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        & > div {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  & .__rightSide {
+    right: 0px;
+    width: 50%;
+    height: 100%;
+  }
+}
+
+// ! media
+@media (max-width: 730px) {
+  .test10--banner {
+    & .__leftSide {
+      & > h2 {
+        font-size: 32px;
+      }
+
+      & > p {
+        font-size: 16px;
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .test10--banner {
+    flex-direction: column-reverse;
+
+    & .__leftSide {
+      width: 100%;
+
+      & > h2 {
+        font-size: 32px;
+      }
+
+      & > p {
+        font-size: 16px;
+      }
+    }
+
+    &.--w1240 > img {
+      display: block;
+      position: relative;
+      width: 100%;
+    }
+
+    & .__cards {
+      flex-wrap: wrap;
+    }
+  }
 }
 // #endregion
 // ---

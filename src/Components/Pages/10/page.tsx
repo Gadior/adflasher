@@ -18,6 +18,7 @@ import {
 import { menuItems } from "./data";
 // ~ assets
 import __logo from "../../Shared/page10/images/__logo.svg";
+import __bannerImage from "../../Shared/page10/images/__bannerImage1.jpg";
 // ~ styles
 import "./style.scss";
 
@@ -147,7 +148,37 @@ export default function Page(props: any) {
 
       {/* banner */}
       <div className="test10__section --greyBg">
-        <div className="test10--banner --w1240">sdf</div>
+        <div className="test10--banner --w1240">
+          <img src={__bannerImage}></img>
+          <div className="__leftSide">
+            <h2>FIND CLOTHES THAT MATCHES YOUR STYLE</h2>
+            <p>
+              Browse through our diverse range of meticulously crafted garments,
+              designed to bring out your individuality and cater to your sense
+              of style.
+            </p>
+            <div className="__btnWrapper">
+              <button className="__mainBtn --blackBg --whiteColor">
+                Shop Now
+              </button>
+            </div>
+            <div className="__cards">
+              <div className="__card">
+                <h3>200+</h3>
+                <div>International Brands</div>
+              </div>
+              <div className="__card">
+                <h3>2 000+</h3>
+                <div>High-Quality Products</div>
+              </div>
+              <div className="__card">
+                <h3>30 000+</h3>
+                <div>Happy Customers</div>
+              </div>
+            </div>
+          </div>
+          <div className="__rightSide"></div>
+        </div>
       </div>
     </div>
   );
