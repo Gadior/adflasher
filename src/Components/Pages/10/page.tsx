@@ -187,7 +187,15 @@ export default function Page(props: any) {
       </div>
 
       {/* logos */}
-      <div className="test10__section --blackBg">sdfsdfs</div>
+      <div className="test10__section --blackBg">
+        <div className="tes10--partners --w1240">
+          <img src={__part1} alt="versace" />
+          <img src={__part2} alt="zara" />
+          <img src={__part3} alt="gucci" />
+          <img src={__part4} alt="prada" />
+          <img src={__part5} alt="calvin klein" />
+        </div>
+      </div>
     </div>
   );
   // #endregion ~ return
