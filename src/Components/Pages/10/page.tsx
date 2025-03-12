@@ -19,6 +19,12 @@ import { menuItems } from "./data";
 // ~ assets
 import __logo from "../../Shared/page10/images/__logo.svg";
 import __bannerImage from "../../Shared/page10/images/__bannerImage1.jpg";
+import __part1 from "../../Shared/page10/images/__part1.svg";
+import __part2 from "../../Shared/page10/images/__part2.svg";
+import __part3 from "../../Shared/page10/images/__part3.svg";
+import __part4 from "../../Shared/page10/images/__part4.svg";
+import __part5 from "../../Shared/page10/images/__part5.svg";
+
 // ~ styles
 import "./style.scss";
 
