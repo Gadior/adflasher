@@ -24,7 +24,7 @@ $whiteColor: white;
 // ~ дополнительный
 $greyColor: #f2f0f1;
 // ~ дополнительный 2
-$redColor: red;
+$redColor: rgb(255, 51, 51);
 // #endregion
 
 // ___ all
@@ -81,6 +81,12 @@ $redColor: red;
     font-size: 40px;
     font-weight: 600;
     line-height: 90%;
+  }
+
+  & h4 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 100%;
   }
 
   & p {
@@ -509,7 +515,7 @@ $redColor: red;
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 70px;
   text-align: center;
 }
 
@@ -522,8 +528,105 @@ $redColor: red;
   }
 }
 // #endregion
-// ---
+
+// --- cards Arrivle
 // #region
+.test10__section {
+  & .test10--wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .test10--cardsAr {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+      padding: 0px 20px;
+      margin-top: 70px;
+
+      & .__card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        gap: 20px;
+
+        & > img {
+          border-radius: 20px;
+        }
+
+        & .__info {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          padding: 10px;
+
+          & .__price {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 12px;
+
+            & .__current {
+              font-size: 20px;
+              font-weight: 800;
+            }
+            & .__old {
+              text-decoration: line-through;
+              font-size: 20px;
+              font-weight: 400;
+              color: rgba(0, 0, 0, 0.4);
+            }
+            & .__percent {
+              font-size: 12px;
+              font-weight: 200;
+              color: $redColor;
+              background-color: rgba(255, 51, 51, 0.1);
+              padding: 5px 10px;
+              border-radius: 15px;
+            }
+          }
+        }
+      }
+    }
+
+    & .__viewAll {
+      box-sizing: border-box;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 54px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      border-radius: 62px;
+      background: none;
+    }
+  }
+}
+
+// ! media
+@media (max-width: 1235px) {
+  .test10--cardsAr {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 935px) {
+  .test10--cardsAr {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 635px) {
+  .test10--cardsAr {
+    grid-template-columns: 1fr;
+  }
+}
 // #endregion
 // ---
 // #region
