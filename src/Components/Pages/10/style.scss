@@ -22,29 +22,37 @@ $darkColor: black;
 // ~ основной светлый
 $whiteColor: white;
 // ~ дополнительный
-$greyColor: #dadada;
+$greyColor: #f2f0f1;
 // ~ дополнительный 2
-$redColor: red;
+$redColor: rgb(255, 51, 51);
 // #endregion
 
 // ___ all
 // #region
 .test10__wrapper {
-  button {
-    padding: 0;
-    margin: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
   .--w1240 {
+    width: 100%;
     max-width: 1240px;
   }
+
+  .--mt60 {
+    margin-top: 60px;
+  }
+
   .--whiteBg {
     background-color: $whiteColor;
   }
+
   .--blackBg {
     background-color: $darkColor;
+  }
+
+  .--greyBg {
+    background-color: $greyColor;
+  }
+
+  .--whiteColor {
+    color: $whiteColor;
   }
 }
 // #endregion
@@ -60,9 +68,42 @@ $redColor: red;
   margin-top: 85px;
 
   .test10__section {
+    min-height: 2px;
     display: flex;
     justify-content: center;
     width: 100%;
+  }
+
+  & h2 {
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 90%;
+  }
+  & h3 {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 90%;
+  }
+
+  & h4 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 100%;
+  }
+
+  & p {
+    font-size: 20px;
+  }
+
+  // _ speshial
+  .__mainBtn {
+    padding: 16px 54px;
+    width: 100%;
+    height: 100%;
+    border-radius: 54px;
+    border: none;
+
+    // ! HOVER
   }
 }
 // #endregion
@@ -87,11 +128,21 @@ $redColor: red;
 
   & button {
     color: $whiteColor;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
   .test10--sign__link {
     font-weight: 400;
     text-decoration: underline;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
   &__close {
@@ -216,6 +267,11 @@ $redColor: red;
 
     & button {
       display: none;
+      padding: 0;
+      margin: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
   }
 
@@ -243,6 +299,12 @@ $redColor: red;
     & button {
       height: 24px;
       width: auto;
+      padding: 0;
+      margin: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+
       &:hover {
         color: $redColor;
       }
@@ -291,17 +353,279 @@ $redColor: red;
 
 // #endregion
 
-// ---
+// --- banners
 // #region
+.test10--banner {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  &.--w1240 > img {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    right: 0;
+    z-index: 0;
+  }
+
+  & .__leftSide {
+    width: 50%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 40px 20px;
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      rgba(242, 240, 241, 1),
+      rgba(242, 240, 241, 0)
+    );
+
+    & .__btnWrapper {
+      width: 210;
+      height: 52px;
+    }
+
+    & .__cards {
+      white-space: nowrap;
+      display: flex;
+      align-content: flex-start;
+      gap: 20px;
+
+      & .__card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        & > div {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  & .__rightSide {
+    right: 0px;
+    width: 50%;
+    height: 100%;
+  }
+}
+
+// ! media
+@media (max-width: 730px) {
+  .test10--banner {
+    & .__leftSide {
+      & > h2 {
+        font-size: 32px;
+      }
+
+      & > p {
+        font-size: 16px;
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .test10--banner {
+    flex-direction: column-reverse;
+
+    & .__leftSide {
+      width: 100%;
+
+      & > h2 {
+        font-size: 32px;
+      }
+
+      & > p {
+        font-size: 16px;
+      }
+
+      & .__btnWrapper {
+        width: 100%;
+
+        & > button {
+          font-size: 16px;
+        }
+      }
+    }
+
+    &.--w1240 > img {
+      display: block;
+      position: relative;
+      width: 100%;
+    }
+
+    & .__cards {
+      flex-wrap: wrap;
+
+      & .__card > h3 {
+        font-size: 24px;
+      }
+      & .__card > div {
+        font-size: 12px;
+      }
+    }
+  }
+}
 // #endregion
-// ---
+
+// --- partners
 // #region
+.tes10--partners {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 45px 20px;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  & > img {
+    height: 33px;
+    width: auto;
+  }
+}
+// ! media
+@media (max-width: 1000px) {
+  .tes10--partners {
+    justify-content: center;
+  }
+}
+@media (max-width: 500px) {
+  .tes10--partners {
+    justify-content: center;
+    padding: 25px 20px;
+    gap: 10px;
+
+    & > img {
+      height: 20px;
+    }
+  }
+}
 // #endregion
-// ---
+
+// --- title
 // #region
+.test10--title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+// !media
+@media (max-width: 500px) {
+  .test10--title {
+    & > h2 {
+      font-size: 32px;
+    }
+  }
+}
 // #endregion
-// ---
+
+// --- cards Arrivle
 // #region
+.test10__section {
+  & .test10--wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .test10--cardsAr {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+      padding: 0px 20px;
+
+      & .__card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        gap: 20px;
+
+        & > img {
+          border-radius: 20px;
+        }
+
+        & .__info {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          padding: 10px;
+
+          & .__price {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 12px;
+
+            & .__current {
+              font-size: 20px;
+              font-weight: 800;
+            }
+            & .__old {
+              text-decoration: line-through;
+              font-size: 20px;
+              font-weight: 400;
+              color: rgba(0, 0, 0, 0.4);
+            }
+            & .__percent {
+              font-size: 12px;
+              font-weight: 200;
+              color: $redColor;
+              background-color: rgba(255, 51, 51, 0.1);
+              padding: 5px 10px;
+              border-radius: 15px;
+            }
+          }
+        }
+      }
+    }
+
+    & .__viewAll {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 54px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      border-radius: 62px;
+      background: none;
+    }
+  }
+}
+
+// ! media
+@media (max-width: 1235px) {
+  .test10--cardsAr {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 935px) {
+  .test10--cardsAr {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 635px) {
+  .test10--cardsAr {
+    grid-template-columns: 1fr;
+  }
+}
 // #endregion
 // ---
 // #region
