@@ -1,12 +1,19 @@
 import webpack from "webpack";
 import path from "path";
 import { buildWebPack } from "./webpackConfig/buildWebPack";
-import { int_BuildPaths, t_BuildMode } from "./webpackConfig/types/types";
+import {
+  int_BuildPaths,
+  t_BuildENV,
+  t_BuildMode,
+  t_BuildPlatform,
+} from "./webpackConfig/types/types";
 
 interface int_EnvVars {
   mode: t_BuildMode;
-  port: number;
+  port?: number;
   analyzer?: boolean;
+  __PLATFOMR__?: t_BuildPlatform;
+  __ISDEV__?: t_BuildENV;
 }
 
 // ___ export
@@ -24,6 +31,8 @@ export default (env: int_EnvVars) => {
     mode: env.mode ?? "development",
     paths: paths,
     analyzer: env.analyzer,
+    __PLATFOMR__: env.__PLATFOMR__ ?? "desktop",
+    __ISDEV__: env.__ISDEV__ ?? "production",
   });
 
   return config;

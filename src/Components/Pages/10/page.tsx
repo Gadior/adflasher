@@ -58,6 +58,9 @@ export default function Page(props: any) {
     <div className="test10__wrapper --whiteBg">
       <TasksBackBtn />
 
+      {/* some dev tools */}
+      {/* {__ISDEV__ === "development" && <div>{__ISDEV__}</div>} */}
+
       {/* mobile menu */}
       {isMobileMenu && (
         <div className="test10--mobileMenu">

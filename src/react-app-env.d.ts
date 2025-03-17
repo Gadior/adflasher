@@ -7,3 +7,7 @@ declare module "*.module.scss" {
   const classNames: IClassNames;
   export = classNames;
 }
+
+// Блок переменных. Для подключения dev tools в проекте
+declare const __PLATFOMR__: "mobile" | "desktop";
+declare const __ISDEV__: "development" | "production";
