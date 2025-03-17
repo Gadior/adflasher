@@ -34,7 +34,7 @@ import __ar4 from "../../Shared/page10/images/__ar4.jpg";
 
 // ~ styles
 import "./style.scss";
-import * as css from "./test.module.scss";
+import * as classes from "./test.module.scss";
 
 import DropdownMenu from "../../Shared/page10/dropdownMenu";
 // #endregion ~ import
@@ -337,6 +337,7 @@ export default function Page(props: any) {
             </div>
           </div>
           <button className="__viewAll --mt60">View all</button>
+          {/* <button className={classes.button}>View all</button> */}
         </div>
       </div>
     </div>

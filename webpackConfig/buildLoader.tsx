@@ -18,7 +18,7 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
   const scssLoader = {
     test: /\.scss$/,
     use: [
-      isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+      isDev ? "style-loader" : MiniCssExtractPlugin.loader, // минифициурем
       "css-loader",
       {
         loader: "postcss-loader",
