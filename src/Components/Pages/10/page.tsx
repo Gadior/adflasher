@@ -4,7 +4,7 @@
 // ~ comps
 import TasksBackBtn from "../../Shared/tasksBackBtn";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Rate, Divider } from "antd";
 import {
   CircleUserRound,
@@ -34,6 +34,7 @@ import __ar4 from "../../Shared/page10/images/__ar4.jpg";
 
 // ~ styles
 import "./style.scss";
+import * as css from "./test.module.scss";
 
 import DropdownMenu from "../../Shared/page10/dropdownMenu";
 // #endregion ~ import
