@@ -10,4 +10,5 @@ export interface int_BuildOptions {
   port: number;
   paths: int_BuildPaths;
   mode: t_BuildMode;
+  analyzer?: boolean;
 }

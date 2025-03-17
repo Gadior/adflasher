@@ -6,6 +6,7 @@ import path from "path";
 import webpack from "webpack";
 
 import { int_BuildOptions } from "./types/types";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 export function buildPlugin(options: int_BuildOptions) {
   // Тип сборки
@@ -39,6 +40,11 @@ export function buildPlugin(options: int_BuildOptions) {
   if (isProd) {
     // - процентр загрузки в логах только dev)
     plugins.push(new webpack.ProgressPlugin());
+
+    // !__ bandle analizer ~ скрипт npm run build:analize
+    if (options.analyzer) {
+      plugins.push(new BundleAnalyzerPlugin());
+    }
   }
 
   return plugins;
