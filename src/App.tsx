@@ -1,5 +1,5 @@
 // import "./reset.css";
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter, HashRouter, Routes, Route } from "react-router-dom";
 
 import { Provider } from "react-redux";
@@ -19,7 +19,7 @@ import Page6 from "./Components/Pages/6/page";
 import Page7 from "./Components/Pages/7/page";
 import Page8 from "./Components/Pages/8/page";
 import Page9 from "./Components/Pages/9/page";
-import Page10 from "./Components/Pages/10/page";
+import { LazyPage } from "./Components/Pages/10/page.lazy";
 import Page11 from "./Components/Pages/11/page";
 import Banners from "./Components/Pages/banners/page";
 
@@ -37,7 +37,14 @@ function App() {
         <Route path="7" element={<Page7 />} />
         <Route path="8" element={<Page8 />} />
         <Route path="9" element={<Page9 />} />
-        <Route path="10" element={<Page10 />} />
+        <Route
+          path="10"
+          element={
+            <Suspense fallback={"...loading"}>
+              <LazyPage />
+            </Suspense>
+          }
+        />
         <Route path="11" element={<Page11 />} />
         <Route path="banners" element={<Banners />} />
       </Routes>
