@@ -14,9 +14,4 @@ declare const __ISDEV__: "development" | "production";
 
 declare module "*.png";
 declare module "*.jpg";
-
-declare module "*.svg" {
-  import React = require("react");
-  const src: React.FC<React.SVGProps<SVGSVGElement>>;
-  export default src;
-}
+declare module "*.svg";

@@ -18,22 +18,19 @@ import {
 // ~ data
 import { menuItems } from "./data";
 // ~ assets
-import { ReactComponent as Logo } from "../../Shared/page10/images/__logo.svg";
+import __logo from "../../Shared/page10/images/__logo.svg";
 import __bannerImage from "../../Shared/page10/images/__bannerImage1.jpg";
 // партнеры
-// import __part1 from "../../Shared/page10/images/__part1.svg";
-// import __part2 from "../../Shared/page10/images/__part2.svg";
-// import __part3 from "../../Shared/page10/images/__part3.svg";
-// import __part4 from "../../Shared/page10/images/__part4.svg";
-// import __part5 from "../../Shared/page10/images/__part5.svg";
+import __part1 from "../../Shared/page10/images/__part1.svg";
+import __part2 from "../../Shared/page10/images/__part2.svg";
+import __part3 from "../../Shared/page10/images/__part3.svg";
+import __part4 from "../../Shared/page10/images/__part4.svg";
+import __part5 from "../../Shared/page10/images/__part5.svg";
 // карточки поступлений
 import __ar1 from "../../Shared/page10/images/__ar1.jpg";
 import __ar2 from "../../Shared/page10/images/__ar2.jpg";
 import __ar3 from "../../Shared/page10/images/__ar3.jpg";
 import __ar4 from "../../Shared/page10/images/__ar4.jpg";
-
-// ! test
-import { ReactComponent as Pic } from "./donuts-cake.svg";
 
 // ~ styles
 import "./style.scss";
@@ -125,7 +122,7 @@ export default function Page(props: any) {
                 >
                   <Menu />
                 </button>
-                <Logo className={"__mainLogo"} />
+                <img src={__logo} alt="shop.co" />
               </div>
 
               <div className="test10--header__menu">
@@ -203,11 +200,11 @@ export default function Page(props: any) {
       {/* partners */}
       <div className="test10__section --blackBg">
         <div className="tes10--partners --w1240">
-          {/* <img src={__part1} alt="versace" />
+          <img src={__part1} alt="versace" />
           <img src={__part2} alt="zara" />
           <img src={__part3} alt="gucci" />
           <img src={__part4} alt="prada" />
-          <img src={__part5} alt="calvin klein" /> */}
+          <img src={__part5} alt="calvin klein" />
         </div>
       </div>
 

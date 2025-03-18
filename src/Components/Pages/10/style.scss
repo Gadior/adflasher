@@ -494,6 +494,7 @@ $redColor: rgb(255, 51, 51);
   & > img {
     height: 33px;
     width: auto;
+    max-width: none;
   }
 }
 // ! media
