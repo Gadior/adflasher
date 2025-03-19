@@ -1,0 +1,33 @@
+// #region ~ hlop
+// ___ import
+// #region ~ import
+// ~ comps
+import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
+// ~ styles
+import "./style.scss";
+// ~ interface
+
+// #endregion ~ import
+
+// ___ component
+// #region ~ component
+export default function Page() {
+  // ___ state
+  // #region ~ state
+  // #endregion ~ state
+
+  // ___ return
+  // #region ~ return
+  return (
+    <div>
+      <TasksBackBtn />
+    </div>
+  );
+  // #endregion ~ return
+
+  // ___ function
+  // #region ~ function
+  // #endregion ~ function
+}
+// #endregion ~ component
+// #region ~ hlop
