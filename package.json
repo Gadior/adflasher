@@ -33,6 +33,7 @@
     "build:desktop": "webpack --env mode=production --env port=3000 --env __PLATFOMR__=desktop",
     "build:mobile": "webpack --env mode=production --env port=3000 --env __PLATFOMR__=mobile",
     "test": "react-scripts test",
+    "jest": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
