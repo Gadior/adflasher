@@ -36,7 +36,7 @@ import __ar4 from "./src/Shared/assets/__ar4.jpg";
 import "./style.scss";
 import * as classes from "./test.module.scss";
 
-import DropdownMenu from "../../Shared/page10/dropdownMenu";
+import DropdownMenu from "./src/Feature/dropdownMenu/dropdownMenu";
 // #endregion ~ import
 
 // ___ component Page

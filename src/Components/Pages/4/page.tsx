@@ -6,7 +6,7 @@
 // ~ comps
 import ClickLikeWJT from "./src/Widjet/clickLikeWJT/clickLikeWJT";
 import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
-import AddPartnersWJT from "../../Widjet/addPartnersWJT";
+import AddPartnersWJT from "./src/Widjet/addPartnersWJT/addPartnersWJT";
 
 // ~ styles
 import "./page.css";

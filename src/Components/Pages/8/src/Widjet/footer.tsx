@@ -1,10 +1,10 @@
 import React from "react";
 import { int_header, menuItems } from "./interface";
 // ~ assets
-import __logo_w from "./images/__logo__white.png";
-import __ss1 from "./images/__ss1.png";
-import __ss2 from "./images/__ss2.png";
-import __ss3 from "./images/__ss3.png";
+import __logo_w from "../Shared/assets/__logo__white.png";
+import __ss1 from "../Shared/assets/__ss1.png";
+import __ss2 from "../Shared/assets/__ss2.png";
+import __ss3 from "../Shared/assets/__ss3.png";
 
 export default function Footer() {
   return (
