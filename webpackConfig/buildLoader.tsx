@@ -3,6 +3,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 // ~ settings
 import { int_BuildOptions } from "./types/types";
+import { BabelBuildLoader } from "./babel/babelBuildLoader";
 
 export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
   // Тип сборки
@@ -16,20 +17,7 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
     exclude: /node_modules/,
   };
 
-  const babelLoader = {
-    test: /\.tsx?$/,
-    exclude: /node_modules/,
-    use: {
-      loader: "babel-loader",
-      options: {
-        presets: [
-          "@babel/preset-env",
-          "@babel/preset-typescript",
-          "@babel/preset-react",
-        ],
-      },
-    },
-  };
+  const babelLoader = BabelBuildLoader(options);
   // #endregion
 
   const scssLoader = {
