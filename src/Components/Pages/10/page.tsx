@@ -16,21 +16,21 @@ import {
 } from "lucide-react";
 
 // ~ data
-import { menuItems } from "./data";
+import { menuItems } from "./src/Data/data";
 // ~ assets
-import __logo from "../../Shared/page10/images/__logo.svg";
-import __bannerImage from "../../Shared/page10/images/__bannerImage1.jpg";
+import __logo from "./src/Shared/assets/__logo.svg";
+import __bannerImage from "./src/Shared/assets/__bannerImage1.jpg";
 // партнеры
-import __part1 from "../../Shared/page10/images/__part1.svg";
-import __part2 from "../../Shared/page10/images/__part2.svg";
-import __part3 from "../../Shared/page10/images/__part3.svg";
-import __part4 from "../../Shared/page10/images/__part4.svg";
-import __part5 from "../../Shared/page10/images/__part5.svg";
+import __part1 from "./src/Shared/assets/__part1.svg";
+import __part2 from "./src/Shared/assets/__part2.svg";
+import __part3 from "./src/Shared/assets/__part3.svg";
+import __part4 from "./src/Shared/assets/__part4.svg";
+import __part5 from "./src/Shared/assets/__part5.svg";
 // карточки поступлений
-import __ar1 from "../../Shared/page10/images/__ar1.jpg";
-import __ar2 from "../../Shared/page10/images/__ar2.jpg";
-import __ar3 from "../../Shared/page10/images/__ar3.jpg";
-import __ar4 from "../../Shared/page10/images/__ar4.jpg";
+import __ar1 from "./src/Shared/assets/__ar1.jpg";
+import __ar2 from "./src/Shared/assets/__ar2.jpg";
+import __ar3 from "./src/Shared/assets/__ar3.jpg";
+import __ar4 from "./src/Shared/assets/__ar4.jpg";
 
 // ~ styles
 import "./style.scss";
