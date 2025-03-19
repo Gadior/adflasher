@@ -10,7 +10,12 @@ export function BabelBuildLoader(options: int_BuildOptions) {
         presets: [
           "@babel/preset-env",
           "@babel/preset-typescript",
-          "@babel/preset-react",
+          [
+            "@babel/preset-react",
+            {
+              runtime: "automatic",
+            },
+          ],
         ],
       },
     },
