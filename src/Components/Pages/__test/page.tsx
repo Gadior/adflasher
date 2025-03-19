@@ -1,6 +1,7 @@
 // #region ~ hlop
 // ___ import
 // #region ~ import
+import { delay } from "./src/Shared/help/delay";
 // ~ comps
 import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 // ~ styles
@@ -12,6 +13,8 @@ import "./style.scss";
 // ___ component
 // #region ~ component
 export default function Page() {
+  delay(() => 50 + 50, 1000).then((res) => console.log(res));
+
   // ___ state
   // #region ~ state
   // #endregion ~ state
