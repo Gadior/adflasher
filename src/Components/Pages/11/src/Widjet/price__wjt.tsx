@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import {} from "lucide-react";
 
 // ~ redux
-import { useAppSelector } from "../../Feature/redux/hooks";
+import { useAppSelector } from "../../../../Feature/redux/hooks";
 import { Flex, Typography } from "antd";
 const { Title } = Typography;
 

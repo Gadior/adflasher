@@ -3,8 +3,8 @@
 // #region ~ import
 // ~ comps
 import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
-import Options from "../../Widjet/page11/options";
-import Price from "../../Widjet/page11/price";
+import Options from "./src/Widjet/options__wjt";
+import Price from "./src/Widjet/price__wjt";
 
 import React, { useEffect, useState } from "react";
 import {

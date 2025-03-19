@@ -6,12 +6,15 @@ import React from "react";
 import { Button, Divider, Flex, Select, Typography } from "antd";
 
 // ~ redux
-import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../Feature/redux/hooks";
 import {
   setRootSelectorName,
   setlvl2SelectorName,
   deleteEstimateData,
-} from "../../Feature/redux/slices/page11/dataCntl";
+} from "../../../../Feature/redux/slices/page11/dataCntl";
 const { Title, Text } = Typography;
 // #endregion ~ import
 
