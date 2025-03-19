@@ -5,8 +5,8 @@ import React from "react";
 import { Button, Flex } from "antd";
 import { HeartOutlined } from "@ant-design/icons";
 // ~ redux
-import { useAppDispatch } from "../Feature/redux/hooks";
-import { addHeart } from "../Feature/redux/slices/task4__hearts";
+import { useAppDispatch } from "../../../../../Feature/redux/hooks";
+import { addHeart } from "../../../../../Feature/redux/slices/task4__hearts";
 // ~ style
 // #endregion ~ import
 

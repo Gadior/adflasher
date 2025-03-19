@@ -4,7 +4,7 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import ClickLikeWJT from "../../Widjet/clickLikeWJT";
+import ClickLikeWJT from "./src/Widjet/clickLikeWJT/clickLikeWJT";
 import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 import AddPartnersWJT from "../../Widjet/addPartnersWJT";
 

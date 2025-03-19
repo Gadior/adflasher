@@ -1,5 +1,4 @@
-import React from "react";
-import {  Flex } from "antd";
+import { Flex } from "antd";
 
 export default function CardTitle(props: any) {
   return (

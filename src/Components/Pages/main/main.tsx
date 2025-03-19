@@ -13,7 +13,7 @@ import { int_mainData } from "./interface";
 import { imgList } from "./cardImgList";
 
 // ~ components
-import CardFeat from "../../Feature/cardFeat";
+import CardFeat from "../../Feature/cardFeat/cardFeat";
 import SearchTag from "../../Shared/ui/searchTag/searchTag";
 
 import React, { useState, useEffect } from "react";

@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Typography, Table, Button } from "antd";
 import { useAppDispatch } from "../Feature/redux/hooks";
 import { changeStatus } from "../Feature/redux/slices/task4__addPartners";
-import ClickLikeWJT from "../Widjet/clickLikeWJT";
+import ClickLikeWJT from "../Pages/4/src/Widjet/clickLikeWJT/clickLikeWJT";
 const { Text, Title } = Typography;
 
 export default function PartnersSelectModal(props: any) {

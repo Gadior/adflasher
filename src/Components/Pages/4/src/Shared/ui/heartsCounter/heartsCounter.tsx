@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppSelector } from "../Feature/redux/hooks";
+import { useAppSelector } from "../../../../../../Feature/redux/hooks";
 import { Flex } from "antd";
 
 export default function HeartsCounter() {
