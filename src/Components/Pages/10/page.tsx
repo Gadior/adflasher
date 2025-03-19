@@ -2,7 +2,7 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn";
+import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 
 import { useState } from "react";
 import { Rate, Divider } from "antd";

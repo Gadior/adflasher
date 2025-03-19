@@ -2,7 +2,7 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn";
+import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 import Options from "../../Widjet/page11/options";
 import Price from "../../Widjet/page11/price";
 

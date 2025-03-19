@@ -2,9 +2,9 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn";
-import Tab1Page5 from "../../Widjet/tab1Page5";
-import Tab2Page5 from "../../Widjet/tab2Page5";
+import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
+import Tab1Page5 from "./src/Widjet/tab1/tab1Page5";
+import Tab2Page5 from "./src/Widjet/tab2/tab2Page5";
 
 // ~ styles
 import "./page.css";

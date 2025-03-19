@@ -3,7 +3,7 @@
 // #region
 import React, { useMemo } from "react";
 import { createPortal } from "react-dom";
-import TasksBackBtn from "../../Shared/tasksBackBtn";
+import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 import { Flex, Button } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
@@ -28,9 +28,9 @@ import {
   type_Root,
   type_Lvl2,
 } from "../../Feature/redux/slices/page7/interface";
-import Page7Root from "../../Feature/dndGroupList/page7Root";
-import Page7Lvl1 from "../../Feature/dndGroupList/page7Lvl1";
-import Page7Lvl2 from "../../Feature/dndGroupList/page7Lvl2";
+import Page7Root from "./src/Feature/dndGroupList/page7Root";
+import Page7Lvl1 from "./src/Feature/dndGroupList/page7Lvl1";
+import Page7Lvl2 from "./src/Feature/dndGroupList/page7Lvl2";
 
 // ~ regux
 import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks";

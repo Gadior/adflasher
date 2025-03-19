@@ -3,15 +3,18 @@
 // ~style
 import "./tab1_page5.css";
 // ~ comps
-import UiInputStringPage5 from "../Shared/uiInputStringPage5";
-import UiInputNumberPage5 from "../Shared/uiInputNumberPage5";
+import UiInputStringPage5 from "../../Shared/InputString/uiInputStringPage5";
+import UiInputNumberPage5 from "../../Shared/InputNumber/uiInputNumberPage5";
 
 import React, { useState, useEffect } from "react";
 import { Flex, Collapse, Button } from "antd";
 
 // ~ redux
-import { useAppDispatch, useAppSelector } from "../Feature/redux/hooks";
-import { addGroupItem } from "../Feature/redux/slices/page5/dataCntl";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../Feature/redux/hooks";
+import { addGroupItem } from "../../../../../Feature/redux/slices/page5/dataCntl";
 // #endregion ~ import
 
 export default function Tab1Page5(props: any) {

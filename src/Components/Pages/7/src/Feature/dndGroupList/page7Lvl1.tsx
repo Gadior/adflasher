@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { type_Lvl1, type_Lvl2 } from "../../Pages/7/interface";
+import { type_Lvl1, type_Lvl2 } from "../../../interface";
 import { Flex, Button, Input } from "antd";
 // const { TextArea } = Input;
 import { DeleteOutlined, DragOutlined } from "@ant-design/icons";
@@ -11,13 +11,16 @@ import { CSS } from "@dnd-kit/utilities";
 
 // ~ regux
 // #region
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../Feature/redux/hooks";
 import {
   createLvl2,
   deleteLvls1,
   updateLvls1,
-} from "../redux/slices/page7/dataCntl";
-import DragAndDropAnimation from "../../Shared/dragAndDropAnimation";
+} from "../../../../../Feature/redux/slices/page7/dataCntl";
+import DragAndDropAnimation from "../../Shared/ui/dragAndDropAnimation/dragAndDropAnimation";
 // #endregion
 
 interface Props {
@@ -181,12 +184,16 @@ export default function Page7Lvl1(props: Props) {
               toggleEditMode();
             }}
           >
-            {overMarker && overMarker.id === lvl1.id && overMarker.type !== null && (
-              <>
-                {overMarker.type === "Lvl1" &&
-                  overMarker.activeType !== "Lvl1" && <DragAndDropAnimation />}
-              </>
-            )}
+            {overMarker &&
+              overMarker.id === lvl1.id &&
+              overMarker.type !== null && (
+                <>
+                  {overMarker.type === "Lvl1" &&
+                    overMarker.activeType !== "Lvl1" && (
+                      <DragAndDropAnimation />
+                    )}
+                </>
+              )}
 
             <DragOutlined />
 

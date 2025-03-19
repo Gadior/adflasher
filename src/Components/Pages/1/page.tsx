@@ -2,7 +2,7 @@
 
 // ___ import
 // #region ~ import
-import TasksBackBtn from "../../Shared/tasksBackBtn";
+import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 import React, { useState, useEffect, useRef } from "react";
 
 // ~ days
@@ -61,7 +61,7 @@ export default function MainPage() {
   // ~ управление чекбоксами
   const handleCheckboxChange = (name: string) => {
     checkFocus();
-    let __check:any = checkboxes;
+    let __check: any = checkboxes;
     if (name === "all") {
       const newState = !checkboxes.all;
       setAllSelected(newState);

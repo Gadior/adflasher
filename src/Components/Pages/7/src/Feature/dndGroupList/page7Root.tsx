@@ -12,17 +12,20 @@ import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // ~ interface
-import { type_Root, type_Lvl1, type_Lvl2 } from "../../Pages/7/interface";
+import { type_Root, type_Lvl1, type_Lvl2 } from "../../../interface";
 
 // ~ regux
 // #region
-import { useAppDispatch, useAppSelector } from "../../Feature/redux/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../Feature/redux/hooks";
 import {
   deleteRoot,
   updateRoot,
   createLvl1,
-} from "../../Feature/redux/slices/page7/dataCntl";
-import DragAndDropAnimation from "../../Shared/dragAndDropAnimation";
+} from "../../../../../Feature/redux/slices/page7/dataCntl";
+import DragAndDropAnimation from "../../Shared/ui/dragAndDropAnimation/dragAndDropAnimation";
 // #endregion
 
 // ~ что получаем через пропсы?
@@ -142,13 +145,15 @@ export default function Page7Root(props: Props) {
             setEditMode(true);
           }}
         >
-          {overMarker && overMarker.id === column.id && overMarker.type !== null && (
-            <>
-              {overMarker.type === "Root" &&
-                overMarker.activeType !== "Root" &&
-                overMarker.activeType !== "Lvl2" && <DragAndDropAnimation />}
-            </>
-          )}
+          {overMarker &&
+            overMarker.id === column.id &&
+            overMarker.type !== null && (
+              <>
+                {overMarker.type === "Root" &&
+                  overMarker.activeType !== "Root" &&
+                  overMarker.activeType !== "Lvl2" && <DragAndDropAnimation />}
+              </>
+            )}
           {/* Иконка для перетаскивания */}
           <div
             // маркер dragged

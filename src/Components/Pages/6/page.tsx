@@ -2,7 +2,7 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn";
+import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 import { throttle } from "lodash";
 
 // ~ styles
@@ -51,7 +51,7 @@ export default function Page() {
     */
 
     // ~ обработка
-    const handleMessage = throttle((message:any) => {
+    const handleMessage = throttle((message: any) => {
       if (flagReq) {
         setFlagReq(false);
         const newNumber = message;

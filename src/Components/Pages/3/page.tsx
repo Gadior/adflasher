@@ -4,7 +4,7 @@
 // ___ import
 // #region ~ import
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn";
+import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 // ~ styles
 import "./page.css";
 import { toCookies, toCookies_obj } from "../../Feature/cookiesController";

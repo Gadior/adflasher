@@ -14,7 +14,7 @@ import { imgList } from "./cardImgList";
 
 // ~ components
 import CardFeat from "../../Feature/cardFeat";
-import SearchTag from "../../Shared/searchTag";
+import SearchTag from "../../Shared/ui/searchTag/searchTag";
 
 import React, { useState, useEffect } from "react";
 import { Button, Space, Tag, Typography, Flex } from "antd";
@@ -179,14 +179,18 @@ export default function Main() {
                     </Flex>
                     <Flex wrap={true}>
                       backEnd: python example href=
-                      <a className="info__link" href="https://bannersbox.ru/" target="__blank">
+                      <a
+                        className="info__link"
+                        href="https://bannersbox.ru/"
+                        target="__blank"
+                      >
                         bannersbox.ru
                       </a>
                     </Flex>
                     <Flex wrap={true}>
                       uniti: C# ~ example href=
                       <a
-                      className="info__link"
+                        className="info__link"
                         href="https://disk.yandex.ru/i/lhKnMERhcYXY_Q"
                         target="__blank"
                       >
@@ -208,13 +212,16 @@ export default function Main() {
                       </a>{" "}
                       |{" "}
                       <a
-                      className="info__link"
+                        className="info__link"
                         href="https://spb.hh.ru/resume/34de443cff018bae240039ed1f6e7036576436"
                         target="__blank"
                       >
                         hh
                       </a>{" "}
-                      | <a href="mailto:adflasher@mail.ru" className="info__link">adflasher@mail.ru</a>
+                      |{" "}
+                      <a href="mailto:adflasher@mail.ru" className="info__link">
+                        adflasher@mail.ru
+                      </a>
                     </Flex>
                     {"}"}],
                   </div>

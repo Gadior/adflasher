@@ -8,9 +8,15 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // ~ regux
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { deleteLvls2, updateLvls2 } from "../redux/slices/page7/dataCntl";
-import DragAndDropAnimation from "../../Shared/dragAndDropAnimation";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../Feature/redux/hooks";
+import {
+  deleteLvls2,
+  updateLvls2,
+} from "../../../../../Feature/redux/slices/page7/dataCntl";
+import DragAndDropAnimation from "../../Shared/ui/dragAndDropAnimation/dragAndDropAnimation";
 // #endregion
 
 export default function Page7Lvl2(props: any) {

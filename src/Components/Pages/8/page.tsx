@@ -5,7 +5,7 @@
 import "./slider.css";
 import "./style.css";
 // ~ comps
-import TasksBackBtn from "../../Shared/tasksBackBtn";
+import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 
 import React, { useState } from "react";
 
@@ -268,7 +268,7 @@ export default function Page() {
             </p>
             <div>Get your free proposal</div>
           </div>
-          <img src={__contactJpg} alt=""/>
+          <img src={__contactJpg} alt="" />
         </div>
       </section>
 

@@ -5,7 +5,7 @@
 // #region ~ import
 // ~ comps
 import ClickLikeWJT from "../../Widjet/clickLikeWJT";
-import TasksBackBtn from "../../Shared/tasksBackBtn";
+import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 import AddPartnersWJT from "../../Widjet/addPartnersWJT";
 
 // ~ styles
