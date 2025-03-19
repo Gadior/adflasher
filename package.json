@@ -26,6 +26,7 @@
   "scripts": {
     "start": "webpack serve --env mode=development port=3010",
     "express": "node server.js",
+    "build": "webpack",
     "build:prod": "webpack --env mode=production port=3000",
     "build:dev": "webpack --env mode=development port=3000 --env __ISDEV__=development",
     "build:analyzer": "webpack --env mode=production port=3000 analyzer=true",
@@ -53,7 +54,9 @@
     ]
   },
   "devDependencies": {
-    "@svgr/webpack": "^8.1.0",
+    "@babel/core": "^7.26.10",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.26.0",
     "@types/lodash": "^4.17.15",
     "@types/node": "^22.13.10",
     "@types/react-dom": "^19.0.4",
@@ -61,6 +64,7 @@
     "@types/webpack": "^5.28.5",
     "@types/webpack-bundle-analyzer": "^4.7.0",
     "autoprefixer": "^10.4.20",
+    "babel-loader": "^10.0.0",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^7.1.2",

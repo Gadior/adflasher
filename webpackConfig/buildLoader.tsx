@@ -8,12 +8,29 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
   // Тип сборки
   const isDev = options.mode === "development";
 
-  // ~ rules
+  // __ loaders ts or babel
+  // #region
   const tsxLoader = {
     test: /\.tsx?$/,
     use: "ts-loader",
     exclude: /node_modules/,
   };
+
+  const babelLoader = {
+    test: /\.tsx?$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader",
+      options: {
+        presets: [
+          "@babel/preset-env",
+          "@babel/preset-typescript",
+          "@babel/preset-react",
+        ],
+      },
+    },
+  };
+  // #endregion
 
   const scssLoader = {
     test: /\.scss$/,
@@ -53,7 +70,8 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
 
   return [
     // --- tsx
-    tsxLoader,
+    // tsxLoader,
+    babelLoader,
 
     // --- scss
     scssLoader,
