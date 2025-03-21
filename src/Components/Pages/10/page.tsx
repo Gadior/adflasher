@@ -6,17 +6,11 @@ import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 
 import { useState } from "react";
 import { Rate, Divider } from "antd";
-import {
-  CircleUserRound,
-  Search,
-  ShoppingCart,
-  X,
-  Menu,
-  CircleX,
-} from "lucide-react";
+import { X } from "lucide-react";
 
-// ~ data
-import { menuItems } from "./src/Data/data";
+// ~ comps
+import { AuthPromo } from "./src/Feature/Auth";
+import { Header } from "./src/Widjet";
 // ~ assets
 import __logo from "./src/Shared/assets/__logo.svg";
 import __bannerImage from "./src/Shared/assets/__bannerImage1.jpg";
@@ -34,9 +28,7 @@ import __ar4 from "./src/Shared/assets/__ar4.jpg";
 
 // ~ styles
 import "./style.scss";
-import * as classes from "./test.module.scss";
 
-import DropdownMenu from "./src/Feature/dropdownMenu/dropdownMenu";
 // #endregion ~ import
 
 // ___ component Page
@@ -44,8 +36,6 @@ import DropdownMenu from "./src/Feature/dropdownMenu/dropdownMenu";
 export default function Page(props: any) {
   // ___ state
   // #region
-  // ~ показывать полоску "подписаться?"
-  const [isSing, setIsSing] = useState<boolean>(true);
   // ~ Включение полоски "Поиска"
   const [isSearch, setIsSearch] = useState<boolean>(false);
   // ~ мобильное меню
@@ -57,9 +47,6 @@ export default function Page(props: any) {
   return (
     <div className="test10__wrapper --whiteBg">
       <TasksBackBtn />
-
-      {/* some dev tools */}
-      {/* {__ISDEV__ === "development" && <div>{__ISDEV__}</div>} */}
 
       {/* mobile menu */}
       {isMobileMenu && (
@@ -74,99 +61,16 @@ export default function Page(props: any) {
         </div>
       )}
 
-      {/* sing */}
-      {isSing && (
-        <div className="test10__section --blackBg">
-          <div className={`test10--sing ${isSing ? "" : "close"} --w1240`}>
-            <span>
-              Sign up and get 20% off to your first order.{" "}
-              <button className="test10--sign__link">Sign Up Now</button>
-            </span>
-            <button
-              onClick={() => {
-                setIsSing(false);
-              }}
-            >
-              <X className="test10--sing__close" />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* test10__header */}
-      <div className="test10__section --whiteBg">
-        {/* web */}
-        <header className="test10--header --w1240">
-          {isSearch ? (
-            <div className="header__search__mobile --width">
-              <input placeholder="Search for products..." />
-              <span className="icon">
-                <Search />
-              </span>
-              <span
-                className="iconDel"
-                onClick={() => {
-                  setIsSearch(false);
-                }}
-              >
-                <CircleX />
-              </span>
-            </div>
-          ) : (
-            <>
-              <div className="test10--header__left">
-                <button
-                  onClick={() => {
-                    setIsMobileMenu(true);
-                  }}
-                >
-                  <Menu />
-                </button>
-                <img src={__logo} alt="shop.co" />
-              </div>
-
-              <div className="test10--header__menu">
-                <DropdownMenu title="Shop" items={menuItems.shop} />
-                <DropdownMenu title="On Sale" items={menuItems.on_Sale} />
-                <DropdownMenu
-                  title="New Arivvles"
-                  items={menuItems.new_Arivvles}
-                />
-                <DropdownMenu title="Brands" items={menuItems.brands} />
-              </div>
-
-              <div className="test10--header__search">
-                <input placeholder="Product name..." />
-                <span className="icon">
-                  <Search />
-                </span>
-              </div>
-
-              <div className="test10--header__right">
-                <button
-                  className="right--hidden"
-                  onClick={() => {
-                    setIsSearch(true);
-                  }}
-                >
-                  <Search />
-                </button>
-                <button>
-                  <ShoppingCart />
-                </button>
-                <button>
-                  <CircleUserRound />
-                </button>
-              </div>
-            </>
-          )}
-        </header>
-      </div>
+      <AuthPromo />
+      <Header />
 
       {/* banner */}
       <div className="test10__section --greyBg">
         <div className="test10--banner --w1240">
-          <img src={__bannerImage}></img>
+          <img
+            src={__bannerImage}
+            alt="FIND CLOTHES THAT MATCHES YOUR STYLE"
+          ></img>
           <div className="__leftSide">
             <h2>FIND CLOTHES THAT MATCHES YOUR STYLE</h2>
             <p>

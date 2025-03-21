@@ -1,0 +1,10 @@
+// _ __IMPORTS__
+@use "../../../Shared/styles/vars.module.scss" as vars;
+
+// _ __STYLES__
+.wrapper {
+  width: 100%;
+  background-color: vars.$whiteColor;
+  display: flex;
+  justify-content: center;
+}

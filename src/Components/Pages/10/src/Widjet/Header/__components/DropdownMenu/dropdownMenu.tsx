@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import "./dropdownMenu.css";
+import * as css from "./styles.module.scss";
 export default function DropdownMenu(props: any) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div
-      className="page10--dropdown"
+      className={css.dropdown}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <span className="page10--dropdown-trigger">{props.title}</span>
+      <span>{props.title}</span>
       {isOpen && (
-        <div className="page10--dropdown-content">
+        <div>
           {props.items.map((item: any, index: any) => (
             <a key={index} href={item.link}>
               {item.label}
