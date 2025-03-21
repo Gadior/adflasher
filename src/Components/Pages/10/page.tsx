@@ -12,7 +12,6 @@ import { X } from "lucide-react";
 import { AuthPromo } from "./src/Feature/Auth";
 import { Header } from "./src/Widjet";
 // ~ assets
-import __logo from "./src/Shared/assets/__logo.svg";
 import __bannerImage from "./src/Shared/assets/__bannerImage1.jpg";
 // партнеры
 import __part1 from "./src/Shared/assets/__part1.svg";

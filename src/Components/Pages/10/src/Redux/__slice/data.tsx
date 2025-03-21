@@ -6,12 +6,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface Data {
   searchValue: string;
   isburgerClick: boolean;
-  test: string;
 }
 const initialState: Data = {
   searchValue: "",
   isburgerClick: false,
-  test: "1231231",
 };
 // #region
 

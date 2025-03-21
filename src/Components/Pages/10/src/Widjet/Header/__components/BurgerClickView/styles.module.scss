@@ -28,6 +28,28 @@
       animation: rotate 1.5s ease-in-out;
     }
   }
+
+  & .menuList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    & .menuItem {
+      display: flex;
+      justify-content: center;
+      width: 150px;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background: vars.$redColor;
+        color: vars.$whiteColor;
+      }
+    }
+  }
 }
 
 // _ __ANIMATION__

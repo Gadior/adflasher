@@ -8,7 +8,7 @@ import * as css from "./styles.module.scss";
 import { useAppDispatch, useAppSelector } from "../../../../Redux/hooks";
 import { closeBurger } from "../../../../Redux/__slice/data";
 // ~ data
-// import menu from '../../Data/menu'
+import { menuItems } from "../../Data/menu";
 // #endregion __IMPORT__
 
 // #region ___COMP__
@@ -18,7 +18,10 @@ export default function BurgerClickView() {
   const dispatch = useAppDispatch();
   // ~ значение поискового поля
   const isburgerClick = useAppSelector((state) => state.counter.isburgerClick);
-  console.log(isburgerClick);
+  // ~ лист меню = ключи данных меню
+  const menuList = Object.getOwnPropertyNames(menuItems).map(
+    (item) => item.charAt(0).toUpperCase() + item.slice(1)
+  );
   // #endregion
 
   return (
@@ -32,11 +35,11 @@ export default function BurgerClickView() {
           >
             <X className="" />
           </button>
-          <div>
-            <div>dasas</div>
-            <div>dasas</div>
-            <div>dasas</div>
-            <div>dasas</div>
+
+          <div className={css.menuList}>
+            {menuList.map((item: string) => (
+              <div className={css.menuItem}>{item}</div>
+            ))}
           </div>
         </div>
       )}
