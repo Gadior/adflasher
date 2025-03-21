@@ -9,7 +9,7 @@ import Logotype from "../../../../Shared/ui/logotype/Logotype";
 import * as css from "./styles.module.scss";
 // ~ regux
 import { useAppDispatch, useAppSelector } from "../../../../Redux/hooks";
-import { setSearchValue } from "../../../../Redux/__slice/data";
+import { setSearchValue, openBurger } from "../../../../Redux/__slice/data";
 // #endregion __IMPORT__
 
 // #region ___COMP__
@@ -20,6 +20,7 @@ export default function ModileMenu() {
   const [isSeacrh, setIsSearch] = useState<boolean>(false);
   // ~ значение поискового поля
   const searchValue = useAppSelector((state) => state.counter.searchValue);
+
   // #endregion
 
   return (
@@ -28,7 +29,11 @@ export default function ModileMenu() {
       {!isSeacrh && (
         <>
           <div className={css.logoBlock}>
-            <button>
+            <button
+              onClick={() => {
+                dispatch(openBurger());
+              }}
+            >
               <Menu />
             </button>
             <div className={css.logotype}>

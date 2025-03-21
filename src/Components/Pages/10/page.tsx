@@ -36,8 +36,6 @@ import "./style.scss";
 export default function Page(props: any) {
   // ___ state
   // #region
-  // ~ Включение полоски "Поиска"
-  const [isSearch, setIsSearch] = useState<boolean>(false);
   // ~ мобильное меню
   const [isMobileMenu, setIsMobileMenu] = useState<boolean>(false);
   // #endregion

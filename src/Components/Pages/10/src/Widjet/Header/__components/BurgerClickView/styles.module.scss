@@ -1,2 +1,41 @@
 // _ __IMPORTS__
 @use "../../../../Shared/styles/vars.module.scss" as vars;
+
+// _ __CSS__
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: vars.$greyColor;
+  z-index: 10;
+
+  & > button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: none;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      animation: rotate 1.5s ease-in-out;
+    }
+  }
+}
+
+// _ __ANIMATION__
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
