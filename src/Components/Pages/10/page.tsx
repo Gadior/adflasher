@@ -6,7 +6,6 @@ import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 
 import { useState } from "react";
 import { Rate, Divider } from "antd";
-import { X } from "lucide-react";
 
 // ~ comps
 import { AuthPromo } from "./src/Feature/Auth";
@@ -33,30 +32,11 @@ import "./style.scss";
 // ___ component Page
 // #region ~ component
 export default function Page(props: any) {
-  // ___ state
-  // #region
-  // ~ мобильное меню
-  const [isMobileMenu, setIsMobileMenu] = useState<boolean>(false);
-  // #endregion
-
   // ___ return
   // #region ~ return
   return (
     <div className="test10__wrapper --whiteBg">
       <TasksBackBtn />
-
-      {/* mobile menu */}
-      {isMobileMenu && (
-        <div className="test10--mobileMenu">
-          <button
-            onClick={() => {
-              setIsMobileMenu(false);
-            }}
-          >
-            <X className="test10--sing__close" />
-          </button>
-        </div>
-      )}
 
       <AuthPromo />
       <Header />
