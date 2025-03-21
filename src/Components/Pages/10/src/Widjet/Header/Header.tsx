@@ -1,6 +1,8 @@
 // #region
 // #region __IMPORT
 // ~
+import { Provider } from "react-redux";
+import store from "../../Redux/store";
 // ~ compos
 import WebMenu from "./__components/WebMenu/WebMenu";
 import ModileMenu from "./__components/MobileMenu/ModileMenu";
@@ -12,8 +14,10 @@ import * as css from "./styles/styles.module.scss";
 export default function Header() {
   return (
     <header className={css.wrapper}>
-      <WebMenu />
-      <ModileMenu />
+      <Provider store={store}>
+        <WebMenu />
+        <ModileMenu />
+      </Provider>
     </header>
   );
 }

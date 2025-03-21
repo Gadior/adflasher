@@ -7,14 +7,19 @@ import { CircleUserRound, Menu, Search, ShoppingCart, X } from "lucide-react";
 import Logotype from "../../../../Shared/ui/logotype/Logotype";
 // ~ styles
 import * as css from "./styles.module.scss";
+// ~ regux
+import { useAppDispatch, useAppSelector } from "../../../../Redux/hooks";
+import { setSearchValue } from "../../../../Redux/__slice/data";
 // #endregion __IMPORT__
 
 // #region ___COMP__
 export default function ModileMenu() {
   // _ __HOOKS__
   // #region
+  const dispatch = useAppDispatch();
   const [isSeacrh, setIsSearch] = useState<boolean>(false);
-  const [isBurgerClick, setIsBurgerClick] = useState<boolean>(false);
+  // ~ значение поискового поля
+  const searchValue = useAppSelector((state) => state.counter.searchValue);
   // #endregion
 
   return (
@@ -52,7 +57,13 @@ export default function ModileMenu() {
       {/* search view */}
       {isSeacrh && (
         <div className={css.search}>
-          <input placeholder="Search for products..." />
+          <input
+            placeholder="Search for products..."
+            value={searchValue}
+            onChange={(e) => {
+              dispatch(setSearchValue({ value: e.target.value }));
+            }}
+          />
           <span className={css.icon}>
             <Search />
           </span>
