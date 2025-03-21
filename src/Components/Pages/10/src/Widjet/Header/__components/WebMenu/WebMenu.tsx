@@ -4,11 +4,21 @@ import Logotype from "../../../../Shared/ui/logotype/Logotype";
 import DropdownMenu from "../DropdownMenu/dropdownMenu";
 // ~ data
 import { menuItems } from "../../Data/menu";
+// ~ regux
+import { useAppDispatch, useAppSelector } from "../../../../Redux/hooks";
+import { setSearchValue } from "../../../../Redux/__slice/data";
 
 // ~ styles
 import * as css from "./styles.module.scss";
 
 export default function WebMenu() {
+  // _ __HOOKS__
+  // #region
+  const dispatch = useAppDispatch();
+  // ~ значение поискового поля
+  const searchValue = useAppSelector((state) => state.counter.searchValue);
+  // #endregion
+
   return (
     <>
       {/* web */}
@@ -26,7 +36,13 @@ export default function WebMenu() {
           <DropdownMenu title="Brands" items={menuItems.brands} />
         </div>
         <div className={css.search}>
-          <input placeholder="Search for products..." />
+          <input
+            placeholder="Search for products..."
+            value={searchValue}
+            onChange={(e) => {
+              dispatch(setSearchValue({ value: e.target.value }));
+            }}
+          />
           <span className={css.icon}>
             <Search />
           </span>

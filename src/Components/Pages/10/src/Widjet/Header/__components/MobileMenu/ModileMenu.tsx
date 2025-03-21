@@ -71,6 +71,7 @@ export default function ModileMenu() {
             className={css.closeIcon}
             onClick={() => {
               setIsSearch(false);
+              dispatch(setSearchValue({ value: "" }));
             }}
           >
             <X />
