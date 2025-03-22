@@ -104,6 +104,15 @@ $redColor: rgb(255, 51, 51);
     border: none;
   }
 }
+
+// ! Media
+@media (max-width: 730px) {
+  .test10__wrapper {
+    & h2 {
+      font-size: 32px;
+    }
+  }
+}
 // #endregion
 
 // ___ sections

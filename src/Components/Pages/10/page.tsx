@@ -8,22 +8,23 @@ import { Rate, Divider } from "antd";
 
 // ~ comps
 import { AuthPromo } from "./src/Feature/Auth";
-import { Header } from "./src/Widjet";
-import { MainBanner } from "./src/Widjet";
-import { PartnersRow } from "./src/Widjet";
-import { TitleRow } from "./src/Widjet";
-import { ProductCard } from "./src/Entities";
-
-// карточки поступлений
-import __ar1 from "./src/Shared/assets/__ar1.jpg";
-import __ar2 from "./src/Shared/assets/__ar2.jpg";
-import __ar3 from "./src/Shared/assets/__ar3.jpg";
-import __ar4 from "./src/Shared/assets/__ar4.jpg";
+import {
+  Header,
+  ProductsList,
+  MainBanner,
+  PartnersRow,
+  TitleRow,
+} from "./src/Widjet";
 
 // ~ styles
 import "./style.scss";
 
 // #endregion ~ import
+
+// #region ~ __DATA__
+// _ __DATA__ -TEMP
+import { cards } from "./src/Data/newArrivlesData";
+// #endregion ~ __DATA__
 
 // ___ component Page
 // #region ~ component
@@ -41,18 +42,10 @@ export default function Page(props: any) {
       <MainBanner />
       <PartnersRow />
       <TitleRow title={"NEW ARRIVALS"} />
-      <ProductCard
-        id={0}
-        sourceImage={__ar1}
-        alt={"T-SHIRT WITH TAPE DETAILS"}
-        name={"T-SHIRT WITH TAPE DETAILS"}
-        price={120}
-        oldPrice={160}
-        percent={25}
-      />
+      <ProductsList cards={cards} />
 
       {/* cards arrivles  */}
-      <div className="test10__section --mt60">
+      {/* <div className="test10__section --mt60">
         <div className="test10--wrapper">
           <div className="test10--cardsAr">
             <div className="__card">
@@ -68,7 +61,7 @@ export default function Page(props: any) {
           </div>
           <button className="__viewAll --mt60">View all</button>
         </div>
-      </div>
+      </div> */}
 
       {/* cards arrivles  */}
       {/* <div className="test10__section">
