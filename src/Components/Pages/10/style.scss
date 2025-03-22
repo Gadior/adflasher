@@ -102,8 +102,6 @@ $redColor: rgb(255, 51, 51);
     height: 100%;
     border-radius: 54px;
     border: none;
-
-    // ! HOVER
   }
 }
 // #endregion
@@ -184,128 +182,6 @@ $redColor: rgb(255, 51, 51);
     position: absolute;
     top: 20px;
     right: 20px;
-  }
-}
-// #endregion
-
-// --- banners
-// #region
-.test10--banner {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-
-  &.--w1240 > img {
-    height: 100%;
-    width: auto;
-    position: absolute;
-    right: 0;
-    z-index: 0;
-  }
-
-  & .__leftSide {
-    width: 50%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 40px 20px;
-    z-index: 1;
-    background: linear-gradient(
-      to right,
-      rgba(242, 240, 241, 1),
-      rgba(242, 240, 241, 0)
-    );
-
-    & .__btnWrapper {
-      width: 210;
-      height: 52px;
-    }
-
-    & .__cards {
-      white-space: nowrap;
-      display: flex;
-      align-content: flex-start;
-      gap: 20px;
-
-      & .__card {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        & > div {
-          font-size: 14px;
-        }
-      }
-    }
-  }
-
-  & .__rightSide {
-    right: 0px;
-    width: 50%;
-    height: 100%;
-  }
-}
-
-// ! media
-@media (max-width: 730px) {
-  .test10--banner {
-    & .__leftSide {
-      & > h2 {
-        font-size: 32px;
-      }
-
-      & > p {
-        font-size: 16px;
-      }
-    }
-  }
-}
-@media (max-width: 500px) {
-  .test10--banner {
-    flex-direction: column-reverse;
-
-    & .__leftSide {
-      width: 100%;
-
-      & > h2 {
-        font-size: 32px;
-      }
-
-      & > p {
-        font-size: 16px;
-      }
-
-      & .__btnWrapper {
-        width: 100%;
-
-        & > button {
-          font-size: 16px;
-        }
-      }
-    }
-
-    &.--w1240 > img {
-      display: block;
-      position: relative;
-      width: 100%;
-    }
-
-    & .__cards {
-      flex-wrap: wrap;
-
-      & .__card > h3 {
-        font-size: 24px;
-      }
-      & .__card > div {
-        font-size: 12px;
-      }
-    }
   }
 }
 // #endregion

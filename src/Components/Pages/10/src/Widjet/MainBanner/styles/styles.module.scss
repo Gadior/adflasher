@@ -1,0 +1,178 @@
+// _ __IMPORTS__
+@use "../../../Shared/styles/vars.module.scss" as vars;
+
+// _ __CSS__
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: vars.$greyColor;
+
+  & .container {
+    position: relative;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1240px;
+
+    & .bannerImage {
+      box-sizing: border-box;
+      overflow: hidden;
+      height: 100%;
+      width: auto;
+      position: absolute;
+      right: 0;
+      z-index: 0;
+    }
+
+    // --- left
+    & .leftSide {
+      box-sizing: border-box;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 40px 20px;
+      z-index: 1;
+      background: linear-gradient(
+        to right,
+        rgba(242, 240, 241, 1),
+        rgba(242, 240, 241, 0)
+      );
+
+      & .btnWrapper {
+        width: 210px;
+        height: 52px;
+
+        & .mainBtn {
+          position: relative;
+          box-sizing: border-box;
+          padding: 16px 54px;
+          width: 100%;
+          height: 100%;
+          border-radius: 54px;
+          border: none;
+          background: vars.$darkColor;
+          color: vars.$whiteColor;
+          transition: 0.2s transform ease-in-out;
+          will-change: transform;
+          overflow: hidden;
+
+          &::after {
+            content: "";
+            background-color: vars.$redColor;
+            border-radius: 25px;
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translate(-100%, 0) rotate(20deg);
+            transform-origin: top left;
+            transition: 0.2s transform ease-out;
+            will-change: transform;
+            z-index: -1;
+          }
+
+          &:hover::after {
+            transform: translate(0, 0);
+          }
+
+          &:hover {
+            border: 2px solid transparent;
+            transform: scale(1.05);
+            will-change: transform;
+          }
+          // todo: HOVER
+        }
+      }
+
+      & .cards {
+        white-space: nowrap;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+
+        & .card {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          & > div {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ! Media
+@media (max-width: 730px) {
+  .wrapper {
+    & .container {
+      & .leftSide {
+        & > h2 {
+          font-size: 32px;
+        }
+
+        & > p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .wrapper {
+    & .container {
+      position: relative;
+      flex-direction: column-reverse;
+
+      & .leftSide {
+        width: 100%;
+
+        & > h2 {
+          font-size: 32px;
+        }
+
+        & > p {
+          font-size: 16px;
+        }
+
+        & .btnWrapper {
+          width: 100%;
+
+          & > button {
+            font-size: 16px;
+          }
+        }
+
+        & .cards {
+          flex-wrap: wrap;
+
+          & .card > h3 {
+            font-size: 24px;
+          }
+          & .card > div {
+            font-size: 12px;
+          }
+        }
+      }
+
+      & .bannerImage {
+        position: relative;
+        box-sizing: border-box;
+        width: 100%;
+
+        & > img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -4,12 +4,12 @@
 // ~ comps
 import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 
-import { useState } from "react";
 import { Rate, Divider } from "antd";
 
 // ~ comps
 import { AuthPromo } from "./src/Feature/Auth";
 import { Header } from "./src/Widjet";
+import { MainBanner } from "./src/Widjet";
 // ~ assets
 import __bannerImage from "./src/Shared/assets/__bannerImage1.jpg";
 // партнеры
@@ -36,47 +36,13 @@ export default function Page(props: any) {
   // #region ~ return
   return (
     <div className="test10__wrapper --whiteBg">
+      {/* speshial */}
       <TasksBackBtn />
 
+      {/* blocks */}
       <AuthPromo />
       <Header />
-
-      {/* banner */}
-      <div className="test10__section --greyBg">
-        <div className="test10--banner --w1240">
-          <img
-            src={__bannerImage}
-            alt="FIND CLOTHES THAT MATCHES YOUR STYLE"
-          ></img>
-          <div className="__leftSide">
-            <h2>FIND CLOTHES THAT MATCHES YOUR STYLE</h2>
-            <p>
-              Browse through our diverse range of meticulously crafted garments,
-              designed to bring out your individuality and cater to your sense
-              of style.
-            </p>
-            <div className="__btnWrapper">
-              <button className="__mainBtn --blackBg --whiteColor">
-                Shop Now
-              </button>
-            </div>
-            <div className="__cards">
-              <div className="__card">
-                <h3>200+</h3>
-                <div>International Brands</div>
-              </div>
-              <div className="__card">
-                <h3>2 000+</h3>
-                <div>High-Quality Products</div>
-              </div>
-              <div className="__card">
-                <h3>30 000+</h3>
-                <div>Happy Customers</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <MainBanner />
 
       {/* partners */}
       <div className="test10__section --blackBg">
@@ -90,14 +56,14 @@ export default function Page(props: any) {
       </div>
 
       {/* title new arrivles */}
-      <div className="test10__section --mt60">
+      {/* <div className="test10__section --mt60">
         <div className="test10--title">
           <h2>NEW ARRIVALS</h2>
         </div>
-      </div>
+      </div> */}
 
       {/* cards arrivles  */}
-      <div className="test10__section --mt60">
+      {/* <div className="test10__section --mt60">
         <div className="test10--wrapper">
           <div className="test10--cardsAr">
             <div className="__card">
@@ -107,8 +73,6 @@ export default function Page(props: any) {
                 <Rate />
                 <div className="__price">
                   <div className="__current">$ 120</div>
-                  {/* <div className="__old">$ 160</div>
-                <div className="__percent">30%</div> */}
                 </div>
               </div>
             </div>
@@ -131,8 +95,6 @@ export default function Page(props: any) {
                 <Rate />
                 <div className="__price">
                   <div className="__current">$ 180</div>
-                  {/* <div className="__old">$ 160</div>
-                <div className="__percent">30%</div> */}
                 </div>
               </div>
             </div>
@@ -151,24 +113,24 @@ export default function Page(props: any) {
           </div>
           <button className="__viewAll --mt60">View all</button>
         </div>
-      </div>
+      </div> */}
 
       {/* cards arrivles  */}
-      <div className="test10__section">
+      {/* <div className="test10__section">
         <div className="--w1240 --mt60">
           <Divider />
         </div>
-      </div>
+      </div> */}
 
       {/* title new arrivles */}
-      <div className="test10__section --mt60">
+      {/* <div className="test10__section --mt60">
         <div className="test10--title">
           <h2>NEW ARRIVALS</h2>
         </div>
-      </div>
+      </div> */}
 
       {/* cards top selling  */}
-      <div className="test10__section --mt60">
+      {/* <div className="test10__section --mt60">
         <div className="test10--wrapper">
           <div className="test10--cardsAr">
             <div className="__card">
@@ -178,8 +140,6 @@ export default function Page(props: any) {
                 <Rate />
                 <div className="__price">
                   <div className="__current">$ 120</div>
-                  {/* <div className="__old">$ 160</div>
-                <div className="__percent">30%</div> */}
                 </div>
               </div>
             </div>
@@ -202,8 +162,6 @@ export default function Page(props: any) {
                 <Rate />
                 <div className="__price">
                   <div className="__current">$ 180</div>
-                  {/* <div className="__old">$ 160</div>
-                <div className="__percent">30%</div> */}
                 </div>
               </div>
             </div>
@@ -221,9 +179,8 @@ export default function Page(props: any) {
             </div>
           </div>
           <button className="__viewAll --mt60">View all</button>
-          {/* <button className={classes.button}>View all</button> */}
         </div>
-      </div>
+      </div>*/}
     </div>
   );
   // #endregion ~ return
