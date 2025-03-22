@@ -11,8 +11,7 @@ import { AuthPromo } from "./src/Feature/Auth";
 import { Header } from "./src/Widjet";
 import { MainBanner } from "./src/Widjet";
 import { PartnersRow } from "./src/Feature/PartnersRow";
-// ~ assets
-import __bannerImage from "./src/Shared/assets/__bannerImage1.jpg";
+import { TitleRow } from "./src/Feature/TitleRow";
 
 // карточки поступлений
 import __ar1 from "./src/Shared/assets/__ar1.jpg";
@@ -40,13 +39,7 @@ export default function Page(props: any) {
       <Header />
       <MainBanner />
       <PartnersRow />
-
-      {/* title new arrivles */}
-      {/* <div className="test10__section --mt60">
-        <div className="test10--title">
-          <h2>NEW ARRIVALS</h2>
-        </div>
-      </div> */}
+      <TitleRow title={"NEW ARRIVALS"} />
 
       {/* cards arrivles  */}
       {/* <div className="test10__section --mt60">

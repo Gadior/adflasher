@@ -1,0 +1,17 @@
+// _ __IMPORT__
+@use "../../../Shared/styles/vars.module.scss" as vars;
+
+.wrapper {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 60px;
+
+  & .container {
+    width: 100%;
+    max-width: 1240px;
+    display: flex;
+    justify-content: center;
+  }
+}
