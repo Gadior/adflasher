@@ -4,8 +4,6 @@
 import * as css from "./style.module.scss";
 // ~ comps
 import { ProductCard } from "../../Entities";
-// ~ assets
-import __ar1 from "../../Shared/assets/__ar1.jpg";
 // ~ interface
 import { Card } from "./interface";
 // #endregion ~ __IMPORT__

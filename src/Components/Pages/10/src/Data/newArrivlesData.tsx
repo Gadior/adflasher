@@ -20,7 +20,7 @@ export const cards: Card[] = [
     alt: "SKINNY FIT JEANS",
     price: 240,
     oldPrice: 260,
-    percent: 20,
+    percent: -20,
   },
   {
     id: 2,
@@ -36,6 +36,6 @@ export const cards: Card[] = [
     alt: "SLEEVE STRIPED T-SHIRT",
     price: 130,
     oldPrice: 160,
-    percent: 30,
+    percent: -30,
   },
 ];
