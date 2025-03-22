@@ -3,7 +3,7 @@
 // ~ style
 import * as css from "./style.module.scss";
 // ~ comps
-import Title from "../../../Shared/ui/Title/Title";
+import { Title } from "../../../Shared";
 // #endregion ~ __IMPORT__
 
 interface Props {

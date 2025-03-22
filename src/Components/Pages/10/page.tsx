@@ -10,8 +10,9 @@ import { Rate, Divider } from "antd";
 import { AuthPromo } from "./src/Feature/Auth";
 import { Header } from "./src/Widjet";
 import { MainBanner } from "./src/Widjet";
-import { PartnersRow } from "./src/Feature/PartnersRow";
-import { TitleRow } from "./src/Feature/TitleRow";
+import { PartnersRow } from "./src/Widjet";
+import { TitleRow } from "./src/Widjet";
+import { ProductCard } from "./src/Entities";
 
 // карточки поступлений
 import __ar1 from "./src/Shared/assets/__ar1.jpg";
@@ -40,9 +41,18 @@ export default function Page(props: any) {
       <MainBanner />
       <PartnersRow />
       <TitleRow title={"NEW ARRIVALS"} />
+      <ProductCard
+        id={0}
+        sourceImage={__ar1}
+        alt={"T-SHIRT WITH TAPE DETAILS"}
+        name={"T-SHIRT WITH TAPE DETAILS"}
+        price={120}
+        oldPrice={160}
+        percent={25}
+      />
 
       {/* cards arrivles  */}
-      {/* <div className="test10__section --mt60">
+      <div className="test10__section --mt60">
         <div className="test10--wrapper">
           <div className="test10--cardsAr">
             <div className="__card">
@@ -55,44 +65,10 @@ export default function Page(props: any) {
                 </div>
               </div>
             </div>
-            <div className="__card">
-              <img src={__ar2} alt="" />
-              <div className="__info">
-                <h4>SKINNY FIT JEANS</h4>
-                <Rate />
-                <div className="__price">
-                  <div className="__current">$ 240</div>
-                  <div className="__old">$ 260</div>
-                  <div className="__percent">20%</div>
-                </div>
-              </div>
-            </div>
-            <div className="__card">
-              <img src={__ar3} alt="" />
-              <div className="__info">
-                <h4>CHECKERED SHIRT</h4>
-                <Rate />
-                <div className="__price">
-                  <div className="__current">$ 180</div>
-                </div>
-              </div>
-            </div>
-            <div className="__card">
-              <img src={__ar4} alt="" />
-              <div className="__info">
-                <h4>SLEEVE STRIPED T-SHIRT</h4>
-                <Rate />
-                <div className="__price">
-                  <div className="__current">$ 130</div>
-                  <div className="__old">$ 160</div>
-                  <div className="__percent">30%</div>
-                </div>
-              </div>
-            </div>
           </div>
           <button className="__viewAll --mt60">View all</button>
         </div>
-      </div> */}
+      </div>
 
       {/* cards arrivles  */}
       {/* <div className="test10__section">

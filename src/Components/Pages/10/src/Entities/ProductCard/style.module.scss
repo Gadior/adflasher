@@ -1,0 +1,51 @@
+// _ __IMPORT__
+@use "../../Shared/styles/vars.module.scss" as vars;
+
+// _ __CSS__
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 20px;
+
+  & > img {
+    border-radius: 20px;
+  }
+
+  & .info {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+
+    & .price {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px;
+
+      & .current {
+        font-size: 20px;
+        font-weight: 800;
+      }
+      & .old {
+        text-decoration: line-through;
+        font-size: 20px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.4);
+      }
+      & .percent {
+        font-size: 12px;
+        font-weight: 200;
+        color: vars.$redColor;
+        background-color: rgba(255, 51, 51, 0.1);
+        padding: 5px 10px;
+        border-radius: 15px;
+      }
+    }
+  }
+}

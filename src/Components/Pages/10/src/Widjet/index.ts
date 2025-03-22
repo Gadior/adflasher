@@ -1,2 +1,4 @@
 export { default as Header } from "./Header/Header";
 export { default as MainBanner } from "./MainBanner/MainBanner";
+export { default as PartnersRow } from "./PartnersRow/__components/PartnersRow";
+export { default as TitleRow } from "./TitleRow/__components/TitleRow";
