@@ -54,10 +54,6 @@ export default function Page(props: any) {
     </div>
   );
   // #endregion ~ return
-
-  // ___ function
-  // #region ~ function
-  // #endregion ~ function
 }
 // #endregion ~ component
 // #endregion ~ hlop

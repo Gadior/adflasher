@@ -25,6 +25,10 @@
       gap: 20px;
     }
 
+    & .cardsListModile {
+      display: none;
+    }
+
     & .viewAll {
       box-sizing: border-box;
       display: flex;
@@ -67,6 +71,13 @@
         will-change: transform;
       }
     }
+
+    & .swiper {
+      width: 295px;
+      // height: 100%;
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 
@@ -97,15 +108,12 @@
       // box-sizing: border-box;
       padding: 20px 20px;
 
-      & .cardsList {
-        grid-template-columns: 1fr;
-        align-items: center;
-        padding: 0px 10px;
+      & .cardsListModile {
+        display: flex;
+      }
 
-        & > div {
-          margin-right: auto;
-          margin-left: auto;
-        }
+      & .cardsList {
+        display: none;
       }
 
       & .viewAll {

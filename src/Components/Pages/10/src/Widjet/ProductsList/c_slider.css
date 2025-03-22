@@ -1,0 +1,16 @@
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #8d8d8d;
+  margin: 0 8px; /* Расстояние между bullets */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: rgb(255, 51, 51); /* Цвет активного bullet */
+}
+
+.swiper-pagination-bullets {
+  text-align: right;
+}
