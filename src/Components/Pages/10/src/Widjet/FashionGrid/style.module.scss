@@ -1,0 +1,145 @@
+// _ __IMPORT__
+@use "../../Shared/styles/vars.module.scss" as vars;
+
+// _ __CSS__
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 60px;
+
+  & .container {
+    background-color: vars.$greyColor;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1240px;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    gap: 20px;
+
+    & .titleRow {
+      display: flex;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    & .fashion_1 {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      position: relative;
+
+      & > div {
+        position: relative;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        height: 289px;
+
+        & > img {
+          position: absolute;
+          right: 0;
+        }
+
+        & > div {
+          position: absolute;
+          left: 40px;
+          top: 30px;
+          font-size: 36px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    & .fashion_2 {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      position: relative;
+
+      & > div {
+        position: relative;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        height: 289px;
+
+        & > img {
+          position: absolute;
+          right: 0;
+        }
+
+        & > div {
+          position: absolute;
+          left: 40px;
+          top: 30px;
+          font-size: 36px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+// !Media
+@media (max-width: 1000px) {
+  .wrapper {
+    & .container {
+      & .fashion_1 {
+        grid-template-columns: 1fr;
+      }
+      & .fashion_2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    & .container {
+      padding: 20px;
+      border-radius: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+
+      & .titleRow {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      & .fashion_1 {
+        & > div {
+          height: 190px;
+          & > img {
+            height: 190px;
+          }
+          & > div {
+            left: 20px;
+            top: 15px;
+            font-size: 24px;
+          }
+        }
+      }
+      & .fashion_2 {
+        & > div {
+          height: 190px;
+          & > img {
+            height: 190px;
+          }
+          & > div {
+            left: 20px;
+            top: 15px;
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}

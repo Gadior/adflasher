@@ -14,6 +14,7 @@ import {
   MainBanner,
   PartnersRow,
   TitleRow,
+  FashionGrid,
 } from "./src/Widjet";
 
 // ~ styles
@@ -25,6 +26,7 @@ import "./style.scss";
 // _ __DATA__ -TEMP
 import { cards } from "./src/Data/newArrivlesData";
 import { cardsTop } from "./src/Data/topSelling";
+import { fashionImages } from "./src/Data/fashion";
 // #endregion ~ __DATA__
 
 // ___ component Page
@@ -50,7 +52,7 @@ export default function Page(props: any) {
       <TitleRow title={"TOP SELLING"} />
       <ProductsList cards={cardsTop} />
 
-      <Divider />
+      <FashionGrid fashionImages={fashionImages} />
     </div>
   );
   // #endregion ~ return
