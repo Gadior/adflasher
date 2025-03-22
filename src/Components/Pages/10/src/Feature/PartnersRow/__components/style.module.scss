@@ -1,0 +1,50 @@
+// _ __IMPORT__
+@use "../../../Shared/styles/vars.module.scss" as vars;
+
+// _ __CSS__
+.wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: vars.$darkColor;
+
+  & .container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1240px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 45px 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    & > img {
+      height: 33px;
+      width: auto;
+      max-width: none;
+    }
+  }
+}
+
+// ! Media
+@media (max-width: 1000px) {
+  .wrapper {
+    & .container {
+      justify-content: center;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .wrapper {
+    & .container {
+      justify-content: center;
+      padding: 25px 20px;
+      gap: 10px;
+
+      & > img {
+        height: 20px;
+      }
+    }
+  }
+}

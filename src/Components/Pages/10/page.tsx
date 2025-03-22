@@ -10,14 +10,10 @@ import { Rate, Divider } from "antd";
 import { AuthPromo } from "./src/Feature/Auth";
 import { Header } from "./src/Widjet";
 import { MainBanner } from "./src/Widjet";
+import { PartnersRow } from "./src/Feature/PartnersRow";
 // ~ assets
 import __bannerImage from "./src/Shared/assets/__bannerImage1.jpg";
-// партнеры
-import __part1 from "./src/Shared/assets/__part1.svg";
-import __part2 from "./src/Shared/assets/__part2.svg";
-import __part3 from "./src/Shared/assets/__part3.svg";
-import __part4 from "./src/Shared/assets/__part4.svg";
-import __part5 from "./src/Shared/assets/__part5.svg";
+
 // карточки поступлений
 import __ar1 from "./src/Shared/assets/__ar1.jpg";
 import __ar2 from "./src/Shared/assets/__ar2.jpg";
@@ -43,17 +39,7 @@ export default function Page(props: any) {
       <AuthPromo />
       <Header />
       <MainBanner />
-
-      {/* partners */}
-      <div className="test10__section --blackBg">
-        <div className="tes10--partners --w1240">
-          <img src={__part1} alt="versace" />
-          <img src={__part2} alt="zara" />
-          <img src={__part3} alt="gucci" />
-          <img src={__part4} alt="prada" />
-          <img src={__part5} alt="calvin klein" />
-        </div>
-      </div>
+      <PartnersRow />
 
       {/* title new arrivles */}
       {/* <div className="test10__section --mt60">
