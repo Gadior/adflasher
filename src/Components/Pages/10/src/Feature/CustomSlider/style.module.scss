@@ -31,7 +31,7 @@
         max-width: 1240px;
         overflow: hidden;
         position: relative;
-        height: 240px;
+        height: 245px;
         gap: 20px;
       }
 
@@ -39,13 +39,10 @@
         display: block;
         opacity: 0;
         width: 100%;
-        flex-shrink: 0;
-        height: 240px;
       }
 
       .active {
         filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.2));
-        // background: white;
         left: calc(50% - 200px);
         position: absolute;
         width: min-content;
@@ -106,6 +103,34 @@
           .right {
             right: 10px;
           }
+        }
+      }
+    }
+  }
+}
+
+// !Media
+@media (max-width: 500px) {
+  .wrapper {
+    .container {
+      .slider {
+        .slidesContainer {
+          height: 290px;
+        }
+        .slide {
+          height: 290px;
+        }
+        .active {
+          // background: white;
+          left: calc(50% - 140px);
+        }
+
+        .neighbor {
+          left: calc(50% + 300px / 2);
+        }
+
+        .neighborLeft {
+          left: calc(50% - 280px - 300px / 2);
         }
       }
     }

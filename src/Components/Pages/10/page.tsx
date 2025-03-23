@@ -57,6 +57,7 @@ export default function Page(props: any) {
 
       <FashionGrid fashionImages={fashionImages} />
 
+      <TitleRow title={"OUR HAPPY CUSTOMERS"} />
       <CustomSlider slides={reviewCardsData} />
     </div>
   );
