@@ -1,0 +1,29 @@
+// _ __IMPORT__
+@use "../../Shared/styles/vars.module.scss" as vars;
+
+// _ __CSS__
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 28px 32px;
+  border: 1px solid #919191;
+  width: 400px;
+  height: 240px;
+  gap: 10px;
+  border-radius: 20px;
+  background: white;
+
+  .name {
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 140%;
+    color: rgba($color: #000000, $alpha: 0.6);
+  }
+}

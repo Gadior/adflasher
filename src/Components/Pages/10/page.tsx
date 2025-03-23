@@ -7,7 +7,7 @@ import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 import { Divider } from "antd";
 
 // ~ comps
-import { AuthPromo } from "./src/Feature/Auth";
+import { AuthPromo, CustomSlider } from "./src/Feature";
 import {
   Header,
   ProductsList,
@@ -15,6 +15,7 @@ import {
   PartnersRow,
   TitleRow,
   FashionGrid,
+  ReviewSlider,
 } from "./src/Widjet";
 
 // ~ styles
@@ -27,6 +28,7 @@ import "./style.scss";
 import { cards } from "./src/Data/newArrivlesData";
 import { cardsTop } from "./src/Data/topSelling";
 import { fashionImages } from "./src/Data/fashion";
+import { reviewCardsData } from "./src/Data/reviewCards";
 // #endregion ~ __DATA__
 
 // ___ component Page
@@ -40,6 +42,7 @@ export default function Page(props: any) {
       <TasksBackBtn />
 
       {/* blocks */}
+
       <AuthPromo />
       <Header />
       <MainBanner />
@@ -53,6 +56,8 @@ export default function Page(props: any) {
       <ProductsList cards={cardsTop} />
 
       <FashionGrid fashionImages={fashionImages} />
+
+      <CustomSlider slides={reviewCardsData} />
     </div>
   );
   // #endregion ~ return
