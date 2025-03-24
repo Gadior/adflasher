@@ -47,8 +47,8 @@ export default function Subscribe() {
 
   return (
     <div className={css.wrapper}>
-      <div className={css.whiteBG}></div>
-      <div className={css.greyBG}></div>
+      {/* <div className={css.whiteBG}></div>
+      <div className={css.greyBG}></div> */}
       <div className={css.subscribe}>
         <h3>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h3>
         <div className={css.form}>
