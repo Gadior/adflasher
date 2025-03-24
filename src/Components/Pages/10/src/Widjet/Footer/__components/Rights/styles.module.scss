@@ -6,6 +6,9 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+  padding-bottom: 60px;
 
   .rights {
     display: flex;
@@ -20,5 +23,14 @@
     display: flex;
     justify-content: flex-end;
     gap: 5px;
+  }
+}
+
+// !Media
+@media (max-width: 1000px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 }

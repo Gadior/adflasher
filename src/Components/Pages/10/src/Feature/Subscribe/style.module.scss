@@ -3,19 +3,9 @@
 
 // _ __CSS__
 .wrapper {
-  // position: relative;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
-  // width: 100%;
-  // margin-top: 60px;
-  // height: 176px;
-  border: 1px solid red;
   display: flex;
   width: 100%;
   justify-content: center;
-  // min-height: 100vh;
   background: linear-gradient(
     to bottom,
     white 0%,
@@ -23,12 +13,11 @@
     vars.$greyColor 50%,
     vars.$greyColor 100%
   );
+  margin-top: 60px;
 
   .subscribe {
     height: 176px;
     box-sizing: border-box;
-    // position: absolute;
-    // top: 0;
     background-color: vars.$darkColor;
     width: 100%;
     max-width: 1240px;
