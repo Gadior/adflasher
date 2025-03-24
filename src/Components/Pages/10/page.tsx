@@ -20,6 +20,10 @@ import {
 // ~ styles
 import "./style.scss";
 
+// ~ redux
+import { Provider } from "react-redux";
+import store from "./src/Redux/store";
+
 // #endregion ~ import
 
 // #region ~ __DATA__
@@ -37,29 +41,31 @@ export default function Page(props: any) {
   // #region ~ return
   return (
     <div className="test10__wrapper --whiteBg">
-      {/* speshial */}
-      <TasksBackBtn />
+      <Provider store={store}>
+        {/* speshial */}
+        <TasksBackBtn />
 
-      {/* blocks */}
+        {/* blocks */}
 
-      <AuthPromo />
-      <Header />
-      <MainBanner />
-      <PartnersRow />
-      <TitleRow title={"NEW ARRIVALS"} />
-      <ProductsList cards={cards} />
+        <AuthPromo />
+        <Header />
+        <MainBanner />
+        <PartnersRow />
+        <TitleRow title={"NEW ARRIVALS"} />
+        <ProductsList cards={cards} />
 
-      <Divider />
+        <Divider />
 
-      <TitleRow title={"TOP SELLING"} />
-      <ProductsList cards={cardsTop} />
+        <TitleRow title={"TOP SELLING"} />
+        <ProductsList cards={cardsTop} />
 
-      <FashionGrid fashionImages={fashionImages} />
+        <FashionGrid fashionImages={fashionImages} />
 
-      <TitleRow title={"OUR HAPPY CUSTOMERS"} />
-      <CustomSlider slides={reviewCardsData} />
+        <TitleRow title={"OUR HAPPY CUSTOMERS"} />
+        <CustomSlider slides={reviewCardsData} />
 
-      <Subscribe />
+        <Subscribe />
+      </Provider>
     </div>
   );
   // #endregion ~ return

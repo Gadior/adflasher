@@ -51,6 +51,20 @@
       flex-direction: column;
       gap: 14px;
 
+      .sendEmail {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        width: 350px;
+        font-size: 20px;
+        color: vars.$redColor;
+      }
+
+      .error {
+        border: 1px solid vars.$redColor;
+        animation: horizontal-shaking 0.2s 3;
+      }
+
       & > button {
         position: relative;
         width: 350px;
@@ -152,5 +166,24 @@
       border-radius: 0;
       padding: 36px 20px;
     }
+  }
+}
+
+// _ __ANIMATION__
+@keyframes horizontal-shaking {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
