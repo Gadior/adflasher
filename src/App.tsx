@@ -9,6 +9,7 @@ import store from "./Components/Feature/redux/store";
 import "./index.css";
 
 // ~ routes comps
+import { SuspenseLoader } from "./Components/Pages/10/src/Entities";
 import Main from "./Components/Pages/main/main";
 import Page1 from "./Components/Pages/1/page";
 import Page2 from "./Components/Pages/2/page";
@@ -42,7 +43,7 @@ function App() {
         <Route
           path="10"
           element={
-            <Suspense fallback={"...loading"}>
+            <Suspense fallback={<SuspenseLoader />}>
               <LazyPage10 />
             </Suspense>
           }

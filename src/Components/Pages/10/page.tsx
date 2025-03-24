@@ -17,7 +17,6 @@ import {
   FashionGrid,
   LazyFooter,
 } from "./src/Widjet";
-
 // ~ styles
 import "./style.scss";
 
