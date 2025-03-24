@@ -1,0 +1,24 @@
+// _ __IMPORTS__
+@use "../../../../Shared/styles/vars.module.scss" as vars;
+
+// _ __STYLES__
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .rights {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .cards {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+}

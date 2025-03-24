@@ -15,6 +15,7 @@ import {
   PartnersRow,
   TitleRow,
   FashionGrid,
+  Footer,
 } from "./src/Widjet";
 
 // ~ styles
@@ -65,6 +66,7 @@ export default function Page(props: any) {
         <CustomSlider slides={reviewCardsData} />
 
         <Subscribe />
+        <Footer />
       </Provider>
     </div>
   );
