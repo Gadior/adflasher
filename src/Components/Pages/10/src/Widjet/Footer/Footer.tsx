@@ -6,6 +6,7 @@ import * as css from "./styles.module.scss";
 // ~ compos
 import { Divider } from "antd";
 import Rights from "./__components/Rights/Rights";
+import FooterMenu from "./__components/FooterMenu/FooterMenu";
 
 // #endregion __IMPORT
 
@@ -14,6 +15,7 @@ export default function Footer() {
   return (
     <div className={css.wrapper}>
       <div className={css.container}>
+        <FooterMenu />
         <Divider />
         <Rights />
       </div>

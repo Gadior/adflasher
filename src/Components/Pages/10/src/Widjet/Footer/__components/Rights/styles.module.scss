@@ -7,7 +7,6 @@
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 20px;
   padding-bottom: 60px;
 
   .rights {
@@ -32,5 +31,11 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+
+    .cards {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0px;
+    }
   }
 }

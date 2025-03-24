@@ -1,0 +1,15 @@
+// _ __IMPORT__
+@use "../../Shared/styles/vars.module.scss" as vars;
+
+// _ __CSS__
+.container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+
+  & > button {
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+}

@@ -9,6 +9,8 @@
   background-color: vars.$greyColor;
 
   .container {
+    box-sizing: border-box;
+    padding: 60px 20px 20px 20px;
     display: flex;
     flex-direction: column;
     width: 100%;
