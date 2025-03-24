@@ -20,12 +20,14 @@ export default function ReviewCard(props: Props) {
   const { slide } = props;
   return (
     <div className={css.container}>
-      <div>
-        {Array.from({ length: slide.rate }, (_, index) => (
-          <Star fill="#FFC633" stroke="none" key={index} />
-        ))}
+      <div className={css.title}>
+        <div>
+          {Array.from({ length: slide.rate }, (_, index) => (
+            <Star fill="#FFC633" stroke="none" key={index} />
+          ))}
+        </div>
+        <div className={css.name}>{slide.name}</div>
       </div>
-      <div className={css.name}>{slide.name}</div>
       <div className={css.description}>{slide.description}</div>
     </div>
   );

@@ -13,26 +13,20 @@
     justify-content: center;
     width: 100%;
     max-width: 1240px;
+    overflow: hidden;
 
     .slider {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
+      flex: 1;
+      min-height: 0;
+      align-items: stretch;
       width: 100%;
-      position: relative;
       gap: 20px;
 
       .slidesContainer {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-        max-width: 1240px;
-        overflow: hidden;
+        box-sizing: border-box;
+        display: block;
         position: relative;
-        height: 265px;
-        gap: 20px;
+        display: flex;
       }
 
       .slide {
@@ -44,8 +38,8 @@
       .active {
         filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.2));
         left: calc(50% - 200px);
-        position: absolute;
-        width: min-content;
+        position: relative;
+        // width: min-content;
         display: block;
         opacity: 1;
         z-index: 1;
@@ -72,17 +66,19 @@
       .hidden {
         position: absolute;
         display: block;
-        opacity: 0;
+        visibility: hidden;
         z-index: 0;
       }
 
       .arrows {
+        box-sizing: border-box;
         display: flex;
         justify-content: flex-end;
         width: 100%;
         max-width: 1240px;
         gap: 20px;
-        margin-right: 20px;
+        padding-right: 50px;
+        padding-bottom: 20px;
 
         & .sliderButton {
           box-sizing: border-box;
@@ -115,20 +111,14 @@
     .container {
       .slider {
         .slidesContainer {
-          height: 290px;
-        }
-        .slide {
-          height: 290px;
         }
         .active {
           // background: white;
           left: calc(50% - 140px);
         }
-
         .neighbor {
           left: calc(50% + 300px / 2);
         }
-
         .neighborLeft {
           left: calc(50% - 280px - 300px / 2);
         }
