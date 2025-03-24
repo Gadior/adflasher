@@ -7,15 +7,15 @@ import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 import { Divider } from "antd";
 
 // ~ comps
-import { AuthPromo, CustomSlider, Subscribe } from "./src/Feature";
+import { AuthPromo, LazyCustomSlider, Subscribe } from "./src/Feature";
 import {
   Header,
-  ProductsList,
+  LazyProductsList,
   MainBanner,
   PartnersRow,
   TitleRow,
   FashionGrid,
-  Footer,
+  LazyFooter,
 } from "./src/Widjet";
 
 // ~ styles
@@ -33,6 +33,7 @@ import { cards } from "./src/Data/newArrivlesData";
 import { cardsTop } from "./src/Data/topSelling";
 import { fashionImages } from "./src/Data/fashion";
 import { reviewCardsData } from "./src/Data/reviewCards";
+import { Suspense } from "react";
 // #endregion ~ __DATA__
 
 // ___ component Page
@@ -53,20 +54,29 @@ export default function Page(props: any) {
         <MainBanner />
         <PartnersRow />
         <TitleRow title={"NEW ARRIVALS"} />
-        <ProductsList cards={cards} />
+
+        <Suspense fallback={"...loading"}>
+          <LazyProductsList cards={cards} />
+        </Suspense>
 
         <Divider />
 
         <TitleRow title={"TOP SELLING"} />
-        <ProductsList cards={cardsTop} />
+        <LazyProductsList cards={cardsTop} />
 
         <FashionGrid fashionImages={fashionImages} />
 
         <TitleRow title={"OUR HAPPY CUSTOMERS"} />
-        <CustomSlider slides={reviewCardsData} />
+
+        <Suspense fallback={"...loading"}>
+          <LazyCustomSlider slides={reviewCardsData} />
+        </Suspense>
 
         <Subscribe />
-        <Footer />
+
+        <Suspense fallback={"...loading"}>
+          <LazyFooter />
+        </Suspense>
       </Provider>
     </div>
   );
