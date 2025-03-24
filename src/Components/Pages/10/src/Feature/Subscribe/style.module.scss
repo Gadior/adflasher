@@ -1,0 +1,156 @@
+// _ __IMPORT__
+@use "../../Shared/styles/vars.module.scss" as vars;
+
+// _ __CSS__
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 60px;
+  height: 176px;
+
+  .whiteBG {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    background-color: white;
+  }
+
+  .greyBG {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    background-color: vars.$greyColor;
+  }
+
+  .subscribe {
+    height: 176px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    background-color: vars.$darkColor;
+    width: 100%;
+    max-width: 1240px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 36px 64px;
+    color: white;
+    gap: 20px;
+
+    & > h3 {
+      width: 60%;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      & > button {
+        position: relative;
+        width: 350px;
+        height: 45px;
+        border: none;
+        color: vars.$darkColor;
+        background: vars.$whiteColor;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: 400;
+        transition: 0.2s transform ease-in-out;
+        will-change: transform;
+        overflow: hidden;
+
+        &::after {
+          content: "";
+          background-color: vars.$redColor;
+          border-radius: 25px;
+          display: block;
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          transform: translate(-100%, 0) rotate(20deg);
+          transform-origin: top left;
+          transition: 0.2s transform ease-out;
+          will-change: transform;
+          z-index: -1;
+        }
+
+        &:hover::after {
+          transform: translate(0, 0);
+        }
+
+        &:hover {
+          border: 2px solid transparent;
+          transform: scale(1.05);
+          will-change: transform;
+        }
+      }
+
+      & > input {
+        position: relative;
+        width: 350px;
+        height: 45px;
+        border: none;
+        border-radius: 25px;
+        display: flex;
+        // justify-content: center;
+        text-align: center;
+
+        &::placeholder {
+          position: relative;
+          display: flex;
+          text-align: center;
+        }
+
+        &::content {
+          position: relative;
+          display: flex;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+// ! Media
+@media (max-width: 1000px) {
+  .wrapper {
+    height: 100%;
+
+    .subscribe {
+      height: auto;
+      flex-direction: column;
+
+      & > h3 {
+        width: 100%;
+        text-align: center;
+      }
+      .form {
+        width: 100%;
+
+        & > button {
+          width: 100%;
+        }
+        & > input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .wrapper {
+    .subscribe {
+      border-radius: 0;
+      padding: 36px 20px;
+    }
+  }
+}

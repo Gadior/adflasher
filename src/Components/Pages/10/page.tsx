@@ -7,7 +7,7 @@ import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 import { Divider } from "antd";
 
 // ~ comps
-import { AuthPromo, CustomSlider } from "./src/Feature";
+import { AuthPromo, CustomSlider, Subscribe } from "./src/Feature";
 import {
   Header,
   ProductsList,
@@ -15,7 +15,6 @@ import {
   PartnersRow,
   TitleRow,
   FashionGrid,
-  ReviewSlider,
 } from "./src/Widjet";
 
 // ~ styles
@@ -59,6 +58,8 @@ export default function Page(props: any) {
 
       <TitleRow title={"OUR HAPPY CUSTOMERS"} />
       <CustomSlider slides={reviewCardsData} />
+
+      <Subscribe />
     </div>
   );
   // #endregion ~ return
