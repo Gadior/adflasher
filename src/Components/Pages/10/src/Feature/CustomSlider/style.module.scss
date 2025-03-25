@@ -33,6 +33,10 @@
         display: block;
         opacity: 0;
         width: 100%;
+
+        & .white {
+          background-color: white;
+        }
       }
 
       .active {

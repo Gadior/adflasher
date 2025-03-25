@@ -15,7 +15,6 @@ interface Card {
   description: string;
   rate: number;
 }
-
 interface Props {
   slides: Card[];
 }
@@ -68,6 +67,7 @@ export default function CustomSlider(props: Props) {
                 <MoveRight />
               </button>
             </div>
+
             <div className={css.slidesContainer}>
               {slides.map((slide: any, index) => {
                 const slidePosition =

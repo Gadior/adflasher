@@ -1,0 +1,23 @@
+// _ __CSS__
+.chapterWrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white;
+  padding: 80px 20px 40px 260px;
+  width: 100%;
+
+  & > h2 {
+    box-sizing: border-box;
+    display: flex;
+    border: 1px solid red;
+    width: 100%;
+  }
+  & > p {
+    box-sizing: border-box;
+    display: flex;
+    border: 1px solid red;
+    width: 100%;
+  }
+}

@@ -12,12 +12,18 @@ interface Card {
   description: string;
   rate: number;
 }
+
 interface Props {
   slide: Card;
 }
 // #region ~ __COMPONENT__
 export default function ReviewCard(props: Props) {
   const { slide } = props;
+
+  if (slide === null) {
+    return;
+  }
+
   return (
     <article className={css.container}>
       <div className={css.title}>

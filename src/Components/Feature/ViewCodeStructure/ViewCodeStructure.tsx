@@ -19,7 +19,7 @@ export default function ViewCodeStructure() {
   // #endredion __HOOKS__
 
   return (
-    <div className={css.wrapper}>
+    <div className={`${css.wrapper}`}>
       {!isView && <ViewStructureBtn />}
       {isView && <StructurePanel />}
       {isView && <CloseViewStructureBtn />}

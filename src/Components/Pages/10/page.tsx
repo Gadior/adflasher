@@ -26,9 +26,6 @@ import "./style.scss";
 // ~ redux
 import { Provider } from "react-redux";
 import store from "./src/Redux/store";
-// ~ redux
-import { useAppSelector } from "../../Pages/10/src/Redux/hooks";
-
 // #endregion ~ import
 
 // #region ~ __DATA__
