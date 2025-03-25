@@ -95,3 +95,8 @@ test("Кнопка назад работает", async () => {
     "neighbor"
   );
 });
+
+test("Пустой массив", () => {
+  render(<CustomSlider slides={[]} />);
+  expect(screen.queryAllByRole("article")).toHaveLength(0);
+});

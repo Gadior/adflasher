@@ -7,6 +7,7 @@ import { MoveLeft, MoveRight } from "lucide-react";
 import * as css from "./style.module.scss";
 // ~ comps
 import { ReviewCard } from "../../Entities/";
+import { TitleRow } from "../../Widjet";
 
 // #endregion ~ __IMPORT__
 interface Card {
@@ -21,7 +22,10 @@ interface Props {
 }
 // #region ~ __COMPONENT__
 export default function CustomSlider(props: Props) {
-  const { slides } = props;
+  let { slides } = props;
+
+  // slides = [];
+
   // _ __HOOKS__
   // #region
   const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -40,61 +44,69 @@ export default function CustomSlider(props: Props) {
   };
   // #endregion
 
+  if (slides.length === 0) {
+    return;
+  }
+
   return (
     <div className={css.wrapper} data-testid="CustomSlider">
       <div className={css.container}>
-        <div className={css.slider}>
-          <div className={css.arrows}>
-            <button
-              onClick={prevSlide}
-              className={`${css.sliderButton} ${css.left}`}
-              data-testid={"slider-next"}
-            >
-              <MoveLeft />
-            </button>
-            <button
-              onClick={nextSlide}
-              className={`${css.sliderButton} ${css.right}`}
-              data-testid={"slider-prev"}
-            >
-              <MoveRight />
-            </button>
-          </div>
-          <div className={css.slidesContainer}>
-            {slides.map((slide: any, index) => {
-              const slidePosition =
-                (index - currentSlide + slides.length) % slides.length;
-              let slideClass = css.slide;
+        {slides.length > 0 ? (
+          <div className={css.slider}>
+            <div className={css.arrows}>
+              <button
+                onClick={prevSlide}
+                className={`${css.sliderButton} ${css.left}`}
+                data-testid={"slider-next"}
+              >
+                <MoveLeft />
+              </button>
+              <button
+                onClick={nextSlide}
+                className={`${css.sliderButton} ${css.right}`}
+                data-testid={"slider-prev"}
+              >
+                <MoveRight />
+              </button>
+            </div>
+            <div className={css.slidesContainer}>
+              {slides.map((slide: any, index) => {
+                const slidePosition =
+                  (index - currentSlide + slides.length) % slides.length;
+                let slideClass = css.slide;
 
-              if (slidePosition === 0) {
-                slideClass += ` ${css.active}`;
-              } else if (slidePosition === 1) {
-                slideClass += ` ${css.neighbor}`;
-              } else if (slidePosition === slides.length - 1) {
-                slideClass += ` ${css.neighborLeft}`;
-              } else {
-                slideClass += ` ${css.hidden}`;
-              }
+                if (slidePosition === 0) {
+                  slideClass += ` ${css.active}`;
+                } else if (slidePosition === 1) {
+                  slideClass += ` ${css.neighbor}`;
+                } else if (slidePosition === slides.length - 1) {
+                  slideClass += ` ${css.neighborLeft}`;
+                } else {
+                  slideClass += ` ${css.hidden}`;
+                }
 
-              return (
-                <div
-                  key={index}
-                  className={slideClass}
-                  data-testid={`slide-${index}`}
-                  data-position={
-                    slidePosition === 0
-                      ? "active"
-                      : slidePosition === 1
-                      ? "neighbor"
-                      : "hidden"
-                  }
-                >
-                  <ReviewCard slide={slide} />
-                </div>
-              );
-            })}
+                return (
+                  <div
+                    key={index}
+                    className={slideClass}
+                    data-testid={`slide-${index}`}
+                    data-position={
+                      slidePosition === 0
+                        ? "active"
+                        : slidePosition === 1
+                        ? "neighbor"
+                        : "hidden"
+                    }
+                  >
+                    <ReviewCard slide={slide} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );

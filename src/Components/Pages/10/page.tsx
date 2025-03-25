@@ -38,6 +38,9 @@ import { Suspense } from "react";
 // ___ component Page
 // #region ~ component
 export default function Page(props: any) {
+  // Переопределим данные в карточке, что бы управлять и наличием заголовка, если данных не будет
+  let __reviewCardsData = reviewCardsData;
+
   // ___ return
   // #region ~ return
   return (
@@ -52,8 +55,8 @@ export default function Page(props: any) {
         <Header />
         <MainBanner />
         <PartnersRow />
-        <TitleRow title={"NEW ARRIVALS"} />
 
+        <TitleRow title={"NEW ARRIVALS"} />
         <Suspense fallback={"...loading"}>
           <LazyProductsList cards={cards} />
         </Suspense>
@@ -65,14 +68,14 @@ export default function Page(props: any) {
 
         <FashionGrid fashionImages={fashionImages} />
 
-        <TitleRow title={"OUR HAPPY CUSTOMERS"} />
-
+        {__reviewCardsData.length !== 0 && (
+          <TitleRow title={"OUR HAPPY CUSTOMERS"} />
+        )}
         <Suspense fallback={"...loading"}>
-          <LazyCustomSlider slides={reviewCardsData} />
+          <LazyCustomSlider slides={__reviewCardsData} />
         </Suspense>
 
         <Subscribe />
-
         <Suspense fallback={"...loading"}>
           <LazyFooter />
         </Suspense>
