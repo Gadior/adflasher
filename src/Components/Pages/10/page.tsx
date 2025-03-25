@@ -1,6 +1,8 @@
 // #region ~ hlop
 // ___ import
 // #region ~ import
+// ~
+import { useEffect } from "react";
 // ~ comps
 import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 
@@ -41,11 +43,27 @@ export default function Page(props: any) {
   // Переопределим данные в карточке, что бы управлять и наличием заголовка, если данных не будет
   let __reviewCardsData = reviewCardsData;
 
+  // _ __Meta__
+  useEffect(() => {
+    // title
+    document.title = "SHOP.CO - FIND CLOTHES THAT MATCHES YOUR STYLE!";
+
+    const metaTag = document.getElementById("meta");
+
+    if (metaTag) {
+      metaTag.setAttribute(
+        "content",
+        "Find clothes that match your unique style! Explore our trendy collection to discover the perfect outfits for any occasion. Shop now for fashion that fits YOU."
+      );
+    }
+  }, []);
+
   // ___ return
   // #region ~ return
   return (
     <div className="test10__wrapper --whiteBg">
       {/* SEO */}
+
       {/* <title>SHOP.CO - FIND CLOTHES THAT MATCHES YOUR STYLE</title>
         <meta
           name="description"
