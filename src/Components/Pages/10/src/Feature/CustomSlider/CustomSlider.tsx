@@ -7,7 +7,6 @@ import { MoveLeft, MoveRight } from "lucide-react";
 import * as css from "./style.module.scss";
 // ~ comps
 import { ReviewCard } from "../../Entities/";
-import { TitleRow } from "../../Widjet";
 
 // #endregion ~ __IMPORT__
 interface Card {

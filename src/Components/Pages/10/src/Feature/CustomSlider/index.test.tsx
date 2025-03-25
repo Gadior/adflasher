@@ -60,11 +60,6 @@ test("Первый слайд активен, второй neighbor, а трет
 test("Кнопка далее работает", async () => {
   render(<CustomSlider slides={reviewCardsData} />);
 
-  console.log(
-    "btn_NEXT",
-    screen.getByTestId("slider-next").getAttribute("data-testid")
-  );
-
   const nextButton = screen.getByTestId("slider-next");
   await userEvent.click(nextButton);
 

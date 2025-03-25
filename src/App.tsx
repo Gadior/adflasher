@@ -1,9 +1,6 @@
 // import "./reset.css";
-import React, { Suspense } from "react";
-import { BrowserRouter, HashRouter, Routes, Route } from "react-router-dom";
-
-import { Provider } from "react-redux";
-import store from "./Components/Feature/redux/store";
+import { Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // ~ style
 import "./index.css";

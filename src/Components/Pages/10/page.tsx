@@ -45,6 +45,14 @@ export default function Page(props: any) {
   // #region ~ return
   return (
     <div className="test10__wrapper --whiteBg">
+      {/* SEO */}
+      {/* <title>SHOP.CO - FIND CLOTHES THAT MATCHES YOUR STYLE</title>
+        <meta
+          name="description"
+          content="Find clothes that match your unique style! Explore our trendy collection to discover the perfect outfits for any occasion. Shop now for fashion that fits YOU."
+        /> */}
+
+      {/* BODY */}
       <Provider store={store}>
         {/* speshial */}
         <TasksBackBtn />
