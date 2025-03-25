@@ -23,6 +23,12 @@
     "swiper": "^11.2.3",
     "universal-cookie": "^7.2.2"
   },
+  "compilerOptions": {
+    "types": [
+      "jest",
+      "@testing-library/jest-dom"
+    ]
+  },
   "scripts": {
     "start": "webpack serve --env mode=development port=3010",
     "express": "node server.js",
@@ -61,6 +67,7 @@
     "@jest/globals": "^29.7.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
     "@types/lodash": "^4.17.15",
     "@types/node": "^22.13.10",
@@ -77,6 +84,7 @@
     "css-minimizer-webpack-plugin": "^7.0.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.3",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "mini-css-extract-plugin": "^2.9.2",

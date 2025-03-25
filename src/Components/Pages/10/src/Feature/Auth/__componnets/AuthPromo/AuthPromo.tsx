@@ -14,7 +14,7 @@ export default function AuthPromo() {
     <>
       {/* sing */}
       {isSing && (
-        <div className={css.wrapper}>
+        <div className={css.wrapper} data-testid="singIncomp">
           <div className={css.__singIN}>
             <span>
               Sign up and get 20% off to your first order.{" "}

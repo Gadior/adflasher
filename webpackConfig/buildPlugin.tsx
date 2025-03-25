@@ -2,12 +2,10 @@ import { Configuration, DefinePlugin } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import path from "path";
 import webpack from "webpack";
 
 import { int_BuildOptions } from "./types/types";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
-import { platform } from "os";
 
 export function buildPlugin(options: int_BuildOptions) {
   // Тип сборки

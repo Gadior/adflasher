@@ -41,19 +41,21 @@ export default function CustomSlider(props: Props) {
   // #endregion
 
   return (
-    <div className={css.wrapper}>
+    <div className={css.wrapper} data-testid="CustomSlider">
       <div className={css.container}>
         <div className={css.slider}>
           <div className={css.arrows}>
             <button
               onClick={prevSlide}
               className={`${css.sliderButton} ${css.left}`}
+              data-testid={"slider-next"}
             >
               <MoveLeft />
             </button>
             <button
               onClick={nextSlide}
               className={`${css.sliderButton} ${css.right}`}
+              data-testid={"slider-prev"}
             >
               <MoveRight />
             </button>
@@ -75,7 +77,18 @@ export default function CustomSlider(props: Props) {
               }
 
               return (
-                <div key={index} className={slideClass}>
+                <div
+                  key={index}
+                  className={slideClass}
+                  data-testid={`slide-${index}`}
+                  data-position={
+                    slidePosition === 0
+                      ? "active"
+                      : slidePosition === 1
+                      ? "neighbor"
+                      : "hidden"
+                  }
+                >
                   <ReviewCard slide={slide} />
                 </div>
               );

@@ -15,15 +15,15 @@ import { Link } from "react-router-dom";
 export default function SoshialIcons() {
   return (
     <div className={css.container}>
-      <Link to="#">
+      <a href="#">
         <img src={__facebook} alt="FACEBOOK" />
-      </Link>
-      <Link to="#">
+      </a>
+      <a href="#">
         <img src={__twitter} alt="TWITTER" />
-      </Link>
-      <Link to="#">
+      </a>
+      <a href="#">
         <img src={__instagramm} alt="INSTAGRAMM" />
-      </Link>
+      </a>
     </div>
   );
 }

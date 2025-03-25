@@ -19,7 +19,7 @@ interface Props {
 export default function ReviewCard(props: Props) {
   const { slide } = props;
   return (
-    <div className={css.container}>
+    <article className={css.container}>
       <div className={css.title}>
         <div>
           {Array.from({ length: slide.rate }, (_, index) => (
@@ -29,7 +29,7 @@ export default function ReviewCard(props: Props) {
         <div className={css.name}>{slide.name}</div>
       </div>
       <div className={css.description}>{slide.description}</div>
-    </div>
+    </article>
   );
 }
 // #endregion ~ __COMPONENT__
