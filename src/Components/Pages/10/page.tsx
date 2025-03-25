@@ -5,6 +5,7 @@
 import { useEffect } from "react";
 // ~ comps
 import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
+import ViewCodeStructure from "../../Feature/ViewCodeStructure/ViewCodeStructure";
 
 import { Divider } from "antd";
 
@@ -25,6 +26,8 @@ import "./style.scss";
 // ~ redux
 import { Provider } from "react-redux";
 import store from "./src/Redux/store";
+// ~ redux
+import { useAppSelector } from "../../Pages/10/src/Redux/hooks";
 
 // #endregion ~ import
 
@@ -62,18 +65,10 @@ export default function Page(props: any) {
   // #region ~ return
   return (
     <div className="test10__wrapper --whiteBg">
-      {/* SEO */}
-
-      {/* <title>SHOP.CO - FIND CLOTHES THAT MATCHES YOUR STYLE</title>
-        <meta
-          name="description"
-          content="Find clothes that match your unique style! Explore our trendy collection to discover the perfect outfits for any occasion. Shop now for fashion that fits YOU."
-        /> */}
-
-      {/* BODY */}
       <Provider store={store}>
         {/* speshial */}
         <TasksBackBtn />
+        <ViewCodeStructure />
 
         {/* blocks */}
 

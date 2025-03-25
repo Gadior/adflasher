@@ -1,0 +1,14 @@
+// _ __CSS__
+.panelWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 1);
+  overflow: auto;
+
+  .leftMenu {
+  }
+}

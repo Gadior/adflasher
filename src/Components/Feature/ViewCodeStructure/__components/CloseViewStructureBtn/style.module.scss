@@ -1,0 +1,48 @@
+// _ __CSS__
+
+.struc {
+  display: block;
+  position: relative;
+  left: 20px;
+  top: 18px;
+
+  .icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 400;
+    line-height: 100%;
+    font-size: 12px;
+    width: min-content;
+    color: white;
+
+    .glass {
+      cursor: pointer;
+      box-sizing: border-box;
+      padding: 10px;
+      background-color: #ff3333;
+      border-radius: 10px;
+      color: white;
+
+      &:hover > * {
+        animation: pulse-right 1s infinite ease-in-out;
+      }
+
+      & > * {
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// _ __ANIMATION__
+@keyframes pulse-right {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}

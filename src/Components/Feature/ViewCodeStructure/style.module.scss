@@ -1,0 +1,23 @@
+// _ __CSS__
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba($color: #000000, $alpha: 0);
+  position: absolute;
+  z-index: 200;
+}
+
+// _ __ANIMATION__
+@keyframes pulse-right {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
