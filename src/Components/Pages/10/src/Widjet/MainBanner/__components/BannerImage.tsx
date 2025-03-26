@@ -6,5 +6,12 @@ interface Props {
 }
 export default function BannerImage(props: Props) {
   const { alt } = props;
-  return <img src={__bannerImage} alt={alt} style={{ height: "100%" }} />;
+  return (
+    <img
+      src={__bannerImage}
+      alt={alt}
+      style={{ height: "100%" }}
+      loading="lazy"
+    />
+  );
 }
