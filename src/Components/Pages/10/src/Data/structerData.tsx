@@ -129,5 +129,4 @@ export const structerData = [
       },
     ],
   },
-  // { id: 6, name: "Webpack testid cleaner", description: "d6", content: [] },
 ];

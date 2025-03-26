@@ -3,10 +3,7 @@
 // ~ style
 import * as css from "./style.module.scss";
 import { Glasses } from "lucide-react";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../../Pages/10/src/Redux/hooks";
+import { useAppDispatch } from "../../../../Pages/10/src/Redux/hooks";
 import { changeView } from "../../../../Pages/10/src/Redux/__slice/dataCntl";
 // #endregion ~ __IMPORT__
 
