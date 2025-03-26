@@ -10,6 +10,9 @@ import __7 from "../../../../Shared/image/page10/__str_7.jpg";
 import __1r from "../../../../Shared/image/page10/__red_1.jpg";
 import __2r from "../../../../Shared/image/page10/__red_2.jpg";
 import __3r from "../../../../Shared/image/page10/__red_3.jpg";
+// test
+import __1t from "../../../../Shared/image/page10/__test_1.jpg";
+import __2t from "../../../../Shared/image/page10/__test_2.jpg";
 
 export const structerData = [
   {
@@ -79,7 +82,20 @@ export const structerData = [
       },
     ],
   },
-  { id: 3, name: "Тестирование", description: "d3", content: [] },
+  {
+    id: 3,
+    name: "Тестирование",
+    description:
+      "Ключевые компоненты покрыты тестами Jest и React Testing Library. Каждая значимая часть системы проверяется автоматизированными тестами, которые охватывают основные сценарии использования и граничные случаи. Такой подход обеспечивает стабильную работу компонентов и предотвращает регрессии при внесении изменений. Тесты интегрированы в процесс разработки и выполняются на каждом этапе, что гарантирует контроль качества кода.",
+    content: [
+      {
+        id: 0,
+        title: "",
+        description: "",
+        slides: [__1t, __2t],
+      },
+    ],
+  },
   { id: 4, name: "Webpack", description: "d4", content: [] },
   { id: 5, name: "Custom slider", description: "d5", content: [] },
   { id: 6, name: "Webpack testid cleaner", description: "d6", content: [] },
