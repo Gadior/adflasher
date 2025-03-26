@@ -4,6 +4,8 @@ import __2 from "../../../../Shared/image/page10/__str_2.jpg";
 import __3 from "../../../../Shared/image/page10/__str_3.jpg";
 import __4 from "../../../../Shared/image/page10/__str_4.jpg";
 import __5 from "../../../../Shared/image/page10/__str_5.jpg";
+import __6 from "../../../../Shared/image/page10/__str_6.jpg";
+import __7 from "../../../../Shared/image/page10/__str_7.jpg";
 
 export const structerData = [
   {
@@ -49,7 +51,13 @@ export const structerData = [
         id: 0,
         title: "",
         description: "Общая структура папок",
-        slides: [__1, __2, __3, __4, __5],
+        slides: [__1, __2, __3, __4, __5, __6, __7],
+      },
+      {
+        id: 0,
+        title: "",
+        description: "Все объекты сопровождаются публичным интерфейсом",
+        slides: [],
       },
     ],
   },

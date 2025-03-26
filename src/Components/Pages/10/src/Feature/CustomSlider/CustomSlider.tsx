@@ -35,8 +35,10 @@ export default function CustomSlider(props: Props) {
 
   // Меняем тему для темного фона. Стрелки делаем белыми
   let arrowsStyle = "";
+  let arrowsBlockStyle = "";
   if (theme === "dark") {
     arrowsStyle += ` ${css.white}`;
+    arrowsBlockStyle += ` ${css.blockLeft}`;
   }
 
   // #endregion
@@ -63,7 +65,7 @@ export default function CustomSlider(props: Props) {
       <div className={css.container}>
         {slides.length > 0 ? (
           <div className={css.slider}>
-            <div className={css.arrows}>
+            <div className={`${css.arrows} ${arrowsBlockStyle}`}>
               <button
                 onClick={prevSlide}
                 className={`${css.sliderButton} ${css.left} ${arrowsStyle}`}
@@ -110,7 +112,9 @@ export default function CustomSlider(props: Props) {
                         : "hidden"
                     }
                   >
-                    {isPicSlide && <img src={slide} className={css.picSlide} />}
+                    {isPicSlide && (
+                      <img src={slide} className={css.picSlide} alt="#" />
+                    )}
                     {!isPicSlide && <ReviewCard slide={slide} />}
                   </div>
                 );
