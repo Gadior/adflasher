@@ -13,6 +13,8 @@ import __3r from "../../../../Shared/image/page10/__red_3.jpg";
 // test
 import __1t from "../../../../Shared/image/page10/__test_1.jpg";
 import __2t from "../../../../Shared/image/page10/__test_2.jpg";
+// webpack
+import __1w from "../../../../Shared/image/page10/__w_1.jpg";
 
 export const structerData = [
   {
@@ -96,7 +98,33 @@ export const structerData = [
       },
     ],
   },
-  { id: 4, name: "Webpack", description: "d4", content: [] },
-  { id: 5, name: "Custom slider", description: "d5", content: [] },
-  { id: 6, name: "Webpack testid cleaner", description: "d6", content: [] },
+  {
+    id: 4,
+    name: "Webpack",
+    description:
+      "Webpack настроен с использованием декомпозированной архитектуры. Конфигурация разбита на логические модули — клиентская и серверная сборка, среды разработки и продакшена вынесены в отдельные файлы. Это позволяет гибко управлять настройками для разных окружений и минимизировать дублирование кода. Декомпозиция конфигурации Webpack делает её прозрачной и облегчает внедрение изменений без риска нарушить работу всей системы сборки.",
+    content: [
+      {
+        id: 0,
+        title: "",
+        description: "",
+        slides: [__1w],
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "Custom slider",
+    description:
+      "Слайдер спроектирован как самостоятельное решение без зависимостей от сторонних библиотек, что обеспечивает полное соответствие дизайн-требованиям и позволяет гибко модифицировать функционал под конкретные задачи проекта, включая динамическую подгрузку контента и бесшовную интеграцию с архитектурой приложения.",
+    content: [
+      {
+        id: 0,
+        title: "",
+        description: "",
+        slides: [__1w],
+      },
+    ],
+  },
+  // { id: 6, name: "Webpack testid cleaner", description: "d6", content: [] },
 ];
