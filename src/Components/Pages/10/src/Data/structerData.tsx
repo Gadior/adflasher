@@ -15,6 +15,9 @@ import __1t from "../../../../Shared/image/page10/__test_1.jpg";
 import __2t from "../../../../Shared/image/page10/__test_2.jpg";
 // webpack
 import __1w from "../../../../Shared/image/page10/__w_1.jpg";
+// slider
+import __1s from "../../../../Shared/image/page10/__s_1.jpg";
+import __2s from "../../../../Shared/image/page10/__s_2.jpg";
 
 export const structerData = [
   {
@@ -122,7 +125,7 @@ export const structerData = [
         id: 0,
         title: "",
         description: "",
-        slides: [__1w],
+        slides: [__1s, __2s],
       },
     ],
   },
