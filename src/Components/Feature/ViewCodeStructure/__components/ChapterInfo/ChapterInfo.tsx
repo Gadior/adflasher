@@ -2,34 +2,43 @@
 // #region ~ __IMPORT__
 // ~ style
 import * as css from "./style.module.scss";
-// ~ comps
+// ~ redux
+// ~ redux
+import { useAppSelector } from "../../../../Pages/10/src/Redux/hooks";
 // #endregion ~ __IMPORT__
-
-import _1 from "../../../../Pages/10/src/Shared/assets/__ar1.jpg";
-import _2 from "../../../../Pages/10/src/Shared/assets/__ar2.jpg";
-import _3 from "../../../../Pages/10/src/Shared/assets/__ar3.jpg";
-import _4 from "../../../../Pages/10/src/Shared/assets/__ar4.jpg";
 
 import CustomSlider from "../../../../Pages/10/src/Feature/CustomSlider/CustomSlider";
 
-// Прикидка data-index
-const __data: any = {
-  id: 0,
-  name: "Main",
-  description: "asdasdasda",
-  content: [{ title: "", descripton: "", slides: [_1, _2, _3, _4] }],
-};
-
 // #region ~ __COMPONENT__
-export default function ChapterInfo() {
+export default function ChapterInfo(props: any) {
+  const { __data } = props;
+
+  // --- выбранный слайд
+  const pointCheckedData = useAppSelector(
+    (state) => state.dataCntl10.pointCheckedData
+  );
+  // --- данные под номером выбранного слайда
+  const chapterData = __data[pointCheckedData];
+
   return (
     <div className={css.chapterWrapper}>
-      <h2>{__data.name}</h2>
-      <p>{__data.description}</p>
-
-      {/* {__data.content.map((item: any) => (
-        <CustomSlider slides={item.slides} isPic={true} />
-      ))} */}
+      <h2>{chapterData.name}</h2>
+      <p>{chapterData.description}</p>
+      <div className={css.chapterInfo}>
+        {chapterData.content.map((item: any) => (
+          <div key={item.id}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+            <CustomSlider
+              key={item.id}
+              slides={[]}
+              theme={"dark"}
+              isPicSlide={true}
+              picSlides={item.slides}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

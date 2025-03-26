@@ -3,21 +3,49 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   gap: 20px;
   color: white;
   padding: 80px 20px 40px 260px;
   width: 100%;
 
+  .chapterInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-self: start;
+    align-items: flex-start;
+    width: 100%;
+
+    & > div {
+      width: min-content;
+      margin-top: 0px;
+    }
+
+    & > div {
+      width: 100%;
+      & > p {
+        width: 100%;
+      }
+    }
+  }
+
   & > h2 {
     box-sizing: border-box;
     display: flex;
-    border: 1px solid red;
     width: 100%;
   }
   & > p {
     box-sizing: border-box;
     display: flex;
-    border: 1px solid red;
     width: 100%;
+  }
+}
+
+// ! Media
+@media (max-width: 700px) {
+  .chapterWrapper {
+    padding: 80px 10px 40px 10px;
   }
 }

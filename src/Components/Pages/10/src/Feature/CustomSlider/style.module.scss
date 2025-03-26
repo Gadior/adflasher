@@ -14,19 +14,26 @@
     width: 100%;
     max-width: 1240px;
     overflow: hidden;
+    padding-top: 10px;
 
     .slider {
       flex: 1;
       min-height: 0;
       align-items: stretch;
+
       width: 100%;
       gap: 20px;
 
       .slidesContainer {
         box-sizing: border-box;
-        display: block;
         position: relative;
         display: flex;
+
+        .picSlide {
+          display: flex;
+          position: relative;
+          left: calc(52px);
+        }
       }
 
       .slide {
@@ -97,6 +104,10 @@
           padding: 0;
           margin: 0;
 
+          &.white {
+            color: white;
+          }
+
           .left {
             left: 10px;
           }
@@ -114,6 +125,12 @@
   .wrapper {
     .container {
       .slider {
+        .slidesContainer {
+          .picSlide {
+            width: 260px;
+            left: calc(10px);
+          }
+        }
         .active {
           // background: white;
           left: calc(50% - 140px);

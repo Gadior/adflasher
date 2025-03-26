@@ -5,9 +5,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // #region
 interface IntState {
   isView: boolean;
+  pointCheckedData: number;
 }
 const initialState: IntState = {
   isView: false,
+  pointCheckedData: 0,
 };
 // #region
 
@@ -21,13 +23,16 @@ const page10_dataCntl = createSlice({
     changeView: (state, action: PayloadAction<{ flag: boolean }>) => {
       state.isView = action.payload.flag;
     },
-    // Редактировать элемент группы типа "строка"
+    // Указатель выбранного пункта меню
+    pointChecked: (state, action: PayloadAction<{ point: number }>) => {
+      state.pointCheckedData = action.payload.point;
+    },
   },
 });
 // #endregion ~ функции
 
 // ~ экспортируем функции состояний
-export const { changeView } = page10_dataCntl.actions;
+export const { changeView, pointChecked } = page10_dataCntl.actions;
 // ~ Экспорт редуьюсера для проводника store
 export default page10_dataCntl.reducer;
 // #endregion ~ hlop

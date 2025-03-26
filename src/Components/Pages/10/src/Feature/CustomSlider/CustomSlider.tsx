@@ -7,6 +7,7 @@ import { MoveLeft, MoveRight } from "lucide-react";
 import * as css from "./style.module.scss";
 // ~ comps
 import { ReviewCard } from "../../Entities/";
+import { isMatchWith } from "lodash";
 
 // #endregion ~ __IMPORT__
 interface Card {
@@ -16,17 +17,28 @@ interface Card {
   rate: number;
 }
 interface Props {
-  slides: Card[];
+  slides: Card[] | string[];
+  theme?: string;
+  isPicSlide?: boolean;
+  picSlides?: string[];
 }
 // #region ~ __COMPONENT__
 export default function CustomSlider(props: Props) {
-  let { slides } = props;
-
-  // slides = [];
+  let { slides, theme, isPicSlide, picSlides } = props;
+  if (picSlides) {
+    slides = picSlides;
+  }
 
   // _ __HOOKS__
   // #region
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+
+  // Меняем тему для темного фона. Стрелки делаем белыми
+  let arrowsStyle = "";
+  if (theme === "dark") {
+    arrowsStyle += ` ${css.white}`;
+  }
+
   // #endregion
 
   // _ ___SLIDER__
@@ -54,14 +66,14 @@ export default function CustomSlider(props: Props) {
             <div className={css.arrows}>
               <button
                 onClick={prevSlide}
-                className={`${css.sliderButton} ${css.left}`}
+                className={`${css.sliderButton} ${css.left} ${arrowsStyle}`}
                 data-testid={"slider-next"}
               >
                 <MoveLeft />
               </button>
               <button
                 onClick={nextSlide}
-                className={`${css.sliderButton} ${css.right}`}
+                className={`${css.sliderButton} ${css.right}  ${arrowsStyle}`}
                 data-testid={"slider-prev"}
               >
                 <MoveRight />
@@ -69,6 +81,7 @@ export default function CustomSlider(props: Props) {
             </div>
 
             <div className={css.slidesContainer}>
+              {/* ! */}
               {slides.map((slide: any, index) => {
                 const slidePosition =
                   (index - currentSlide + slides.length) % slides.length;
@@ -97,7 +110,8 @@ export default function CustomSlider(props: Props) {
                         : "hidden"
                     }
                   >
-                    <ReviewCard slide={slide} />
+                    {isPicSlide && <img src={slide} className={css.picSlide} />}
+                    {!isPicSlide && <ReviewCard slide={slide} />}
                   </div>
                 );
               })}
