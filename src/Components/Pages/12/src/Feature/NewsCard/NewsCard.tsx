@@ -1,5 +1,6 @@
 // #region
 // #region ~ __IMPORT__
+import { useState } from "react";
 import { Button } from "antd";
 // ~ style
 import * as css from "./style.module.scss";
@@ -23,8 +24,7 @@ export default function NewsCard(props: NewsCard__int) {
   // _ __HOOKS__
   // #region
   const dispatch = useAppDispatch();
-  const formData = useAppSelector((state) => state.data.formData);
-  const editingId = useAppSelector((state) => state.data.editingId);
+  const [isModal, setIsModal] = useState<boolean>(false);
   const newsList = useAppSelector((state) => state.data.newsList);
   // #endregion
 
@@ -41,18 +41,39 @@ export default function NewsCard(props: NewsCard__int) {
   // #region
   const deleteData = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsModal(true);
+  };
 
-    if (window.confirm("Точно удалить?")) {
-      let newsListData = [];
-      newsListData = newsList.filter((item: NewsCard__int) => item.id != id);
+  const confirmDeleteData = (e: React.FormEvent) => {
+    let newsListData = [];
+    newsListData = newsList.filter((item: NewsCard__int) => item.id != id);
 
-      dispatch(setNewsList({ list: newsListData }));
-    }
+    dispatch(setNewsList({ list: newsListData }));
+
+    setIsModal(false);
   };
   // #endregion
 
   return (
     <div className={css.wrapper}>
+      {/* modal */}
+      {isModal && (
+        <div className={css.modal}>
+          <div className={css.modalContainer}>
+            <Button
+              type="primary"
+              danger
+              onClick={(e) => {
+                confirmDeleteData(e);
+              }}
+            >
+              Точно удалить новость?
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* Main */}
       <div className={css.container}>
         <h4>{title}</h4>
         <p>{description}</p>
