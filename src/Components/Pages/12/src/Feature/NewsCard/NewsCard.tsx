@@ -49,6 +49,9 @@ export default function NewsCard(props: NewsCard__int) {
     newsListData = newsList.filter((item: NewsCard__int) => item.id != id);
 
     dispatch(setNewsList({ list: newsListData }));
+    dispatch(setTitleFormData({ title: "" }));
+    dispatch(setDescFormData({ description: "" }));
+    dispatch(setEditingID({ id: null }));
 
     setIsModal(false);
   };
