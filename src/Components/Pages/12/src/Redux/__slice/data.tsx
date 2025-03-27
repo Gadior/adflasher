@@ -64,8 +64,9 @@ const data = createSlice({
 
     // --- editing ID
     // #region
-    setEditingID: (state, action: PayloadAction<{ data: string | null }>) => {
-      state.editingId = action.payload.data;
+    setEditingID: (state, action: PayloadAction<{ id: string | null }>) => {
+      // console.log(action.payload.id);
+      state.editingId = action.payload.id;
     },
     // #endregion
   },
@@ -73,7 +74,8 @@ const data = createSlice({
 // #endregion ~ функции
 
 // ~ экспортируем функции состояний
-export const { setNewsList, setTitleFormData, setDescFormData } = data.actions;
+export const { setNewsList, setTitleFormData, setDescFormData, setEditingID } =
+  data.actions;
 
 // ~ Экспорт редуьюсера для проводника store
 export default data.reducer;

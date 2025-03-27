@@ -11,10 +11,11 @@ import {
   setTitleFormData,
   setDescFormData,
   setNewsList,
+  setEditingID,
 } from "../../Redux/__slice/data";
 import { useState } from "react";
 import { NewsCard__int } from "../../types/types";
-import { title } from "process";
+
 // #endregion ~ import
 
 // ___ component
@@ -44,6 +45,7 @@ export default function AddNews() {
     return !Object.values(newErrors).includes(true);
   };
 
+  // --- Сохранить данные
   const sendData = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -74,6 +76,28 @@ export default function AddNews() {
   };
   // #endregion
 
+  // _ __editData__
+  // #region
+  const editData = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // ~ Валидируем надписи в полях
+    if (!validateField()) {
+      return;
+    }
+
+    let newsListData = [];
+
+    newsListData = newsList.map((item: NewsCard__int) => {
+      return item.id === editingId ? { ...item, ...formData } : item;
+    });
+    dispatch(setNewsList({ list: newsListData }));
+    dispatch(setTitleFormData({ title: "" }));
+    dispatch(setDescFormData({ description: "" }));
+    dispatch(setEditingID({ id: null }));
+  };
+  // #endregion
+
   return (
     <div className={css.wrapper}>
       <div className={css.container}>
@@ -100,14 +124,26 @@ export default function AddNews() {
             dispatch(setDescFormData({ description: value }));
           }}
         />
-        <Button
-          type="primary"
-          onClick={(e) => {
-            sendData(e);
-          }}
-        >
-          Добавить
-        </Button>
+        {editingId === null ? (
+          <Button
+            type="primary"
+            onClick={(e) => {
+              sendData(e);
+            }}
+          >
+            Добавить
+          </Button>
+        ) : (
+          <Button
+            type="primary"
+            danger
+            onClick={(e) => {
+              editData(e);
+            }}
+          >
+            Редактировать
+          </Button>
+        )}
       </div>
     </div>
   );

@@ -29,7 +29,11 @@ export default function NewsList(props: Props) {
       <div className={css.container}>
         {data.map((card: NewsCard__int) => (
           <div key={card.id}>
-            <NewsCard title={card.title} description={card.description} />
+            <NewsCard
+              title={card.title}
+              description={card.description}
+              id={card.id}
+            />
           </div>
         ))}
       </div>
