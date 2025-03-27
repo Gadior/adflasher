@@ -32,6 +32,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        color: vars.$darkColor;
 
         &:hover {
           color: vars.$redColor;
@@ -62,6 +63,7 @@
         margin: 0;
         border: none;
         background: none;
+        color: vars.$darkColor;
 
         & :hover {
           color: vars.$redColor;
