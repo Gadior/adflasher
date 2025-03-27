@@ -11,8 +11,13 @@ import { Input, Button, Flex, Tabs, Space, Checkbox, Divider } from "antd";
 const { TextArea } = Input;
 
 // ~ comps
-import { AddNews } from "./src/Feature";
+import { NewsList } from "./src/Widjet";
+import { AddNews, NewsCard } from "./src/Feature";
 import { Title } from "./src/Shared";
+
+// ! Data
+import { __data } from "./src/Data/data";
+
 // #endregion ~ import
 
 // ___ component
@@ -29,6 +34,8 @@ export default function Page() {
       <TasksBackBtn />
       <AddNews />
       <Title title={"Новости:"} />
+
+      <NewsList __data={__data} />
     </div>
   );
   // #endregion ~ return

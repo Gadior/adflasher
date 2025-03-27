@@ -16,9 +16,20 @@ BP - 650
   margin-top: 90px;
 
   // __ main
+  & h2 {
+    font-size: 48px;
+    font-weight: 800;
+  }
   & h3 {
     font-size: 30px;
     font-weight: 600;
+  }
+  & h4 {
+    font-size: 24px;
+    font-weight: 800;
+  }
+  & p {
+    font-size: 16px;
   }
 }
 
@@ -26,8 +37,18 @@ BP - 650
 @media (max-width: 650px) {
   .wrapper {
     // __ main
+    & h2 {
+      font-size: 26px;
+    }
     & h3 {
       font-size: 20px;
+    }
+    & h4 {
+      font-size: 14px;
+      font-weight: 800;
+    }
+    & p {
+      font-size: 12px;
     }
   }
 }

@@ -10,3 +10,7 @@ $redColor: #e75d36;
   width: 100%;
   max-width: 1000px;
 }
+
+@mixin chapterMT() {
+  margin-top: 40px;
+}
