@@ -1,0 +1,19 @@
+/*
+Min - 320
+Max - 1000
+BP - 650
+*/
+
+// _ __IMPORT__
+@use "../../Shared/styles/vars.module.scss" as vars;
+
+// _ __CSS__
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1000px;
+  padding: 40px 20px;
+  gap: 20px;
+}

@@ -1,0 +1,33 @@
+/*
+Min - 320
+Max - 1000
+BP - 650
+*/
+
+// _ __IMPORT__
+@use "./src/Shared/styles/vars.module.scss" as vars;
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: vars.$darkColor;
+  color: vars.$greyColor;
+  margin-top: 90px;
+
+  // __ main
+  & h3 {
+    font-size: 30px;
+    font-weight: 600;
+  }
+}
+
+// ! Media
+@media (max-width: 650px) {
+  .wrapper {
+    // __ main
+    & h3 {
+      font-size: 20px;
+    }
+  }
+}

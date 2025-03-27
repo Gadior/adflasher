@@ -19,6 +19,7 @@ import Page8 from "./Components/Pages/8/page";
 import Page9 from "./Components/Pages/9/page";
 import { LazyPage10 } from "./Components/Pages/10/page.lazy";
 import Page11 from "./Components/Pages/11/page";
+import { LazyNews } from "./Components/Pages/12/page.lazy";
 
 import Banners from "./Components/Pages/banners/page";
 import { LazyPageTest } from "./Components/Pages/__test/page.lazy";
@@ -46,6 +47,14 @@ function App() {
           }
         />
         <Route path="11" element={<Page11 />} />
+        <Route
+          path="12"
+          element={
+            <Suspense fallback={"...loading"}>
+              <LazyNews />
+            </Suspense>
+          }
+        />
         <Route path="banners" element={<Banners />} />
         <Route
           path="test"
