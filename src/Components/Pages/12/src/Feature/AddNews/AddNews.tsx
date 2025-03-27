@@ -28,7 +28,7 @@ export default function AddNews() {
   const formData = useAppSelector((state) => state.data.formData);
   const editingId = useAppSelector((state) => state.data.editingId);
   const newsList = useAppSelector((state) => state.data.newsList);
-
+  const [showMsg, setShowMsg] = useState<boolean>(false);
   // #endregion
 
   // _ __sendData__
@@ -66,13 +66,18 @@ export default function AddNews() {
         id: Date.now().toString(),
         ...formData,
       };
-      newsListData = [...newsList, newCard];
+      newsListData = [newCard, ...newsList];
       dispatch(setNewsList({ list: newsListData }));
     }
 
     // Чистка формы
     dispatch(setTitleFormData({ title: "" }));
     dispatch(setDescFormData({ description: "" }));
+
+    setShowMsg(true);
+    setTimeout(() => {
+      setShowMsg(false);
+    }, 2000);
   };
   // #endregion
 
@@ -101,7 +106,10 @@ export default function AddNews() {
   return (
     <div className={css.wrapper}>
       <div className={css.container}>
-        <h3>Добавление новостей:</h3>
+        <div className={css.title}>
+          <h3>Добавление новостей: </h3>
+          {showMsg && <h3>добавлена</h3>}
+        </div>
         <Input
           className={errors.title ? css.error : ""}
           value={formData.title}
