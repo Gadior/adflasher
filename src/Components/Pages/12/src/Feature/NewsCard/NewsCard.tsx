@@ -3,16 +3,14 @@
 import { Button } from "antd";
 // ~ style
 import * as css from "./style.module.scss";
-// ~ comps
+// ~ types
+import { NewsCard__int } from "../../types/types";
 // #endregion ~ __IMPORT__
-interface Props {
-  title: string;
-  description: string;
-}
+
 // #region ~ __COMPONENT__
-export default function NewsCard(props: Props) {
+export default function NewsCard(props: NewsCard__int) {
   // ~ Дестр-ция
-  const { title, description } = props;
+  const { id, title, description } = props;
 
   return (
     <div className={css.wrapper}>

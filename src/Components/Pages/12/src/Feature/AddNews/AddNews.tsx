@@ -5,11 +5,20 @@ import { Input, Button } from "antd";
 const { TextArea } = Input;
 // ~ style
 import * as css from "./style.module.scss";
+// ~ redux
+import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
+import { getNewsList } from "../../Redux/__slice/data";
 // #endregion ~ import
 
 // ___ component
 // #region ~ component
 export default function AddNews() {
+  // _ __HOOKS__
+  // #region
+  const dispatch = useAppDispatch();
+  const newsList = useAppSelector((state) => state.data.newsList);
+  // #endregion
+
   return (
     <div className={css.wrapper}>
       <div className={css.container}>

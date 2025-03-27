@@ -3,17 +3,31 @@
 // ~ style
 import { NewsCard } from "../../Feature";
 import * as css from "./style.module.scss";
-// ~ comps
+// ~ types
+import { NewsCard__int } from "../../types/types";
+// ~ redux
+import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
 // #endregion ~ __IMPORT__
 
+interface Props {
+  data: NewsCard__int[];
+}
+
 // #region ~ __COMPONENT__
-export default function NewsList(props: any) {
+export default function NewsList(props: Props) {
+  // _ __HOOKS__
+  // #region
+  const dispatch = useAppDispatch();
+  // ~ значение поискового поля
+  const searchValue = useAppSelector((state) => state.data.searchValue);
+  // #endregion
+
   // destruct
-  const { __data } = props;
+  const { data } = props;
   return (
     <div className={css.wrapper}>
       <div className={css.container}>
-        {__data.map((card: any) => (
+        {data.map((card: NewsCard__int) => (
           <div key={card.id}>
             <NewsCard title={card.title} description={card.description} />
           </div>

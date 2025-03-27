@@ -6,37 +6,62 @@ import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
 // ~ style
 import * as css from "./style.module.scss";
 
-import { useState, useEffect } from "react";
-import { Input, Button, Flex, Tabs, Space, Checkbox, Divider } from "antd";
-const { TextArea } = Input;
+// ~ redux
+import { useAppDispatch, useAppSelector } from "./src/Redux/hooks";
+import { getNewsList } from "./src/Redux/__slice/data";
 
 // ~ comps
 import { NewsList } from "./src/Widjet";
-import { AddNews, NewsCard } from "./src/Feature";
+import { AddNews } from "./src/Feature";
 import { Title } from "./src/Shared";
 
 // ! Data
 import { __data } from "./src/Data/data";
+import { useEffect } from "react";
 
 // #endregion ~ import
 
 // ___ component
 // #region ~ component
 export default function Page() {
-  // ___ state
-  // #region ~ state
-  // #endregion ~ state
+  // _ __HOOKS__
+  // #region
+  const dispatch = useAppDispatch();
+  const newsList = useAppSelector((state) => state.data.newsList);
+  // #endregion
 
+  // _ __LOGIC__
+  // #region
+  // --- Загрузка из локалки
+  useEffect(() => {
+    const getNews = localStorage.getItem("my_News");
+    // если есть, то
+    if (getNews) {
+      try {
+        dispatch(getNewsList({ list: JSON.parse(getNews) }));
+      } catch (error) {
+        console.error("Ошибка...", error);
+      }
+    }
+  });
+
+  // --- Обновление списка в локалке
+  useEffect(() => {
+    localStorage.setItem("my_News", JSON.stringify(newsList));
+  }, [newsList]);
+
+  // #endregion
   // ___ return
   // #region ~ return
   return (
+    // <Provider store={store}>
     <div className={css.wrapper}>
       <TasksBackBtn />
       <AddNews />
       <Title title={"Новости:"} />
-
-      <NewsList __data={__data} />
+      <NewsList data={__data} />
     </div>
+    // </Provider>
   );
   // #endregion ~ return
 
