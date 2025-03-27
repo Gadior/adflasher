@@ -38,10 +38,34 @@ const data = createSlice({
   name: "data",
   initialState,
   reducers: {
-    // --
+    // -- Работа со списком новостей
     // #region
-    getNewsList: (state, action: PayloadAction<{ list: NewsCard__int[] }>) => {
+    // ~ сохранение списка
+    setNewsList: (state, action: PayloadAction<{ list: NewsCard__int[] }>) => {
       state.newsList = action.payload.list;
+    },
+    // #endregion
+
+    // -- Сохранени данные в форме при создании статьи
+    // #region
+    setTitleFormData: (state, action: PayloadAction<{ title: string }>) => {
+      state.formData = { ...state.formData, title: action.payload.title };
+    },
+    setDescFormData: (
+      state,
+      action: PayloadAction<{ description: string }>
+    ) => {
+      state.formData = {
+        ...state.formData,
+        description: action.payload.description,
+      };
+    },
+    // #endregion
+
+    // --- editing ID
+    // #region
+    setEditingID: (state, action: PayloadAction<{ data: string | null }>) => {
+      state.editingId = action.payload.data;
     },
     // #endregion
   },
@@ -49,7 +73,7 @@ const data = createSlice({
 // #endregion ~ функции
 
 // ~ экспортируем функции состояний
-export const { getNewsList } = data.actions;
+export const { setNewsList, setTitleFormData, setDescFormData } = data.actions;
 
 // ~ Экспорт редуьюсера для проводника store
 export default data.reducer;

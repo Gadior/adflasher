@@ -8,7 +8,7 @@ import * as css from "./style.module.scss";
 
 // ~ redux
 import { useAppDispatch, useAppSelector } from "./src/Redux/hooks";
-import { getNewsList } from "./src/Redux/__slice/data";
+import { setNewsList } from "./src/Redux/__slice/data";
 
 // ~ comps
 import { NewsList } from "./src/Widjet";
@@ -38,12 +38,12 @@ export default function Page() {
     // если есть, то
     if (getNews) {
       try {
-        dispatch(getNewsList({ list: JSON.parse(getNews) }));
+        dispatch(setNewsList({ list: JSON.parse(getNews) }));
       } catch (error) {
         console.error("Ошибка...", error);
       }
     }
-  });
+  }, []);
 
   // --- Обновление списка в локалке
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function Page() {
       <TasksBackBtn />
       <AddNews />
       <Title title={"Новости:"} />
-      <NewsList data={__data} />
+      <NewsList data={newsList} />
     </div>
     // </Provider>
   );
