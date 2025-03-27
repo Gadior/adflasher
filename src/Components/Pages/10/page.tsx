@@ -17,7 +17,7 @@ import {
   MainBanner,
   PartnersRow,
   TitleRow,
-  FashionGrid,
+  LazyFashionGrid,
   LazyFooter,
 } from "./src/Widjet";
 // ~ styles
@@ -82,9 +82,13 @@ export default function Page(props: any) {
         <Divider />
 
         <TitleRow title={"TOP SELLING"} />
-        <LazyProductsList cards={cardsTop} />
+        <Suspense fallback={"...loading"}>
+          <LazyProductsList cards={cardsTop} />
+        </Suspense>
 
-        <FashionGrid fashionImages={fashionImages} />
+        <Suspense fallback={"...loading"}>
+          <LazyFashionGrid fashionImages={fashionImages} />
+        </Suspense>
 
         {__reviewCardsData.length !== 0 && (
           <TitleRow title={"OUR HAPPY CUSTOMERS"} />
