@@ -8,12 +8,19 @@ BP - 650
 @use "../../Shared/styles/vars.module.scss" as vars;
 
 // _ __CSS__
-.container {
+.wrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
-  max-width: 1000px;
-  padding: 40px 20px;
-  gap: 20px;
+  background-color: vars.$darkColor;
+  color: vars.$greyColor;
+
+  .container {
+    @include vars.base();
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 40px 20px;
+    gap: 20px;
+  }
 }

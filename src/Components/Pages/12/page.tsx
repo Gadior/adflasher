@@ -12,6 +12,7 @@ const { TextArea } = Input;
 
 // ~ comps
 import { AddNews } from "./src/Feature";
+import { Title } from "./src/Shared";
 // #endregion ~ import
 
 // ___ component
@@ -27,6 +28,7 @@ export default function Page() {
     <div className={css.wrapper}>
       <TasksBackBtn />
       <AddNews />
+      <Title title={"Новости:"} />
     </div>
   );
   // #endregion ~ return

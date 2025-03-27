@@ -1,0 +1,37 @@
+/*
+Min - 320
+Max - 1000
+BP - 650
+*/
+
+// _ __IMPORT__
+@use "../../styles//vars.module.scss" as vars;
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 40px;
+
+  // __Main
+  & h2 {
+    font-size: 48px;
+    font-weight: 800;
+  }
+
+  .container {
+    @include vars.base();
+    box-sizing: border-box;
+    padding: 0 20px;
+  }
+}
+
+// ! Media
+@media (max-width: 650px) {
+  .wrapper {
+    // __Main
+    & h2 {
+      font-size: 26px;
+    }
+  }
+}

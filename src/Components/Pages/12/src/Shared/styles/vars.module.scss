@@ -4,3 +4,9 @@ $darkColor: #292929;
 $greyColor: #f0efed;
 // ~
 $redColor: #e75d36;
+
+@mixin base() {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+}
