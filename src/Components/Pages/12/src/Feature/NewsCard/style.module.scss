@@ -28,10 +28,12 @@ BP - 650
 
     .modalContainer {
       display: flex;
+      flex-direction: column;
       box-sizing: border-box;
       padding: 40px;
       background-color: vars.$darkColor;
       border-radius: 20px;
+      gap: 20px;
       filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.6));
     }
   }

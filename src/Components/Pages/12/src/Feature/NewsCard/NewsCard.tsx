@@ -72,6 +72,14 @@ export default function NewsCard(props: NewsCard__int) {
             >
               Точно удалить новость?
             </Button>
+            <Button
+              type="primary"
+              onClick={(e) => {
+                setIsModal(false);
+              }}
+            >
+              Отменить
+            </Button>
           </div>
         </div>
       )}
