@@ -15,5 +15,6 @@ declare const __ISDEV__: "development" | "production";
 declare module "*.png";
 declare module "*.jpg";
 declare module "*.svg";
+declare module "*.jpg?webp";
 
 declare module "react-meta-tags";

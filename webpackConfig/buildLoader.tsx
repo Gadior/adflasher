@@ -44,13 +44,39 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
     use: [isDev ? "style-loader" : MiniCssExtractPlugin.loader, "css-loader"],
   };
 
-  const imagesLoader = {
-    test: /\.(png|jpe?g|gif|svg)$/i,
+  const svgLoader = {
+    test: /\.(svg)$/i,
     use: [
       {
         loader: "file-loader",
         options: {
           name: "[path][name].[ext]",
+        },
+      },
+    ],
+  };
+
+  const imagesLoader = {
+    test: /\.(png|jpe?g|gif)$/i, // Убрали svg - его в WebP не конвертируют
+    use: [
+      {
+        loader: "file-loader",
+        options: {
+          name: "[path][name].webp", // Меняем расширение на .webp
+        },
+      },
+      {
+        loader: "image-webpack-loader",
+        options: {
+          mozjpeg: { progressive: true, quality: 70 },
+          webp: {
+            quality: 75,
+            enabled: true, // Явно включаем
+            force: true, // Игнорировать другие форматы
+          },
+          optipng: { enabled: false },
+          pngquant: { quality: [0.75, 0.9], speed: 4 },
+          gifsicle: { interlaced: false },
         },
       },
     ],
@@ -66,6 +92,9 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
 
     // --- css
     cssLoader,
+
+    // --- svg
+    svgLoader,
 
     // --- images
     imagesLoader,

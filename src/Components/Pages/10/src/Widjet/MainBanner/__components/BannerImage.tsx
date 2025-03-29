@@ -1,5 +1,5 @@
 // ~ assets
-import __bannerImage from "../../../Shared/assets/__bannerImage1.jpg";
+import __bannerImage from "../../../Shared/assets/__bannerImage1.jpg?webp";
 
 interface Props {
   alt: string;
