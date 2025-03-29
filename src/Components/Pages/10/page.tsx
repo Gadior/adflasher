@@ -5,7 +5,7 @@
 import { useEffect } from "react";
 // ~ comps
 import TasksBackBtn from "../../Shared/ui/tasksBackBtn/tasksBackBtn";
-import ViewCodeStructure from "../../Feature/ViewCodeStructure/ViewCodeStructure";
+import LazyViewCodeStructure from "../../Feature/ViewCodeStructure/ViewCodeStructure";
 
 import { Divider } from "antd";
 
@@ -65,7 +65,10 @@ export default function Page(props: any) {
       <Provider store={store}>
         {/* speshial */}
         <TasksBackBtn />
-        <ViewCodeStructure />
+
+        <Suspense fallback={"...loading"}>
+          <LazyViewCodeStructure />
+        </Suspense>
 
         {/* blocks */}
 
