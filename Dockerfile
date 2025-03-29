@@ -15,7 +15,7 @@
 # Этап сборки
 FROM node:22-alpine as builder
 
-# Устанавливаем системные зависимости
+# Устанавливаем системные зависимости для сборки нативных модулей
 RUN apk add --no-cache \
     autoconf \
     automake \
@@ -23,15 +23,23 @@ RUN apk add --no-cache \
     g++ \
     libtool \
     nasm \
+    libpng-dev \
+    libjpeg-turbo-dev \
     gifsicle
 
 WORKDIR /app
 
-# Копируем package.json и package-lock.json
+# Сначала копируем только package.json
 COPY package*.json ./
 
-# Устанавливаем ВСЕ зависимости (включая devDependencies)
-RUN npm install
+# Устанавливаем зависимости с явным указанием всех необходимых плагинов
+RUN npm install --ignore-scripts && \
+    npm install \
+    imagemin-mozjpeg \
+    imagemin-gifsicle \
+    imagemin-pngquant \
+    imagemin-svgo \
+    --save-dev
 
 # Копируем остальные файлы
 COPY . .
