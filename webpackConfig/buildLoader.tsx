@@ -56,8 +56,20 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
     ],
   };
 
+  const gifLoader = {
+    test: /\.(gif)$/i,
+    use: [
+      {
+        loader: "file-loader",
+        options: {
+          name: "[path][name].[ext]",
+        },
+      },
+    ],
+  };
+
   const imagesLoader = {
-    test: /\.(png|jpe?g|gif)$/i, // Убрали svg - его в WebP не конвертируют
+    test: /\.(png|jpe?g)$/i, // Убрали svg - его в WebP не конвертируют
     use: [
       {
         loader: "file-loader",
@@ -94,6 +106,9 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
 
     // --- svg
     svgLoader,
+
+    // --- gif
+    gifLoader,
 
     // --- images
     imagesLoader,
