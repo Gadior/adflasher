@@ -14,7 +14,7 @@ export function buildOptimization(
 
   if (isProd) {
     plugins.push(
-      new CssMinimizerPlugin(),
+      new CssMinimizerPlugin(), // минификатор css
       new TerserPlugin() // Добавляем минификатор JS
     );
   }
