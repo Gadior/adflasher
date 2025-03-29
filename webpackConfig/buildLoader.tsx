@@ -76,7 +76,6 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
           },
           optipng: { enabled: false },
           pngquant: { quality: [0.75, 0.9], speed: 4 },
-          gifsicle: { interlaced: false },
         },
       },
     ],
