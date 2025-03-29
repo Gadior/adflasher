@@ -12,10 +12,10 @@
 # CMD ["pm2", "serve", "build/", "3000", "--name", "'my-react-app'", "--spa", "--no-daemon"]
 # # CMD ["npm", "start"]
 
-# Используем многоэтапную сборку для уменьшения размера
+# Этап сборки
 FROM node:22-alpine as builder
 
-# Устанавливаем системные зависимости для сборки
+# Устанавливаем системные зависимости
 RUN apk add --no-cache \
     autoconf \
     automake \
@@ -27,11 +27,11 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-# Копируем только package.json для кэширования слоя npm install
+# Копируем package.json и package-lock.json
 COPY package*.json ./
 
-# Устанавливаем зависимости с флагом --production
-RUN npm install --production
+# Устанавливаем ВСЕ зависимости (включая devDependencies)
+RUN npm install
 
 # Копируем остальные файлы
 COPY . .
@@ -44,18 +44,13 @@ FROM node:22-alpine
 
 WORKDIR /app
 
-# Копируем только необходимые файлы из builder
+# Копируем только необходимое из builder
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/node_modules ./node_modules
 
-# Устанавливаем pm2 глобально
+# Устанавливаем pm2
 RUN npm install -g pm2
-
-# Настройки для production
-ENV NODE_ENV=production
-ENV PORT=3000
 
 EXPOSE 3000
 
-# Запускаем приложение через pm2
 CMD ["pm2-runtime", "start", "build", "--name", "my-react-app", "--spa"]
