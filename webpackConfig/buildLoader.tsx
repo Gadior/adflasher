@@ -74,22 +74,22 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
       {
         loader: "file-loader",
         options: {
-          name: "[path][name].webp", // Меняем расширение на .webp
+          name: "[path][name].[ext]",
         },
       },
-      {
-        loader: "image-webpack-loader",
-        options: {
-          mozjpeg: { progressive: true, quality: 70 },
-          webp: {
-            quality: 75,
-            enabled: true, // Явно включаем
-            force: true, // Игнорировать другие форматы
-          },
-          optipng: { enabled: false },
-          pngquant: { quality: [0.75, 0.9], speed: 4 },
-        },
-      },
+      // {
+      //   loader: "image-webpack-loader",
+      //   options: {
+      //     mozjpeg: { progressive: true, quality: 70 },
+      //     webp: {
+      //       quality: 75,
+      //       enabled: true, // Явно включаем
+      //       force: true, // Игнорировать другие форматы
+      //     },
+      //     optipng: { enabled: false },
+      //     pngquant: { quality: [0.75, 0.9], speed: 4 },
+      //   },
+      // },
     ],
   };
 
