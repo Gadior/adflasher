@@ -23,6 +23,7 @@
     "react-scripts": "^3.0.1",
     "react-seo": "^1.0.11",
     "swiper": "^11.2.3",
+    "terser-webpack-plugin": "^5.3.14",
     "universal-cookie": "^7.2.2"
   },
   "compilerOptions": {
@@ -34,7 +35,7 @@
   "scripts": {
     "start": "webpack serve --env mode=development port=3010",
     "express": "node server.js",
-    "build": "webpack",
+    "build": "webpack --env mode=production port=3000",
     "build:prod": "webpack --env mode=production port=3000",
     "build:dev": "webpack --env mode=development port=3000 --env __ISDEV__=development",
     "build:analyzer": "webpack --env mode=production port=3000 analyzer=true",
