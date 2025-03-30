@@ -1,23 +1,23 @@
 // Структура
-import __1 from "../../../../Shared/image/page10/__str_1.jpg";
-import __2 from "../../../../Shared/image/page10/__str_2.jpg";
-import __3 from "../../../../Shared/image/page10/__str_3.jpg";
-import __4 from "../../../../Shared/image/page10/__str_4.jpg";
-import __5 from "../../../../Shared/image/page10/__str_5.jpg";
-import __6 from "../../../../Shared/image/page10/__str_6.jpg";
-import __7 from "../../../../Shared/image/page10/__str_7.jpg";
+import __1 from "../../../../Shared/image/page10/__str_1.webp";
+import __2 from "../../../../Shared/image/page10/__str_2.webp";
+import __3 from "../../../../Shared/image/page10/__str_3.webp";
+import __4 from "../../../../Shared/image/page10/__str_4.webp";
+import __5 from "../../../../Shared/image/page10/__str_5.webp";
+import __6 from "../../../../Shared/image/page10/__str_6.webp";
+import __7 from "../../../../Shared/image/page10/__str_7.webp";
 // redux
-import __1r from "../../../../Shared/image/page10/__red_1.jpg";
-import __2r from "../../../../Shared/image/page10/__red_2.jpg";
-import __3r from "../../../../Shared/image/page10/__red_3.jpg";
+import __1r from "../../../../Shared/image/page10/__red_1.webp";
+import __2r from "../../../../Shared/image/page10/__red_2.webp";
+import __3r from "../../../../Shared/image/page10/__red_3.webp";
 // test
-import __1t from "../../../../Shared/image/page10/__test_1.jpg";
-import __2t from "../../../../Shared/image/page10/__test_2.jpg";
+import __1t from "../../../../Shared/image/page10/__test_1.webp";
+import __2t from "../../../../Shared/image/page10/__test_2.webp";
 // webpack
-import __1w from "../../../../Shared/image/page10/__w_1.jpg";
+import __1w from "../../../../Shared/image/page10/__w_1.webp";
 // slider
-import __1s from "../../../../Shared/image/page10/__s_1.jpg";
-import __2s from "../../../../Shared/image/page10/__s_2.jpg";
+import __1s from "../../../../Shared/image/page10/__s_1.webp";
+import __2s from "../../../../Shared/image/page10/__s_2.webp";
 
 export const structerData = [
   {

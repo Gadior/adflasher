@@ -56,6 +56,18 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
     ],
   };
 
+  const webpLoader = {
+    test: /\.(webp)$/i,
+    use: [
+      {
+        loader: "file-loader",
+        options: {
+          name: "[path][name].[ext]",
+        },
+      },
+    ],
+  };
+
   const gifLoader = {
     test: /\.(gif)$/i,
     use: [
@@ -106,6 +118,9 @@ export function buildLoader(options: int_BuildOptions): ModuleOptions["rules"] {
 
     // --- svg
     svgLoader,
+
+    // --- webp
+    webpLoader,
 
     // --- gif
     gifLoader,

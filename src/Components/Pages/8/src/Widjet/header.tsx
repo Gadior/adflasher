@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 // ~ interface
 import { int_header, menuItems } from "./interface";
 // ~ assets
-import __logo from "../Shared/assets/__logo.jpg";
+import __logo from "../Shared/assets/__logo.webp";
 
 // ___ const
 // #region

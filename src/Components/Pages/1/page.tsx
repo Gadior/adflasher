@@ -15,9 +15,9 @@ import { int_tickets, Flags } from "./interface";
 // ~ jsonData
 import json from "./src/tickets.json";
 // ~ assets
-import __logo from "./src/images/__logo.png";
-import __plane from "./src/images/__plane.png";
-import __arrow from "./src/images/__arrow.jpg";
+import __logo from "./src/images/__logo.webp";
+import __plane from "./src/images/__plane.webp";
+import __arrow from "./src/images/__arrow.webp";
 // ~ styles
 import "./page.css";
 // #endregion ~ import

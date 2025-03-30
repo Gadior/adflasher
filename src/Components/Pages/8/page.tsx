@@ -19,32 +19,32 @@ import Slider from "./src/Widjet/slider";
 // ~ assets
 import { MoveUpRight } from "lucide-react";
 
-import __bannerJpg from "./src/Shared/assets/__mainjpg.jpg";
+import __bannerJpg from "./src/Shared/assets/__mainjpg.webp";
 // - партнеры
-import __parnterJpg_1 from "./src/Shared/assets/__partner.jpg";
-import __parnterJpg_2 from "./src/Shared/assets/__partner1.jpg";
-import __parnterJpg_3 from "./src/Shared/assets/__partner2.jpg";
-import __parnterJpg_4 from "./src/Shared/assets/__partner3.jpg";
-import __parnterJpg_5 from "./src/Shared/assets/__partner4.jpg";
-import __parnterJpg_6 from "./src/Shared/assets/__partner5.jpg";
+import __parnterJpg_1 from "./src/Shared/assets/__partner.webp";
+import __parnterJpg_2 from "./src/Shared/assets/__partner1.webp";
+import __parnterJpg_3 from "./src/Shared/assets/__partner2.webp";
+import __parnterJpg_4 from "./src/Shared/assets/__partner3.webp";
+import __parnterJpg_5 from "./src/Shared/assets/__partner4.webp";
+import __parnterJpg_6 from "./src/Shared/assets/__partner5.webp";
 // - карточки
-import __card1 from "./src/Shared/assets/__card1.png";
-import __card2 from "./src/Shared/assets/__card2.png";
-import __card3 from "./src/Shared/assets/__card3.png";
-import __card4 from "./src/Shared/assets/__card4.png";
-import __card5 from "./src/Shared/assets/__card5.png";
-import __card6 from "./src/Shared/assets/__card6.png";
+import __card1 from "./src/Shared/assets/__card1.webp";
+import __card2 from "./src/Shared/assets/__card2.webp";
+import __card3 from "./src/Shared/assets/__card3.webp";
+import __card4 from "./src/Shared/assets/__card4.webp";
+import __card5 from "./src/Shared/assets/__card5.webp";
+import __card6 from "./src/Shared/assets/__card6.webp";
 // - contacts
-import __contactJpg from "./src/Shared/assets/__contact.png";
+import __contactJpg from "./src/Shared/assets/__contact.webp";
 // - teamItem
-import __teamItem1 from "./src/Shared/assets/__teamItem1.png";
-import __teamItem2 from "./src/Shared/assets/__teamItem2.png";
-import __teamItem3 from "./src/Shared/assets/__teamItem3.png";
-import __teamItem4 from "./src/Shared/assets/__teamItem4.png";
-import __teamItem5 from "./src/Shared/assets/__teamItem5.png";
-import __teamItem6 from "./src/Shared/assets/__teamItem6.png";
+import __teamItem1 from "./src/Shared/assets/__teamItem1.webp";
+import __teamItem2 from "./src/Shared/assets/__teamItem2.webp";
+import __teamItem3 from "./src/Shared/assets/__teamItem3.webp";
+import __teamItem4 from "./src/Shared/assets/__teamItem4.webp";
+import __teamItem5 from "./src/Shared/assets/__teamItem5.webp";
+import __teamItem6 from "./src/Shared/assets/__teamItem6.webp";
 // - bg
-import __formBg from "./src/Shared/assets/__bg.png";
+import __formBg from "./src/Shared/assets/__bg.webp";
 import Footer from "./src/Widjet/footer";
 // #endregion ~ import
 

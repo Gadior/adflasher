@@ -1,9 +1,9 @@
 import { Card } from "../Widjet/ProductsList/interface";
 // карточки поступлений
-import __ar1 from "../Shared/assets/__ar1.jpg";
-import __ar2 from "../Shared/assets/__ar2.jpg";
-import __ar3 from "../Shared/assets/__ar3.jpg";
-import __ar4 from "../Shared/assets/__ar4.jpg";
+import __ar1 from "../Shared/assets/__ar1.webp";
+import __ar2 from "../Shared/assets/__ar2.webp";
+import __ar3 from "../Shared/assets/__ar3.webp";
+import __ar4 from "../Shared/assets/__ar4.webp";
 
 export const cards: Card[] = [
   {

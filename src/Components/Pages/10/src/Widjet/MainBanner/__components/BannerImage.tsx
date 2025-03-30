@@ -1,5 +1,5 @@
 // ~ assets
-import __bannerImage from "../../../Shared/assets/__bannerImage1.jpg?webp";
+import __bannerImageWebp from "../../../Shared/assets/__bannerImage1.webp";
 
 interface Props {
   alt: string;
@@ -7,8 +7,12 @@ interface Props {
 export default function BannerImage(props: Props) {
   const { alt } = props;
   return (
+    // <picture>
+    //   <source srcSet={__bannerImageWebp} type="image/webp" />
+    //   <img src={__bannerImage} alt="Description" />
+    // </picture>
     <img
-      src={__bannerImage}
+      src={__bannerImageWebp}
       alt={alt}
       style={{ height: "100%" }}
       loading="lazy"

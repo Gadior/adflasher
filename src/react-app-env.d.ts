@@ -16,5 +16,6 @@ declare module "*.png";
 declare module "*.jpg";
 declare module "*.svg";
 declare module "*.jpg?webp";
+declare module "*.webp";
 
 declare module "react-meta-tags";
