@@ -22,7 +22,13 @@ export default function ProductCard(props: Props) {
   const { sourceImage, name, alt, price, oldPrice, percent } = props;
   return (
     <div className={css.card}>
-      <img src={sourceImage} alt={alt} />
+      <img
+        src={sourceImage}
+        alt={alt}
+        loading="lazy"
+        width={295}
+        height={298}
+      />
       <div className={css.info}>
         <H4 title={name} />
         <Rate />

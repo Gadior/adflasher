@@ -27,7 +27,6 @@ import {
 
 // ~ styles
 import "./style.css";
-import { parseInt } from "lodash";
 
 const { Text, Title } = Typography;
 // #endregion ~ import

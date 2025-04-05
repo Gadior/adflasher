@@ -36,13 +36,13 @@
         text-decoration: line-through;
         font-size: 20px;
         font-weight: 400;
-        color: rgba(0, 0, 0, 0.4);
+        color: rgba(0, 0, 0, 1);
       }
       & .percent {
         font-size: 12px;
         font-weight: 200;
-        color: vars.$redColor;
-        background-color: rgba(255, 51, 51, 0.1);
+        color: vars.$whiteColor;
+        background-color: rgba(255, 51, 51, 1);
         padding: 5px 10px;
         border-radius: 15px;
       }

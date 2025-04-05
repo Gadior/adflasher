@@ -20,7 +20,7 @@ import Page6 from "./Components/Pages/6/page";
 import Page7 from "./Components/Pages/7/page";
 import Page8 from "./Components/Pages/8/page";
 import Page9 from "./Components/Pages/9/page";
-import { LazyPage10 } from "./Components/Pages/10/page.lazy";
+import Page10 from "./Components/Pages/10/page";
 import Page11 from "./Components/Pages/11/page";
 import { LazyNews } from "./Components/Pages/12/page.lazy";
 
@@ -43,19 +43,12 @@ function App() {
           <Route path="7" element={<Page7 />} />
           <Route path="8" element={<Page8 />} />
           <Route path="9" element={<Page9 />} />
-          <Route
-            path="10"
-            element={
-              <Suspense fallback={<SuspenseLoader />}>
-                <LazyPage10 />
-              </Suspense>
-            }
-          />
+          <Route path="10" element={<Page10 />} />
           <Route path="11" element={<Page11 />} />
           <Route
             path="12"
             element={
-              <Suspense fallback={"...loading"}>
+              <Suspense fallback={<SuspenseLoader />}>
                 <LazyNews />
               </Suspense>
             }
@@ -65,7 +58,7 @@ function App() {
           <Route
             path="test"
             element={
-              <Suspense fallback={"...loading"}>
+              <Suspense fallback={<SuspenseLoader />}>
                 <LazyPageTest />
               </Suspense>
             }

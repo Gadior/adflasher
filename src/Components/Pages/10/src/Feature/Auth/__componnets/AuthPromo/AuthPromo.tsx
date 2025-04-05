@@ -25,6 +25,7 @@ export default function AuthPromo() {
               onClick={() => {
                 setIsSing(false);
               }}
+              name="closeSign"
             >
               <X />
             </button>

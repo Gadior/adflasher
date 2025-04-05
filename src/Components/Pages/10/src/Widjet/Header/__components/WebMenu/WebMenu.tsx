@@ -49,10 +49,10 @@ export default function WebMenu() {
         </div>
 
         <div className={css.menuExtends}>
-          <button>
+          <button name="shoppingCart">
             <ShoppingCart />
           </button>
-          <button>
+          <button className="userPanel">
             <CircleUserRound />
           </button>
         </div>

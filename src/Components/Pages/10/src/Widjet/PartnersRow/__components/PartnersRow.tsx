@@ -16,11 +16,41 @@ export default function PartnersRow() {
   return (
     <div className={css.wrapper}>
       <div className={css.container}>
-        <img src={__part1} alt="versace" />
-        <img src={__part2} alt="zara" />
-        <img src={__part3} alt="gucci" />
-        <img src={__part4} alt="prada" />
-        <img src={__part5} alt="calvin klein" />
+        <img
+          src={__part1}
+          alt="versace"
+          loading="lazy"
+          height={33}
+          width={"100%"}
+        />
+        <img
+          src={__part2}
+          alt="zara"
+          loading="lazy"
+          height={33}
+          width={"100%"}
+        />
+        <img
+          src={__part3}
+          alt="gucci"
+          loading="lazy"
+          height={33}
+          width={"100%"}
+        />
+        <img
+          src={__part4}
+          alt="prada"
+          loading="lazy"
+          height={33}
+          width={"100%"}
+        />
+        <img
+          src={__part5}
+          alt="calvin klein"
+          loading="lazy"
+          height={33}
+          width={"100%"}
+        />
       </div>
     </div>
   );

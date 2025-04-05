@@ -66,6 +66,7 @@ export default function CustomSlider(props: Props) {
           <div className={css.slider}>
             <div className={`${css.arrows} ${arrowsBlockStyle}`}>
               <button
+                name="prevArrow"
                 onClick={prevSlide}
                 className={`${css.sliderButton} ${css.left} ${arrowsStyle}`}
                 data-testid={"slider-next"}
@@ -73,6 +74,7 @@ export default function CustomSlider(props: Props) {
                 <MoveLeft />
               </button>
               <button
+                name="nextArrow"
                 onClick={nextSlide}
                 className={`${css.sliderButton} ${css.right}  ${arrowsStyle}`}
                 data-testid={"slider-prev"}
@@ -112,7 +114,12 @@ export default function CustomSlider(props: Props) {
                     }
                   >
                     {isPicSlide && (
-                      <img src={slide} className={css.picSlide} alt="#" />
+                      <img
+                        src={slide}
+                        className={css.picSlide}
+                        alt="#"
+                        loading="lazy"
+                      />
                     )}
                     {!isPicSlide && <ReviewCard slide={slide} />}
                   </div>

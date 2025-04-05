@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="" id="meta" />
+    <script>
+      console.warn = () => {};
+      console.error = () => {};
+      const originalConsoleError = console.error;
+      console.error = (...args) => {
+        if (args[0].includes("Warning:") || args[0].includes("Error:")) {
+          return; // Игнорируем ошибки React
+        }
+        originalConsoleError(...args); // Остальные ошибки показываем
+      };
+    </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/-->
@@ -70,5 +81,6 @@
       /></div
   ></noscript>
   <script src="/bundle.js"></script>
+
   <!-- /Yandex.Metrika counter -->
 </html>

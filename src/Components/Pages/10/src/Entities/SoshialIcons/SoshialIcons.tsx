@@ -7,7 +7,6 @@ import * as css from "./style.module.scss";
 import __facebook from "../../Shared/assets/__facebook.svg";
 import __twitter from "../../Shared/assets/__twitter.svg";
 import __instagramm from "../../Shared/assets/__instagramm.svg";
-import { Link } from "react-router-dom";
 
 // #endregion __IMPORT
 
@@ -16,13 +15,31 @@ export default function SoshialIcons() {
   return (
     <div className={css.container}>
       <a href="#">
-        <img src={__facebook} alt="FACEBOOK" />
+        <img
+          src={__facebook}
+          alt="FACEBOOK"
+          loading="lazy"
+          width={28}
+          height={28}
+        />
       </a>
       <a href="#">
-        <img src={__twitter} alt="TWITTER" />
+        <img
+          src={__twitter}
+          alt="TWITTER"
+          loading="lazy"
+          width={28}
+          height={28}
+        />
       </a>
       <a href="#">
-        <img src={__instagramm} alt="INSTAGRAMM" />
+        <img
+          src={__instagramm}
+          alt="INSTAGRAMM"
+          loading="lazy"
+          width={28}
+          height={28}
+        />
       </a>
     </div>
   );

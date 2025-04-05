@@ -21,11 +21,29 @@ export default function Rights() {
     <div className={css.wrapper}>
       <div className={css.rights}>Shop.co © 2000-2023, All Rights Reserved</div>
       <div className={css.cards}>
-        <img src={__card1} alt="VISA" />
-        <img src={__card2} alt="MASTERCARD" />
-        <img src={__card3} alt="PAYPAL" />
-        <img src={__card4} alt="APPLE PAY" />
-        <img src={__card5} alt="GOOGLE PAY" />
+        <img src={__card1} alt="VISA" loading="lazy" width={66} height={49} />
+        <img
+          src={__card2}
+          alt="MASTERCARD"
+          loading="lazy"
+          width={66}
+          height={49}
+        />
+        <img src={__card3} alt="PAYPAL" loading="lazy" width={66} height={49} />
+        <img
+          src={__card4}
+          alt="APPLE PAY"
+          loading="lazy"
+          width={66}
+          height={49}
+        />
+        <img
+          src={__card5}
+          alt="GOOGLE PAY"
+          loading="lazy"
+          width={66}
+          height={49}
+        />
       </div>
     </div>
   );

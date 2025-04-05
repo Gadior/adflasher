@@ -7,7 +7,6 @@ import * as css from "./styles.module.scss";
 import { SoshialIcons } from "../../../../Entities";
 // ~ assets
 import __logo from "../../../../Shared/assets/__logo.svg";
-import { Link } from "react-router-dom";
 
 // #endregion __IMPORT
 
@@ -16,7 +15,7 @@ export default function FooterMenu() {
   return (
     <div className={css.wrapper}>
       <div className={css.info}>
-        <img src={__logo} alt="SHOP.CO" />
+        <img src={__logo} alt="SHOP.CO" loading="lazy" />
         <p>
           We have clothes that suits your style and which you’re proud to wear.
           From women to men.

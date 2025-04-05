@@ -24,22 +24,38 @@ export default function FashionGrid(props: Props) {
         </div>
         <div className={css.fashion_1}>
           <div>
-            <img src={fashionImages[0].src} alt={fashionImages[0].name} />
+            <img
+              src={fashionImages[0].src}
+              alt={fashionImages[0].name}
+              loading="lazy"
+            />
             <div>{fashionImages[0].name}</div>
           </div>
           <div>
-            <img src={fashionImages[1].src} alt={fashionImages[1].name} />
+            <img
+              src={fashionImages[1].src}
+              alt={fashionImages[1].name}
+              loading="lazy"
+            />
             <div>{fashionImages[1].name}</div>
           </div>
         </div>
 
         <div className={css.fashion_2}>
           <div>
-            <img src={fashionImages[2].src} alt={fashionImages[2].name} />
+            <img
+              src={fashionImages[2].src}
+              alt={fashionImages[2].name}
+              loading="lazy"
+            />
             <div>{fashionImages[2].name}</div>
           </div>
           <div>
-            <img src={fashionImages[3].src} alt={fashionImages[3].name} />
+            <img
+              src={fashionImages[3].src}
+              alt={fashionImages[3].name}
+              loading="lazy"
+            />
             <div>{fashionImages[3].name}</div>
           </div>
         </div>

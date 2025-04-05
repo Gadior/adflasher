@@ -30,6 +30,7 @@ export default function ModileMenu() {
         <>
           <div className={css.logoBlock}>
             <button
+              name="burgerMenu"
               onClick={() => {
                 dispatch(openBurger());
               }}
@@ -43,16 +44,17 @@ export default function ModileMenu() {
 
           <div className={css.menuExtends}>
             <button
+              name="searchPlace"
               onClick={() => {
                 setIsSearch(true);
               }}
             >
               <Search />
             </button>
-            <button>
+            <button name="shopingCartMobile">
               <ShoppingCart />
             </button>
-            <button>
+            <button name="userPanelMobile">
               <CircleUserRound />
             </button>
           </div>
@@ -73,6 +75,7 @@ export default function ModileMenu() {
             <Search />
           </span>
           <button
+            name="closeSearchInput"
             className={css.closeIcon}
             onClick={() => {
               setIsSearch(false);
