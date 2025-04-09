@@ -18,9 +18,15 @@ export function buildPlugin(options: int_BuildOptions) {
     new HtmlWebpackPlugin({
       template: options.paths.html,
     }),
-    // - Копирование статичыеских файлов из public в build
+    // - Копирование статических файлов из public в build
     new CopyWebpackPlugin({
-      patterns: [{ from: "files", to: "files" }],
+      patterns: [
+        { from: "files", to: "files" },
+        {
+          from: "public/google4a1fb5c88cfcaf93.html",
+          to: "google4a1fb5c88cfcaf93.html",
+        },
+      ],
     }),
     // - экстракт css файлов
     new MiniCssExtractPlugin({
