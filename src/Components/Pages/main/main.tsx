@@ -16,7 +16,7 @@ import { imgList } from "./cardImgList";
 import CardFeat from "../../Feature/cardFeat/cardFeat";
 import SearchTag from "../../Shared/ui/searchTag/searchTag";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button, Space, Tag, Typography, Flex } from "antd";
 const { Title, Text } = Typography;
 

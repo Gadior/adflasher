@@ -16,7 +16,6 @@ import { AddNews } from "./src/Feature";
 import { Title } from "./src/Shared";
 
 // ! Data
-import { __data } from "./src/Data/data";
 import { useEffect } from "react";
 
 // #endregion ~ import

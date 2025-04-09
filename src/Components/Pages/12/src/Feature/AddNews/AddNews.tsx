@@ -2,7 +2,6 @@
 // ___ import
 // #region ~ import
 import { Input, Button } from "antd";
-const { TextArea } = Input;
 // ~ style
 import * as css from "./style.module.scss";
 // ~ redux
@@ -15,6 +14,7 @@ import {
 } from "../../Redux/__slice/data";
 import { useState } from "react";
 import { NewsCard__int } from "../../types/types";
+const { TextArea } = Input;
 
 // #endregion ~ import
 
@@ -58,7 +58,7 @@ export default function AddNews() {
     let newsListData = [];
     if (editingId) {
       newsListData = newsList.map((item: NewsCard__int) => {
-        item.id === editingId ? { ...item, ...formData } : item;
+        return item.id === editingId ? { ...item, ...formData } : item;
       });
     } else {
       // ~ если это новая новость

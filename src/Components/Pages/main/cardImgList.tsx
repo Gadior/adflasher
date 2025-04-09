@@ -1,3 +1,4 @@
+import __task12 from "../../Shared/image/__task12.webp";
 import __task11 from "../../Shared/image/__task11.webp";
 import __task10 from "../../Shared/image/__task10.webp";
 import __task9 from "../../Shared/image/__task9.webp";
@@ -12,6 +13,7 @@ import __banners from "../../Shared/image/__banners.webp";
 
 export const imgList: any = {
   __banners: __banners,
+  __task12: __task12,
   __task11: __task11,
   __task10: __task10,
   __task9: __task9,

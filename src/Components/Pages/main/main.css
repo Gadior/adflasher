@@ -92,6 +92,30 @@ html {
   border-radius: 10px;
 }
 
+.container-card__description > div > a {
+  text-decoration: none;
+  color: red;
+  font-size: 16px;
+  position: relative;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.container-card__description > div > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background-color: red;
+  transition: width 0.3s ease-in-out;
+}
+
+.container-card__description > div > a:hover::after {
+  width: 100%;
+}
+
 .container-card-title {
   display: flex;
   justify-content: flex-start;
